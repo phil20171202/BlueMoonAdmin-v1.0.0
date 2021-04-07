@@ -1,0 +1,72 @@
+<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+    <div class="sb-sidenav-menu">
+        <div class="nav">
+            <div class="sb-sidenav-menu-heading">@SharedLocalizer.GetLocalizedHtmlString("Core Data")</div>
+            <a class="nav-link" asp-controller="Home" asp-action="Index">
+                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                @SharedLocalizer.GetLocalizedHtmlString("Dashboard")
+            </a>
+            <div class="sb-sidenav-menu-heading">@SharedLocalizer.GetLocalizedHtmlString("Manage My Day")</div>
+            <a class="nav-link" asp-controller="Home" asp-action="Charts">
+                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                @SharedLocalizer.GetLocalizedHtmlString("Things to do")
+            </a><a class="nav-link" asp-controller="home" asp-action="Tables">
+                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                @SharedLocalizer.GetLocalizedHtmlString("Calendar")
+            </a>
+            <div class="sb-sidenav-menu-heading">@SharedLocalizer.GetLocalizedHtmlString("Customer Management")</div>
+            <a class="nav-link" asp-controller="Home" asp-action="Charts">
+                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                @SharedLocalizer.GetLocalizedHtmlString("Charts")
+            </a><a class="nav-link" asp-controller="home" asp-action="Tables">
+                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                @SharedLocalizer.GetLocalizedHtmlString("Tables")
+            </a>
+
+            <div class="sb-sidenav-menu-heading">@SharedLocalizer.GetLocalizedHtmlString("User Management")</div>
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                @SharedLocalizer.GetLocalizedHtmlString("Layouts")
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" asp-controller="home" asp-action="LayoutStatic">@SharedLocalizer.GetLocalizedHtmlString("Static Navigation")</a>
+                    <a class="nav-link" asp-controller="home" asp-action="SidenavLight">@SharedLocalizer.GetLocalizedHtmlString("Light Sidenav")</a>
+                </nav>
+            </div>
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                @SharedLocalizer.GetLocalizedHtmlString("Pages")
+                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                        @SharedLocalizer.GetLocalizedHtmlString("Authentication")
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" asp-controller="Account" asp-action="Login">@SharedLocalizer.GetLocalizedHtmlString("Login")</a>
+                            <a class="nav-link" asp-controller="Account" asp-action="Register">@SharedLocalizer.GetLocalizedHtmlString("Register")</a>
+                            <a class="nav-link" asp-controller="Account" asp-action="ForgotPassword">@SharedLocalizer.GetLocalizedHtmlString("Forgot Password")</a>
+                        </nav>
+                    </div>
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                        @SharedLocalizer.GetLocalizedHtmlString("Error")
+                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                    </a>
+                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                        <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link" asp-controller="home" asp-action="_401">@SharedLocalizer.GetLocalizedHtmlString("401 Page")</a>
+                            <a class="nav-link" asp-controller="home" asp-action="_404">@SharedLocalizer.GetLocalizedHtmlString("404 Page")</a>
+                            <a class="nav-link" asp-controller="home" asp-action="_500">@SharedLocalizer.GetLocalizedHtmlString("500 Page")</a>
+                        </nav>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    @await Html.PartialAsync("_LoginPartial")
+</nav>
