@@ -1,41 +1,98 @@
 ﻿@model IEnumerable<BlueMoonAdmin.Models.Customers>
 
 @{
-    ViewData["Title"] = "Service Customers";
+    ViewData["Title"] = "Service Contract Manager";
 }
 
 <div class="container-fluid">
-    <h1 class="mt-4">Service Contract Customers</h1>
+    <h1 class="mt-4">Service Contract Manager</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a asp-controller="Customers" asp-action="Index">Dashboard</a></li>
         <li class="breadcrumb-item active">Service Customers</li>
     </ol>
-    <div class="card mb-4">
-        <div class="card-body">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>.</div>
+    <div class="row">
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-primary text-white mb-4">
+                <div class="card-body">@SharedLocalizer.GetLocalizedHtmlString("Service Contract")</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="#">@SharedLocalizer.GetLocalizedHtmlString("Add New")</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-warning text-white mb-4">
+                <div class="card-body">@SharedLocalizer.GetLocalizedHtmlString("Renewals Manager")</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="#">@SharedLocalizer.GetLocalizedHtmlString("Renew Service Contracts")</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-success text-white mb-4">
+                <div class="card-body">@SharedLocalizer.GetLocalizedHtmlString("Service Contract Scheduling")</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="#">@SharedLocalizer.GetLocalizedHtmlString("View Services Due")</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-danger text-white mb-4">
+                <div class="card-body">@SharedLocalizer.GetLocalizedHtmlString("Contracts Manager")</div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="#">@SharedLocalizer.GetLocalizedHtmlString("View Contracts Due For Renewal")</a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
     </div>
+    <div class="row">
+        <div class="col-xl-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-chart-area mr-1"></i>@SharedLocalizer.GetLocalizedHtmlString("New Service Contracts")
+                </div>
+                <div class="card-body"><canvas id="myAreaChart" width="100" height="40"></canvas></div>
+            </div>
+        </div>
+        <div class="col-xl-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-chart-bar mr-1"></i>@SharedLocalizer.GetLocalizedHtmlString("Total Service Contracts")
+                </div>
+                <div class="card-body"><canvas id="myBarChart" width="100" height="40"></canvas></div>
+            </div>
+        </div>
+    </div>
+
     <div class="card mb-4">
-        <div class="card-header"><i class="fas fa-table mr-1"></i>DataTable Example</div>
+        <div class="card-header"><i class="fas fa-table mr-1 table-striped"></i>Service Contract Customers</div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>Company Name</th>
+                            <th>Contact Name</th>
+                            <th>Telephone Number</th>
+                            <th>Start Date</th>
+                            <th>Renewal Date</th>
+                            <th>Last Service Date</th>
+                            <th>Contract Type</th>
+                            <th>Current Machine</th>
+                            <th>Edit</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            @*<th>Name</th>
+                                <th>Position</th>
+                                <th>Office</th>
+                                <th>Age</th>
+                                <th>Start date</th>
+                                <th>Salary</th>*@
                         </tr>
                     </tfoot>
                     <tbody>
