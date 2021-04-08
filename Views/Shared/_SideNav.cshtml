@@ -6,21 +6,25 @@
                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                 @SharedLocalizer.GetLocalizedHtmlString("Dashboard")
             </a>
-            <div class="sb-sidenav-menu-heading">@SharedLocalizer.GetLocalizedHtmlString("Manage My Day")</div>
+            <div class="sb-sidenav-menu-heading">@SharedLocalizer.GetLocalizedHtmlString("Task Manager")</div>
             <a class="nav-link" asp-controller="Home" asp-action="Charts">
                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                @SharedLocalizer.GetLocalizedHtmlString("Things to do")
-            </a><a class="nav-link" asp-controller="home" asp-action="Tables">
+                @SharedLocalizer.GetLocalizedHtmlString("Scheduling")
+            </a><a class="nav-link" asp-controller="Calendar" asp-action="Index">
                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                 @SharedLocalizer.GetLocalizedHtmlString("Calendar")
             </a>
             <div class="sb-sidenav-menu-heading">@SharedLocalizer.GetLocalizedHtmlString("Customer Management")</div>
-            <a class="nav-link" asp-controller="Home" asp-action="Charts">
+            <a class="nav-link" asp-controller="Customers" asp-action="AddNewCustomer">
                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                @SharedLocalizer.GetLocalizedHtmlString("Charts")
-            </a><a class="nav-link" asp-controller="home" asp-action="Tables">
+                @SharedLocalizer.GetLocalizedHtmlString("Add New Customer")
+            </a><a class="nav-link" asp-controller="Customers" asp-action="Index">
                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                @SharedLocalizer.GetLocalizedHtmlString("Tables")
+                @SharedLocalizer.GetLocalizedHtmlString("Search Customers")
+            </a>
+            <a class="nav-link" asp-controller="ServiceCustomers" asp-action="ServiceCustomers">
+                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                @SharedLocalizer.GetLocalizedHtmlString("Service Customers")
             </a>
 
             <div class="sb-sidenav-menu-heading">@SharedLocalizer.GetLocalizedHtmlString("User Management")</div>
