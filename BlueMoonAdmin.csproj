@@ -4,9 +4,9 @@
     <TargetFramework>net5.0</TargetFramework>
      <Version>1.0.0</Version>
     <Description>BlueMoon Admin Dashboard</Description>
-    <PackageProjectUrl>https://aspnetcoremaster.com/plantillas</PackageProjectUrl>
+    <PackageProjectUrl></PackageProjectUrl>
     <PackageIconUrl>https://s.gravatar.com/avatar/17aee09e8da739c0ea4f44f72840a288?s=80</PackageIconUrl>
-    <RepositoryUrl>https://github.com/jahbenjah/startbootstrap-sb-admin</RepositoryUrl>
+    <RepositoryUrl></RepositoryUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageTags>mvc admin aspnetcore</PackageTags>
     <PackageReleaseNotes>Version 1.0.0</PackageReleaseNotes>
@@ -37,10 +37,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SharedResource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Data\Migrations\" />
   </ItemGroup>
 
 </Project>

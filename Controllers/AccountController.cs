@@ -13,6 +13,7 @@ using Microsoft.Extensions.Options;
 using BlueMoonAdmin.Models;
 using BlueMoonAdmin.Services;
 using BlueMoonAdmin.Extensions.Microsoft.AspNetCore.Mvc;
+using BlueMoonAdmin.Data;
 
 namespace BlueMoonAdmin.Controllers
 {
@@ -20,24 +21,27 @@ namespace BlueMoonAdmin.Controllers
     [Route("[controller]/[action]")]
     public class AccountController : Controller
     {
+        private readonly ApplicationDbContext _db;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
-
         public AccountController(
+            
+            ApplicationDbContext db,
             UserManager<User> userManager,
             SignInManager<User> signInManager,
             IEmailSender emailSender,
             ILogger<AccountController> logger)
         {
+            _db = db;
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
         }
 
-        [TempData]
+    [TempData]
         public string ErrorMessage { get; set; }
 
         [HttpGet]
