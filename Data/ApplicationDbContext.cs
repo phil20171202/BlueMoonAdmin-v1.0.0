@@ -15,6 +15,7 @@ namespace BlueMoonAdmin.Data
 
         }
 
+        public DbSet<ServiceCustomer> ServiceCustomers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
