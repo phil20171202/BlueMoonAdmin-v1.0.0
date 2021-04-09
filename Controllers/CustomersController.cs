@@ -17,7 +17,6 @@ namespace BlueMoonAdmin.Controllers
         {
             return View();
         }
-
     }
 
 }
