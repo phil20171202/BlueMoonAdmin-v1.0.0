@@ -5,11 +5,11 @@ namespace BlueMoonAdmin.Models
     public class RegisterViewModel
     {
         [Required]
-        [Display(Name = "FirstName")]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
         [Required]
-        [Display(Name = "LastName")]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
         [Required]
@@ -27,5 +27,9 @@ namespace BlueMoonAdmin.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Role Name")]
+        public string RoleName { get; set; }
     }
 }

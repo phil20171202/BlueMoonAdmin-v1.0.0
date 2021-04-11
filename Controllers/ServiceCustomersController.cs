@@ -17,7 +17,7 @@ namespace BlueMoonAdmin.Controllers
         {
             _db = db;
         }
-        public IActionResult ServiceCustomers()
+        public IActionResult ServiceContractManager()
         {
             IEnumerable<ServiceCustomer> objList = _db.ServiceCustomers;
             return View(objList);
