@@ -36,6 +36,23 @@
     <!--====== Style CSS ======-->
     <link rel="stylesheet" href="~/assets/css/style.css">
     <!--====== PART ENDS ======-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+</head>
+<body class="bg-light">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                @RenderBody();
+            </main>
+        </div>
+        @*<div id="layoutAuthentication_footer">
+                <partial name="_Footer" />
+            </div>*@
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
     <!--====== Jquery js ======-->
     <script src="~/assets/js/vendor/jquery-1.12.4.min.js"></script>
     <script src="~/assets/js/vendor/modernizr-3.7.1.min.js"></script>
@@ -72,22 +89,6 @@
 
     <!--====== Main js ======-->
     <script src="~/assets/js/main.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
-</head>
-<body class="bg-light">
-    <div id="layoutAuthentication">
-        <div id="layoutAuthentication_content">
-            <main>
-                @RenderBody();
-            </main>
-        </div>
-        @*<div id="layoutAuthentication_footer">
-            <partial name="_Footer" />
-        </div>*@
-    </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
