@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BlueMoonAdmin.Models.ViewModels
 {
-    public class EngineersViewModel
+    public class CustomerServiceViewModel
     {
         public int ID { get; set; }
         public string Name { get; set; }
