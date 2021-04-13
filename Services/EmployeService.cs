@@ -9,7 +9,7 @@ namespace BlueMoonAdmin.Services
         public IEnumerable<BlueMoonAdmin.Models.Employee> GetAll()
         {
             List<BlueMoonAdmin.Models.Employee> empleados = new List<BlueMoonAdmin.Models.Employee>();
-            var lineas = File.ReadAllLines("empleados.csv");
+            var lineas = File.ReadAllLines("employees.csv");
             foreach (var linea in lineas)
             {
                 if (linea.Length > 0)

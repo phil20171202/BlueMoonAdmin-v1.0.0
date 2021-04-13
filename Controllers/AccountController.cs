@@ -14,6 +14,7 @@ using BlueMoonAdmin.Models;
 using BlueMoonAdmin.Services;
 using BlueMoonAdmin.Extensions.Microsoft.AspNetCore.Mvc;
 using BlueMoonAdmin.Data;
+using BlueMoonAdmin.Utility;
 
 namespace BlueMoonAdmin.Controllers
 {
@@ -24,6 +25,7 @@ namespace BlueMoonAdmin.Controllers
         private readonly ApplicationDbContext _db;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger _logger;
         public AccountController(
@@ -31,12 +33,14 @@ namespace BlueMoonAdmin.Controllers
             ApplicationDbContext db,
             UserManager<User> userManager,
             SignInManager<User> signInManager,
+            RoleManager<IdentityRole> roleManager,
             IEmailSender emailSender,
             ILogger<AccountController> logger)
         {
             _db = db;
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
             _emailSender = emailSender;
             _logger = logger;
         }
@@ -152,7 +156,15 @@ namespace BlueMoonAdmin.Controllers
         [AllowAnonymous]
         public IActionResult Register(string returnUrl = null)
         {
-            ViewData["ReturnUrl"] = returnUrl;
+            if (!_roleManager.RoleExistsAsync(Helper.Admin).GetAwaiter().GetResult())
+            {
+                _roleManager.CreateAsync(new IdentityRole(Helper.Admin));
+                _roleManager.CreateAsync(new IdentityRole(Helper.Engineer));
+                _roleManager.CreateAsync(new IdentityRole(Helper.CustomerService));
+
+                ViewData["ReturnUrl"] = returnUrl;
+            }
+
             return View();
         }
 
@@ -172,6 +184,7 @@ namespace BlueMoonAdmin.Controllers
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     var callbackUrl = Url.EmailConfirmationLink(user.Id, code, Request.Scheme);
                     await _emailSender.SendEmailConfirmationAsync(model.Email, callbackUrl);
+                    await _userManager.AddToRoleAsync(user, model.RoleName);
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation("User created a new account with password.");
                     return RedirectToLocal(returnUrl);

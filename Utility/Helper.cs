@@ -10,7 +10,7 @@ namespace BlueMoonAdmin.Utility
     {
         public static string Admin = "Admin";
         public static string Engineer = "Engineers";
-        public static string Customerservice = "Customer Services";
+        public static string CustomerService = "Customer Services";
 
         public static List<SelectListItem> GetRolesForDropDown()
         {
@@ -18,8 +18,9 @@ namespace BlueMoonAdmin.Utility
             {
                 new SelectListItem{Value=Helper.Admin,Text=Helper.Admin},
                 new SelectListItem{Value=Helper.Engineer,Text=Helper.Engineer},
-                new SelectListItem{Value=Helper.Customerservice,Text=Helper.Customerservice}
+                new SelectListItem{Value=Helper.CustomerService,Text=Helper.CustomerService}
             };
         }
     }
 }
+

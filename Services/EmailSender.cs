@@ -7,13 +7,13 @@ namespace BlueMoonAdmin.Services
 {
     public class EmailSender : IEmailSender
     {
-        private SmtpClient Cliente { get; }
+        private SmtpClient Client { get; }
         private EmailSenderOptions Options { get; }
 
         public EmailSender(IOptions<EmailSenderOptions> options)
         {
             Options = options.Value;
-            Cliente = new SmtpClient()
+            Client = new SmtpClient()
             {
                 Host = Options.Host,
                 Port = Options.Port,
@@ -26,9 +26,9 @@ namespace BlueMoonAdmin.Services
 
         public Task SendEmailAsync(string email, string subject, string message)
         {
-            var correo = new MailMessage(from: Options.Email, to: email, subject: subject, body: message);
-            correo.IsBodyHtml = true;
-            return Cliente.SendMailAsync(correo);
+            var mail = new MailMessage(from: Options.Email, to: email, subject: subject, body: message);
+            mail.IsBodyHtml = true;
+            return Client.SendMailAsync(mail);
         }
     }
 }
