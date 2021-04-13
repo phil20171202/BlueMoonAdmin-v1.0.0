@@ -154,13 +154,13 @@ namespace BlueMoonAdmin.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult Register(string returnUrl = null)
+        public async Task<IActionResult> Register(string returnUrl = null)
         {
             if (!_roleManager.RoleExistsAsync(Helper.Admin).GetAwaiter().GetResult())
             {
-                _roleManager.CreateAsync(new IdentityRole(Helper.Admin));
-                _roleManager.CreateAsync(new IdentityRole(Helper.Engineer));
-                _roleManager.CreateAsync(new IdentityRole(Helper.CustomerService));
+                await _roleManager.CreateAsync(new IdentityRole(Helper.Admin));
+                await _roleManager.CreateAsync(new IdentityRole(Helper.Engineer));
+                await _roleManager.CreateAsync(new IdentityRole(Helper.CustomerService));
 
                 ViewData["ReturnUrl"] = returnUrl;
             }
