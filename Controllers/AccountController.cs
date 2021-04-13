@@ -187,7 +187,8 @@ namespace BlueMoonAdmin.Controllers
                     await _userManager.AddToRoleAsync(user, model.RoleName);
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     _logger.LogInformation("User created a new account with password.");
-                    return RedirectToLocal(returnUrl);
+                    //return RedirectToLocal(returnUrl);
+                    return RedirectToAction(nameof(AccountController.Login), "Account");
                 }
                 AddErrors(result);
             }
