@@ -7,7 +7,7 @@ namespace BlueMoonAdmin.Models.ViewModels
 {
     public class EngineersViewModel
     {
-        public int ID { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
     }
 }
