@@ -12,5 +12,11 @@ namespace BlueMoonAdmin.Controllers
         {
             return View();
         }
+    
+            public IActionResult PrivacyPolicy()
+        {
+            return View();
+        }
+    
     }
 }
