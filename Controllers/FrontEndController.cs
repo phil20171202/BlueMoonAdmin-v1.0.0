@@ -18,10 +18,5 @@ namespace BlueMoonAdmin.Controllers
             return View();
         }
 
-        public IActionResult ContactUs()
-        {
-            return View();
-        }
-
     }
 }

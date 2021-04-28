@@ -1,0 +1,68 @@
+﻿@model BlueMoonAdmin.Models.ViewModels.ContactUsViewModel
+@{
+    ViewData["Title"] = "Contact";
+    Layout = "_FrontEndLayout";
+}
+
+<div id="home" class="header-hero bg_cover" style="background-image: url(@Url.Content("~/assets/images/banner-bg.svg")">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="header-hero-content text-center">
+                    @*<h3 class="header-sub-title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.2s">BlueMoon CRM Privacy Policy</h3>*@
+                    <h2 class="header-title wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.5s">BlueMoon CRM Say Hello</h2>
+                    @*<p class="text wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="0.8s">Please get in touch if you have any questions regarding our services.
+                        We're always happy to assist.</p>*@
+                    @*<a asp-controller="Account" asp-action="Register" class="main-btn wow fadeInUp" data-wow-duration="1.3s" data-wow-delay="1.1s">Get Started</a>*@
+                </div>  <!--header hero content -->
+            </div>
+        </div> <!-- row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="header-hero-image text-center wow fadeIn" data-wow-duration="1.3s" data-wow-delay="1.4s">
+                    <img src="~/assets/images/contact-hero.png" alt="hero">
+                </div> <!-- header hero image -->
+            </div>
+        </div> <!-- row -->
+    </div> <!-- header hero -->
+</div> <!-- container -->
+<!-- Section: Contact v.1 -->
+
+<div class="container contact-form subscribe-area wow fadeIn" data-wow-duration="1s" data-wow-delay="0.5s">
+    <form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post" asp-action="SuccessMessage" asp-controller="ContactUs">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <h3>Drop us a note here and we'll come right back to you</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="text" asp-for="SenderName" class="form-control" placeholder="Your Name *" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="text" asp-for="SenderEmail" class="form-control" placeholder="Your Email *" value="" />
+                </div>
+                <div class="form-group">
+                    <input type="text" asp-for="TelephoneNumber" class="form-control" placeholder="Your Phone Number *" value="" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <textarea asp-for="Message" class="form-control" placeholder="Your Message *" style="width: 100%; height: 150px;"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="submit" asp-action="SuccessMessage" asp-route-returnUrl="@ViewData["ReturnUrl"]" class="main-btn" value="Send Message" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<!--====== BACK TOP TOP PART START ======-->
+
+<a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
+
+<!--====== BACK TOP TOP PART ENDS ======-->
+<!-- Section: Contact v.1 -->
+
+<div id="particles-1" class="particles"></div>
+
