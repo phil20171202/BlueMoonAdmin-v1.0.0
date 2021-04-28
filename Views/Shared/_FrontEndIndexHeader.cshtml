@@ -101,7 +101,7 @@
                                             <a class="page-scroll" href="#pricing">Pricing</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="page-scroll" asp-controller="FrontEnd" asp-action="ContactUS">Contact</a>
+                                            <a data-scroll-nav="0" asp-controller="FrontEnd" asp-action="ContactUs">Contact</a>
                                         </li>
                                     </ul>
                                 </div> <!-- navbar collapse -->
@@ -118,9 +118,10 @@
         </header>
         <!-- navbar area -->
         @*<div id="layoutAuthentication">
-            <div id="layoutAuthentication_content">*@
+        <div id="layoutAuthentication_content">*@
 
         @RenderBody();
+
     </main>
     <!--====== FOOTER PART START ======-->
 
@@ -168,10 +169,10 @@
                                 </div>
                                 <ul class="link">
                                     <li><a href="#">Road Map</a></li>
-                                    <li><a asp-controller="FrontEnd" asp-action="PrivacyPolicy">Privacy Policy</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
                                     <li><a href="#">Refund Policy</a></li>
                                     <li><a href="#">Terms of Service</a></li>
-                                    <li><a href="Index#pricing">Pricing</a></li>
+                                    <li><a class="page-scroll" href="#pricing">Pricing</a></li>
                                 </ul>
                             </div> <!-- footer wrapper -->
                             <div class="link-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.6s">
@@ -196,7 +197,7 @@
                             <ul class="contact">
                                 <li>+4 161 123 4567</li>
                                 <li>Say Hello</li>
-                                <li> Part of the BlueMoonSoftware Software Family</li>
+                                <li>Part of the BlueMoonSoftware Software Family</li>
                                 <li>Arrow Trading Estate, Manchester <br> United Kingdom</li>
                             </ul>
                         </div> <!-- footer contact -->
@@ -216,9 +217,17 @@
             </div> <!-- footer copyright -->
         </div> <!-- container -->
         <div id="particles-2"></div>
+
     </footer>
 
     <!--====== FOOTER PART ENDS ======-->
+
+            <!--====== BACK TOP TOP PART START ======-->
+
+        <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
+
+        <!--====== BACK TOP TOP PART ENDS ======-->
+
     @*</div>*@
     @*<div id="layoutAuthentication_footer">
             <partial name="_Footer" />

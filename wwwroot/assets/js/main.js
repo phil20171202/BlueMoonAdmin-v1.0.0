@@ -24,7 +24,7 @@ $(function () {
 
 
 
-    //===== Section Menu Active
+    ////===== Section Menu Active
 
     var scrollLink = $('.page-scroll');
     // Active link switching

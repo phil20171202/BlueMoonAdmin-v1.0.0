@@ -86,22 +86,22 @@
                                 <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                     <ul id="nav" class="navbar-nav ml-auto">
                                         <li class="nav-item active">
-                                            <a class="page-scroll" href="Index#home">Home</a>
+                                            <a data-scroll-nav="0" href="Index#home">Home</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="page-scroll" href="Index#features">Features</a>
+                                            <a data-scroll-nav="0" href="#features">Features</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="page-scroll" href="Index#about">Why BlueMoon</a>
+                                            <a data-scroll-nav="0" href="Index#about">Why BlueMoon</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="page-scroll" href="Index#facts">About</a>
+                                            <a data-scroll-nav="0" href="#facts">About</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="page-scroll" href="Index#pricing">Pricing</a>
+                                            <a data-scroll-nav="0" href="#pricing">Pricing</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="page-scroll" asp-controller="FrontEnd" asp-action="ContactUS">Contact</a>
+                                            <a data-scroll-nav="0" asp-controller="FrontEnd" asp-action="ContactUs">Contact</a>
                                         </li>
                                     </ul>
                                 </div> <!-- navbar collapse -->
@@ -121,6 +121,7 @@
             <div id="layoutAuthentication_content">*@
 
         @RenderBody();
+
     </main>
     <!--====== FOOTER PART START ======-->
 
@@ -168,10 +169,10 @@
                                 </div>
                                 <ul class="link">
                                     <li><a href="#">Road Map</a></li>
-                                    <li><a asp-controller="FrontEnd" asp-action="PrivacyPolicy">Privacy Policy</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
                                     <li><a href="#">Refund Policy</a></li>
                                     <li><a href="#">Terms of Service</a></li>
-                                    <li><a href="Index#pricing">Pricing</a></li>
+                                    <li><a href="#pricing">Pricing</a></li>
                                 </ul>
                             </div> <!-- footer wrapper -->
                             <div class="link-wrapper wow fadeIn" data-wow-duration="1s" data-wow-delay="0.6s">
@@ -216,9 +217,15 @@
             </div> <!-- footer copyright -->
         </div> <!-- container -->
         <div id="particles-2"></div>
+
     </footer>
 
     <!--====== FOOTER PART ENDS ======-->
+    <!--====== BACK TOP TOP PART START ======-->
+
+    <a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
+
+    <!--====== BACK TOP TOP PART ENDS ======-->
     @*</div>*@
     @*<div id="layoutAuthentication_footer">
             <partial name="_Footer" />
