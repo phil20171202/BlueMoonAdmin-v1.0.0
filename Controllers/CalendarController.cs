@@ -1,4 +1,5 @@
 ﻿using BlueMoonAdmin.Services;
+using BlueMoonAdmin.Utility;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -18,8 +19,11 @@ namespace BlueMoonAdmin.Controllers
     
         public IActionResult Index()
         {
+            ViewBag.Duration = Helper.GetTimeDropDown();
             ViewBag.EngineerList = _calendarService.GetEngineersList();
-             return View();
+            ViewBag.CustomerServiceList = _calendarService.GetCustomerServiceList();
+
+            return View();
         }
     }
 }

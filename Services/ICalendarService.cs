@@ -10,5 +10,6 @@ namespace BlueMoonAdmin.Services
     {
         public List<EngineersViewModel> GetEngineersList();
         public List<CustomerServiceViewModel> GetCustomerServiceList();
+        dynamic GetCustomerList();
     }
 }

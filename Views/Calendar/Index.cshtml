@@ -12,14 +12,18 @@
     </ol>
     @if (User.IsInRole(BlueMoonAdmin.Utility.Helper.Admin))
     {
-        <div class="form-group row col-2" id="divEngineersList">
+        <div class="form-group row col-2 mb-4" id="divEngineersList">
             <label> Select Engineer </label>
             @Html.DropDownList("engineerId", new SelectList(ViewBag.EngineerList, "Id", "Name"), new { @class = "form-control select2" })
 
         </div>
     }
-    <div id="calendar"></div>
+    <div id="calendar" class="col-12"></div>
 </div>
+
+<partial name="_AddEditAppointment" />
+
+
 
 @section Scripts{
 

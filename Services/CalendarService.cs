@@ -34,7 +34,8 @@ namespace BlueMoonAdmin.Services
         }
 
         public List<CustomerServiceViewModel> GetCustomerServiceList()
-        {
+        {  // need to change this to ServiceCustomers Table for the calendar to pull in service contract customers
+
             var customerServices = (from user in _db.Users
                                     join userRoles in _db.UserRoles on user.Id equals userRoles.UserId
                                     join roles in _db.Roles.Where(x => x.Name == Helper.CustomerService) on userRoles.RoleId equals roles.Id
@@ -47,6 +48,11 @@ namespace BlueMoonAdmin.Services
 
             return customerServices;
 
+            throw new NotImplementedException();
+        }
+
+        public dynamic GetCustomerList()
+        {
             throw new NotImplementedException();
         }
     }
