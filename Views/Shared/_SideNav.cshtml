@@ -15,12 +15,13 @@
                 @SharedLocalizer.GetLocalizedHtmlString("Calendar")
             </a>
             <div class="sb-sidenav-menu-heading">@SharedLocalizer.GetLocalizedHtmlString("Customer Management")</div>
+            <a class="nav-link" asp-controller="Customers" asp-action="Index">
+                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                @SharedLocalizer.GetLocalizedHtmlString("Manage Customers")
+            </a>
             <a class="nav-link" asp-controller="Customers" asp-action="CreateCustomer">
                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                 @SharedLocalizer.GetLocalizedHtmlString("Add New Customer")
-            </a><a class="nav-link" asp-controller="Customers" asp-action="Index">
-                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                @SharedLocalizer.GetLocalizedHtmlString("Search Customers")
             </a>
             <a class="nav-link" asp-controller="ServiceCustomers" asp-action="ServiceContractManager">
                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>

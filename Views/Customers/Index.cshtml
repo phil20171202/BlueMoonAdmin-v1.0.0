@@ -7,12 +7,21 @@
 <div class="container-fluid">
     <h1 class="mt-4">Search &amp; Manage Customers</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a asp-controller="Calendar" asp-action="Index">Dashboard</a></li>
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Dashboard</a></li>
         <li class="breadcrumb-item active">Customers</li>
     </ol>
     <div class="card mb-4">
-        <div class="card-body">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>.</div>
-    </div>
+        <div class="card-body">
+            <div class="row pt-4 border p-2">
+                <div class="col-6 text-black-50">
+                    <h2 class="text-black-50">Add new customer(s)</h2>
+                </div>
+                <div class="col-6 text-right">
+                    <a asp-controller="Item" asp-action="CreateExpenses" class="btn btn-primary">Create New Customer</a>
+                </div>
+            </div>
+        </div>
+        </div>
     <div class="card mb-4">
         <div class="card-header"><i class="fas fa-table mr-1"></i>DataTable Example</div>
         <div class="card-body">
