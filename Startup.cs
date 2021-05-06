@@ -39,6 +39,9 @@ namespace BlueMoonAdmin
             services.AddTransient<IEmployyeService, EmployeeServices>();
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<EmailSenderOptions>(Configuration.GetSection("EmailSenderOptions"));
+
+            services.AddHttpContextAccessor();
+
             services.AddControllersWithViews()
                 .AddViewLocalization()
                 .AddDataAnnotationsLocalization(options =>
