@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BlueMoonAdmin.Services;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,19 @@ namespace BlueMoonAdmin.Controllers
 {
     public class CalendarController : Controller
     {
+        private readonly ICalendarService _calendarService;
+
+        public CalendarController(ICalendarService calendarService)
+        {
+            _calendarService = calendarService;
+        }
+    
         public IActionResult Index()
         {
-            return View();
+            ViewBag.EngineerList = _calendarService.GetEngineersList();
+             return View();
         }
     }
 }
+
+

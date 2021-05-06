@@ -35,6 +35,7 @@ namespace BlueMoonAdmin
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddTransient<ICalendarService, CalendarService>();
             services.AddTransient<IEmployyeService, EmployeeServices>();
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<EmailSenderOptions>(Configuration.GetSection("EmailSenderOptions"));

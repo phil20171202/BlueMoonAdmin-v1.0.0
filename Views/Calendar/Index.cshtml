@@ -1,6 +1,7 @@
 ﻿
 @{
     ViewData["Title"] = "Index";
+    Layout = "_Layout";
 }
 
 <div class="container-fluid">
@@ -9,5 +10,20 @@
         <li class="breadcrumb-item"><a asp-controller="Calendar" asp-action="Index">Dashboard</a></li>
         <li class="breadcrumb-item active">Calendar</li>
     </ol>
-    </div>
+    @if (User.IsInRole(BlueMoonAdmin.Utility.Helper.Admin))
+    {
+        <div class="form-group row col-2" id="divEngineersList">
+            <label> Select Engineer </label>
+            @Html.DropDownList("engineerId", new SelectList(ViewBag.EngineerList, "Id", "Name"), new { @class = "form-control select2" })
+
+        </div>
+    }
+    <div id="calendar"></div>
+</div>
+
+@section Scripts{
+
+    <script src="~/js/script-custom-calendar.js"></script>
+
+}
 
