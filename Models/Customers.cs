@@ -32,5 +32,8 @@ namespace BlueMoonAdmin.Models
 
         [Display(Name = "Customer Notes")]
         public string CustomerNotes { get; set; }
+
+        [Display(Name = "Customer Since")]
+        public DateTime CustomerSince { get; set; }
     }
 }
