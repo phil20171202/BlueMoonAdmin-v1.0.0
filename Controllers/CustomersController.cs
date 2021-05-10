@@ -17,6 +17,11 @@ namespace BlueMoonAdmin.Controllers
         {
             return View();
         }
+
+        public IActionResult ViewCustomer()
+        {
+            return View();
+        }
     }
 
 }
