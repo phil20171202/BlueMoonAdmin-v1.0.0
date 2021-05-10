@@ -94,8 +94,14 @@
 <div class="container-fluid col-12">
     <div class="card mb-4">
         <div class="card-header">
-            <i class="fas fa-table mr-1"></i> Add Additional Contact Details i.e. Accounts Dept Contact...
-          <a asp-action="Index" class="btn btn-secondary ml-105 w-30">Add New</a>
+            <div class="row">
+                <div class="col-6 pt-2">
+                    <i class="fas fa-table mr-1"></i> Add Additional Contact Details i.e. Accounts Dept Contact...
+                </div>
+                <div class="col-6 text-right">
+                    <a asp-controller="Customers" asp-action="CreateCustomer" class="btn btn-primary">Create New Contact</a>
+                </div>
+            </div>
         </div>
       
         <div class="card-body">
@@ -141,8 +147,14 @@
 <div class="container-fluid col-12">
     <div class="card mb-4">
         <div class="card-header">
-            <i class="fas fa-table mr-1"></i> Add Additional Addresses i.e. site addresses and or invoice addresses etc...
-            <a asp-action="Index" class="btn btn-secondary w-20">Add New</a>
+            <div class="row">
+                <div class="col-6 pt-2">
+                    <i class="fas fa-table mr-1"></i> Add Additional Contact Details i.e. Accounts Dept Contact...
+                </div>
+                <div class="col-6 text-right">
+                    <a asp-controller="Customers" asp-action="CreateCustomer" class="btn btn-primary">Create New Address</a>
+                </div>
+            </div>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -153,31 +165,32 @@
                             <th>Contact Name</th>
                             <th>Office Address</th>
                             <th>Telephone Number</th>
+                            <th>Email Address</th>
                             <th>Edit</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             @*<th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>*@
+                                <th>Position</th>
+                                <th>Office</th>
+                                <th>Age</th>
+                                <th>Start date</th>
+                                <th>Salary</th>*@
                         </tr>
                     </tfoot>
                     <tbody>
                         @*@foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>@item.Name</td>
-                                <td>@item.Position</td>
-                                <td>@item.Office</td>
-                                <td>@item.Age</td>
-                                <td>@item.StartDate</td>
-                                <td>@item.Salary</td>
-                            </tr>
-                        }*@
+                            {
+                                <tr>
+                                    <td>@item.Name</td>
+                                    <td>@item.Position</td>
+                                    <td>@item.Office</td>
+                                    <td>@item.Age</td>
+                                    <td>@item.StartDate</td>
+                                    <td>@item.Salary</td>
+                                </tr>
+                            }*@
                     </tbody>
                 </table>
             </div>
