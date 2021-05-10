@@ -197,7 +197,57 @@
         </div>
     </div>
 </div>
-
+<div class="container-fluid col-12">
+    <div class="card mb-4">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-6 pt-2">
+                    <i class="fas fa-table mr-1"></i> Add Customer Notes...
+                </div>
+                <div class="col-6 text-right">
+                    <a asp-controller="Customers" asp-action="CreateCustomer" class="btn btn-primary">New Customer Note</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th width="20%">Date</th>
+                            <th width="60%">Notes</th>
+                            <th width="10%">Edit</th>
+                            <th width="10%">Delete</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            @*<th>Name</th>
+                                <th>Position</th>
+                                <th>Office</th>
+                                <th>Age</th>
+                                <th>Start date</th>
+                                <th>Salary</th>*@
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @*@foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Name</td>
+                                    <td>@item.Position</td>
+                                    <td>@item.Office</td>
+                                    <td>@item.Age</td>
+                                    <td>@item.StartDate</td>
+                                    <td>@item.Salary</td>
+                                </tr>
+                            }*@
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 @section Scripts{
     <script src="~/assets/demo/chart-area-demo.js"></script>
     <script src="~/assets/demo/chart-bar-demo.js"></script>
