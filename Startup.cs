@@ -41,7 +41,7 @@ namespace BlueMoonAdmin
             services.Configure<EmailSenderOptions>(Configuration.GetSection("EmailSenderOptions"));
 
             services.AddHttpContextAccessor();
-
+            
             services.AddControllersWithViews()
                 .AddViewLocalization()
                 .AddDataAnnotationsLocalization(options =>
