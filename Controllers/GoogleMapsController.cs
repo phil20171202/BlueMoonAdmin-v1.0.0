@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlueMoonAdmin.Controllers
 {
-    public class GoogleMaps : Controller
+    public class GoogleMapsController : Controller
     {
         public IActionResult Index()
         {
