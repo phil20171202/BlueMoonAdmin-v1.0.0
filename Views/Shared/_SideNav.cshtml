@@ -14,6 +14,10 @@
                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                 @SharedLocalizer.GetLocalizedHtmlString("Servicing Calendar")
             </a>
+                <a class="nav-link" asp-controller="GoogleMaps" asp-action="Index">
+                <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
+                @SharedLocalizer.GetLocalizedHtmlString("Google Maps")
+            </a>
             <div class="sb-sidenav-menu-heading">@SharedLocalizer.GetLocalizedHtmlString("Customer Management")</div>
             <a class="nav-link" asp-controller="Customers" asp-action="Index">
                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
