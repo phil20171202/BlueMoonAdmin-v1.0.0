@@ -10,19 +10,19 @@ namespace BlueMoonAdmin.Controllers
 
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private readonly IEmployyeService employyeService;
+        //private readonly ILogger<HomeController> _logger;
+        //private readonly IEmployyeService employyeService;
 
-        public HomeController(ILogger<HomeController> logger, IEmployyeService employyeService)
-        {
-            _logger = logger;
-            this.employyeService = employyeService;
-        }
+        //public HomeController(ILogger<HomeController> logger, IEmployyeService employyeService)
+        //{
+        //    _logger = logger;
+        //    this.employyeService = employyeService;
+        //}
 
         public IActionResult Index()
         {
-            var empleados = employyeService.GetAll();
-            return View(empleados);
+            //var empleados = employyeService.GetAll();
+            return View();
         }
 
         public IActionResult Privacy()
@@ -40,11 +40,11 @@ namespace BlueMoonAdmin.Controllers
             return View();
         }
 
-        public IActionResult Tables()
-        {
-            var empleados = employyeService.GetAll();
-            return View(empleados);
-        }
+        //public IActionResult Tables()
+        //{
+        //    var empleados = employyeService.GetAll();
+        //    return View(empleados);
+        //}
 
         public IActionResult _401()
         {
