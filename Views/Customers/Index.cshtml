@@ -17,11 +17,11 @@
                     <p class="text-black">Search for and manage your customer data from here. Add new customers, edit existing customers.</p>
                     <p class="p-2 text-black">Please ensure you enter the following information:</p>
                     <ol class="text-black">
-                        <li> Customer Name</li>
+                        <li> Company Name</li>
                         <li> All Contact Details</li>
-                        <li> Main Contact</li>
-                        <li> After you create the customer you add notes, additional contacts and additional addresses</li>
-                        <li> Search below first to ensure no duplicates</li>
+                        <li> Service Contract Details i.e when last serviced</li>
+                        <li> Current Machine Type</li>
+                        <li> After you create the customer you can add notes, additional contacts and additional addresses</li>
                     </ol>
                 </div>
                 </div>
@@ -46,10 +46,10 @@
                             <th>Company Name</th>
                             <th>Contact Name</th>
                             <th>Office Address</th>
-                            <th>Telephone Number</th>
-                            <th>Service Contract</th>
-                            <th>Last Service Date</th>
-                            <th>Current Machine</th>
+                            <th>Telehone</th>
+                            <th>Contract</th>
+                            <th>Serviced</th>
+                            <th>Machine</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -70,18 +70,18 @@
                             @foreach (var customer in Model)
                             {
                                 <tr>
-                                    <td>@customer.CompanyName</td>
-                                    <td>@customer.ContactName</td>
-                                    <td>@customer.OfficeAddress</td>
-                                    <td>@customer.TelephoneNumber</td>
-                                    <td>@customer.ServiceContract</td>
-                                    <td>@customer.LastServiceDate</td>
-                                    <td>@customer.CurrentMachine</td>
+                                    <td width="15%">@customer.CompanyName</td>
+                                    <td width="15%">@customer.ContactName</td>
+                                    <td width="35%">@customer.OfficeAddress</td>
+                                    <td width="10%">@customer.TelephoneNumber</td>
+                                    <td width="5%">@customer.ServiceContract</td>
+                                    <td width="10%">@customer.LastServiceDate.ToShortDateString().ToString()</td>
+                                    <td width="5%">@customer.CurrentMachine</td>
                                     <td>
                                         <div class="w-100 btn-group" role="group">
-                                            <a asp-controller="Customers" asp-action="ViewCustomer" asp-route-Id="@customer.Id" class="btn btn-primary mx-1">View Customer</a>
+                                            <a asp-controller="Customers" asp-action="ViewCustomer" asp-route-Id="@customer.Id" class="btn btn-primary mx-1">View</a>
                                             @*<a asp-controller="Customers" asp-action="DeleteCustomer" asp-route-Id="@customer.Id" class="btn btn-danger mx-1">Delete</a>*@
-                                            <a asp-controller="Customers" asp-action="UpdateCustomer" asp-route-Id="@customer.Id" class="btn btn-primary mx-1">Edit Customer</a>
+                                            <a asp-controller="Customers" asp-action="UpdateCustomer" asp-route-Id="@customer.Id" class="btn btn-danger mx-1">Edit</a>
                                         </div>
                                     </td>
                                 </tr>
