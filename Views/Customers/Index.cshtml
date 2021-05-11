@@ -11,17 +11,20 @@
         <li class="breadcrumb-item active">Customers</li>
     </ol>
     <div class="card mb-4">
+        <div class="card-body">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>.</div>
+    </div>
+    <div class="card mb-4">
         <div class="card-body">
             <div class="row pt-4 border p-2">
-                <div class="col-6">
-                    <h3 class="text-black mb-3">Add new customer - click create new customer</h3>
+                <div class="col-6 text-black-50">
+                    <h2 class="text-black-50">Add new customer(s)</h2>
                 </div>
                 <div class="col-6 text-right">
                     <a asp-controller="Customers" asp-action="CreateCustomer" class="btn btn-primary">Create New Customer</a>
                 </div>
             </div>
         </div>
-        </div>
+    </div>
     <div class="card mb-4">
         <div class="card-header"><i class="fas fa-table mr-1"></i> To Search for a customer start typing in the search, the table will automaically adjust as you type</div>
         <div class="card-body">
@@ -36,33 +39,45 @@
                             <th>Service Contract</th>
                             <th>Last Service Date</th>
                             <th>Current Machine</th>
-                            <th>View</th>
-                            <th>Edit</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             @*<th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>*@
+                                <th>Position</th>
+                                <th>Office</th>
+                                <th>Age</th>
+                                <th>Start date</th>
+                                <th>Salary</th>*@
                         </tr>
                     </tfoot>
-                    <tbody>
-                        @*@foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>@item.Name</td>
-                                <td>@item.Position</td>
-                                <td>@item.Office</td>
-                                <td>@item.Age</td>
-                                <td>@item.StartDate</td>
-                                <td>@item.Salary</td>
-                            </tr>
-                        }*@
-                    </tbody>
+                    @if (Model.Count() > 0)
+                    {
+                        <tbody>
+
+                            @foreach (var customer in Model)
+                            {
+                                <tr>
+                                    <td>@customer.CompanyName</td>
+                                    <td>@customer.ContactName</td>
+                                    <td>@customer.OfficeAddress</td>
+                                    <td>@customer.TelephoneNumber</td>
+                                    <td>@customer.ServiceContract</td>
+                                    <td>@customer.LastServiceDate</td>
+                                    <td>@customer.CurrentMachine</td>
+                                    <td>
+                                        <div class="w-100 btn-group" role="group">
+                                            <a asp-controller="Customers" asp-action="ViewCustomer" asp-route-Id="@customer.Id" class="btn btn-primary mx-1">View Customer</a>
+                                            @*<a asp-controller="Customers" asp-action="DeleteCustomer" asp-route-Id="@customer.Id" class="btn btn-danger mx-1">Delete</a>*@
+                                            <a asp-controller="Customers" asp-action="UpdateCustomer" asp-route-Id="@customer.Id" class="btn btn-primary mx-1">Edit Customer</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    }
                 </table>
             </div>
         </div>

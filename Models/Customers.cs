@@ -8,7 +8,7 @@ namespace BlueMoonAdmin.Models
         [Key]
         public int Id { get; set; }
 
-        [Display(Name = "Comapny Name")]
+        [Display(Name = "Company Name")]
         public string CompanyName { get; set; }
 
         [Display(Name = "Contact Name")]
