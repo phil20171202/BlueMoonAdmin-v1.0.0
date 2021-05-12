@@ -15,9 +15,14 @@ namespace BlueMoonAdmin.Models
 
         [DisplayName("Date")]
         public DateTime ToDoDate { get; set; }
-
-        [DisplayName("My Task")]
+       [DisplayName("My Task")]
         public string ToDoTask { get; set; }
+
+        [DisplayName("Category")]
+        public string ToDoCategory { get; set; }
+
+        [DisplayName("Importance")]
+        public string ToDoImportance { get; set; }
 
         [DisplayName("Completed")]
         public Boolean Completed { get; set; }
