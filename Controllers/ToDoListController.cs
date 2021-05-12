@@ -40,6 +40,63 @@ namespace BlueMoonAdmin.Controllers
             return RedirectToAction("Index");
         }
 
+        // GET-Update
+        public IActionResult UpdateToDoList(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var obj = _db.ToDoListItems.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            return View(obj);
+        }
+        // POST-Update
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult UpdateToDoList(ToDoListItem obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.ToDoListItems.Update(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(obj);
+        }
+
+        // GET-Delete
+        public IActionResult DeleteToDoItem(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var obj = _db.ToDoListItems.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            return View(obj);
+        }
+
+        // POST-Delete
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteToDoItemPost(int? id)
+        {
+            var obj = _db.ToDoListItems.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            _db.ToDoListItems.Remove(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
        
