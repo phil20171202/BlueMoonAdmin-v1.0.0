@@ -8,21 +8,72 @@
         <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Dashboard</a></li>
         <li class="breadcrumb-item active">My To Do List</li>
     </ol>
-    <div class="card mb-4">
-        <div class="card-body">
-            <div class="row pt-4 border p-2">
-                <div class="col-12 mb-3 text-black">
-                    <p class="text-black">Manage Your Day.</p>
-                    <p class="p-2 text-black">Add items to do list:</p>
-                    @*<ol class="text-black">
-                        <li> List</li>
-                        <li> All Contact Details</li>
-                        <li> Service Contract Details i.e when last serviced</li>
-                        <li> Current Machine Type</li>
-                        <li> After you create the customer you can add notes, additional contacts and additional addresses</li>
-                    </ol>*@
-                </div>
-            </div>
-            </div>
+    <div class="row pt-4 border p-2">
+        <div class="col-6 text-black-50">
+            <h2 class="text-black-50">Add new expense item(s)</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-controller="ToDoList" asp-action="CreateToDoItem" class="btn btn-primary">Create New To Do Item</a>
         </div>
     </div>
+
+
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Date:
+                    </th>
+                    <th>
+                        Expense Code:
+                    </th>
+                    <th>
+                        Expense Type:
+                    </th>
+                    <th>
+                        Company Name:
+                    </th>
+                    <th>
+                        Expense Amount:
+                    </th>
+                    <th>
+                        Update:
+                    </th>
+                    <th>
+                        Delete:
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td width="15%">@item.ExpenseDate.ToShortDateString().ToString()</td>
+                        <td width="15%">@item.ExpenseCode</td>
+                        <td width="15%">@item.ExpenseType</td>
+                        <td width="15%">@item.ExpenseName</td>
+                        <td width="15%">£ @item.ExpenseAmount</td>
+
+                        <td width="10%">
+                            <div class="col-6 p-1 text-center">
+                                <a asp-controller="Item" asp-action="Update" asp-route-Id="@item.Id" class="btn btn-secondary">Update</a>
+                            </div>
+                        </td>
+                        <td width="10%">
+                            <div class="col-6 p-1 text-center">
+                                <a asp-controller="Item" asp-action="Delete" asp-route-Id="@item.Id" class="btn btn-danger">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No expenses have been created yet</p>
+    }
+
+</div>

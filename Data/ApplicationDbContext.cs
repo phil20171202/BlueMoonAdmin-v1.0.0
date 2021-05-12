@@ -19,6 +19,7 @@ namespace BlueMoonAdmin.Data
         public DbSet<Customers> Customers { get; set; }
         public DbSet<Contacts> Contacts { get; set; }
         public DbSet<TaskManagerEvent> TaskManagerEvents { get; set; }
+        public DbSet<ToDoListItem> ToDoListItems { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)

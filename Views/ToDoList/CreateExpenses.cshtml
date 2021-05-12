@@ -1,0 +1,76 @@
+﻿@model AppointmentApp.Models.ViewModels.ExpenseVM
+
+
+<h1 class="text-black-50 pl-2 text-center text-capitalize">Expenses</h1>
+<div class="border p-2">
+    <h3 class="text-black-50 pl-2">How to enter new expenses</h3>
+    <p class="p-2 text-black-50">Please enter the following information:</p>
+    <ol class="text-black-50">
+        <li> Invoice/Expense Date</li>
+        <li> Expense Code i.e. 1002</li>
+        <li> Expense Type i.e. Credit Card or Fees for example</li>
+        <li> Who or what is being paid i.e. BarclayCard or PayPal</li>
+        <li> Total spend amount in £ and pence</li>
+    </ol>
+</div>
+<br />
+<form method="post" asp-action="CreateExpenses">
+    <div class="border p-3">
+        <div class="form-group row">
+            <h3 class="text-black-50 pl-2">Add New Expense Item</h3>
+        </div>
+        <div class="row p-3 text-black-50">
+            <div class="col-lg-12">
+                <div class="form-group row text-center">
+                    <div class="col-2">
+                        <label asp-for="Expense.ExpenseDate"></label>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="Expense.ExpenseCode"></label>
+                    </div>
+                    <div class="col-2">
+                        <label asp-for="Expense.ExpenseType"></label>
+                    </div>
+                    <div class="col-3">
+                        <label asp-for="Expense.ExpenseName"></label>
+                    </div>
+                    <div class="col-3">
+                        <label asp-for="Expense.ExpenseAmount"></label>
+                    </div>
+                </div>
+                <div class="form-group row text-center">
+                    <div class="col-2">
+                        <input asp-for="Expense.ExpenseDate" class="form-control" />
+                    </div>
+                    <div class="col-2">
+                        <select asp-for="Expense.ExpenseCode" asp-items="@Model.TypeDropDown" class="form-control">
+                            <option selected>--Select--</option>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <input asp-for="Expense.ExpenseType" class="form-control" />
+                    </div>
+                    <div class="col-3">
+                        <input asp-for="Expense.ExpenseName" class="form-control" />
+                    </div>
+                    <div class="col-3">
+                        <input asp-for="Expense.ExpenseAmount" class="form-control" />
+                    </div>
+                </div>
+                <p class="text-danger font-italic p-3">** Please check the data entered then once happy, click create new expense</p>
+                <div class="form-group row">
+                    <div class="col-8 offset-2 row p-3">
+                        <div class="col">
+                            <input type="submit" class="btn btn-info w-75" value="Create New Expense" />
+                        </div>
+                        <div class="col">
+                            <a asp-action="Index" class="btn btn-danger w-75">Go Back</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</form>
+
