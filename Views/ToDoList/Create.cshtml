@@ -1,63 +1,67 @@
 ﻿@model BlueMoonAdmin.Models.ToDoListItem
-
-
-<h1 class="text-black-50 pl-2 text-center text-capitalize">Expenses</h1>
-<div class="border p-2">
-    <h3 class="text-black-50 pl-2">How to enter new expenses</h3>
-    <p class="p-2 text-black-50">Please enter the following information:</p>
-    <ol class="text-black-50">
-        <li> Invoice/Expense Date</li>
-        <li> Expense Code i.e. 1002</li>
-        <li> Expense Type i.e. Credit Card or Fees for example</li>
-        <li> Who or what is being paid i.e. BarclayCard or PayPal</li>
-        <li> Total spend amount in £ and pence</li>
-    </ol>
-</div>
-<br />
-<form method="post" asp-action="CreateExpenses">
-    <div class="border p-3">
-        <div class="form-group row">
-            <h3 class="text-black-50 pl-2">Add New Expense Item</h3>
-        </div>
-        <div class="row p-3 text-black-50">
-            <div class="col-lg-12">
-                <div class="form-group row text-center">
-                    <div class="col-2">
-                        <label asp-for="ToDoDate"></label>
-                    </div>
-                    <div class="col-2">
-                        <label asp-for="ToDoTask"></label>
-                    </div>
-                    <div class="col-2">
-                        <label asp-for="Completed"></label>
-                    </div>
-
-                <div class="form-group row text-center">
-                    <div class="col-2">
-                        <input asp-for="ToDoDate" class="form-control" />
-                    </div>
-                    <div class="col-2">
-                        <input asp-for="ToDoTask" class="form-control" />
-                    </div>
-                    <div class="col-2">
-                        <input asp-for="Completed" class="form-control" />
-                    </div>
-                </div>
-                <p class="text-danger font-italic p-3">** Please check the data entered then once happy, click create new expense</p>
-                <div class="form-group row">
-                    <div class="col-8 offset-2 row p-3">
-                        <div class="col">
-                            <input type="submit" class="btn btn-info w-75" value="Create New To Do Item" />
-                        </div>
-                        <div class="col">
-                            <a asp-action="Index" class="btn btn-danger w-75">Go Back</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container-fluid">
+    <h1 class="mt-4 p-2">Add new task item</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Dashboard</a></li>
+        <li class="breadcrumb-item active">Create New Task</li>
+        </ol>
     </div>
-  </div>
-</form>
+    <form method="post" asp-action="Create">
+        <div class="container col-12 border-bottom">
+            <div class="row">
+                     <div class="col-lg-12">
+                        <div class="form-group row text-center">
+                            <div class="col-2">
+                                <label asp-for="ToDoDate"></label>
+                            </div>
+                            <div class="col-2">
+                                <label asp-for="ToDoTask"></label>
+                            </div>
+                            <div class="col-2">
+                                <label asp-for="ToDoCategory"></label>
+                            </div>
+                            <div class="col-2">
+                                <label asp-for="ToDoImportance"></label>
+                            </div>
+                            <div class="col-2">
+                                <label asp-for="Completed"></label>
+                            </div>
+                            </div>
+                            <div class="form-group row text-center">
+                                <div class="col-2">
+                                    <input asp-for="ToDoDate" class="form-control" />
+                                </div>
+                                <div class="col-2">
+                                    <input asp-for="ToDoTask" class="form-control" />
+                                </div>
+                                <div class="col-2">
+                                    <input asp-for="ToDoCategory" class="form-control" />
+                                </div>
+                                <div class="col-2">
+                                    <input asp-for="ToDoImportance" class="form-control" />
+                                </div>
+                                <div class="col-2">
+                                    <input asp-for="Completed" class="form-control" />
+                                </div>
+                            </div>
+                         
+                            <div class="form-group row">
+                                <div class="col-8 offset-2 row p-3">
+                                    <div class="col">
+                                        <input type="submit" class="btn btn-info w-75" value="Create New Task" />
+                                    </div>
+                                    <div class="col">
+                                        <a asp-action="Index" class="btn btn-danger w-75">Go Back</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+       </form>
+   
 

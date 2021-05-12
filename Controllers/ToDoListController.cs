@@ -24,31 +24,23 @@ namespace BlueMoonAdmin.Controllers
             IEnumerable<ToDoListItem> objList = _db.ToDoListItems;
             return View(objList);
         }
-
-        // GET-Create
         public IActionResult Create()
         {
-       
-            ToDoCategoryViewModel toDoCategoryViewModel = new ToDoCategoryViewModel()
-            {
-                Category = new ToDoListItem(),
-                TypeDropDown = _db.CategoryTypes.Select(i => new SelectListItem()
-                {
-                    Text = i.CategoryTypeName,
-                    Value = i.CategoryTypeName
-                })
-            };
 
-            return View(toDoCategoryViewModel);
+            return View();
         }
+
         // POST-Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(ToDoCategoryViewModel obj)
+        public IActionResult Create(ToDoListItem obj)
         {
-            //_db.CategoryTypes.Add(obj.Category); -- this needs sorting
+            _db.ToDoListItems.Add(obj);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+
     }
 }
+       
+

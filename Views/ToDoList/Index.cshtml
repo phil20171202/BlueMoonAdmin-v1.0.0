@@ -13,12 +13,12 @@
             <h3 class="text-black">Manage your time - use the create new button to add item(s)</h3>
         </div>
         <div class="col-6 text-right">
-            <a asp-controller="ToDoList" asp-action="Create" class="btn btn-primary">Create New To Do Item</a>
+            <a asp-controller="ToDoList" asp-action="Create" class="btn btn-primary">Create New Task</a>
         </div>
     </div>
 
 <div class="card mb-4">
-    <div class="card-header"><i class="fas fa-table mr-1"></i> To Search for a task start typing in the search, the table will automaically search as you type</div>
+    <div class="card-header"><i class="fas fa-table mr-1"></i> To Search for a task start typing in the search box, the table will auto-search as you type</div>
     <div class="card-body">
         <div class="table-responsive">
             @if (Model.Count() > 0)
