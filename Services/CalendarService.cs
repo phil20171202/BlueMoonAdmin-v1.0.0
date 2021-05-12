@@ -1,4 +1,5 @@
 ﻿using BlueMoonAdmin.Data;
+using BlueMoonAdmin.Models;
 using BlueMoonAdmin.Models.ViewModels;
 using BlueMoonAdmin.Utility;
 using System;
@@ -15,6 +16,38 @@ namespace BlueMoonAdmin.Services
         public CalendarService(ApplicationDbContext db)
         {
             _db = db;
+        }
+
+        public async Task<int> AddUpdate(AppointmentViewModel model)
+        {
+            var startDate = DateTime.Parse(model.StartDate);
+            var endDate = DateTime.Parse(model.StartDate).AddMinutes(Convert.ToDouble(model.Duration));
+
+            if(model!=null && model.Id > 0 )
+            {
+                //update
+                return 1;
+            }
+            else
+            {
+                //create
+                Appointment appointment = new Appointment()
+                {
+                    Title = model.Title,
+                    Description = model.Description,
+                    StartDate = startDate,
+                    EndDate = endDate,
+                    Duration = model.Duration,
+                    EngineerId = model.EngineerId,
+                    CustomerServiceId = model.CustomerServiceId,
+                    IsEngineerApproved = model.IsEngineerApproved,
+                    AdminId = model.AdminId
+                };
+
+                _db.Appointments.Add(appointment);
+                await _db.SaveChangesAsync();
+                return 2;
+            }
         }
 
         public List<EngineersViewModel> GetEngineersList()
@@ -51,9 +84,5 @@ namespace BlueMoonAdmin.Services
             throw new NotImplementedException();
         }
 
-        public dynamic GetCustomerList()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

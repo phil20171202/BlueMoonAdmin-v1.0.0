@@ -1,4 +1,6 @@
-﻿using BlueMoonAdmin.Services;
+﻿using BlueMoonAdmin.Models.ViewModels;
+using BlueMoonAdmin.Services;
+using BlueMoonAdmin.Utility;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -26,9 +28,31 @@ namespace BlueMoonAdmin.Controllers.Api
             role = _httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.Role);
 
         }
-        public IActionResult Index()
+        [HttpPost]
+        [Route("SaveCalendarData")]
+        public IActionResult SaveCalendarData(AppointmentViewModel data)
         {
-            return View();
+            CommonResponse<int> commonResponse = new CommonResponse<int>();
+            try
+            {
+                commonResponse.status = _calendarService.AddUpdate(data).Result;
+                if(commonResponse.status == 1)
+                {
+                    commonResponse.message = Helper.appointmentUpdated;
+                }
+                if (commonResponse.status == 2)
+                {
+                    commonResponse.message = Helper.appointmentAdded;
+                }
+            }
+            catch(Exception e)
+            {
+                commonResponse.message = e.Message;
+                commonResponse.status = Helper.failure_code;
+
+            }
+
+            return Ok(commonResponse);
         }
     }
 }
