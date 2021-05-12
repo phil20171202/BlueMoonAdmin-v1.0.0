@@ -20,7 +20,7 @@ namespace BlueMoonAdmin.Models
         public string ToDoTask { get; set; }
 
         [DisplayName("Completed")]
-        public string Completed { get; set; }
+        public Boolean Completed { get; set; }
 
 
     }
