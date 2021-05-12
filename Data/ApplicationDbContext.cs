@@ -10,9 +10,9 @@ namespace BlueMoonAdmin.Data
 {
     public class ApplicationDbContext : IdentityDbContext<User>
     {
+        
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-
         }
         public DbSet<ServiceCustomer> ServiceCustomers { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
@@ -20,7 +20,7 @@ namespace BlueMoonAdmin.Data
         public DbSet<Contacts> Contacts { get; set; }
         public DbSet<TaskManagerEvent> TaskManagerEvents { get; set; }
         public DbSet<ToDoListItem> ToDoListItems { get; set; }
-
+        public DbSet<CategoryType> CategoryTypes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

@@ -25,6 +25,30 @@ namespace BlueMoonAdmin.Controllers
             return View(objList);
         }
 
-        //Get-Create
+        // GET-Create
+        public IActionResult Create()
+        {
+       
+            ToDoCategoryViewModel toDoCategoryViewModel = new ToDoCategoryViewModel()
+            {
+                Category = new ToDoListItem(),
+                TypeDropDown = _db.CategoryTypes.Select(i => new SelectListItem()
+                {
+                    Text = i.CategoryTypeName,
+                    Value = i.CategoryTypeName
+                })
+            };
+
+            return View(toDoCategoryViewModel);
+        }
+        // POST-Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(ToDoCategoryViewModel obj)
+        {
+            //_db.CategoryTypes.Add(obj.Category); -- this needs sorting
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
