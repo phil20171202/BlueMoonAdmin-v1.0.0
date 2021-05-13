@@ -1,4 +1,4 @@
-﻿@model BlueMoonAdmin.Models.Customers
+﻿@model BlueMoonAdmin.Models.ViewModels.CustomerViewModel
 
 @{
     ViewData["Title"] = "Customers";
@@ -6,8 +6,9 @@
 
 
 <form method="post" asp-action="CreateCustomer">
+    <input asp-for="Customers.Id" hidden />
     <div class="container-fluid">
-        <h1 class="mt-4">Managing {CustomerName}</h1>
+        <h1 class="mt-4">Managing @Model.Customers.CompanyName</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a asp-controller="Customers" asp-action="Index">Dashboard</a></li>
             <li class="breadcrumb-item active">Edit Customer</li>
@@ -18,58 +19,58 @@
                 <div class="col-12">
                     <div class="form-group row">
                         <div class="col-3">
-                            <label asp-for="CompanyName"></label>
+                            <label asp-for="Customers.CompanyName"></label>
                         </div>
                         <div class="col-3">
-                            <label asp-for="ContactName"></label>
+                            <label asp-for="Customers.ContactName"></label>
                         </div>
                         <div class="col-3">
-                            <label asp-for="OfficeAddress"></label>
+                            <label asp-for="Customers.OfficeAddress"></label>
                         </div>
                         <div class="col-3">
-                            <label asp-for="TelephoneNumber"></label>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-3">
-                            <input asp-for="CompanyName" class="form-control" />
-                        </div>
-                        <div class="col-3">
-                            <input asp-for="ContactName" class="form-control" />
-                        </div>
-                        <div class="col-3">
-                            <input asp-for="OfficeAddress" class="form-control">
-                        </div>
-                        <div class="col-3">
-                            <input asp-for="TelephoneNumber" class="form-control">
+                            <label asp-for="Customers.TelephoneNumber"></label>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-3">
-                            <label asp-for="ServiceContract"></label>
+                            <input asp-for="Customers.CompanyName" class="form-control" />
                         </div>
                         <div class="col-3">
-                            <label asp-for="LastServiceDate"></label>
+                            <input asp-for="Customers.ContactName" class="form-control" />
                         </div>
                         <div class="col-3">
-                            <label asp-for="CurrentMachine"></label>
+                            <input asp-for="Customers.OfficeAddress" class="form-control">
                         </div>
                         <div class="col-3">
-                            <label asp-for="CustomerSince"></label>
+                            <input asp-for="Customers.TelephoneNumber" class="form-control">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-3">
-                            <input asp-for="ServiceContract" class="form-control" />
+                            <label asp-for="Customers.ServiceContract"></label>
                         </div>
                         <div class="col-3">
-                            <input asp-for="LastServiceDate" class="form-control" />
+                            <label asp-for="Customers.LastServiceDate"></label>
                         </div>
                         <div class="col-3">
-                            <input asp-for="CurrentMachine" class="form-control">
+                            <label asp-for="Customers.CurrentMachine"></label>
                         </div>
                         <div class="col-3">
-                            <input asp-for="CustomerSince" class="form-control">
+                            <label asp-for="Customers.CustomerSince"></label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-3">
+                            <input asp-for="Customers.ServiceContract" class="form-control" />
+                        </div>
+                        <div class="col-3">
+                            <input asp-for="Customers.LastServiceDate" class="form-control" />
+                        </div>
+                        <div class="col-3">
+                            <input asp-for="Customers.CurrentMachine" class="form-control">
+                        </div>
+                        <div class="col-3">
+                            <input asp-for="Customers.CustomerSince" class="form-control">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -110,9 +111,10 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Company Name</th>
-                            <th>Contact Name</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
                             <th>Telephone Number</th>
+                            <th>Mobile Number</th>
                             <th>Email Address</th>
                             <th>Is Primary</th>
                             <th>Edit</th>
@@ -129,17 +131,24 @@
                         </tr>
                     </tfoot>
                     <tbody>
-                        @*@foreach (var item in Model)
+                        @foreach (var item in Model.Contacts)
                         {
-                            <tr>
-                                <td>@item.Name</td>
-                                <td>@item.Position</td>
-                                <td>@item.Office</td>
-                                <td>@item.Age</td>
-                                <td>@item.StartDate</td>
-                                <td>@item.Salary</td>
-                            </tr>
-                        }*@
+                        <tr>
+                            <td>@item.FirstName</td>
+                            <td>@item.LastName</td>
+                            <td>@item.TelephoneNumber</td>
+                            <td>@item.MobileNumber</td>
+                            <td>@item.Email</td>
+                            <td>@item.PrimaryContact</td>
+                            <td>
+                                <div class="w-100 btn-group" role="group">
+                                    <a asp-controller="Customers" asp-action="ViewCustomer" asp-route-Id="@item.CustomerId" class="btn btn-primary mx-1">View</a>
+                                    @*<a asp-controller="Customers" asp-action="DeleteCustomer" asp-route-Id="@customer.Id" class="btn btn-danger mx-1">Delete</a>*@
+                                    <a asp-controller="Customers" asp-action="UpdateCustomer" asp-route-Id="@item.CustomerId" class="btn btn-danger mx-1">Edit</a>
+                                </div>
+                            </td>
+                        </tr>
+                        }
                     </tbody>
                 </table>
             </div>
