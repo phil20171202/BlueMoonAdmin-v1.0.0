@@ -13,16 +13,16 @@
     <div class="row">
         <div class="col-xl-3 col-md-6">
             <div class="card bg-primary text-white mb-4">
-                <div class="card-body">@SharedLocalizer.GetLocalizedHtmlString("Service Contract")</div>
+                <div class="card-body"> <i class="fas fa-edit"></i> @SharedLocalizer.GetLocalizedHtmlString(" Service Contract")</div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small text-white stretched-link" href="#">@SharedLocalizer.GetLocalizedHtmlString("Add New")</a>
+                    <a class="small text-white stretched-link" href="#">@SharedLocalizer.GetLocalizedHtmlString("Add New Contract")</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
             </div>
         </div>
         <div class="col-xl-3 col-md-6">
             <div class="card bg-warning text-white mb-4">
-                <div class="card-body">@SharedLocalizer.GetLocalizedHtmlString("Renewals Manager")</div>
+                <div class="card-body"><i class="fas fa-address-book"></i>@SharedLocalizer.GetLocalizedHtmlString(" Renewals Manager")</div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
                     <a class="small text-white stretched-link" href="#">@SharedLocalizer.GetLocalizedHtmlString("Renew Service Contracts")</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -31,7 +31,7 @@
         </div>
         <div class="col-xl-3 col-md-6">
             <div class="card bg-success text-white mb-4">
-                <div class="card-body">@SharedLocalizer.GetLocalizedHtmlString("Service Contract Scheduling")</div>
+                <div class="card-body"> <i class="fas fa-calendar-alt"></i> @SharedLocalizer.GetLocalizedHtmlString(" Service Contract Scheduling")</div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
                     <a class="small text-white stretched-link" href="#">@SharedLocalizer.GetLocalizedHtmlString("View Services Due")</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -40,9 +40,9 @@
         </div>
         <div class="col-xl-3 col-md-6">
             <div class="card bg-danger text-white mb-4">
-                <div class="card-body">@SharedLocalizer.GetLocalizedHtmlString("Contracts Manager")</div>
+                <div class="card-body"><i class="fas fa-file-signature"></i> @SharedLocalizer.GetLocalizedHtmlString("Service Contract Reports")</div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small text-white stretched-link" href="#">@SharedLocalizer.GetLocalizedHtmlString("View Contracts Due For Renewal")</a>
+                    <a class="small text-white stretched-link" href="#">@SharedLocalizer.GetLocalizedHtmlString("View Reports")</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
             </div>
@@ -83,7 +83,8 @@
                             <th>Last Service Date</th>
                             <th>Contract Type</th>
                             <th>Current Machine</th>
-                            <th>Edit</th>
+                            <th>Update:</th>
+                            <th>Delete:</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -104,12 +105,20 @@
                             <td>@item.CompanyName</td>
                             <td>@item.ContactName</td>
                             <td>@item.TelephoneNumber</td>
-                            <td>@item.StartDate</td>
-                            <td>@item.RenewalDate</td>
-                            <td>@item.LastServiceDate</td>
+                            <td>@item.StartDate.ToShortDateString().ToString()</td>
+                            <td>@item.RenewalDate.ToShortDateString().ToString()</td>
+                            <td>@item.LastServiceDate.ToShortDateString().ToString()</td>
                             <td>@item.ContractType</td>
                             <td>@item.CurrentMachine</td>
-                            <td></td>
+                            <td width="6%">
+                                <div class="col-6 p-0 text-center">
+                                    <a asp-controller="ToDoList" asp-action="UpdateToDoList" asp-route-Id="@item.Id" class="btn btn-secondary">Update</a>
+                                </div>
+                            </td>
+                            <td width="6%">
+                                <div class="col-6 p-0 text-center">
+                                    <a asp-controller="ToDoList" asp-action="DeleteToDoItem" asp-route-Id="@item.Id" class="btn btn-danger">Delete</a>
+                                    </div>
                         </tr>
                             }
                     </tbody>

@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-xl-3 col-md-6">
             <div class="card bg-primary text-white mb-4">
-                <div class="card-body">@SharedLocalizer.GetLocalizedHtmlString("Customer Manager")</div>
+                <div class="card-body"> <i class="fas fa-address-card"></i>@SharedLocalizer.GetLocalizedHtmlString(" Customer Manager")</div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
                     <a class="small text-white stretched-link" asp-controller="Customers" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("View / Edit Customers")</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -22,7 +22,7 @@
         </div>
         <div class="col-xl-3 col-md-6">
             <div class="card bg-warning text-white mb-4">
-                <div class="card-body">@SharedLocalizer.GetLocalizedHtmlString("Calendar Manager")</div>
+                <div class="card-body"><i class="fas fa-calendar-alt"></i>@SharedLocalizer.GetLocalizedHtmlString(" Calendar Manager")</div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
                     <a class="small text-white stretched-link" asp-controller="Calendar" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("View Details")</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -31,7 +31,7 @@
         </div>
         <div class="col-xl-3 col-md-6">
             <div class="card bg-success text-white mb-4">
-                <div class="card-body">@SharedLocalizer.GetLocalizedHtmlString("Task Manager")</div>
+                <div class="card-body"> <i class="fas fa-thumbtack"></i>@SharedLocalizer.GetLocalizedHtmlString(" Task Manager")</div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
                     <a class="small text-white stretched-link" asp-controller="TaskManager" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("View Tasks")</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -40,7 +40,7 @@
         </div>
         <div class="col-xl-3 col-md-6">
             <div class="card bg-danger text-white mb-4">
-                <div class="card-body">@SharedLocalizer.GetLocalizedHtmlString("Contracts Manager")</div>
+                <div class="card-body"> <i class="fas fa-edit"></i>@SharedLocalizer.GetLocalizedHtmlString(" Contracts Manager")</div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
                     <a class="small text-white stretched-link" asp-controller="ServiceCustomers" asp-action="ServiceContractManager">@SharedLocalizer.GetLocalizedHtmlString("View Dashboard")</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
