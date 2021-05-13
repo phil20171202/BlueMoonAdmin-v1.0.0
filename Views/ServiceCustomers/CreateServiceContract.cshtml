@@ -1,0 +1,162 @@
+﻿@model BlueMoonAdmin.Models.ServiceCustomer
+
+@{
+    ViewData["Title"] = "Customers";
+}
+<form method="post" asp-action="CreateServiceContract">
+    <div class="container-fluid">
+        <h1 class="mt-4">Create New Service Contract</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a asp-controller="ServiceCustomers" asp-action="ServiceContractManager">Dashboard</a></li>
+            <li class="breadcrumb-item active">Contract Create</li>
+        </ol>
+        <!-- #region Form -->
+        <div class="container col-12 border-bottom">
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group row">
+                        <div class="col-3">
+                            <label asp-for="CompanyName"></label>
+                        </div>
+                        <div class="col-3">
+                            <label asp-for="ContactName"></label>
+                        </div>
+                        <div class="col-3">
+                            <label asp-for="TelephoneNumber"></label>
+                        </div>
+                        <div class="col-3">
+                            <label asp-for="ContractType"></label>
+                        </div>
+                        @*<div class="col-3">
+                            <label asp-for="RenewalDate"></label>
+                        </div>
+                        <div class="col-3">
+                            <label asp-for="LastServiceDate"></label>
+                        </div>
+                        <div class="col-3">
+                            <label asp-for="ContractType"></label>
+                        </div>
+                        <div class="col-3">
+                            <label asp-for="CurrentMachine"></label>
+                        </div>*@
+
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-3">
+                            <input asp-for="CompanyName" class="form-control" />
+                        </div>
+                        <div class="col-3">
+                            <input asp-for="ContactName" class="form-control" />
+                        </div>
+                        <div class="col-3">
+                            <input asp-for="TelephoneNumber" class="form-control">
+                        </div>
+                        <div class="col-3">
+                            <input asp-for="ContractType" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-3">
+                            <label asp-for="StartDate"></label>
+                        </div>
+                        <div class="col-3">
+                            <label asp-for="RenewalDate"></label>
+                        </div>
+                        <div class="col-3">
+                            <label asp-for="LastServiceDate"></label>
+                        </div>
+                        <div class="col-3">
+                            <label asp-for="CurrentMachine"></label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-3">
+                            <input asp-for="StartDate" class="form-control" />
+                        </div>
+                        <div class="col-3">
+                            <input asp-for="RenewalDate" class="form-control" />
+                        </div>
+                        <div class="col-3">
+                            <input asp-for="LastServiceDate" class="form-control">
+                        </div>
+                        <div class="col-3">
+                            <input asp-for="CurrentMachine" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-8 offset-2 row">
+                            <div class="col">
+                                <input type="submit" class="btn btn-info w-75" value="Create Contract" />
+                            </div>
+                            <div class="col">
+                                <a asp-action="Index" class="btn btn-danger w-75">Back</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- #endregion -->
+        </div>
+    </div>
+</form>
+
+<!--<div class="col-12 ">-->
+@*<div class="card mb-4">
+        <div class="card-body">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>.</div>
+    </div>*@
+<!--<div class="card mb-4">
+    <div class="card-header"><i class="fas fa-table mr-1"></i> Current Customer List</div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Company Name</th>
+                        <th>Contact Name</th>
+                        <th>Office Address</th>
+                        <th>Telephone Number</th>
+                        <th>Service Contract</th>
+                        <th>Last Service Date</th>
+                        <th>Current Machine</th>
+                        <th>Customer Since</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>-->
+@*<th>Name</th>
+    <th>Position</th>
+    <th>Office</th>
+    <th>Age</th>
+    <th>Start date</th>
+    <th>Salary</th>*@
+<!--</tr>
+</tfoot>
+<tbody>-->
+@*@foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Position</td>
+            <td>@item.Office</td>
+            <td>@item.Age</td>
+            <td>@item.StartDate</td>
+            <td>@item.Salary</td>
+        </tr>
+    }*@
+<!--</tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
+
+@section Scripts{
+    <script src="~/assets/demo/chart-area-demo.js"></script>
+    <script src="~/assets/demo/chart-bar-demo.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+    <script src="~/assets/demo/datatables-demo.js"></script>
+}-->

@@ -16,7 +16,7 @@ namespace BlueMoonAdmin.Models
         [Display(Name = "Company Name")]
         public string CompanyName { get; set; }
 
-        [Display(Name = "Company Name")]
+        [Display(Name = "Contact Name")]
         public string ContactName { get; set; }
 
         [Display(Name = "Telephone Number")]

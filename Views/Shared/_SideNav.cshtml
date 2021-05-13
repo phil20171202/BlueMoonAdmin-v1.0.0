@@ -52,10 +52,8 @@
                 </a>
                 <div class="collapse" id="collapseContracts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" asp-controller="ServiceCustomers" asp-action="ServiceContractManager">@SharedLocalizer.GetLocalizedHtmlString("Dashboard")</a>
-                        <a class="nav-link" asp-controller="Customers" asp-action="CreateCustomer">@SharedLocalizer.GetLocalizedHtmlString("Add New Contract")</a>
-                        <a class="nav-link" asp-controller="Customers" asp-action="CreateCustomer">@SharedLocalizer.GetLocalizedHtmlString("Renew Services")</a>
-                        <a class="nav-link" asp-controller="Customers" asp-action="CreateCustomer">@SharedLocalizer.GetLocalizedHtmlString("View Renewels")</a>
+                        <a class="nav-link" asp-controller="ServiceCustomers" asp-action="ServiceContractManager">@SharedLocalizer.GetLocalizedHtmlString("Contract Manager")</a>
+                        <a class="nav-link" asp-controller="ServiceCustomers" asp-action="CreateServiceContract">@SharedLocalizer.GetLocalizedHtmlString("Add New Contract")</a>
                         <a class="nav-link" asp-controller="Pricing" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("View Pricing")</a>
                     </nav>
                 </div>

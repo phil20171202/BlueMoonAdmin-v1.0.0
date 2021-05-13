@@ -22,5 +22,22 @@ namespace BlueMoonAdmin.Controllers
             IEnumerable<ServiceCustomer> objList = _db.ServiceCustomers;
             return View(objList);
         }
+
+        //
+        public IActionResult CreateServiceContract()
+        {
+
+            return View();
+        }
+
+        // POST-Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreateServiceContract(ServiceCustomer obj)
+        {
+            _db.ServiceCustomers.Add(obj);
+            _db.SaveChanges();
+            return RedirectToAction("ServiceContractManager");
+        }
     }
 }

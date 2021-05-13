@@ -22,6 +22,9 @@ namespace BlueMoonAdmin.Utility
         public static string somethingWentWrong = "Sorry, Something went wrong, Please try again.";
         public static int success_code = 1;
         public static int failure_code = 0;
+        public static string taskAddedSuccessfully = "Awesome, task added successfully.";
+        public static string taskDeletedSuccessfully = "Bye, task deleted successfully .";
+        public static string taskUpdatedSuccessfully = "Great work, you updated the task.";
 
         public static List<SelectListItem> GetRolesForDropDown()
         {
