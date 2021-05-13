@@ -1,5 +1,6 @@
 ﻿using BlueMoonAdmin.Data;
 using BlueMoonAdmin.Models;
+using BlueMoonAdmin.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -26,10 +27,23 @@ namespace BlueMoonAdmin.Controllers
             return View(objList);
         }
 
-        public IActionResult ViewCustomer()
+        public IActionResult ViewCustomer(int? id)
         {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var CustomerVM = new CustomerViewModel();
+            CustomerVM.Customers = _db.Customers.SingleOrDefault(c => c.Id == id);
+            CustomerVM.Contacts = _db.Contacts.Where(c => c.CustomerId == id).ToList();
+            if (CustomerVM == null)
+            {
+                return NotFound();
+            }
+            return View(CustomerVM);
 
-            return View();
+
+          
         }
 
         public IActionResult CreateCustomer()
