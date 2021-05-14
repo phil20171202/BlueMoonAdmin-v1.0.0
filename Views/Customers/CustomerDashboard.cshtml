@@ -11,27 +11,27 @@
     <div class="row">
         <div class="col-xl-3 col-md-6">
             <div class="card bg-primary text-white mb-4">
-                <div class="card-body"> <i class="fas fa-edit"></i> @SharedLocalizer.GetLocalizedHtmlString(" Service Contract")</div>
+                <div class="card-body"> <i class="fas fa-edit"></i> @SharedLocalizer.GetLocalizedHtmlString(" Add New Customer")</div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small text-white stretched-link" asp-controller="ServiceCustomers" asp-action="CreateServiceContract">@SharedLocalizer.GetLocalizedHtmlString("Add New Contract")</a>
+                    <a class="small text-white stretched-link" asp-controller="ServiceCustomers" asp-action="CreateServiceContract">@SharedLocalizer.GetLocalizedHtmlString("Add New Contact")</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
             </div>
         </div>
         <div class="col-xl-3 col-md-6">
             <div class="card bg-warning text-white mb-4">
-                <div class="card-body"><i class="fas fa-address-book"></i>@SharedLocalizer.GetLocalizedHtmlString(" Renewals Manager")</div>
+                <div class="card-body"><i class="fas fa-address-book"></i>@SharedLocalizer.GetLocalizedHtmlString(" New Leads") (4)</div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small text-white stretched-link" href="#">@SharedLocalizer.GetLocalizedHtmlString("Renew Service Contracts")</a>
+                    <a class="small text-white stretched-link" href="#">@SharedLocalizer.GetLocalizedHtmlString("Run Leads Report")</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
             </div>
         </div>
         <div class="col-xl-3 col-md-6">
             <div class="card bg-success text-white mb-4">
-                <div class="card-body"> <i class="fas fa-calendar-alt"></i> @SharedLocalizer.GetLocalizedHtmlString(" Service Contract Scheduling")</div>
+                <div class="card-body"> <i class="fas fa-calendar-alt"></i> @SharedLocalizer.GetLocalizedHtmlString(" Quotes Sent") (8)</div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small text-white stretched-link" href="#">@SharedLocalizer.GetLocalizedHtmlString("View Services Due")</a>
+                    <a class="small text-white stretched-link" href="#">@SharedLocalizer.GetLocalizedHtmlString("View Quotes")</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                 <div class="card-header">
                     <i class="fas fa-chart-area mr-1"></i>@SharedLocalizer.GetLocalizedHtmlString("New Leads")
                 </div>
-                <div class="card-body"><canvas id="myAreaChart" width="100" height="40"></canvas></div>
+                <div class="card-body"><canvas id="myBarChart" width="100" height="40"></canvas></div>
             </div>
         </div>
         <div class="col-xl-6">
@@ -60,7 +60,7 @@
                 <div class="card-header">
                     <i class="fas fa-chart-bar mr-1"></i>@SharedLocalizer.GetLocalizedHtmlString("Total New Leads")
                 </div>
-                <div class="card-body"><canvas id="myBarChart" width="100" height="40"></canvas></div>
+                <div class="card-body"><canvas id="myAreaChart" width="100" height="40"></canvas></div>
             </div>
         </div>
     </div>
