@@ -33,8 +33,8 @@ namespace BlueMoonAdmin.Models
         [Display(Name = "Telephone Number")]
         public string TelephoneNumber { get; set; }
 
-        [Display(Name = "Service Contract")]
-        public string ServiceContract { get; set; }
+        [Display(Name = "Service Contract Type")]
+        public String ServiceContract { get; set; }
 
         [Display(Name = "Last Service Date")]
         public DateTime LastServiceDate { get; set; }
@@ -47,5 +47,9 @@ namespace BlueMoonAdmin.Models
 
         [Display(Name = "Customer Since")]
         public DateTime CustomerSince { get; set; }
-    }
+
+        [Display(Name = "Active Service")]
+        public bool Service { get; set; }
+
+}
 }

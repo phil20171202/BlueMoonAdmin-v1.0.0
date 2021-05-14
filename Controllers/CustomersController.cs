@@ -94,7 +94,7 @@ namespace BlueMoonAdmin.Controllers
             }
             return View(obj);
         }
-        // Passes the customer id into the form so teh contact is linked to the customer.
+        // Passes the customer id into the form so the contact is linked to the customer.
         public IActionResult CreateContact(int id)
         {
             var ContactVM = new Contacts();
@@ -127,6 +127,33 @@ namespace BlueMoonAdmin.Controllers
             _db.Contacts.Add(obj);
             _db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        //View customer you are about to delete
+        public IActionResult DeleteCustomer(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var obj = _db.Customers.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            return View(obj);
+        }
+        // Delete customer from database
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteCustomer(Customers obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Customers.Remove(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(obj);
         }
 
     }

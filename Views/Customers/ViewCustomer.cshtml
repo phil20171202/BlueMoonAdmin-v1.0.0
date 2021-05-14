@@ -37,13 +37,13 @@
                             <input asp-for="Customers.CompanyName" class="form-control" readonly />
                         </div>
                         <div class="col-3">
-                            <input asp-for="Customers.ContactName" class="form-control" readonly/>
+                            <input asp-for="Customers.ContactName" class="form-control" readonly />
                         </div>
                         <div class="col-3">
-                            <input asp-for="Customers.EmailAddress" class="form-control" readonly/>
+                            <input asp-for="Customers.EmailAddress" class="form-control" readonly />
                         </div>
                         <div class="col-3">
-                            <input asp-for="Customers.TelephoneNumber" class="form-control"readonly/>
+                            <input asp-for="Customers.TelephoneNumber" class="form-control" readonly />
                         </div>
                     </div>
                     <div class="form-group row">
@@ -65,13 +65,13 @@
                             <input asp-for="Customers.OfficeAddress" class="form-control" readonly />
                         </div>
                         <div class="col-3">
-                            <input asp-for="Customers.AddressLine" class="form-control" readonly/>
+                            <input asp-for="Customers.AddressLine" class="form-control" readonly />
                         </div>
                         <div class="col-3">
-                            <input asp-for="Customers.CityRegion" class="form-control" readonly/>
+                            <input asp-for="Customers.CityRegion" class="form-control" readonly />
                         </div>
                         <div class="col-3">
-                            <input asp-for="Customers.PostCode" class="form-control" readonly/>
+                            <input asp-for="Customers.PostCode" class="form-control" readonly />
                         </div>
                     </div>
 
@@ -91,31 +91,41 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-3">
-                            <input asp-for="Customers.ServiceContract" class="form-control" readonly/>
+                            <input asp-for="Customers.ServiceContract" class="form-control" readonly />
                         </div>
                         <div class="col-3">
-                            <input asp-for="Customers.LastServiceDate" class="form-control" readonly/>
+                            <input asp-for="Customers.LastServiceDate" class="form-control" readonly />
                         </div>
                         <div class="col-3">
-                            <input asp-for="Customers.CurrentMachine" class="form-control" readonly/>
+                            <input asp-for="Customers.CurrentMachine" class="form-control" readonly />
                         </div>
                         <div class="col-3">
                             <input asp-for="Customers.CustomerSince" class="form-control" readonly>
                         </div>
                     </div>
-                    <div class="form-group row pt-4 mb-4">
-                        <div class="col-8 offset-2 row">
-                            <div class="col">
-                                <a asp-controller="Customers" asp-action="UpdateCustomer" class="btn btn-info w-75">Edit Customer Details</a>
-                            </div>
-                            <div class="col">
-                                <a asp-action="Index" class="btn btn-danger w-75">Delete Customer</a>
+                    <div class="form-group row">
+                        <div class="col-2">
+                            <label asp-for="Customers.Service"></label>
+                        </div>
+                        <div class="col-1">
+                            <input asp-for="Customers.Service" class="form-control" disabled />
+                        </div>
+                        </div>
+
+
+                        <div class="form-group row pt-4 mb-4">
+                            <div class="col-8 offset-2 row">
+                                <div class="col">
+                                    <a asp-controller="Customers" asp-action="UpdateCustomer" class="btn btn-info w-75">Edit Customer Details</a>
+                                </div>
+                                <div class="col">
+                                    <a asp-action="DeleteCustomer" asp-route-Id="@Model.Customers.Id" class="btn btn-danger w-75">Delete Customer</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
-            </div>
 
             <!-- #endregion -->
         </div>
