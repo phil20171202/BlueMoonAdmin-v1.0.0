@@ -27,6 +27,11 @@ namespace BlueMoonAdmin.Controllers
             return View(objList);
         }
 
+        public IActionResult CustomerDashboard()
+        {
+            return View();
+        }
+
         public IActionResult ViewCustomer(int? id)
         {
             if (id == null || id == 0)
