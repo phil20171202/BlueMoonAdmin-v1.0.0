@@ -12,6 +12,7 @@
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a asp-controller="Customers" asp-action="CustomerDashboard"> Customer Dashboard</a></li>
             <li class="breadcrumb-item active">View Customer</li>
+            
         </ol>
         <!-- #region Form -->
         <div class="container col-12 border mb-4">
@@ -33,16 +34,16 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-3">
-                            <input asp-for="Customers.CompanyName" class="form-control" />
+                            <input asp-for="Customers.CompanyName" class="form-control" readonly />
                         </div>
                         <div class="col-3">
-                            <input asp-for="Customers.ContactName" class="form-control" />
+                            <input asp-for="Customers.ContactName" class="form-control" readonly/>
                         </div>
                         <div class="col-3">
-                            <input asp-for="Customers.EmailAddress" class="form-control">
+                            <input asp-for="Customers.EmailAddress" class="form-control" readonly/>
                         </div>
                         <div class="col-3">
-                            <input asp-for="Customers.TelephoneNumber" class="form-control">
+                            <input asp-for="Customers.TelephoneNumber" class="form-control"readonly/>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -61,16 +62,16 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-3">
-                            <input asp-for="Customers.OfficeAddress" class="form-control" />
+                            <input asp-for="Customers.OfficeAddress" class="form-control" readonly />
                         </div>
                         <div class="col-3">
-                            <input asp-for="Customers.AddressLine" class="form-control" />
+                            <input asp-for="Customers.AddressLine" class="form-control" readonly/>
                         </div>
                         <div class="col-3">
-                            <input asp-for="Customers.CityRegion" class="form-control">
+                            <input asp-for="Customers.CityRegion" class="form-control" readonly/>
                         </div>
                         <div class="col-3">
-                            <input asp-for="Customers.PostCode" class="form-control">
+                            <input asp-for="Customers.PostCode" class="form-control" readonly/>
                         </div>
                     </div>
 
@@ -90,16 +91,16 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-3">
-                            <input asp-for="Customers.ServiceContract" class="form-control" />
+                            <input asp-for="Customers.ServiceContract" class="form-control" readonly/>
                         </div>
                         <div class="col-3">
-                            <input asp-for="Customers.LastServiceDate" class="form-control" />
+                            <input asp-for="Customers.LastServiceDate" class="form-control" readonly/>
                         </div>
                         <div class="col-3">
-                            <input asp-for="Customers.CurrentMachine" class="form-control">
+                            <input asp-for="Customers.CurrentMachine" class="form-control" readonly/>
                         </div>
                         <div class="col-3">
-                            <input asp-for="Customers.CustomerSince" class="form-control">
+                            <input asp-for="Customers.CustomerSince" class="form-control" readonly>
                         </div>
                     </div>
                     <div class="form-group row pt-4 mb-4">
