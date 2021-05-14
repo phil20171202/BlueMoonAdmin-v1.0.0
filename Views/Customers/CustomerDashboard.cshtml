@@ -3,7 +3,7 @@
     ViewData["Title"] = "CustomerDashboard";
 }
 <div class="container-fluid">
-    <h1 class="mt-4">Service Contract Manager</h1>
+    <h1 class="mt-4">Customer Manager</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a asp-controller="Customers" asp-action="Index">Dashboard</a></li>
         <li class="breadcrumb-item active">Service Customers</li>
@@ -50,7 +50,7 @@
         <div class="col-xl-6">
             <div class="card mb-4">
                 <div class="card-header">
-                    <i class="fas fa-chart-area mr-1"></i>@SharedLocalizer.GetLocalizedHtmlString("New Service Contracts")
+                    <i class="fas fa-chart-area mr-1"></i>@SharedLocalizer.GetLocalizedHtmlString("New Leads")
                 </div>
                 <div class="card-body"><canvas id="myAreaChart" width="100" height="40"></canvas></div>
             </div>
@@ -58,7 +58,7 @@
         <div class="col-xl-6">
             <div class="card mb-4">
                 <div class="card-header">
-                    <i class="fas fa-chart-bar mr-1"></i>@SharedLocalizer.GetLocalizedHtmlString("Total Service Contracts")
+                    <i class="fas fa-chart-bar mr-1"></i>@SharedLocalizer.GetLocalizedHtmlString("Total New Leads")
                 </div>
                 <div class="card-body"><canvas id="myBarChart" width="100" height="40"></canvas></div>
             </div>
@@ -67,8 +67,8 @@
 
 </div>
 @section Scripts{
-    <script src="~/assets/demo/chart-area-demo.js"></script>
-    <script src="~/assets/demo/chart-bar-demo.js"></script>
+    <script src="~/assets/demo/chart-area-customer.js"></script>
+    <script src="~/assets/demo/chart-bar-customer.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
     <script src="~/assets/demo/datatables-demo.js"></script>
