@@ -130,7 +130,7 @@
                     <i class="fas fa-table mr-1"></i> Add Additional Contact Details i.e. Accounts Dept Contact...
                 </div>
                 <div class="col-6 text-right">
-                    <a asp-controller="Customers" asp-action="CreateCustomer" class="btn btn-primary">Create New Contact</a>
+                    <a asp-controller="Customers" asp-action="CreateContact" asp-route-Id="@Model.Customers.Id" class="btn btn-primary">Create New Contact</a>
                 </div>
             </div>
         </div>
