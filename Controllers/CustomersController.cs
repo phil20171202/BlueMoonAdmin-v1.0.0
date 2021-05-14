@@ -57,7 +57,7 @@ namespace BlueMoonAdmin.Controllers
             return View();
         }
 
-        // POST-Create
+        // Saves new customer to database
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult CreateCustomer(Customers obj)
@@ -67,7 +67,7 @@ namespace BlueMoonAdmin.Controllers
             return RedirectToAction("Index");
         }
 
-        // GET-Update
+        // Loads selected customer details into update customer view
         public IActionResult UpdateCustomer(int? id)
         {
             if (id == null || id == 0)
@@ -81,7 +81,7 @@ namespace BlueMoonAdmin.Controllers
             }
             return View(obj);
         }
-        // POST-Update
+        // Saves new customer to database
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult UpdateCustomer(Customers obj)
@@ -94,7 +94,40 @@ namespace BlueMoonAdmin.Controllers
             }
             return View(obj);
         }
+        // Passes the customer id into the form so teh contact is linked to the customer.
+        public IActionResult CreateContact(int id)
+        {
+            var ContactVM = new Contacts();
+            if (id == 0)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ContactVM.CustomerId = id;
+            }
+            if (ContactVM == null)
+            {
+                return NotFound();
+            }
 
+
+            return View(ContactVM);
+
+
+        }
+
+        // Saves new contact into the database
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreateContact(Contacts obj)
+        {
+
+
+            _db.Contacts.Add(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
     }
 
