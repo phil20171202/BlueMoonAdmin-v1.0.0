@@ -14,7 +14,7 @@
             <li class="breadcrumb-item active">Edit Customer</li>
         </ol>
         <!-- #region Form -->
-        <div class="col-12">
+        <div class="container col-12 border-bottom">
             <div class="row">
                 <div class="col-12">
                     <div class="form-group row">
@@ -25,7 +25,7 @@
                             <label asp-for="Customers.ContactName"></label>
                         </div>
                         <div class="col-3">
-                            <label asp-for="Customers.OfficeAddress"></label>
+                            <label asp-for="Customers.EmailAddress"></label>
                         </div>
                         <div class="col-3">
                             <label asp-for="Customers.TelephoneNumber"></label>
@@ -39,12 +39,41 @@
                             <input asp-for="Customers.ContactName" class="form-control" />
                         </div>
                         <div class="col-3">
-                            <input asp-for="Customers.OfficeAddress" class="form-control">
+                            <input asp-for="Customers.EmailAddress" class="form-control">
                         </div>
                         <div class="col-3">
                             <input asp-for="Customers.TelephoneNumber" class="form-control">
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <div class="col-3">
+                            <label asp-for="Customers.OfficeAddress"></label>
+                        </div>
+                        <div class="col-3">
+                            <label asp-for="Customers.AddressLine"></label>
+                        </div>
+                        <div class="col-3">
+                            <label asp-for="Customers.CityRegion"></label>
+                        </div>
+                        <div class="col-3">
+                            <label asp-for="Customers.PostCode"></label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-3">
+                            <input asp-for="Customers.OfficeAddress" class="form-control" />
+                        </div>
+                        <div class="col-3">
+                            <input asp-for="Customers.AddressLine" class="form-control" />
+                        </div>
+                        <div class="col-3">
+                            <input asp-for="Customers.CityRegion" class="form-control">
+                        </div>
+                        <div class="col-3">
+                            <input asp-for="Customers.PostCode" class="form-control">
+                        </div>
+                    </div>
+
                     <div class="form-group row">
                         <div class="col-3">
                             <label asp-for="Customers.ServiceContract"></label>
@@ -116,6 +145,7 @@
                             <th>Telephone Number</th>
                             <th>Mobile Number</th>
                             <th>Email Address</th>
+                            <th>Department</th>
                             <th>Is Primary</th>
                             <th>Edit</th>
                         </tr>
@@ -133,6 +163,7 @@
                             <td>@item.TelephoneNumber</td>
                             <td>@item.MobileNumber</td>
                             <td>@item.Email</td>
+                            <td>@item.ContactDepartment</td>
                             <td>@item.PrimaryContact</td>
                             <td>
                                 <div class="w-100 btn-group" role="group">

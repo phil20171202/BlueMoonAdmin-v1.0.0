@@ -28,6 +28,9 @@ namespace BlueMoonAdmin.Models
         [EmailAddress]
         public string Email { get; set; }
 
+        [Display(Name = "Department")]
+        public string ContactDepartment { get; set; }
+
         [Display(Name = "Primary Contact")]
         public bool PrimaryContact { get; set; }
         public int CustomerId { get; set; }
