@@ -142,7 +142,7 @@ namespace BlueMoonAdmin.Controllers
             }
             return View(obj);
         }
-        // Delete customer from database
+        // Delete customer from database, this is now actioned from DeleteConfirmation screen.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteCustomer(Customers obj)
@@ -156,6 +156,27 @@ namespace BlueMoonAdmin.Controllers
             return View(obj);
         }
 
+        // Load customer info into delete confrimation layout
+        public IActionResult DeleteConfirmation(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var obj = _db.Customers.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            return View(obj);
+        }
+        // Delete customer from database
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteConfirmation(Customers obj)
+        {
+            return View(obj);
+        }
     }
 
 }

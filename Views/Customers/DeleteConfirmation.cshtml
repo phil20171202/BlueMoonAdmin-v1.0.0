@@ -3,33 +3,36 @@
 @{
     ViewData["Title"] = "Customers";
 }
-<form method="post" asp-action="CreateCustomer">
+<form method="post" asp-action="DeleteCustomer">
+    <input asp-for="Id" hidden />
     <div class="container-fluid">
-        <h1 class="mt-4">Create New Customer</h1>
+        <h1 class="mt-4">Delete Customer</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a asp-controller="Customer" asp-action="CustomerDashboard">Customer Dashboard</a></li>
-            <li class="breadcrumb-item active">Customer Create</li>
+            <li class="breadcrumb-item active">Delete Customer Confirmation</li>
         </ol>
         <div class="card mb-3">
             <div class="card-body">
                 <div class="row pt-1">
                     <div class="col-12 mb-2 text-black">
-                        <p class="text-black">Add new customer data here. Please ensure you enter the following information:</p>
-                        <ol class="text-black">
-                            <li> Company Name</li>
-                            <li> All Contact Details</li>
-                            <li> Service Contract Details i.e when last serviced, machine type etc</li>
-                            <li> After you have created a new customer you can add more contacts, addresses and notes.</li>
-                        </ol>
+                        <p class="text-black">Are you sure you want to delete the customer below?</p>
+                        @*<ol class="text-black">
+                                <li> Company Name</li>
+                                <li> All Contact Details</li>
+                                <li> Service Contract Details i.e when last serviced, machine type etc</li>
+                                <li> After you have edited the customer you can add more contacts, addresses and notes.</li>
+                            </ol>*@
                     </div>
                 </div>
             </div>
         </div>
+
         <!-- #region Form -->
         <div class="container col-12 border-bottom">
             <div class="row">
                 <div class="col-12">
-                    <div class="form-group row">
+
+                    <div class="form-group row pt-3">
                         <div class="col-3">
                             <label asp-for="CompanyName"></label>
                         </div>
@@ -45,16 +48,16 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-3">
-                            <input asp-for="CompanyName" class="form-control" />
+                            <input asp-for="CompanyName" class="form-control" readonly />
                         </div>
                         <div class="col-3">
-                            <input asp-for="ContactName" class="form-control" />
+                            <input asp-for="ContactName" class="form-control" readonly />
                         </div>
                         <div class="col-3">
-                            <input asp-for="EmailAddress" class="form-control">
+                            <input asp-for="EmailAddress" class="form-control" readonly />
                         </div>
                         <div class="col-3">
-                            <input asp-for="TelephoneNumber" class="form-control">
+                            <input asp-for="TelephoneNumber" class="form-control" readonly />
                         </div>
                     </div>
                     <div class="form-group row">
@@ -73,16 +76,16 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-3">
-                            <input asp-for="OfficeAddress" class="form-control" />
+                            <input asp-for="OfficeAddress" class="form-control" readonly />
                         </div>
                         <div class="col-3">
-                            <input asp-for="AddressLine" class="form-control" />
+                            <input asp-for="AddressLine" class="form-control" readonly />
                         </div>
                         <div class="col-3">
-                            <input asp-for="CityRegion" class="form-control">
+                            <input asp-for="CityRegion" class="form-control" readonly />
                         </div>
                         <div class="col-3">
-                            <input asp-for="PostCode" class="form-control">
+                            <input asp-for="PostCode" class="form-control" readonly />
                         </div>
                     </div>
 
@@ -102,20 +105,16 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-3">
-                            <select asp-for="ServiceContract" class="form-control">
-                                <option>Gold</option>
-                                <option>Silver</option>
-                                <option>Bronze</option>
-                            </select>
+                            <input asp-for="ServiceContract" class="form-control" readonly />
                         </div>
                         <div class="col-3">
-                            <input asp-for="LastServiceDate" class="form-control" type="date"/>
+                            <input asp-for="LastServiceDate" class="form-control" readonly />
                         </div>
                         <div class="col-3">
-                            <input asp-for="CurrentMachine" class="form-control">
+                            <input asp-for="CurrentMachine" class="form-control" readonly />
                         </div>
                         <div class="col-3">
-                            <input asp-for="CustomerSince" class="form-control" type="date">
+                            <input asp-for="CustomerSince" class="form-control" readonly>
                         </div>
                     </div>
                     <div class="form-group row">
@@ -123,81 +122,37 @@
                             <label asp-for="Service"></label>
                         </div>
                         <div class="col-1">
-                            <input asp-for="Service" class="form-control"  />
+                            <input asp-for="Service" class="form-control" disabled />
                         </div>
                     </div>
+
+                    @*<div class="form-group row">
+            <div class="col-6">
+                <label asp-for="CompanyName"></label>
+                <div class="col-6">
+                    <input asp-for="CompanyName" class="form-control" readonly />
+                </div>
+            </div>
+        </div>*@
+
+
 
 
                     <div class="form-group row pt-4 mb-4">
                         <div class="col-8 offset-2 row">
                             <div class="col">
-                                <input type="submit" class="btn btn-info w-75" value="Create Customer" />
+                                <input type="submit" class="btn btn-danger w-75" value="Delete Customer" />
                             </div>
                             <div class="col">
-                                <a asp-action="Index" class="btn btn-danger w-75">Back</a>
+                                <a asp-action="ViewCustomer" asp-route-Id="@Model.Id" class="btn btn-info w-75">Back</a>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
-
-            <!-- #endregion -->
         </div>
     </div>
 </form>
-
-<!--<div class="col-12 ">-->
-    @*<div class="card mb-4">
-        <div class="card-body">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>.</div>
-    </div>*@
-    <!--<div class="card mb-4">
-        <div class="card-header"><i class="fas fa-table mr-1"></i> Current Customer List</div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>Company Name</th>
-                            <th>Contact Name</th>
-                            <th>Office Address</th>
-                            <th>Telephone Number</th>
-                            <th>Service Contract</th>
-                            <th>Last Service Date</th>
-                            <th>Current Machine</th>
-                            <th>Customer Since</th>
-                            <th>Edit</th>
-                        </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>-->
-                            @*<th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>*@
-                        <!--</tr>
-                    </tfoot>
-                    <tbody>-->
-                        @*@foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>@item.Name</td>
-                                    <td>@item.Position</td>
-                                    <td>@item.Office</td>
-                                    <td>@item.Age</td>
-                                    <td>@item.StartDate</td>
-                                    <td>@item.Salary</td>
-                                </tr>
-                            }*@
-                    <!--</tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-    </div>
-
 @section Scripts{
     <script src="~/assets/demo/chart-area-demo.js"></script>
     <script src="~/assets/demo/chart-bar-demo.js"></script>
@@ -205,4 +160,3 @@
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
     <script src="~/assets/demo/datatables-demo.js"></script>
 }-->
-
