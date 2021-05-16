@@ -3,16 +3,13 @@
 @{
     ViewData["Title"] = "Customers";
 }
-
-
 <form method="post" asp-action="ViewCustomer">
     <input asp-for="Customers.Id" hidden />
     <div class="container-fluid">
-        <h1 class="mt-4">Managing @Model.Customers.CompanyName</h1>
+        <h1 class="mt-4">View Customer</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a asp-controller="Customers" asp-action="CustomerDashboard"> Customer Dashboard</a></li>
-            <li class="breadcrumb-item active">View Customer</li>
-            
+            <li class="breadcrumb-item active">View Customer</li>            
         </ol>
         <!-- #region Form -->
         <div class="container col-12 border mb-4">
@@ -119,7 +116,7 @@
                                     <a asp-controller="Customers" asp-action="UpdateCustomer" asp-route-Id="@Model.Customers.Id" class="btn btn-info w-75">Edit Customer Details</a>
                                 </div>
                                 <div class="col">
-                                    <a asp-action="DeleteConfirmation" asp-route-Id="@Model.Customers.Id" class="btn btn-danger w-75">Delete Customer</a>
+                                    <a asp-action="DeleteCustomer" asp-route-Id="@Model.Customers.Id" class="btn btn-danger w-75">Delete Customer</a>
                                 </div>
                             </div>
                         </div>
@@ -178,9 +175,9 @@
                             <td>@item.PrimaryContact</td>
                             <td>
                                 <div class="w-100 btn-group" role="group">
-                                    <a asp-controller="Customers" asp-action="ViewCustomer" asp-route-Id="@item.CustomerId" class="btn btn-primary mx-1">View</a>
+                                    <a asp-controller="Customers" asp-action="ViewContact" asp-route-Id="@item.Id" class="btn btn-primary mx-1">View</a>
                                     @*<a asp-controller="Customers" asp-action="DeleteCustomer" asp-route-Id="@customer.Id" class="btn btn-danger mx-1">Delete</a>*@
-                                    <a asp-controller="Customers" asp-action="UpdateCustomer" asp-route-Id="@item.CustomerId" class="btn btn-danger mx-1">Edit</a>
+                                    <a asp-controller="Customers" asp-action="UpdateContact" asp-route-Id="@item.Id" class="btn btn-danger mx-1">Edit</a>
                                     
                                 </div>
                             </td>

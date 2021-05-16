@@ -3,21 +3,21 @@
 @{
     ViewData["Title"] = "Contacts";
 }
-<form method="post" asp-action="CreateContact">
-    <input asp-for="CustomerId" hidden />
+<form method="post" asp-action="UpdateContact">
+    <input asp-for="Id" hidden />
    
     <div class="container-fluid">
-        <h1 class="mt-4">Create New Contact</h1>
+        <h1 class="mt-4">Update Contact</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a asp-controller="Customer" asp-action="Index">Dashboard</a></li>
-            <li class="breadcrumb-item active">Customer Create</li>
+            <li class="breadcrumb-item active">Update Contact</li>
         </ol>
         <!-- #region Form -->
         <div class="container col-12 border-bottom">
             <div class="row">
                 <div class="col-12">
                     <div class="form-group row">
-                         <div class="col-3">
+                        <div class="col-3">
                             <label asp-for="FirstName"></label>
                         </div>
                         <div class="col-3">
@@ -32,18 +32,16 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-3">
-
-
                             <input asp-for="FirstName" class="form-control" />
                         </div>
                         <div class="col-3">
                             <input asp-for="LastName" class="form-control" />
                         </div>
                         <div class="col-3">
-                            <input asp-for="TelephoneNumber" class="form-control">
+                            <input asp-for="TelephoneNumber" class="form-control" >
                         </div>
                         <div class="col-3">
-                            <input asp-for="MobileNumber" class="form-control">
+                            <input asp-for="MobileNumber" class="form-control" >
                         </div>
                     </div>
                     <div class="form-group row">
@@ -62,17 +60,17 @@
                             <input asp-for="PrimaryContact" class="form-control" />
                         </div>
                         <div class="col-3">
-                            <input asp-for="Id" class="form-control" value="" hidden/>
+                            <input asp-for="CustomerId" class="form-control" hidden/>
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-8 offset-2 row">
                             <div class="col">
-                                <input type="submit" class="btn btn-info w-75" value="Create" />
+                                <input type="submit" class="btn btn-info w-75" value="Save" />
                             </div>
                             <div class="col">
-                                <a asp-action="Index" class="btn btn-danger w-75">Back</a>
-                            </div>
+                                <a asp-action="ViewCustomer" asp-route-Id="@Model.CustomerId" class="btn btn-danger w-75">Back</a>
+                            </div> 
                         </div>
                     </div>
 
