@@ -63,11 +63,14 @@
                     <div class="form-group row">
                         <div class="col-8 offset-2 row">
                             <div class="col">
-                                <a asp-action="UpdateContact" asp-route-Id="@Model.Id" class="btn btn-info w-75">Edit</a>                              
+                                <a asp-action="UpdateContact" asp-route-Id="@Model.Id" class="btn btn-info w-75">Edit</a>
                             </div>
                             <div class="col">
-                                <a asp-action="ViewCustomer" asp-route-Id="@Model.CustomerId" class="btn btn-danger w-75">Back</a>
-                            </div> 
+                                <a asp-action="DeleteContact" asp-route-Id="@Model.Id" class="btn btn-danger w-75">Delete</a>
+                            </div>
+                            <div class="col">
+                                <a asp-controller="Customers" asp-action="ViewCustomer" asp-route-Id="@Model.CustomerId" class="btn btn-danger w-75">Back</a>
+                            </div>
                         </div>
                     </div>
 
