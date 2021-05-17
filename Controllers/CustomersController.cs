@@ -121,33 +121,33 @@ namespace BlueMoonAdmin.Controllers
 
         #region Contact
         // Passes the customer id into the form so the contact is linked to the customer.
-        public IActionResult CreateContact(int id)
-        {
-            var ContactVM = new Contacts();
-            if (id == 0)
-            {
-                return NotFound();
-            }
-            else
-            {
-                ContactVM.CustomerId = id;
-            }
-            if (ContactVM == null)
-            {
-                return NotFound();
-            }
-            return View(ContactVM);
-        }
+        //public IActionResult CreateContact(int id)
+        //{
+        //    var ContactVM = new Contacts();
+        //    if (id == 0)
+        //    {
+        //        return NotFound();
+        //    }
+        //    else
+        //    {
+        //        ContactVM.CustomerId = id;
+        //    }
+        //    if (ContactVM == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return View(ContactVM);
+        //}
 
-        // Saves new contact into the database
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult CreateContact(Contacts obj)
-        {
-            _db.Contacts.Add(obj);
-            _db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //// Saves new contact into the database
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult CreateContact(Contacts obj)
+        //{
+        //    _db.Contacts.Add(obj);
+        //    _db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
         //View contact
         //public IActionResult ViewContact(int? id)
@@ -164,64 +164,64 @@ namespace BlueMoonAdmin.Controllers
         //    return View(Contacts);
         //}
         // Loads selected contact details into update customer view
-        public IActionResult UpdateContact(int? id)
-        {
-            
-            if (id == null || id == 0)
-            {
-                return NotFound();
-            }
-            Contacts obj = _db.Contacts.Find(id);
-            
-            if (obj == null)
-            {
-                return NotFound();
-            }
-            return View(obj);
-        }
+       // public IActionResult UpdateContact(int? id)
+       // {
 
-        // Saves new contact to database
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult UpdateContact(Contacts obj)
-        {            
-            if (ModelState.IsValid)
-            {
-                int id = obj.CustomerId;
-                _db.Contacts.Update(obj);
-                _db.SaveChanges();
-                return RedirectToAction("ViewCustomer", new { id });
-            }
-            return View(obj);
-        }
+       //     if (id == null || id == 0)
+       //     {
+       //         return NotFound();
+       //     }
+       //     Contacts obj = _db.Contacts.Find(id);
+
+       //     if (obj == null)
+       //     {
+       //         return NotFound();
+       //     }
+       //     return View(obj);
+       // }
+
+       // Saves new contact to database
+       //[HttpPost]
+       //[ValidateAntiForgeryToken]
+       // public IActionResult UpdateContact(Contacts obj)
+       // {
+       //     if (ModelState.IsValid)
+       //     {
+       //         int id = obj.CustomerId;
+       //         _db.Contacts.Update(obj);
+       //         _db.SaveChanges();
+       //         return RedirectToAction("ViewCustomer", new { id });
+       //     }
+       //     return View(obj);
+       // }
 
         //View contact you are about to delete
-        public IActionResult DeleteContact(int? id)
-        {
-            if (id == null || id == 0)
-            {
-                return NotFound();
-            }
-            var obj = _db.Contacts.Find(id);
-            if (obj == null)
-            {
-                return NotFound();
-            }
-            return View(obj);
-        }
-        // Delete contact from database, this is now actioned from DeleteConfirmation screen.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult DeleteContact(Contacts obj)
-        {
-            if (ModelState.IsValid)
-            {
-                _db.Contacts.Remove(obj);
-                _db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(obj);
-        }
+        //public IActionResult DeleteContact(int? id)
+        //{
+        //    if (id == null || id == 0)
+        //    {
+        //        return NotFound();
+        //    }
+        //    var obj = _db.Contacts.Find(id);
+        //    if (obj == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return View(obj);
+        //}
+        //// Delete contact from database, this is now actioned from DeleteConfirmation screen.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public IActionResult DeleteContact(Contacts obj)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _db.Contacts.Remove(obj);
+        //        _db.SaveChanges();
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View(obj);
+        //}
         #endregion
     }
 
