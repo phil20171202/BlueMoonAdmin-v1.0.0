@@ -60,7 +60,7 @@
                                     <td width="35%">@customer.OfficeAddress</td>
                                     <td width="10%">@customer.TelephoneNumber</td>
                                     <td width="5%">@customer.ServiceContract</td>
-                                    <td width="10%"><input asp-for="@customer.LastServiceDate" disabled border="0"  type="date" /></td>
+                                    <td width="10%">@if(customer.LastServiceDate != null){<input asp-for="@customer.LastServiceDate" disabled style="border: 0px; background-color:white"  type="date" />}</td>
                                     <td width="5%">@customer.CurrentMachine</td>
                                     <td>
                                         <div class="w-100 btn-group" role="group">
