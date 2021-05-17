@@ -54,22 +54,22 @@
 
                                 @foreach (var customer in Model)
                                 {
-                                    <tr>
-                                        <td width="15%">@customer.CompanyName</td>
-                                        <td width="15%">@customer.ContactName</td>
-                                        <td width="35%">@customer.OfficeAddress</td>
-                                        <td width="10%">@customer.TelephoneNumber</td>
-                                        <td width="5%">@customer.ServiceContract</td>
-                                        <td width="10%">@customer.LastServiceDate</td>
-                                        <td width="5%">@customer.CurrentMachine</td>
-                                        <td>
-                                            <div class="w-100 btn-group" role="group">
-                                                <a asp-controller="Customers" asp-action="ViewCustomer" asp-route-Id="@customer.Id" class="btn btn-primary mx-1">View</a>
-                                                @*<a asp-controller="Customers" asp-action="DeleteCustomer" asp-route-Id="@customer.Id" class="btn btn-danger mx-1">Delete</a>*@
-                                                <a asp-controller="Customers" asp-action="UpdateCustomer" asp-route-Id="@customer.Id" class="btn btn-danger mx-1">Edit</a>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td width="15%">@customer.CompanyName</td>
+                                    <td width="15%">@customer.ContactName</td>
+                                    <td width="35%">@customer.OfficeAddress</td>
+                                    <td width="10%">@customer.TelephoneNumber</td>
+                                    <td width="5%">@customer.ServiceContract</td>
+                                    <td width="10%"><input asp-for="@customer.LastServiceDate" disabled border="0"  type="date" /></td>
+                                    <td width="5%">@customer.CurrentMachine</td>
+                                    <td>
+                                        <div class="w-100 btn-group" role="group">
+                                            <a asp-controller="Customers" asp-action="ViewCustomer" asp-route-Id="@customer.Id" class="btn btn-primary mx-1">View</a>
+                                            @*<a asp-controller="Customers" asp-action="DeleteCustomer" asp-route-Id="@customer.Id" class="btn btn-danger mx-1">Delete</a>*@
+                                            <a asp-controller="Customers" asp-action="UpdateCustomer" asp-route-Id="@customer.Id" class="btn btn-danger mx-1">Edit</a>
+                                        </div>
+                                    </td>
+                                </tr>
                                 }
 
                             </tbody>
