@@ -150,19 +150,19 @@ namespace BlueMoonAdmin.Controllers
         }
 
         //View contact
-        public IActionResult ViewContact(int? id)
-        {
-            if (id == null || id == 0)
-            {
-                return NotFound();
-            }
-            Contacts Contacts = _db.Contacts.SingleOrDefault(c => c.Id == id);
-            if (Contacts == null)
-            {
-                return NotFound();
-            }
-            return View(Contacts);
-        }
+        //public IActionResult ViewContact(int? id)
+        //{
+        //    if (id == null || id == 0)
+        //    {
+        //        return NotFound();
+        //    }
+        //    Contacts Contacts = _db.Contacts.SingleOrDefault(c => c.Id == id);
+        //    if (Contacts == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return View(Contacts);
+        //}
         // Loads selected contact details into update customer view
         public IActionResult UpdateContact(int? id)
         {
