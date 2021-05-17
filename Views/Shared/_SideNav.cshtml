@@ -17,9 +17,6 @@
                 <a class="nav-link" asp-controller="TaskManager" asp-action="Index">
                     <div class="sb-nav-link-icon"><i class="fas fa-calendar-alt"></i></div>
                     @SharedLocalizer.GetLocalizedHtmlString("Scheduling")
-                </a><a class="nav-link" asp-controller="Calendar" asp-action="Index">
-                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                    @SharedLocalizer.GetLocalizedHtmlString("Servicing Calendar")
                 </a>
                 <a class="nav-link" asp-controller="GoogleMaps" asp-action="Index">
                     <div class="sb-nav-link-icon"><i class="fas fa-map"></i></div>
@@ -37,8 +34,8 @@
                 </a>
                 <div class="collapse" id="collapseCustomers" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" asp-controller="Customers" asp-action="CustomerDashboard">@SharedLocalizer.GetLocalizedHtmlString("Customer Manager")</a>
-                        <a class="nav-link" asp-controller="Customers" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("Search Customers")</a>
+                        <a class="nav-link" asp-controller="Customers" asp-action="CustomerDashboard">@SharedLocalizer.GetLocalizedHtmlString("Customer Dashboard")</a>
+                        <a class="nav-link" asp-controller="Customers" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("View Customers")</a>
                         <a class="nav-link" asp-controller="Customers" asp-action="CreateCustomer">@SharedLocalizer.GetLocalizedHtmlString("Add New Customer")</a>
                     </nav>
                 </div>
@@ -46,12 +43,11 @@
                 <!--Service Contract Manager -->
                 <div class="sb-sidenav-menu-heading">@SharedLocalizer.GetLocalizedHtmlString("Contract Management")</div>
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseContracts" aria-expanded="false" aria-controls="collapseContracts">
-                    <div class="sb-nav-link-icon"><i class="fas fa-address-card"></i></div>
-                    @SharedLocalizer.GetLocalizedHtmlString("Manage Contracts")
-                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                </a>
+                    <div class="sb-nav-link-icon"><i class="fas fa-address-card"></i></div>@SharedLocalizer.GetLocalizedHtmlString("Manage Contracts")
+                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div></a>
                 <div class="collapse" id="collapseContracts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
+                        <a class="nav-link" asp-controller="Calendar" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("Servicing Calendar")</a>
                         <a class="nav-link" asp-controller="ServiceCustomers" asp-action="ServiceContractManager">@SharedLocalizer.GetLocalizedHtmlString("Contract Manager")</a>
                         <a class="nav-link" asp-controller="ServiceCustomers" asp-action="CreateServiceContract">@SharedLocalizer.GetLocalizedHtmlString("Add New Contract")</a>
                         <a class="nav-link" asp-controller="Pricing" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("View Pricing")</a>
