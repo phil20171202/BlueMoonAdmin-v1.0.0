@@ -231,7 +231,7 @@
                     <i class="fas fa-table mr-1"></i> Add Customer Notes...
                 </div>
                 <div class="col-6 text-right">
-                    <a asp-controller="Customers" asp-action="CreateCustomer" class="btn btn-primary">New Customer Note</a>
+                    <a asp-controller="Notes" asp-action="CreateNotes"  asp-route-Id="@Model.Customers.Id"  class="btn btn-primary">New Customer Note</a>
                 </div>
             </div>
         </div>
@@ -245,7 +245,36 @@
                             <th width="10%">Edit</th>
                             <th width="10%">Delete</th>
                         </tr>
-                    </thead>                    
+                    </thead>
+                    
+                    <tbody>
+                        @foreach (var item in Model.Notes)
+                        {
+                        <tr>
+                            <td>
+                                @if (@item.Date != null)
+                                {
+                                    <input asp-for="@item.Date" disabled style="border: 0px; background-color:white"  />
+                                }
+                            </td>
+                            <td>
+
+                                @*javascript to auto resize the box info here- http://www.jacklmoore.com/autosize/*@
+
+                                <textarea rows="3" asp-for="@item.notes" class="form-control" text-wrap="normal" type="text" placeholder="Please add your note here"></textarea>
+                                <span asp-validation-for="@item.notes" class="text-danger"></span>
+                            </td>
+                            <td>
+                                <div class="w-100 btn-group" role="group">
+                                    <a asp-controller="Notes" asp-action="ViewNotes" asp-route-Id="@item.Id" class="btn btn-primary mx-1">View</a>
+                                    @*<a asp-controller="Customers" asp-action="DeleteCustomer" asp-route-Id="@customer.Id" class="btn btn-danger mx-1">Delete</a>*@
+                                    <a asp-controller="Notes" asp-action="UpdateNotes" asp-route-Id="@item.Id" class="btn btn-danger mx-1">Edit</a>
+                                </div>
+                            </td>
+                            <td><a asp-controller="Notes" asp-action="DeleteNotes" asp-route-Id="@item.Id" class="btn btn-danger mx-1">Delete</a></td>
+                        </tr>
+                        }
+                    </tbody>
                 </table>
             </div>
         </div>

@@ -12,6 +12,7 @@ namespace BlueMoonAdmin.Models
         [Key]
         public int Id { get; set; }
 
+        [Display(Name ="Notes")]
         public string notes { get; set; }
 
         [DataType(DataType.Date)]
