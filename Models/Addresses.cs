@@ -35,17 +35,10 @@ namespace BlueMoonAdmin.Models
         public string TelephoneNumber { get; set; }
 
         
-
         [Display(Name = "Email Address")]
         public string EmailAddress { get; set; }
 
-        [Display(Name = "Last Service Date")]
-        [DataType(DataType.Date)]
-        public Nullable<DateTime> LastServiceDate { get; set; }
-
-        [Display(Name = "Current Machine")]
-        public string CurrentMachine { get; set; }
-
+        
         [Display(Name = "Customer Notes")]
         public string CustomerNotes { get; set; }
 
