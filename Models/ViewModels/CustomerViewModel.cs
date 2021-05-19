@@ -9,6 +9,7 @@ namespace BlueMoonAdmin.Models.ViewModels
     {
         public Customers Customers { get; set; }
         public IEnumerable<Contacts> Contacts { get; set; }
-        
+
+        public IEnumerable<Notes> Notes { get; set; }
     }
 }

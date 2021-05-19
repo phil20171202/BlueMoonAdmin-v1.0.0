@@ -18,6 +18,9 @@ namespace BlueMoonAdmin.Data
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<Customers> Customers { get; set; }
         public DbSet<Contacts> Contacts { get; set; }
+        public DbSet<Notes> Notes { get; set; }
+
+        public DbSet<Addresses> Addresses { get; set; }
         public DbSet<TaskManagerEvent> TaskManagerEvents { get; set; }
         public DbSet<ToDoListItem> ToDoListItems { get; set; }
         public DbSet<CategoryType> CategoryTypes { get; set; }
