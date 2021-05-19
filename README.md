@@ -1,3 +1,3 @@
 # BlueMoonAdmin-v1.0.0
 
-Start of a new admin dashboard ASP.NET 5.0 EF MS SQL
+Major Build project for a client. BlueMoonCRM - Build using ASP.net MS SQL Entity Framework. BlueMoonCRM integrated data driven lightweight super powerful CRM solution. 
