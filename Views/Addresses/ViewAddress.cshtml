@@ -1,0 +1,128 @@
+﻿@model BlueMoonAdmin.Models.Addresses
+
+@{
+    ViewData["Title"] = "Address";
+}
+<form method="post" asp-action="ViewAddress">
+    <input asp-for="Id" hidden />
+    <div class="container-fluid">
+        <h1 class="mt-4">View Address</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a asp-controller="Customer" asp-action="CustomerDashboard">Customer Dashboard</a></li>
+            <li class="breadcrumb-item active">Edit Address</li>
+        </ol>
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="row pt-1">
+                    <div class="col-12 mb-2 text-black">
+                        <p class="text-black">View address data here.</p>
+                        @*<ol class="text-black">
+                            <li> Company Name</li>
+                            <li> All Contact Details</li>
+                            <li> Service Contract Details i.e when last serviced, machine type etc</li>
+                            <li> After you have edited the customer you can add more contacts, addresses and notes.</li>
+                        </ol>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #region Form -->
+        <div class="container col-12 border-bottom">
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group row">
+                        <div class="col-3">
+                            <label asp-for="CompanyName"></label>
+                        </div>
+                        <div class="col-3">
+                            <label asp-for="ContactName"></label>
+                        </div>
+                        <div class="col-3">
+                            <label asp-for="OfficeAddress"></label>
+                        </div>
+                        <div class="col-3">
+                            <label asp-for="AddressLine"></label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-3">
+                            <input asp-for="CompanyName" class="form-control" readonly />
+                        </div>
+                        <div class="col-3">
+                            <input asp-for="ContactName" class="form-control" readonly />
+                        </div>
+                        <div class="col-3">
+                            <input asp-for="OfficeAddress" class="form-control" readonly />
+                        </div>
+                        <div class="col-3">
+                            <input asp-for="AddressLine" class="form-control" readonly />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-3">
+                            <label asp-for="CityRegion"></label>
+                        </div>
+                        <div class="col-3">
+                            <label asp-for="PostCode"></label>
+                        </div>
+                        <div class="col-3">
+                            <label asp-for="TelephoneNumber"></label>
+                        </div>
+                        <div class="col-3">
+                            <label asp-for="EmailAddress"></label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-3">
+                            <input asp-for="CityRegion" class="form-control" readonly />
+                        </div>
+                        <div class="col-3">
+                            <input asp-for="PostCode" class="form-control" readonly />
+                        </div>
+                        <div class="col-3">
+                            <input asp-for="TelephoneNumber" class="form-control" readonly />
+                        </div>
+                        <div class="col-3">
+                            <input asp-for="EmailAddress" class="form-control" readonly />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-12">
+                            <label asp-for="CustomerNotes"></label>
+                        </div>
+                        
+                    </div>
+                    <div class="form-group row">
+                        <textarea rows="5" asp-for="CustomerNotes" class="form-control" text-wrap:normal" type="text" readonly></textarea>
+                        <span asp-validation-for="CustomerNotes" class="text-danger"></span>
+                    </div>
+                    <div class="form-group row pt-4 mb-4">
+                        <div class="col-8 offset-2 row">
+                            <div class="col">
+                                <a asp-action="UpdateAddress" asp-route-Id="@Model.Id" class="btn btn-primary w-75">Edit Address Details</a>
+                            </div>
+                            <div class="col">
+                                <a asp-action="DeleteAddress" asp-route-Id="@Model.Id" class="btn btn-danger w-75">Delete Address</a>
+                            </div>
+                            <div class="col">
+                                <a asp-controller="Customers" asp-action="ViewCustomer" asp-route-Id="@Model.CustomerId" class="btn btn-secondary w-75">Go Back</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- #endregion -->
+        </div>
+    </div>
+</form>
+
+
+@section Scripts{
+    <script src="~/assets/demo/chart-area-demo.js"></script>
+    <script src="~/assets/demo/chart-bar-demo.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+    <script src="~/assets/demo/datatables-demo.js"></script>
+}
