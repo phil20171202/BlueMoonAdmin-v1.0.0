@@ -19,11 +19,13 @@
                             <img class="img-fluid rounded-circle img-thumbnail thumb96" src="~/assets/images/user/contact-placeholder.png" alt="Contact" />
                         </div>
                         <h3 class="m-0 text-bold">@Model.Customers.CompanyName</h3>
-                        <div class="my-3">
-                            <h4 class="btn btn-info">Email: @Model.Customers.EmailAddress</h4>
-                        </div>
                         <div class="text-center">
-                            <a class="btn btn-info" href="#">Contact: @Model.Customers.TelephoneNumber</a>
+                            <div class="my-3">
+                                <h4 class="btn btn-secondary"><i class="fas fa-phone mr-2"></i>  @Model.Customers.TelephoneNumber</h4>
+                                <h4 class="btn btn-secondary"><i class="fas fa-envelope-open-text mr-2"></i>  @Model.Customers.EmailAddress</h4>
+                                <h4 class="btn btn-secondary"><i class="fas fa-globe mr-2"></i>  www.website.com</h4>
+
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -33,7 +35,7 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group row">
-                            <label class="text-bold col-8 col-md-3 col-6 col-form-label text-right" asp-for="Customers.ServiceContract">Service Contract:</label>
+                            <label class="text-bold col-8 col-md-3 col-6 col-form-label text-right" asp-for="Customers.ServiceContract">Contract Cover:</label>
                             <div class="col-xl-6 col-md-9 col-4">
                                 <input class="form-control" type="text" asp-for="Customers.ServiceContract" readonly />
                             </div>
@@ -57,7 +59,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="text-bold col-8 col-md-3 col-6 col-form-label text-right" asp-for="Customers.Service">Service:</label>
+                            <label class="text-bold col-8 col-md-3 col-6 col-form-label text-right" asp-for="Customers.Service">Is Live:</label>
                             <div class="col-xl-6 col-md-9 col-4">
                                 <input class="form-control" type="text" asp-for="Customers.Service" readonly />
                             </div>
@@ -80,16 +82,16 @@
                                     <em class="fa fa-ellipsis-v fa-lg text-muted"></em>
                                 </button>
                                 <div class="dropdown-menu dropdown-menu-right-forced animated fadeInLeft" role="menu">
-                                    <a class="dropdown-item" href="#">
-                                        <span>Send by message</span>
+                                    <a class="dropdown-item" asp-controller="Customers" asp-action="UpdateCustomer" asp-route-Id="@Model.Customers.Id">
+                                        <span>Update Customer Details</span>
                                     </a>
-                                    <a class="dropdown-item" href="#">
-                                        <span>View Service Contracts</span>
+                                    <a class="dropdown-item" asp-controller="Contacts" asp-action="CreateContact" asp-route-Id="@Model.Customers.Id">
+                                        <span>Add New Address</span>
                                     </a>
-                                    <a class="dropdown-item" href="#">
-                                        <span>Update contact</span>
+                                    <a class="dropdown-item" asp-controller="Notes" asp-action="CreateNotes" asp-route-Id="@Model.Customers.Id">
+                                        <span>Add Customer Note</span>
                                     </a>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" asp-action="DeleteCustomer" asp-route-Id="@Model.Customers.Id">
                                         <span class="text-warning">Delete contact</span>
                                     </a>
                                 </div>
