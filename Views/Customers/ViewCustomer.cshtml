@@ -6,7 +6,7 @@
 <form method="post" asp-action="ViewCustomer">
     <input asp-for="Customers.Id" hidden />
     <div class="container-fluid">
-        <h1 class="mt-4">View Customer</h1>
+        <h1 class="mt-4 pb-2">Viewing Customer @Model.Customers.CompanyName</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a asp-controller="Customers" asp-action="CustomerDashboard"> Customer Dashboard</a></li>
             <li class="breadcrumb-item active">View Customer</li>            
@@ -280,7 +280,8 @@
                             </td>
                             <td>
                                 @*javascript to auto resize the box info here- http://www.jacklmoore.com/autosize/*@
-                                <textarea rows="3" asp-for="@item.notes" class="form-control" text-wrap="normal" type="text" placeholder="Please add your note here"></textarea>
+
+                                <textarea rows="2" asp-for="@item.notes" class="form-control" text-wrap="normal" type="text" placeholder="Please add your note here"></textarea>
                                 <span asp-validation-for="@item.notes" class="text-danger"></span>
                             </td>
                             <td>

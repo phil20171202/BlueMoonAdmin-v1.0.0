@@ -6,7 +6,7 @@
 <form method="post" asp-action="DeleteCustomer">
     <input asp-for="Id" hidden />
     <div class="container-fluid">
-        <h1 class="mt-4">Delete Customer Confirmation</h1>
+        <h1 class="mt-4 pb-2"><img src="~/assets/images/alert-icon-1.png" class="text-center" /> Delete Customer @Model.CompanyName?</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a asp-controller="Customer" asp-action="CustomerDashboard">Customer Dashboard</a></li>
             <li class="breadcrumb-item active">Delete Customer Confirmation</li>
@@ -15,13 +15,15 @@
             <div class="card-body">
                 <div class="row pt-1">
                     <div class="col-12 mb-2 text-black">
-                        <p class="text-black">Are you sure you want to delete the customer below?</p>
+                        <p class="text-black">You are about to delete customer @Model.CompanyName</p>
+                        <p class="text-danger font-italic p-3">** Please be sure you want to delete @Model.CompanyName? Once a customer is deleted, all data is unrecoverable **</p>
+                        
                         @*<ol class="text-black">
-                                <li> Company Name</li>
-                                <li> All Contact Details</li>
-                                <li> Service Contract Details i.e when last serviced, machine type etc</li>
-                                <li> After you have edited the customer you can add more contacts, addresses and notes.</li>
-                            </ol>*@
+            <li> Company Name</li>
+            <li> All Contact Details</li>
+            <li> Service Contract Details i.e when last serviced, machine type etc</li>
+            <li> After you have edited the customer you can add more contacts, addresses and notes.</li>
+        </ol>*@
                     </div>
                 </div>
             </div>
@@ -144,7 +146,7 @@
                                 <input type="submit" class="btn btn-danger w-75" value="Delete Customer" />
                             </div>
                             <div class="col">
-                                <a asp-action="ViewCustomer" asp-route-Id="@Model.Id" class="btn btn-info w-75">Back</a>
+                                <a asp-action="ViewCustomer" asp-route-Id="@Model.Id" class="btn btn-secondary w-75">Go Back</a>
                             </div>
                         </div>
                     </div>

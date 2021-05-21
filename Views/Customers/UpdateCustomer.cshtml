@@ -6,7 +6,7 @@
 <form method="post" asp-action="UpdateCustomer">
     <input asp-for="Id" hidden />
     <div class="container-fluid">
-        <h1 class="mt-4">Edit Customer</h1>
+        <h1 class="mt-4 pb-2">Editing @Model.CompanyName</h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a asp-controller="Customer" asp-action="CustomerDashboard">Customer Dashboard</a></li>
             <li class="breadcrumb-item active">Edit Customer</li>
@@ -15,10 +15,10 @@
             <div class="card-body">
                 <div class="row pt-1">
                     <div class="col-12 mb-2 text-black">
-                        <p class="text-black">Edit customer data here. Please ensure you enter the following information:</p>
+                        <p class="text-black">Edit customer data here. Please ensure you enter the correct information:</p>
                         <ol class="text-black">
-                            <li> Company Name</li>
-                            <li> All Contact Details</li>
+                            <li> Full Company Name &amp; Address</li>
+                            <li> Primary Contact Details - email, telephone etc.</li>
                             <li> Service Contract Details i.e when last serviced, machine type etc</li>
                             <li> After you have edited the customer you can add more contacts, addresses and notes.</li>
                         </ol>
@@ -135,7 +135,7 @@
                                 <input type="submit" class="btn btn-info w-75" value="Save" />
                             </div>
                             <div class="col">
-                                <a asp-action="ViewCustomer" asp-route-Id="@Model.Id" class="btn btn-danger w-75">Back</a>
+                                <a asp-action="ViewCustomer" asp-route-Id="@Model.Id" class="btn btn-secondary w-75">Go Back</a>
                             </div>
                         </div>
                     </div>
