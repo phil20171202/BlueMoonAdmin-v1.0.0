@@ -60,7 +60,7 @@
         <div class="col-xl-6">
             <div class="card mb-4">
                 <div class="card-header">
-                    <i class="fas fa-chart-bar mr-1"></i>@SharedLocalizer.GetLocalizedHtmlString("Monthly Total Revenue")
+                    <i class="fas fa-chart-bar mr-1"></i>@SharedLocalizer.GetLocalizedHtmlString("Monthly Website Revenue")
                 </div>
                 <div class="card-body"><canvas id="myBarChart" width="100" height="40"></canvas></div>
             </div>
@@ -78,67 +78,67 @@
         <div class="col-xl-6">
             <div class="card mb-4">
                 <div class="card-header">
-                    <i class="fas fa-chart-bar mr-1"></i>@SharedLocalizer.GetLocalizedHtmlString("Daily Tasks")
+                    <i class="fas fa-chart-bar mr-1"></i>@SharedLocalizer.GetLocalizedHtmlString("Service Contract Sales")
                 </div>
                 <div class="card-body"><canvas id="myAreaChart2" width="100" height="40"></canvas></div>
             </div>
         </div>
-        <div class="col-12">
-            <div class="card border mb-4">
-                <a class="weatherwidget-io" href="https://forecast7.com/en/53d48n2d24/manchester/" data-label_1="MANCHESTER" data-label_2="WEATHER" data-theme="pure">MANCHESTER WEATHER</a>
-                <script>
-                    !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
-                </script>
-            </div>
-        </div>
     </div>
-  
-    @*<div class="card mb-4">
-            <div class="card-header">
-                <i class="fas fa-table mr-1"></i>@SharedLocalizer.GetLocalizedHtmlString("DataTable Example")
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>@SharedLocalizer.GetLocalizedHtmlString("Name")</th>
-                                <th>@SharedLocalizer.GetLocalizedHtmlString("Position")</th>
-                                <th>@SharedLocalizer.GetLocalizedHtmlString("Office")</th>
-                                <th>@SharedLocalizer.GetLocalizedHtmlString("Age")</th>
-                                <th>@SharedLocalizer.GetLocalizedHtmlString("Start date")</th>
-                                <th>@SharedLocalizer.GetLocalizedHtmlString("Salary")</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>@SharedLocalizer.GetLocalizedHtmlString("Name")</th>
-                                <th>@SharedLocalizer.GetLocalizedHtmlString("Position")</th>
-                                <th>@SharedLocalizer.GetLocalizedHtmlString("Office")</th>
-                                <th>@SharedLocalizer.GetLocalizedHtmlString("Age")</th>
-                                <th>@SharedLocalizer.GetLocalizedHtmlString("Start date")</th>
-                                <th>@SharedLocalizer.GetLocalizedHtmlString("Salary")</th>
-                            </tr>
-                        </tfoot>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>@item.Name</td>
-                                    <td>@item.Position</td>
-                                    <td>@item.Office</td>
-                                    <td>@item.Age</td>
-                                    <td>@item.StartDate</td>
-                                    <td>@item.Salary</td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
+
+    <link href="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler_material.css" rel="stylesheet" type="text/css" />
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+            // initializing scheduler
+            scheduler.init("scheduler_here", new Date(2021, 4, 10));
+
+            // scheduler config
+            scheduler.config.first_hour = 4;
+            //scheduler.config.last_hour = 20;
+            scheduler.config.start_on_monday = true;
+            scheduler.init('scheduler_here', null, "week");
+
+            // initiating data loading
+            scheduler.load("/api/scheduler");
+            // initializing dataProcessor
+            var dp = new dataProcessor("/api/scheduler");
+            // and attaching it to scheduler
+            dp.init(scheduler);
+            // setting the REST mode for dataProcessor
+            dp.setTransactionMode("REST");
+        });
+    </script>
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-calendar-alt mr-1"></i>@SharedLocalizer.GetLocalizedHtmlString("My Upcoming Schedule")
                 </div>
             </div>
-        </div>*@
-</div>
-
+            <div class="col-xl-12 mt-3">
+                <div class="card border mb-4">
+                    <a class="weatherwidget-io" href="https://forecast7.com/en/53d48n2d24/manchester/" data-label_1="MANCHESTER" data-label_2="WEATHER" data-theme="pure">MANCHESTER WEATHER</a>
+                    <script>
+                        !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
+                    </script>
+                </div>
+            </div>
+        </div>
+                <div class="col-12">
+                    <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100vh;'>
+                        <div class="dhx_cal_navline">
+                            <div class="dhx_cal_prev_button">&nbsp;</div>
+                            <div class="dhx_cal_next_button">&nbsp;</div>
+                            <div class="dhx_cal_today_button"></div>
+                            <div class="dhx_cal_tab" name="day_tab"></div>
+                            <div class="dhx_cal_tab" name="week_tab"></div>
+                            <div class="dhx_cal_tab" name="month_tab"></div>
+                        </div>
+                        <div class="dhx_cal_header"></div>
+                        <div class="dhx_cal_data"></div>
+                    </div>
+                </div> 
+        </div>
+            </div>
             @section Scripts{
                 <script src="~/assets/demo/chart-area-demo.js"></script>
                 <script src="~/assets/demo/chart-bar-demo.js"></script>
@@ -146,6 +146,7 @@
                 <script src="~/assets/demo/chart-area-demo2.js"></script>
                 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
                 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+                <script src="https://cdn.dhtmlx.com/scheduler/edge/dhtmlxscheduler.js"></script>
                 <script>
                     $(document).ready(function () {
                         $('#dataTable').DataTable(

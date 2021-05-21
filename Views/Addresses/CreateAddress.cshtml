@@ -7,8 +7,8 @@
     <input asp-for="CustomerId" hidden />
     <input asp-for="Id" class="form-control" value="" hidden />
     <div class="container-fluid">
-        <h1 class="mt-4">Create New Address</h1>
-        <ol class="breadcrumb mb-4">
+        <h1 class="mt-4">Create New Address for {}</h1>
+        <ol class="breadcrumb mb-4 pb-3">
             <li class="breadcrumb-item"><a asp-controller="Customer" asp-action="CustomerDashboard">Customer Dashboard</a></li>
             <li class="breadcrumb-item active">Create Address</li>
         </ol>
@@ -16,7 +16,7 @@
             <div class="card-body">
                 <div class="row pt-1">
                     <div class="col-12 mb-2 text-black">
-                        <p class="text-black">Add new Address</p>
+                        <p class="text-black">Add new address details then click create - you will be re-directed back to the main customer details page.</p>
                         @*<ol class="text-black">
                                 <li> Company Name</li>
                                 <li> All Contact Details</li>
@@ -97,7 +97,7 @@
                                 <input type="submit" class="btn btn-info w-75" value="Create Address" />
                             </div>
                             <div class="col">
-                                <a asp-controller="Customers" asp-action="ViewCustomer" asp-route-Id="@Model.CustomerId" class="btn btn-danger w-75">Go Back</a>
+                                <a asp-controller="Customers" asp-action="ViewCustomer" asp-route-Id="@Model.CustomerId" class="btn btn-secondary w-75">Go Back</a>
                             </div>
                         </div>
                     </div>
