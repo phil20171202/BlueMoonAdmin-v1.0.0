@@ -29,7 +29,8 @@
                             <input asp-for="Date" class="form-control"  />
                         </div>
                         <div class="col-9">
-                            <input asp-for="notes" class="form-control"  />
+                            <textarea rows="10" asp-for="notes" class="form-control" text-wrap:normal" type="text"></textarea>
+                            <span asp-validation-for="notes" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="col-3">

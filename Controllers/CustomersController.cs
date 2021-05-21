@@ -41,6 +41,7 @@ namespace BlueMoonAdmin.Controllers
             CustomerVM.Customers = _db.Customers.SingleOrDefault(c => c.Id == id);
             CustomerVM.Contacts = _db.Contacts.Where(c => c.CustomerId == id).ToList();
             CustomerVM.Notes = _db.Notes.Where(c => c.CustomerId == id).ToList();
+            CustomerVM.Addresses = _db.Addresses.Where(c => c.CustomerId == id).ToList();
             if (CustomerVM == null)
             {
                 return NotFound();
