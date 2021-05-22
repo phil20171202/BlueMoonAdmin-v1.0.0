@@ -9,194 +9,193 @@
         <li class="breadcrumb-item"><a asp-controller="Customers" asp-action="CustomerDashboard"> Customer Dashboard</a></li>
         <li class="breadcrumb-item active">View Customer</li>
     </ol>
-    </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="card card-default">
-                    <div class="card-body text-center">
-                        <div class="py-4">
-                            <img class="img-fluid rounded-circle img-thumbnail thumb96" src="~/assets/images/user/contact-placeholder.png" alt="Contact" />
-                        </div>
-                        <h3 class="m-0 text-bold">@Model.Customers.CompanyName</h3>
-                        <div class="text-center">
-                            <div class="my-3">
-                                <h4 class="btn btn-secondary"><i class="fas fa-phone mr-2"></i>  @Model.Customers.TelephoneNumber</h4>
-                                <h4 class="btn btn-secondary"><i class="fas fa-envelope-open-text mr-2"></i>  @Model.Customers.EmailAddress</h4>
-                                <h4 class="btn btn-secondary"><i class="fas fa-globe mr-2"></i>  www.website.com</h4>
-                            </div>
-                            <div class="my-3 mb-4">
-                                <a asp-controller="Contacts" asp-action="CreateContact" asp-route-Id="@Model.Customers.Id" class="btn btn-outline-info">
-                                    <i class="fas fa-user mr-2"></i>Add new contact
-                                </a>
-                                <a asp-controller="Addresses" asp-action="CreateAddress" asp-route-Id="@Model.Customers.Id" class="btn btn-outline-info">
-                                    <i class="fas fa-address-book mr-2"></i>Add new address
-                                </a>
-                                <a asp-controller="Notes" asp-action="CreateNotes" asp-route-Id="@Model.Customers.Id" class="btn btn-outline-info">
-                                    <i class="fas fa-sticky-note mr-2"></i>Add customer note
-                                </a>
-                            </div>
-                        </div>
+</div>
+<div class="container-fluid">
+     <div class="row">
+        <div class="col-lg-4">
+            <div class="card card-default">
+                <div class="card-body text-center">
+                    <div class="py-4">
+                        <img class="img-fluid rounded-circle img-thumbnail thumb96" src="~/assets/images/user/contact-placeholder.png" alt="Contact" />
                     </div>
-                </div>
-                <div class="card card-default d-none d-lg-block">
-                    <div class="card-header">
-                        <div class="card-title text-center">Servicing &amp; Machine Details</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="form-group row">
-                            <label class="text-bold col-8 col-md-3 col-6 col-form-label text-right" asp-for="Customers.ServiceContract">Contract Cover:</label>
-                            <div class="col-xl-6 col-md-9 col-4">
-                                <input class="form-control" type="text" asp-for="Customers.ServiceContract" readonly />
-                            </div>
+                    <h3 class="m-0 text-bold">@Model.Customers.CompanyName</h3>
+                    <div class="text-center">
+                        <div class="my-3">
+                            <h4 class="btn btn-secondary"><i class="fas fa-phone mr-2"></i>  @Model.Customers.TelephoneNumber</h4>
+                            <h4 class="btn btn-secondary"><i class="fas fa-envelope-open-text mr-2"></i>  @Model.Customers.EmailAddress</h4>
+                            <h4 class="btn btn-secondary"><i class="fas fa-globe mr-2"></i>  www.website.com</h4>
                         </div>
-                        <div class="form-group row">
-                            <label class="text-bold col-8 col-md-3 col-6 col-form-label text-right" asp-for="Customers.LastServiceDate">Last Service:</label>
-                            <div class="col-xl-6 col-md-9 col-4">
-                                <input class="form-control" type="text" asp-for="Customers.LastServiceDate" readonly />
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="text-bold col-8 col-md-3 col-6 col-form-label text-right" asp-for="Customers.CurrentMachine">Current Machine:</label>
-                            <div class="col-xl-6 col-md-9 col-4">
-                                <input class="form-control" type="text" asp-for="Customers.CurrentMachine" readonly />
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="text-bold col-8 col-md-3 col-6 col-form-label text-right" asp-for="Customers.CustomerSince">Customer Since:</label>
-                            <div class="col-xl-6 col-md-9 col-4">
-                                <input class="form-control" type="text" asp-for="Customers.CustomerSince" readonly />
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="text-bold col-8 col-md-3 col-6 col-form-label text-right" asp-for="Customers.Service">Is Live:</label>
-                            <div class="col-xl-6 col-md-9 col-4">
-                                <input class="form-control" type="text" asp-for="Customers.Service" readonly />
-                            </div>
-                        </div>
-                        <div class="col-6 mt-4 offset-4 mb-3">
-                            <a asp-controller="ServiceCustomers" asp-action="CreateServiceContract" asp-route-Id="@Model.Customers.Id" class="btn btn-outline-primary w-60">Edit Contract Details</a>
+                        <div class="my-3 mb-4">
+                            <a asp-controller="Contacts" asp-action="CreateContact" asp-route-Id="@Model.Customers.Id" class="btn btn-outline-info">
+                                <i class="fas fa-user mr-2"></i>Add new contact
+                            </a>
+                            <a asp-controller="Addresses" asp-action="CreateAddress" asp-route-Id="@Model.Customers.Id" class="btn btn-outline-info">
+                                <i class="fas fa-address-book mr-2"></i>Add new address
+                            </a>
+                            <a asp-controller="Notes" asp-action="CreateNotes" asp-route-Id="@Model.Customers.Id" class="btn btn-outline-info">
+                                <i class="fas fa-sticky-note mr-2"></i>Add customer note
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-8">
-                <div class="card card-default">
-                    <div class="card-header d-flex align-items-center">
-                        <div class="d-flex justify-content-center col">
-                            <div class="h4 m-0 text-center">Customer Information</div>
+            <div class="card card-default d-none d-lg-block">
+                <div class="card-header">
+                    <div class="card-title text-center">Servicing &amp; Machine Details</div>
+                </div>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label class="text-bold col-8 col-md-3 col-6 col-form-label text-right" asp-for="Customers.ServiceContract">Contract Cover:</label>
+                        <div class="col-xl-6 col-md-9 col-4">
+                            <input class="form-control" type="text" asp-for="Customers.ServiceContract" readonly />
                         </div>
-                        <div class="d-flex justify-content-end">
-                            <div class="btn-group">
-                                <button class="btn btn-link" data-toggle="dropdown">
-                                    <em class="fa fa-ellipsis-v fa-lg text-muted"></em>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-right-forced animated fadeInLeft" role="menu">
-                                    <a class="dropdown-item" asp-controller="Customers" asp-action="UpdateCustomer" asp-route-Id="@Model.Customers.Id">
-                                        <span>Update Customer Details</span>
-                                    </a>
-                                    <a class="dropdown-item" asp-controller="Contacts" asp-action="CreateContact" asp-route-Id="@Model.Customers.Id">
-                                        <span>Add New Address</span>
-                                    </a>
-                                    <a class="dropdown-item" asp-controller="Notes" asp-action="CreateNotes" asp-route-Id="@Model.Customers.Id">
-                                        <span>Add Customer Note</span>
-                                    </a>
-                                    <a class="dropdown-item" asp-action="DeleteCustomer" asp-route-Id="@Model.Customers.Id">
-                                        <span class="text-warning">Delete contact</span>
-                                    </a>
-                                </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="text-bold col-8 col-md-3 col-6 col-form-label text-right" asp-for="Customers.LastServiceDate">Last Service:</label>
+                        <div class="col-xl-6 col-md-9 col-4">
+                            <input class="form-control" type="text" asp-for="Customers.LastServiceDate" readonly />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="text-bold col-8 col-md-3 col-6 col-form-label text-right" asp-for="Customers.CurrentMachine">Current Machine:</label>
+                        <div class="col-xl-6 col-md-9 col-4">
+                            <input class="form-control" type="text" asp-for="Customers.CurrentMachine" readonly />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="text-bold col-8 col-md-3 col-6 col-form-label text-right" asp-for="Customers.CustomerSince">Customer Since:</label>
+                        <div class="col-xl-6 col-md-9 col-4">
+                            <input class="form-control" type="text" asp-for="Customers.CustomerSince" readonly />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="text-bold col-8 col-md-3 col-6 col-form-label text-right" asp-for="Customers.Service">Is Live:</label>
+                        <div class="col-xl-6 col-md-9 col-4">
+                            <input class="form-control" type="text" asp-for="Customers.Service" readonly />
+                        </div>
+                    </div>
+                    <div class="col-6 mt-4 offset-4 mb-3">
+                        <a asp-controller="ServiceCustomers" asp-action="CreateServiceContract" asp-route-Id="@Model.Customers.Id" class="btn btn-outline-primary w-60">Edit Contract Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="card card-default">
+                <div class="card-header d-flex align-items-center">
+                    <div class="d-flex justify-content-center col">
+                        <div class="h4 m-0 text-center">Customer Information</div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <div class="btn-group">
+                            <button class="btn btn-link" data-toggle="dropdown">
+                                <em class="fa fa-ellipsis-v fa-lg text-muted"></em>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right-forced animated fadeInLeft" role="menu">
+                                <a class="dropdown-item" asp-controller="Customers" asp-action="UpdateCustomer" asp-route-Id="@Model.Customers.Id">
+                                    <span>Update Customer Details</span>
+                                </a>
+                                <a class="dropdown-item" asp-controller="Contacts" asp-action="CreateContact" asp-route-Id="@Model.Customers.Id">
+                                    <span>Add New Address</span>
+                                </a>
+                                <a class="dropdown-item" asp-controller="Notes" asp-action="CreateNotes" asp-route-Id="@Model.Customers.Id">
+                                    <span>Add Customer Note</span>
+                                </a>
+                                <a class="dropdown-item" asp-action="DeleteCustomer" asp-route-Id="@Model.Customers.Id">
+                                    <span class="text-warning">Delete contact</span>
+                                </a>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                                     
-                    <!-- #region Form -->
-                    <div class="card-body">
-                        <div class="row py-4 justify-content-center">
-                            <div class="col-12 col-sm-10">
-                                <form class="form-horizontal" method="post" asp-action="ViewCustomer">
-                                    <input asp-for="Customers.Id" hidden />
-                                    <div class="form-group row">
-                                        <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Customers.CompanyName">Company Name:</label>
-                                        <div class="col-xl-10 col-md-9 col-8">
-                                            <input class="form-control" type="text" asp-for="Customers.CompanyName" readonly />
-                                        </div>
+
+                <!-- #region Form -->
+                <div class="card-body">
+                    <div class="row py-4 justify-content-center">
+                        <div class="col-12 col-sm-10">
+                            <form class="form-horizontal" method="post" asp-action="ViewCustomer">
+                                <input asp-for="Customers.Id" hidden />
+                                <div class="form-group row">
+                                    <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Customers.CompanyName">Company Name:</label>
+                                    <div class="col-xl-10 col-md-9 col-8">
+                                        <input class="form-control" type="text" asp-for="Customers.CompanyName" readonly />
                                     </div>
-                                    <div class="form-group row">
-                                        <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Customers.EmailAddress">Email:</label>
-                                        <div class="col-xl-10 col-md-9 col-8">
-                                            <input class="form-control" asp-for="Customers.EmailAddress" readonly />
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Customers.TelephoneNumber">Phone:</label>
-                                        <div class="col-xl-10 col-md-9 col-8">
-                                            <input class="form-control" asp-for="Customers.TelephoneNumber" readonly />
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" for="inputContact4">Mobile:</label>
-                                        <div class="col-xl-10 col-md-9 col-8">
-                                            <input class="form-control" id="inputContact4" type="text" value="(44) 123 987 465" readonly />
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" for="inputContact5">Website:</label>
-                                        <div class="col-xl-10 col-md-9 col-8">
-                                            <input class="form-control" id="inputContact5" type="text" value="http://some.wesbite.com" readonly />
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Customers.OfficeAddress">Office Address:</label>
-                                        <div class="col-xl-10 col-md-9 col-8">
-                                            <input class="form-control" asp-for="Customers.OfficeAddress" readonly />
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Customers.AddressLine">Address Line 2:</label>
-                                        <div class="col-xl-10 col-md-9 col-8">
-                                            <input class="form-control" asp-for="Customers.AddressLine" readonly />
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Customers.CityRegion">City / Region:</label>
-                                        <div class="col-xl-10 col-md-9 col-8">
-                                            <input class="form-control" asp-for="Customers.CityRegion" readonly />
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Customers.PostCode">PostCode:</label>
-                                        <div class="col-xl-10 col-md-9 col-8">
-                                            <input class="form-control" asp-for="Customers.PostCode" readonly />
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" >Vat Reg:</label>
-                                        <div class="col-xl-10 col-md-9 col-8">
-                                            <input class="form-control" readonly />
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-xl-2 col-md-3 col-4"></div>
-                                        <div class="col-xl-10 col-md-9 col-8">
-                                            <div class="custom-control custom-checkbox">
-                                                <input class="custom-control-input" id="customCheck1" type="checkbox" />
-                                                <label class="custom-control-label" for="customCheck1">Primary contact?</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row mt-6">
-                                        <div class="col-4 offset-2">
-                                            <a asp-controller="Customers" asp-action="UpdateCustomer" asp-route-Id="@Model.Customers.Id" class="btn btn-outline-primary w-75">Edit Customer Details</a>
-                                        </div>
-                                        <div class="col-4 offset-2">
-                                            <a asp-controller="Customers" asp-action="Index" class="btn btn-outline-dark w-75">Go Back</a>
-                                        </div>
-                                    </div>
-                                </form>
-                                <div class="text-right">
-                                    <a class="text-muted" asp-action="DeleteCustomer" asp-route-Id="@Model.Customers.Id">Delete this customer?</a>
                                 </div>
+                                <div class="form-group row">
+                                    <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Customers.EmailAddress">Email:</label>
+                                    <div class="col-xl-10 col-md-9 col-8">
+                                        <input class="form-control" asp-for="Customers.EmailAddress" readonly />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Customers.TelephoneNumber">Phone:</label>
+                                    <div class="col-xl-10 col-md-9 col-8">
+                                        <input class="form-control" asp-for="Customers.TelephoneNumber" readonly />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" for="inputContact4">Mobile:</label>
+                                    <div class="col-xl-10 col-md-9 col-8">
+                                        <input class="form-control" id="inputContact4" type="text" value="(44) 123 987 465" readonly />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" for="inputContact5">Website:</label>
+                                    <div class="col-xl-10 col-md-9 col-8">
+                                        <input class="form-control" id="inputContact5" type="text" value="http://some.wesbite.com" readonly />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Customers.OfficeAddress">Office Address:</label>
+                                    <div class="col-xl-10 col-md-9 col-8">
+                                        <input class="form-control" asp-for="Customers.OfficeAddress" readonly />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Customers.AddressLine">Address Line 2:</label>
+                                    <div class="col-xl-10 col-md-9 col-8">
+                                        <input class="form-control" asp-for="Customers.AddressLine" readonly />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Customers.CityRegion">City / Region:</label>
+                                    <div class="col-xl-10 col-md-9 col-8">
+                                        <input class="form-control" asp-for="Customers.CityRegion" readonly />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Customers.PostCode">PostCode:</label>
+                                    <div class="col-xl-10 col-md-9 col-8">
+                                        <input class="form-control" asp-for="Customers.PostCode" readonly />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right">Vat Reg:</label>
+                                    <div class="col-xl-10 col-md-9 col-8">
+                                        <input class="form-control" readonly />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-xl-2 col-md-3 col-4"></div>
+                                    <div class="col-xl-10 col-md-9 col-8">
+                                        <div class="custom-control custom-checkbox">
+                                            <input class="custom-control-input" id="customCheck1" type="checkbox" />
+                                            <label class="custom-control-label" for="customCheck1">Primary contact?</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row mt-6">
+                                    <div class="col-4 offset-2">
+                                        <a asp-controller="Customers" asp-action="UpdateCustomer" asp-route-Id="@Model.Customers.Id" class="btn btn-outline-primary w-75">Edit Customer Details</a>
+                                    </div>
+                                    <div class="col-4 offset-2">
+                                        <a asp-controller="Customers" asp-action="Index" class="btn btn-outline-dark w-75">Go Back</a>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="text-right">
+                                <a class="text-muted" asp-action="DeleteCustomer" asp-route-Id="@Model.Customers.Id">Delete this customer?</a>
                             </div>
                         </div>
                     </div>
@@ -204,6 +203,7 @@
             </div>
         </div>
     </div>
+</div>
 
 
 
