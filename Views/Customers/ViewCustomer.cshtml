@@ -24,7 +24,17 @@
                                 <h4 class="btn btn-secondary"><i class="fas fa-phone mr-2"></i>  @Model.Customers.TelephoneNumber</h4>
                                 <h4 class="btn btn-secondary"><i class="fas fa-envelope-open-text mr-2"></i>  @Model.Customers.EmailAddress</h4>
                                 <h4 class="btn btn-secondary"><i class="fas fa-globe mr-2"></i>  www.website.com</h4>
-
+                            </div>
+                            <div class="my-3">
+                                <a asp-controller="Contacts" asp-action="CreateContact" asp-route-Id="@Model.Customers.Id" class="btn btn-outline-info">
+                                    <i class="fas fa-user mr-2"></i>Add new contact
+                                </a>
+                                <a asp-controller="Addresses" asp-action="CreateAddress" asp-route-Id="@Model.Customers.Id" class="btn btn-outline-info">
+                                    <i class="fas fa-envelope-open mr-2"></i>Add new address
+                                </a>
+                                <a asp-controller="Notes" asp-action="CreateNotes" asp-route-Id="@Model.Customers.Id" class="btn btn-outline-info">
+                                    <i class="fas fa-sticky-note mr-2"></i>Add customer note
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -158,6 +168,12 @@
                                         <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Customers.PostCode">PostCode:</label>
                                         <div class="col-xl-10 col-md-9 col-8">
                                             <input class="form-control" asp-for="Customers.PostCode" readonly />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" >Vat Reg:</label>
+                                        <div class="col-xl-10 col-md-9 col-8">
+                                            <input class="form-control" readonly />
                                         </div>
                                     </div>
                                     <div class="form-group row">
