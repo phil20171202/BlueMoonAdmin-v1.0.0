@@ -25,12 +25,12 @@
                                 <h4 class="btn btn-secondary"><i class="fas fa-envelope-open-text mr-2"></i>  @Model.Customers.EmailAddress</h4>
                                 <h4 class="btn btn-secondary"><i class="fas fa-globe mr-2"></i>  www.website.com</h4>
                             </div>
-                            <div class="my-3">
+                            <div class="my-3 mb-4">
                                 <a asp-controller="Contacts" asp-action="CreateContact" asp-route-Id="@Model.Customers.Id" class="btn btn-outline-info">
                                     <i class="fas fa-user mr-2"></i>Add new contact
                                 </a>
                                 <a asp-controller="Addresses" asp-action="CreateAddress" asp-route-Id="@Model.Customers.Id" class="btn btn-outline-info">
-                                    <i class="fas fa-envelope-open mr-2"></i>Add new address
+                                    <i class="fas fa-address-book mr-2"></i>Add new address
                                 </a>
                                 <a asp-controller="Notes" asp-action="CreateNotes" asp-route-Id="@Model.Customers.Id" class="btn btn-outline-info">
                                     <i class="fas fa-sticky-note mr-2"></i>Add customer note
@@ -74,7 +74,7 @@
                                 <input class="form-control" type="text" asp-for="Customers.Service" readonly />
                             </div>
                         </div>
-                        <div class="col-6 mt-1 offset-4">
+                        <div class="col-6 mt-4 offset-4 mb-3">
                             <a asp-controller="ServiceCustomers" asp-action="CreateServiceContract" asp-route-Id="@Model.Customers.Id" class="btn btn-outline-primary w-60">Edit Contract Details</a>
                         </div>
                     </div>
