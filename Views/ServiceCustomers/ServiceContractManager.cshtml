@@ -10,7 +10,62 @@
         <li class="breadcrumb-item"><a asp-controller="Customers" asp-action="Index">Dashboard</a></li>
         <li class="breadcrumb-item active">Service Customers</li>
     </ol>
+    <!-- START cards box-->
     <div class="row">
+        <div class="col-xl-3 col-md-6">
+            <!-- START card-->
+            <div class="card flex-row align-items-center align-items-stretch border-0">
+                <div class="col-4 d-flex align-items-center bg-primary-dark justify-content-center rounded-left">
+                    <em class="icon-note fa-3x"></em>
+                </div>
+                <div class="col-8 py-3 bg-primary rounded-right">
+                    <div class="h3 mt-0">Service Contract</div>
+                    <a class="text-white" asp-controller="ServiceCustomers" asp-action="CreateServiceContract">@SharedLocalizer.GetLocalizedHtmlString("Add New Service Contract ")</a>
+                    <i class="fas fa-angle-right ml-2"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-12">
+            <!-- START card-->
+            <div class="card flex-row align-items-center align-items-stretch border-0">
+                <div class="col-4 d-flex align-items-center bg-yellow-dark justify-content-center rounded-left">
+                    <em class="icon-event fa-3x"></em>
+                </div>
+                <div class="col-8 py-3 bg-yellow rounded-right">
+                    <div class="h3 mt-0">Renewals Manager</div>
+                    <a class="text-white" asp-controller="Calendar" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("View my calendar ")</a>
+                    <i class="fas fa-angle-right ml-2"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <!-- START card-->
+            <div class="card flex-row align-items-center align-items-stretch border-0">
+                <div class="col-4 d-flex align-items-center bg-green-dark justify-content-center rounded-left">
+                    <em class="icon-calendar fa-3x"></em>
+                </div>
+                <div class="col-8 py-3 bg-green rounded-right">
+                    <div class="h3 mt-0">Service Scheduling</div>
+                    <a class="text-white" asp-controller="Calendar" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("View Services Due ")</a>
+                    <i class="fas fa-angle-right ml-2"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-12">
+            <!-- START card-->
+            <div class="card flex-row align-items-center align-items-stretch border-0">
+                <div class="col-4 d-flex align-items-center bg-info-dark justify-content-center rounded-left">
+                    <em class="icon-magnifier-add fa-3x"></em>
+                </div>
+                <div class="col-8 py-3 bg-info rounded-right">
+                    <div class="h3 mt-0">Overdue Services</div>
+                    <a class="text-white" asp-controller="ServiceCustomers" asp-action="ServiceContractManager">@SharedLocalizer.GetLocalizedHtmlString("View Overdue Services ")</a>
+                    <i class="fas fa-angle-right ml-2"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<div class="row">
         <div class="col-xl-3 col-md-6">
             <div class="card-img bg-primary text-white mb-4">
                 <div class="card-body"> <i class="fas fa-edit"></i> @SharedLocalizer.GetLocalizedHtmlString(" Service Contract")</div>
@@ -47,25 +102,46 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>*@
+    <!-- START row-->
     <div class="row">
-        <div class="col-xl-6">
-            <div class="card mb-4">
-                <div class="card-header">
-                    <i class="fas fa-chart-area mr-1"></i>@SharedLocalizer.GetLocalizedHtmlString("New Service Contracts")
+        <div class="col-xl-12">
+            <!-- START card -->
+            <div class="card card-default">
+                <div class="card-header">Service Statistics</div>
+                <div class="card-body text-center">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <div class="radial-bar radial-bar-20 radial-bar-lg radial-bar-danger" data-label="20"></div>
+                            <p>
+                                <code>Completed Services</code>
+                            </p>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="radial-bar radial-bar-35 radial-bar-lg radial-bar-warning" data-label="35"></div>
+                            <p>
+                                <code>Single Services Completed</code>
+                            </p>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="radial-bar radial-bar-10 radial-bar-lg radial-bar-info" data-label="10"></div>
+                            <p>
+                                <code>Upcoming Services</code>
+                            </p>
+                        </div>
+                        <div class="col-lg-3">
+                            <div class="radial-bar radial-bar-20 radial-bar-lg radial-bar-success" data-label="19"></div>
+                            <p>
+                                <code>Overdue Services</code>
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body"><canvas id="myAreaChart" width="100" height="40"></canvas></div>
             </div>
-        </div>
-        <div class="col-xl-6">
-            <div class="card mb-4">
-                <div class="card-header">
-                    <i class="fas fa-chart-bar mr-1"></i>@SharedLocalizer.GetLocalizedHtmlString("Total Service Contracts")
-                </div>
-                <div class="card-body"><canvas id="myBarChart" width="100" height="40"></canvas></div>
-            </div>
+            <!-- END card-->
         </div>
     </div>
+    <!-- END row-->
 
     <div class="card mb-4">
         <div class="card-header"><i class="fas fa-table mr-1 table-striped"></i>Service Contract Customers</div>
@@ -99,40 +175,44 @@
                     </tfoot>
                     <tbody>
                         @foreach (var item in Model)
-                            {
-                        <tr>
-                            @*<td>@item.Id</td>*@
-                            <td>@item.CompanyName</td>
-                            <td>@item.ContactName</td>
-                            <td>@item.TelephoneNumber</td>
-                            <td>@item.StartDate.ToShortDateString().ToString()</td>
-                            <td>@item.RenewalDate.ToShortDateString().ToString()</td>
-                            <td>@item.LastServiceDate.ToShortDateString().ToString()</td>
-                            <td>@item.ContractType</td>
-                            <td>@item.CurrentMachine</td>
-                            <td width="6%">
-                                <div class="col-6 p-0 text-center">
-                                    <a asp-controller="ToDoList" asp-action="UpdateToDoList" asp-route-Id="@item.Id" class="btn btn-primary">Update</a>
-                                </div>
-                            </td>
-                            <td width="6%">
-                                <div class="col-6 p-0 text-center">
-                                    <a asp-controller="ToDoList" asp-action="DeleteToDoItem" asp-route-Id="@item.Id" class="btn btn-danger">Delete</a>
+                        {
+                            <tr>
+                                @*<td>@item.Id</td>*@
+                                <td>@item.CompanyName</td>
+                                <td>@item.ContactName</td>
+                                <td>@item.TelephoneNumber</td>
+                                <td>@item.StartDate.ToShortDateString().ToString()</td>
+                                <td>@item.RenewalDate.ToShortDateString().ToString()</td>
+                                <td>@item.LastServiceDate.ToShortDateString().ToString()</td>
+                                <td>@item.ContractType</td>
+                                <td>@item.CurrentMachine</td>
+                                <td width="6%">
+                                    <div class="col-6 p-0 text-center">
+                                        <a asp-controller="ToDoList" asp-action="UpdateToDoList" asp-route-Id="@item.Id" class="btn btn-primary">Update</a>
                                     </div>
-                        </tr>
-                            }
+                                </td>
+                                <td width="6%">
+                                    <div class="col-6 p-0 text-center">
+                                        <a asp-controller="ToDoList" asp-action="DeleteToDoItem" asp-route-Id="@item.Id" class="btn btn-danger">Delete</a>
+                                    </div>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 </div>
+
+
 @section Scripts{
-    <script src="~/assets/demo/chart-area-demo.js"></script>
-    <script src="~/assets/demo/chart-bar-demo.js"></script>
+
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
     <script src="~/assets/demo/datatables-demo.js"></script>
+    <script src="~/assets/vendor/jquery-knob/dist/jquery.knob.min.js"></script>
+    <script src="~/assets/vendor/easy-pie-chart/dist/jquery.easypiechart.js"></script>
+
 }
 
 
