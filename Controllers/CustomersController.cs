@@ -23,6 +23,8 @@ namespace BlueMoonAdmin.Controllers
         {
 
             IEnumerable<Customers> objList = _db.Customers;
+            
+
             return View(objList);
         }
 
@@ -42,6 +44,7 @@ namespace BlueMoonAdmin.Controllers
             CustomerVM.Contacts = _db.Contacts.Where(c => c.CustomerId == id).ToList();
             CustomerVM.Notes = _db.Notes.Where(c => c.CustomerId == id).ToList();
             CustomerVM.Addresses = _db.Addresses.Where(c => c.CustomerId == id).ToList();
+            CustomerVM.ServiceCustomer = _db.ServiceCustomers.FirstOrDefault(c => c.CustomerId == id);
             if (CustomerVM == null)
             {
                 return NotFound();

@@ -1,5 +1,6 @@
 ﻿using BlueMoonAdmin.Data;
 using BlueMoonAdmin.Models;
+using BlueMoonAdmin.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -19,15 +20,37 @@ namespace BlueMoonAdmin.Controllers
         }
         public IActionResult ServiceContractManager()
         {
-            IEnumerable<ServiceCustomer> objList = _db.ServiceCustomers;
-            return View(objList);
+           
+            var ServiceVM = new ServiceViewModel();
+            
+            ServiceVM.ServiceCustomers = _db.ServiceCustomers.ToList();
+            if (ServiceVM == null)
+            {
+                return NotFound();
+            }
+            return View(ServiceVM);
+
         }
 
         //
-        public IActionResult CreateServiceContract()
+        #region Create Contract
+        public IActionResult CreateServiceContract(int id)
         {
-
-            return View();
+            var ContractVM = new ServiceCustomer();
+            if (id == 0 )
+            {
+                return NotFound();
+            }
+            else
+            {
+                ContractVM.CustomerId = id;
+                                
+            }
+            if (ContractVM == null)
+            {
+                return NotFound();
+            }
+            return View(ContractVM);
         }
 
         // POST-Create
@@ -35,9 +58,49 @@ namespace BlueMoonAdmin.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult CreateServiceContract(ServiceCustomer obj)
         {
+            int id = obj.CustomerId;
             _db.ServiceCustomers.Add(obj);
             _db.SaveChanges();
-            return RedirectToAction("ServiceContractManager");
+            return RedirectToAction("ViewCustomer", "Customers", new { id });
         }
+        #endregion
+
+        #region Edit contract
+
+        public IActionResult UpdateServiceContract(int? id)
+        {
+
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            ServiceCustomer obj = _db.ServiceCustomers.Find(id);
+
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            return View(obj);
+        }
+
+        // Saves new contact to database
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult UpdateServiceContract(ServiceCustomer obj)
+        {
+            if (ModelState.IsValid)
+            {
+                int id = obj.CustomerId;
+                _db.ServiceCustomers.Update(obj);
+                _db.SaveChanges();
+                return RedirectToAction("ViewCustomer", "Customers", new { id });
+            }
+            return View(obj);
+        }
+        #endregion
+
+      
+
+
     }
 }

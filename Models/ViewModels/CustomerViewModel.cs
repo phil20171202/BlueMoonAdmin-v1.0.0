@@ -13,5 +13,7 @@ namespace BlueMoonAdmin.Models.ViewModels
         public IEnumerable<Notes> Notes { get; set; }
 
         public IEnumerable<Addresses> Addresses { get; set; }
+
+        public ServiceCustomer ServiceCustomer { get; set; }
     }
 }

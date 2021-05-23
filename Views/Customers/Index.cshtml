@@ -31,9 +31,9 @@
                                 <th>Contact Name</th>
                                 <th>Office Address</th>
                                 <th>Telehone</th>
-                                <th>Contract</th>
-                                <th>Service Date</th>
-                                <th>Machine</th>
+                                @*<th>Contract</th>
+                                <th>Next Service Date</th>
+                                <th>Machine</th>*@
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -58,9 +58,11 @@
                                     <td width="10%">@customer.ContactName</td>
                                     <td width="25%">@customer.OfficeAddress</td>
                                     <td width="10%">@customer.TelephoneNumber</td>
-                                    <td width="5%">@customer.ServiceContract</td>
-                                    <td width="8%">@if(customer.LastServiceDate != null){<input asp-for="@customer.LastServiceDate" disabled style="border: 0px; background-color:white"  type="date" />}</td>
-                                    <td width="5%">@customer.CurrentMachine</td>
+                                    
+                                    @*<td width="10%">@customer.ServiceContract</td>
+                                    <td width="10%">@customer.ServiceCustomer.NextServiceDate</td>
+                                    <td width="10%">@customer.ServiceCustomer.CurrentMachine</td>*@
+                                    
                                     <td>
                                         <div class="w-100 btn-group" role="group">
                                             <a asp-controller="Customers" asp-action="ViewCustomer" asp-route-Id="@customer.Id" class="btn btn-primary mx-1">View</a>
@@ -68,6 +70,8 @@
                                             <a asp-controller="Customers" asp-action="UpdateCustomer" asp-route-Id="@customer.Id" class="btn btn-danger mx-1">Edit</a>
                                         </div>
                                     </td>
+
+
                                 </tr>
                                 }
 
