@@ -12,6 +12,8 @@ namespace BlueMoonAdmin.Models.ViewModels
         // one to one Customer to service
         public IEnumerable<ServiceCustomer> ServiceCustomers { get; set; }
 
+        public int Overdue { get; set; }
+
 
 
     }

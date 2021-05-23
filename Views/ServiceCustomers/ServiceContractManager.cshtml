@@ -133,13 +133,13 @@
                                 </p>
                             </div>
                             <div class="col-lg-3">
-                                <div class="radial-bar radial-bar-35 radial-bar-lg radial-bar-info" data-label="35"></div>
+                                <div class="radial-bar radial-bar-35 radial-bar-lg radial-bar-info" data-label="12"></div>
                                 <p>
                                     <code>Upcoming Services</code>
                                 </p>
                             </div>
                             <div class="col-lg-3">
-                                <div class="radial-bar radial-bar-15 radial-bar-lg radial-bar-danger" data-label="19"></div>
+                                <div class="radial-bar radial-bar-lg radial-bar-danger"  data-label="@Model.Overdue"></div>
                                 <p>
                                     <code>Overdue Services</code>
                                 </p>
@@ -166,7 +166,7 @@
                                 <th>Telephone Number</th>
                                 <th>Start Date</th>
                                 <th>Renewal Date</th>
-                                <th>Last Service Date</th>
+                                <th>Next Service Date</th>
                                 <th>Contract Type</th>
                                 <th>Current Machine</th>
                                 <th>Update:</th>
@@ -196,7 +196,10 @@
                                             <td>TelephoneNumber</td>
                                             <td>@service.StartDate</td>
                                             <td>@service.RenewalDate</td>
-                                            <td>@service.LastServiceDate</td>
+                                            <td>
+                                                <input asp-for="@service.NextServiceDate" class="form-control" readonly type="date" style="border: 0px; background-color:white" />
+                                                
+                                            </td>
                                             <td>@service.ServiceContract</td>
                                             <td>@service.CurrentMachine</td>
                                             

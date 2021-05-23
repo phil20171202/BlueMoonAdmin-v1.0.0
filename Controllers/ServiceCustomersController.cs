@@ -28,6 +28,10 @@ namespace BlueMoonAdmin.Controllers
             {
                 return NotFound();
             }
+
+            ServiceVM.Overdue = ServiceVM.ServiceCustomers.Where(c => c.NextServiceDate < DateTime.Now).Count();
+
+
             return View(ServiceVM);
 
         }
