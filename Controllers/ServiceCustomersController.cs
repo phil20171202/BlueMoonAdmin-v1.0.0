@@ -23,7 +23,7 @@ namespace BlueMoonAdmin.Controllers
            
             var ServiceVM = new ServiceViewModel();
             
-            ServiceVM.ServiceCustomers = _db.ServiceCustomers.ToList();
+            ServiceVM.ServiceCustomers = _db.ServiceCustomers.Where(c => c.Service ).ToList();
             ServiceVM.Customers = _db.Customers.FirstOrDefault();
             if (ServiceVM == null)
             {
