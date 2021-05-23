@@ -13,29 +13,38 @@ namespace BlueMoonAdmin.Models
         [Key]
         public int Id { get; set; }
 
-        [Display(Name = "Company Name")]
-        public string CompanyName { get; set; }
+        [Display(Name = "Contract Type")]
+        public String ServiceContract { get; set; }
 
-        [Display(Name = "Contact Name")]
-        public string ContactName { get; set; }
 
-        [Display(Name = "Telephone Number")]
-        public int TelephoneNumber { get; set; }
-        
-        [Display(Name = "Start date")]
-        public DateTime StartDate { get; set; }
+        [Display(Name = "Start Date")]
+        [DataType(DataType.Date)]
+        public Nullable<DateTime> StartDate { get; set; }
 
-        [Display(Name = "Renewal date")]
-        public DateTime RenewalDate { get; set; }
+        [Display(Name = "Renewal Date")]
+        [DataType(DataType.Date)]
+        public Nullable<DateTime> RenewalDate { get; set; }
 
         [Display(Name = "Last Service Date")]
-        public DateTime LastServiceDate { get; set; }
+        [DataType(DataType.Date)]
+        public Nullable<DateTime> LastServiceDate { get; set; }
 
-        [Display(Name = "Contract Type")]
-        public string ContractType { get; set; }
+        [Display(Name = "Next Service Date")]
+        [DataType(DataType.Date)]
+        public Nullable<DateTime> NextServiceDate { get; set; }
 
         [Display(Name = "Current Machine")]
         public string CurrentMachine { get; set; }
+
+        [Display(Name = "Machine Notes")]
+        public string MachineNotes { get; set; }
+
+        [Display(Name = "Active Service")]
+        public bool Service { get; set; }
+
+        public int CustomerId { get; set; }
+        [ForeignKey("CustomerId")]
+        public virtual Customers Customer { get; set; }
 
     }
 }

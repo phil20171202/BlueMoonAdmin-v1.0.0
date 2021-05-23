@@ -45,37 +45,50 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group row">
-                        <label class="text-bold col-8 col-md-3 col-6 col-form-label text-right" asp-for="Customers.ServiceContract">Contract Cover:</label>
+                        <label class="text-bold col-8 col-md-3 col-6 col-form-label text-right">Contract Cover:</label>
                         <div class="col-xl-6 col-md-9 col-4">
-                            <input class="form-control" type="text" asp-for="Customers.ServiceContract" readonly />
+                            <input class="form-control" type="text" asp-for="ServiceCustomer.ServiceContract" readonly />
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="text-bold col-8 col-md-3 col-6 col-form-label text-right" asp-for="Customers.LastServiceDate">Last Service:</label>
+                        <label class="text-bold col-8 col-md-3 col-6 col-form-label text-right">Current Machine:</label>
                         <div class="col-xl-6 col-md-9 col-4">
-                            <input class="form-control" type="text" asp-for="Customers.LastServiceDate" readonly />
+                            <input class="form-control" type="text" asp-for="ServiceCustomer.CurrentMachine" readonly />
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="text-bold col-8 col-md-3 col-6 col-form-label text-right" asp-for="Customers.CurrentMachine">Current Machine:</label>
+                        <label class="text-bold col-8 col-md-3 col-6 col-form-label text-right">Last Service:</label>                        
+                            <div class="col-xl-6 col-md-9 col-4">
+                                <input class="form-control" type="date" asp-for="ServiceCustomer.LastServiceDate" readonly />
+                            </div>                      
+                    </div>
+                    <div class="form-group row">
+                        <label class="text-bold col-8 col-md-3 col-6 col-form-label text-right">Next Service:</label>
                         <div class="col-xl-6 col-md-9 col-4">
-                            <input class="form-control" type="text" asp-for="Customers.CurrentMachine" readonly />
+                            <input class="form-control" type="date" asp-for="ServiceCustomer.NextServiceDate" readonly />
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="text-bold col-8 col-md-3 col-6 col-form-label text-right" asp-for="Customers.CustomerSince">Customer Since:</label>
+                        <label class="text-bold col-8 col-md-3 col-6 col-form-label text-right">Renewal Date:</label>
                         <div class="col-xl-6 col-md-9 col-4">
-                            <input class="form-control" type="text" asp-for="Customers.CustomerSince" readonly />
+                            <input class="form-control" type="date" asp-for="ServiceCustomer.RenewalDate" readonly  />
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="text-bold col-8 col-md-3 col-6 col-form-label text-right" asp-for="Customers.Service">Is Live:</label>
+                        <label class="text-bold col-8 col-md-3 col-6 col-form-label text-right">Is Live:</label>
                         <div class="col-xl-6 col-md-9 col-4">
-                            <input class="form-control" type="text" asp-for="Customers.Service" readonly />
+                            <input class="form-control" type="text" asp-for="ServiceCustomer.Service" readonly />
                         </div>
                     </div>
                     <div class="col-6 mt-4 offset-4 mb-3">
-                        <a asp-controller="ServiceCustomers" asp-action="CreateServiceContract" asp-route-Id="@Model.Customers.Id" class="btn btn-outline-primary w-60">Edit Contract Details</a>
+                        @if (Model.ServiceCustomer == null)
+                        {
+                        <a asp-controller="ServiceCustomers" asp-action="CreateServiceContract" asp-route-Id="@Model.Customers.Id" class="btn btn-outline-primary w-60">Create Contract Details</a>
+                        }
+                        else
+                        {
+                        <a asp-controller="ServiceCustomers" asp-action="UpdateServiceContract" asp-route-Id="@Model.ServiceCustomer.Id" class="btn btn-outline-primary w-60">Edit Contract Details</a>
+                        }
                     </div>
                 </div>
             </div>
@@ -176,6 +189,15 @@
                                         <input class="form-control" readonly />
                                     </div>
                                 </div>
+
+                                <div class="form-group row">
+                                    <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Customers.CustomerSince">Customer Since:</label>
+                                    <div class="col-xl-10 col-md-9 col-8">
+                                         <input class="form-control" type="text" asp-for="Customers.CustomerSince" readonly />                                       
+                                    </div>
+                                </div>
+
+
                                 <div class="form-group row">
                                     <div class="col-xl-2 col-md-3 col-4"></div>
                                     <div class="col-xl-10 col-md-9 col-8">

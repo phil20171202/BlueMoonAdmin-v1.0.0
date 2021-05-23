@@ -1,224 +1,241 @@
-﻿@model IEnumerable<BlueMoonAdmin.Models.ServiceCustomer>
+﻿@model BlueMoonAdmin.Models.ViewModels.ServiceViewModel
 
-@{
+    @{
     ViewData["Title"] = "Service Contract Manager";
-}
+    }
 
-<div class="container-fluid">
-    <h1 class="mt-4">Service Contract Manager</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a asp-controller="Customers" asp-action="Index">Dashboard</a></li>
-        <li class="breadcrumb-item active">Service Customers</li>
-    </ol>
-    <!-- START cards box-->
-    <div class="row">
-        <div class="col-xl-3 col-md-6">
-            <!-- START card-->
-            <div class="card flex-row align-items-center align-items-stretch border-0">
-                <div class="col-4 d-flex align-items-center bg-primary-dark justify-content-center rounded-left">
-                    <em class="icon-note fa-3x"></em>
-                </div>
-                <div class="col-8 py-3 bg-primary rounded-right">
-                    <div class="h3 mt-0">Service Contract</div>
-                    <a class="text-white" asp-controller="ServiceCustomers" asp-action="CreateServiceContract">@SharedLocalizer.GetLocalizedHtmlString("Add New Service Contract ")</a>
-                    <i class="fas fa-angle-right ml-2"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-lg-6 col-md-12">
-            <!-- START card-->
-            <div class="card flex-row align-items-center align-items-stretch border-0">
-                <div class="col-4 d-flex align-items-center bg-yellow-dark justify-content-center rounded-left">
-                    <em class="icon-event fa-3x"></em>
-                </div>
-                <div class="col-8 py-3 bg-yellow rounded-right">
-                    <div class="h3 mt-0">Renewals Manager</div>
-                    <a class="text-white" asp-controller="Calendar" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("View my calendar ")</a>
-                    <i class="fas fa-angle-right ml-2"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <!-- START card-->
-            <div class="card flex-row align-items-center align-items-stretch border-0">
-                <div class="col-4 d-flex align-items-center bg-green-dark justify-content-center rounded-left">
-                    <em class="icon-calendar fa-3x"></em>
-                </div>
-                <div class="col-8 py-3 bg-green rounded-right">
-                    <div class="h3 mt-0">Service Scheduling</div>
-                    <a class="text-white" asp-controller="Calendar" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("View Services Due ")</a>
-                    <i class="fas fa-angle-right ml-2"></i>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-lg-6 col-md-12">
-            <!-- START card-->
-            <div class="card flex-row align-items-center align-items-stretch border-0">
-                <div class="col-4 d-flex align-items-center bg-info-dark justify-content-center rounded-left">
-                    <em class="icon-magnifier-add fa-3x"></em>
-                </div>
-                <div class="col-8 py-3 bg-info rounded-right">
-                    <div class="h3 mt-0">Overdue Services</div>
-                    <a class="text-white" asp-controller="ServiceCustomers" asp-action="ServiceContractManager">@SharedLocalizer.GetLocalizedHtmlString("View Overdue Services ")</a>
-                    <i class="fas fa-angle-right ml-2"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-    @*<div class="row">
-        <div class="col-xl-3 col-md-6">
-            <div class="card-img bg-primary text-white mb-4">
-                <div class="card-body"> <i class="fas fa-edit"></i> @SharedLocalizer.GetLocalizedHtmlString(" Service Contract")</div>
-                <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="text-white stretched-link" asp-controller="ServiceCustomers" asp-action="CreateServiceContract">@SharedLocalizer.GetLocalizedHtmlString("Add New Contract")</a>
-                    <div class="text-white"><i class="fas fa-angle-right"></i></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card-img bg-warning text-white mb-4">
-                <div class="card-body"><i class="fas fa-address-book"></i>@SharedLocalizer.GetLocalizedHtmlString(" Renewals Manager")</div>
-                <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="text-white stretched-link" href="#">@SharedLocalizer.GetLocalizedHtmlString("Renew Service Contracts")</a>
-                    <div class="text-white"><i class="fas fa-angle-right"></i></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card-img bg-success text-white mb-4">
-                <div class="card-body"> <i class="fas fa-calendar-alt"></i> @SharedLocalizer.GetLocalizedHtmlString(" Service Contract Scheduling")</div>
-                <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="text-white stretched-link" asp-controller="Calendar" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("View Services Due")</a>
-                    <div class="text-white"><i class="fas fa-angle-right"></i></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card-img bg-danger text-white mb-4">
-                <div class="card-body"><i class="fas fa-file-signature"></i> @SharedLocalizer.GetLocalizedHtmlString("Service Contract Reports")</div>
-                <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="text-white stretched-link" href="#">@SharedLocalizer.GetLocalizedHtmlString("View Reports")</a>
-                    <div class="text-white"><i class="fas fa-angle-right"></i></div>
-                </div>
-            </div>
-        </div>
-    </div>*@
-    <!-- START row-->
-    <div class="row">
-        <div class="col-xl-12">
-            <!-- START card -->
-            <div class="card card-default bg-gray-lighter">
-                <div class="card-header border-bottom mb-3">
-                    <div class="row">
-                        <div class="col-6 pt-2">
-                            <i class="fas fa-signal mr-1"></i>@SharedLocalizer.GetLocalizedHtmlString("Service Level Tracker")</div>
-                        <div class="col-6 text-right">
-                            <a class="text-right btn btn-outline-primary" asp-controller="ServiceCustomers" asp-action="CreateServiceContract">Add New Service Contract</a>
-                        </div>
+    <div class="container-fluid">
+        <h1 class="mt-4">Service Contract Manager</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a asp-controller="Customers" asp-action="Index">Dashboard</a></li>
+            <li class="breadcrumb-item active">Service Customers</li>
+        </ol>
+        <!-- START cards box-->
+        <div class="row">
+            <div class="col-xl-3 col-md-6">
+                <!-- START card-->
+                <div class="card flex-row align-items-center align-items-stretch border-0">
+                    <div class="col-4 d-flex align-items-center bg-primary-dark justify-content-center rounded-left">
+                        <em class="icon-note fa-3x"></em>
                     </div>
-                </div>
-                <div class="card-body text-center mt-5">
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <div class="radial-bar radial-bar-45 radial-bar-lg radial-bar-success" data-label="45"></div>
-                            <p>
-                                <code>Completed Services</code>
-                            </p>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="radial-bar radial-bar-15 radial-bar-lg radial-bar-warning" data-label="15"></div>
-                            <p>
-                                <code>Single Services Completed</code>
-                            </p>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="radial-bar radial-bar-35 radial-bar-lg radial-bar-info" data-label="35"></div>
-                            <p>
-                                <code>Upcoming Services</code>
-                            </p>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="radial-bar radial-bar-15 radial-bar-lg radial-bar-danger" data-label="19"></div>
-                            <p>
-                                <code>Overdue Services</code>
-                            </p>
-                        </div>
+                    <div class="col-8 py-3 bg-primary rounded-right">
+                        <div class="h3 mt-0">Service Contract</div>
+                        <a class="text-white" asp-controller="ServiceCustomers" asp-action="CreateServiceContract">@SharedLocalizer.GetLocalizedHtmlString("Add New Service Contract ")</a>
+                        <i class="fas fa-angle-right ml-2"></i>
                     </div>
                 </div>
             </div>
-            <!-- END card-->
+            <div class="col-xl-3 col-lg-6 col-md-12">
+                <!-- START card-->
+                <div class="card flex-row align-items-center align-items-stretch border-0">
+                    <div class="col-4 d-flex align-items-center bg-yellow-dark justify-content-center rounded-left">
+                        <em class="icon-event fa-3x"></em>
+                    </div>
+                    <div class="col-8 py-3 bg-yellow rounded-right">
+                        <div class="h3 mt-0">Renewals Manager</div>
+                        <a class="text-white" asp-controller="Calendar" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("View my calendar ")</a>
+                        <i class="fas fa-angle-right ml-2"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <!-- START card-->
+                <div class="card flex-row align-items-center align-items-stretch border-0">
+                    <div class="col-4 d-flex align-items-center bg-green-dark justify-content-center rounded-left">
+                        <em class="icon-calendar fa-3x"></em>
+                    </div>
+                    <div class="col-8 py-3 bg-green rounded-right">
+                        <div class="h3 mt-0">Service Scheduling</div>
+                        <a class="text-white" asp-controller="Calendar" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("View Services Due ")</a>
+                        <i class="fas fa-angle-right ml-2"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-12">
+                <!-- START card-->
+                <div class="card flex-row align-items-center align-items-stretch border-0">
+                    <div class="col-4 d-flex align-items-center bg-info-dark justify-content-center rounded-left">
+                        <em class="icon-magnifier-add fa-3x"></em>
+                    </div>
+                    <div class="col-8 py-3 bg-info rounded-right">
+                        <div class="h3 mt-0">Overdue Services</div>
+                        <a class="text-white" asp-controller="ServiceCustomers" asp-action="ServiceContractManager">@SharedLocalizer.GetLocalizedHtmlString("View Overdue Services ")</a>
+                        <i class="fas fa-angle-right ml-2"></i>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <!-- END row-->
+        @*<div class="row">
+            <div class="col-xl-3 col-md-6">
+                <div class="card-img bg-primary text-white mb-4">
+                    <div class="card-body"> <i class="fas fa-edit"></i> @SharedLocalizer.GetLocalizedHtmlString(" Service Contract")</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="text-white stretched-link" asp-controller="ServiceCustomers" asp-action="CreateServiceContract">@SharedLocalizer.GetLocalizedHtmlString("Add New Contract")</a>
+                        <div class="text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card-img bg-warning text-white mb-4">
+                    <div class="card-body"><i class="fas fa-address-book"></i>@SharedLocalizer.GetLocalizedHtmlString(" Renewals Manager")</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="text-white stretched-link" href="#">@SharedLocalizer.GetLocalizedHtmlString("Renew Service Contracts")</a>
+                        <div class="text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card-img bg-success text-white mb-4">
+                    <div class="card-body"> <i class="fas fa-calendar-alt"></i> @SharedLocalizer.GetLocalizedHtmlString(" Service Contract Scheduling")</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="text-white stretched-link" asp-controller="Calendar" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("View Services Due")</a>
+                        <div class="text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6">
+                <div class="card-img bg-danger text-white mb-4">
+                    <div class="card-body"><i class="fas fa-file-signature"></i> @SharedLocalizer.GetLocalizedHtmlString("Service Contract Reports")</div>
+                    <div class="card-footer d-flex align-items-center justify-content-between">
+                        <a class="text-white stretched-link" href="#">@SharedLocalizer.GetLocalizedHtmlString("View Reports")</a>
+                        <div class="text-white"><i class="fas fa-angle-right"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+        <!-- START row-->
+        <div class="row">
+            <div class="col-xl-12">
+                <!-- START card -->
+                <div class="card card-default bg-gray-lighter">
+                    <div class="card-header border-bottom mb-3">
+                        <div class="row">
+                            <div class="col-6 pt-2">
+                                <i class="fas fa-signal mr-1"></i>@SharedLocalizer.GetLocalizedHtmlString("Service Level Tracker")
+                            </div>
+                            <div class="col-6 text-right">
+                                <a class="text-right btn btn-outline-primary" asp-controller="ServiceCustomers" asp-action="CreateServiceContract">Add New Service Contract</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body text-center mt-5">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="radial-bar radial-bar-45 radial-bar-lg radial-bar-success" data-label="45"></div>
+                                <p>
+                                    <code>Completed Services</code>
+                                </p>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="radial-bar radial-bar-15 radial-bar-lg radial-bar-warning" data-label="15"></div>
+                                <p>
+                                    <code>Single Services Completed</code>
+                                </p>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="radial-bar radial-bar-35 radial-bar-lg radial-bar-info" data-label="12"></div>
+                                <p>
+                                    <code>Upcoming Services</code>
+                                </p>
+                            </div>
+                            <div class="col-lg-3">
+                                <div class="radial-bar radial-bar-lg radial-bar-danger"  data-label="@Model.Overdue"></div>
+                                <p>
+                                    <code>Overdue Services</code>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END card-->
+            </div>
+        </div>
+        <!-- END row-->
 
-    <div class="card mb-4">
-        <div class="card-header"><i class="fas fa-table mr-1 table-striped"></i>Service Contract Customers</div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            @*<th>ID</th>*@
-                            <th>Company Name</th>
-                            <th>Contact Name</th>
-                            <th>Telephone Number</th>
-                            <th>Start Date</th>
-                            <th>Renewal Date</th>
-                            <th>Last Service Date</th>
-                            <th>Contract Type</th>
-                            <th>Current Machine</th>
-                            <th>Update:</th>
-                            <th>Delete:</th>
-                        </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>
-                            @*<th>Name</th>
+        <div class="card mb-4">
+            <div class="card-header"><i class="fas fa-table mr-1 table-striped"></i>Service Contract Customers</div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                @*
+                                <th>ID</th>*@
+                                <th>Company Name</th>
+                                <th>Contact Name</th>
+                                <th>Telephone Number</th>
+                                <th>Start Date</th>
+                                <th>Renewal Date</th>
+                                <th>Next Service Date</th>
+                                <th>Contract Type</th>
+                                <th>Current Machine</th>
+                                <th>Update:</th>
+                                <th>Delete:</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                @*
+                                <th>Name</th>
                                 <th>Position</th>
                                 <th>Office</th>
                                 <th>Age</th>
                                 <th>Start date</th>
                                 <th>Salary</th>*@
-                        </tr>
-                    </tfoot>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                @*<td>@item.Id</td>*@
-                                <td>@item.CompanyName</td>
-                                <td>@item.ContactName</td>
-                                <td>@item.TelephoneNumber</td>
-                                <td>@item.StartDate.ToShortDateString().ToString()</td>
-                                <td>@item.RenewalDate.ToShortDateString().ToString()</td>
-                                <td>@item.LastServiceDate.ToShortDateString().ToString()</td>
-                                <td>@item.ContractType</td>
-                                <td>@item.CurrentMachine</td>
-                                <td width="6%">
-                                    <div class="col-6 p-0 text-center">
-                                        <a asp-controller="ToDoList" asp-action="UpdateToDoList" asp-route-Id="@item.Id" class="btn btn-primary">Update</a>
-                                    </div>
-                                </td>
-                                <td width="6%">
-                                    <div class="col-6 p-0 text-center">
-                                        <a asp-controller="ToDoList" asp-action="DeleteToDoItem" asp-route-Id="@item.Id" class="btn btn-danger">Delete</a>
-                                    </div>
                             </tr>
-                        }
-                    </tbody>
-                </table>
+                        </tfoot>
+                        <tbody>
+                            
+                                @foreach (var service in Model.ServiceCustomers)
+                                {
+                                    if (service.Service)
+                                    {
+                                        <tr>
+                                            <td>CompanyName</td>
+                                            <td>ContactName</td>
+                                            <td>TelephoneNumber</td>
+                                            <td>@service.StartDate</td>
+                                            <td>@service.RenewalDate</td>
+                                            <td>
+                                                <input asp-for="@service.NextServiceDate" class="form-control" readonly type="date" style="border: 0px; background-color:white" />
+                                                
+                                            </td>
+                                            <td>@service.ServiceContract</td>
+                                            <td>@service.CurrentMachine</td>
+                                            
+
+                                            <td width="6%">
+                                                <div class="col-6 p-0 text-center">
+                                                    <a asp-controller="ServiceCustomers" asp-action="UpdateServiceContract" asp-route-Id="@service.Id" class="btn btn-primary">Update</a>
+                                                </div>
+                                            </td>
+                                            <td width="6%">
+                                                @*<div class="col-6 p-0 text-center">
+                                                    <a asp-controller="ServiceCustomers" asp-action="DeleteToDoItem" asp-route-Id="@service.CustomerId" class="btn btn-danger">Delete</a>
+                                                </div>*@
+                                                </td>
+                                        </tr>
+                                    }
+                                }
+
+
+
+
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
-@section Scripts{
+    @section Scripts{
 
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
     <script src="~/assets/demo/datatables-demo.js"></script>
-}
+    }
 
 
 
