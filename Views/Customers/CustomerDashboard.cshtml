@@ -8,44 +8,63 @@
         <li class="breadcrumb-item"><a asp-controller="Customers" asp-action="Index">Dashboard</a></li>
         <li class="breadcrumb-item active">Customer Overview</li>
     </ol>
+    <!-- START cards box-->
     <div class="row">
         <div class="col-xl-3 col-md-6">
-            <div class="card-img bg-primary text-white mb-4">
-                <div class="card-body"> <i class="fas fa-edit"></i> @SharedLocalizer.GetLocalizedHtmlString(" Add New Customer")</div>
-                <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="text-white stretched-link" asp-controller="Customers" asp-action="CreateCustomer">@SharedLocalizer.GetLocalizedHtmlString("Add New Customer")</a>
-                    <div class="text-white"><i class="fas fa-angle-right"></i></div>
+            <!-- START card-->
+            <div class="card flex-row align-items-center align-items-stretch border-0">
+                <div class="col-4 d-flex align-items-center bg-primary-dark justify-content-center rounded-left">
+                    <em class="icon-note fa-3x"></em>
+                </div>
+                <div class="col-8 py-3 bg-primary rounded-right">
+                    <div class="h3 mt-0">Create Customer</div>
+                    <a class="text-white"  asp-controller="Customers" asp-action="CreateCustomer">@SharedLocalizer.GetLocalizedHtmlString("Add New Customer ")</a>
+                    <i class="fas fa-angle-right ml-2"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-12">
+            <!-- START card-->
+            <div class="card flex-row align-items-center align-items-stretch border-0">
+                <div class="col-4 d-flex align-items-center bg-yellow-dark justify-content-center rounded-left">
+                    <em class="icon-organization fa-3x"></em>
+                </div>
+                <div class="col-8 py-3 bg-yellow rounded-right">
+                    <div class="h3 mt-0">Total Customers (780)</div>
+                    <a class="text-white"  asp-controller="Customers" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("View all customers ")</a>
+                    <i class="fas fa-angle-right ml-2"></i>
                 </div>
             </div>
         </div>
         <div class="col-xl-3 col-md-6">
-            <div class="card-img bg-warning text-white mb-4">
-                <div class="card-body"><i class="fas fa-address-book"></i>@SharedLocalizer.GetLocalizedHtmlString(" Total Customers") (780)</div>
-                <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="text-white stretched-link" asp-controller="Customers" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("View all customers")</a>
-                    <div class="text-white"><i class="fas fa-angle-right"></i></div>
+            <!-- START card-->
+            <div class="card flex-row align-items-center align-items-stretch border-0">
+                <div class="col-4 d-flex align-items-center bg-green-dark justify-content-center rounded-left">
+                    <em class="icon-calendar fa-3x"></em>
+                </div>
+                <div class="col-8 py-3 bg-green rounded-right">
+                    <div class="h3 mt-0">Communications</div>
+                    <a class="text-white" asp-controller="Calendar" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("Setup email campaign ")</a>
+                    <i class="fas fa-angle-right ml-2"></i>
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card-img bg-success text-white mb-4">
-                <div class="card-body"> <i class="fas fa-calendar-alt"></i> @SharedLocalizer.GetLocalizedHtmlString(" Quotes Sent") (8)</div>
-                <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="text-white stretched-link" href="#">@SharedLocalizer.GetLocalizedHtmlString("View Quotes")</a>
-                    <div class="text-white"><i class="fas fa-angle-right"></i></div>
+        <div class="col-xl-3 col-lg-6 col-md-12">
+            <!-- START card-->
+            <div class="card flex-row align-items-center align-items-stretch border-0">
+                <div class="col-4 d-flex align-items-center bg-danger-dark justify-content-center rounded-left">
+                    <em class="icon-magnifier-add fa-3x"></em>
+                </div>
+                <div class="col-8 py-3 bg-danger rounded-right">
+                    <div class="h3 mt-0">Reports Manager</div>
+                    <a class="text-white" asp-controller="ServiceCustomers" asp-action="ServiceContractManager">@SharedLocalizer.GetLocalizedHtmlString("View Service Reports ")</a>
+                    <i class="fas fa-angle-right ml-2"></i>
                 </div>
             </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card-img bg-danger text-white mb-4">
-                <div class="card-body"><i class="fas fa-file-signature"></i> @SharedLocalizer.GetLocalizedHtmlString("Service Contract Reports")</div>
-                <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="text-white stretched-link" href="#">@SharedLocalizer.GetLocalizedHtmlString("View Reports")</a>
-                    <div class="text-white"><i class="fas fa-angle-right"></i></div>
-                </div>
-            </div>
+            <!-- End Card-->
         </div>
     </div>
+    <!-- End Cards Box -->
     <div class="row">
         <div class="col-xl-6">
             <div class="card mb-4">
