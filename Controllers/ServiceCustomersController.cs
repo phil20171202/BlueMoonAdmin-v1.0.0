@@ -94,12 +94,12 @@ namespace BlueMoonAdmin.Controllers
         // Saves new contact to database
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult UpdateServiceContract(ServiceCustomer obj)
+        public IActionResult UpdateServiceContract(ServiceViewModel obj)
         {
             if (ModelState.IsValid)
             {
-                int id = obj.CustomerId;
-                _db.ServiceCustomers.Update(obj);
+                int id = obj.ServiceCustomer.CustomerId;
+                _db.ServiceCustomers.Update(obj.ServiceCustomer);
                 _db.SaveChanges();
                 return RedirectToAction("ViewCustomer", "Customers", new { id });
             }
