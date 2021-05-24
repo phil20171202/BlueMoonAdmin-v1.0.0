@@ -22,7 +22,7 @@
 <div class="container-fluid">
 <div class="row">
     <div class="col-6 pb-4">
-        <div id="embed-api-auth-container"></div>
+        <div id="embed-api-auth"></div>
     </div>
     <div class="col-6 text-right">
         <a href="javascript:signOut()" class="btn btn-primary">Sign out</a>
@@ -53,26 +53,35 @@
     </div>
 </div>
     </div>
+<div class="container-fluid col-12">
+    <div class="card mb-4">
+        <div class="card-header">
+            <div class="col-6 pt-2">
+                <i class="fas fa-signal mr-1"></i> View New Users...
+            </div>
+        </div>
+        <div class="card-body">
+            <div id="embed-api-revenue"></div>
+            <div id="chart-container-revenue"></div>
+            <div id="view-selector-container-revenue" class="col-12"></div>
+        </div>
+    </div>
 
-<div class="container-fluid">
-    <ul class="nav nav-tabs" role="tablist" id="ga-tabs">
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#customer-contact" data-toggle="tab" id="Views-tab" aria-selected="true">Traffic Analysis</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#customer-address" data-toggle="tab" id="Address-tab" aria-selected="false">Customer Acquisition</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#customer-notes" data-toggle="tab" id="Notes-tab" aria-selected="false">Customer Behaviour</a>
-        </li>
-        @*<li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>*@
-    </ul>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <div class="col-6 pt-2">
+                <i class="fas fa-signal mr-1"></i> View Sessions Analysis...
+            </div>
+        </div>
+        <div class="card-body">
+            <div id="embed-api-sessions"></div>
+            <div id="chart-container-sessions"></div>
+            <div id="view-selector-container-sessions"></div>
+        </div>
+    </div>
 </div>
-
-<div class="tab-content">
-    <div id="customer-contact" class="tab-pane fade show active" role="tabpanel" aria-labelledby="Views-tab">
+   
         <div class="container-fluid col-12">
             <div class="card mb-4">
                 <div class="card-header">
@@ -81,16 +90,26 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div id="chart-container"></div>
-                    <div id="view-selector-container"></div>
+                    <div id="embed-api-campaigns"></div>
+                    <div id="chart-2-container"></div>
+                    <div id="view-selector-2-container"></div>
+                </div>
+                <div class="card-body">
+                    <div id="embed-api-campaigns"></div>
+                    <div id="chart-1-container"></div>
+                    <div id="view-selector-1-container"></div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+  
+
+   
+
 
 @section Scripts{
     <script src="https://apis.google.com/js/api.js"></script>
-    <script src="~/assets/vendor/GoogleAnalytics/GoogleAnalytics.js"></script>
-    <script src="~/assets/vendor/GoogleAnalytics/ga-api.js"></script>
+    <script src="~/assets/vendor/GoogleAnalytics/ga-auth-api.js"></script>
+    <script src="~/assets/vendor/GoogleAnalytics/ga-campaigns-api.js"></script>
+    <script src="~/assets/vendor/GoogleAnalytics/ga-sessions-api.js"></script>
+    <script src="~/assets/vendor/GoogleAnalytics/ga-revenue-api.js"></script>
 }

@@ -1,23 +1,21 @@
-﻿
-    gapi.analytics.ready(function() {
+﻿gapi.analytics.ready(function () {
 
-        /**
-         * Authorize the user immediately if the user has already granted access.
-         * If no access has been created, render an authorize button inside the
-         * element with the ID "embed-api-auth-container".
-         */
-        gapi.analytics.auth.authorize({
-            container: 'embed-api-auth-container',
-            clientid: '741820747648-0q7381obn2s853don1f4h72gctofpns3.apps.googleusercontent.com'
-        });
-
+    /**
+   * Authorize the user immediately if the user has already granted access.
+   * If no access has been created, render an authorize button inside the
+   * element with the ID "embed-api-auth-container".
+   */
+    gapi.analytics.auth.authorize({
+        container: 'embed-api-sessions',
+        clientid: '741820747648-0q7381obn2s853don1f4h72gctofpns3.apps.googleusercontent.com'
+    });
 
         /**
          * Create a new ViewSelector instance to be rendered inside of an
          * element with the id "view-selector-container".
          */
         var viewSelector = new gapi.analytics.ViewSelector({
-            container: 'view-selector-container'
+            container: 'view-selector-container-sessions'
         });
 
         // Render the view selector to the page.
@@ -37,7 +35,7 @@
                 'end-date': 'yesterday'
             },
             chart: {
-                container: 'chart-container',
+                container: 'chart-container-sessions',
                 type: 'LINE',
                 options: {
                     width: '100%'
