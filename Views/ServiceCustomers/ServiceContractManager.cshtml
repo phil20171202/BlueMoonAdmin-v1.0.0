@@ -139,7 +139,7 @@
                                 </p>
                             </div>
                             <div class="col-lg-3">
-                                <div class="radial-bar radial-bar-lg radial-bar-danger"  data-label="@Model.Overdue"></div>
+                                <div class="radial-bar radial-bar-lg radial-bar-danger"  data-label=@Model.Overdue></div>
                                 <p>
                                     <code>Overdue Services</code>
                                 </p>
@@ -186,42 +186,48 @@
                         </tfoot>
                         <tbody>
                             
-                                @foreach (var service in Model.ServiceCustomers)
-                                {
-                                    if (service.Service)
-                                    {
-                                        <tr>
-                                            <td>CompanyName</td>
-                                            <td>ContactName</td>
-                                            <td>TelephoneNumber</td>
-                                            <td>@service.StartDate</td>
-                                            <td>@service.RenewalDate</td>
-                                            <td>
-                                                <input asp-for="@service.NextServiceDate" class="form-control" readonly type="date" style="border: 0px; background-color:white" />
-                                                
-                                            </td>
-                                            <td>@service.ServiceContract</td>
-                                            <td>@service.CurrentMachine</td>
-                                            
+                                @foreach (var Service in @Model.ServiceCustomers)
+                                 {
 
+
+                                        
+                                        <tr>
+                                            <td>@Model.Customers.CompanyName</td>
+                                            <td>@Model.Customers.ContactName</td>
+                                            <td>@Model.Customers.TelephoneNumber</td>                                
+                                            <td>
+                                                @if(@Service.StartDate != null) 
+                                                {
+                                                <input asp-for="@Service.StartDate" class="form-control" readonly type="date" style="border: 0px; background-color:white" />
+                                                }
+                                            </td>
+                                            <td>
+                                                @if (@Service.RenewalDate != null)
+                                                {
+                                                <input asp-for="@Service.RenewalDate" class="form-control" readonly type="date" style="border: 0px; background-color:white" />
+                                                }
+                                            </td>
+                                            <td>
+                                                @if (@Service.NextServiceDate != null)
+                                                {
+                                                <input asp-for="@Service.NextServiceDate" class="form-control" readonly type="date" style="border: 0px; background-color:white" />
+                                                }
+                                            </td>
+                                            <td>@Service.ServiceContract</td>
+                                            <td>@Service.CurrentMachine</td>
                                             <td width="6%">
                                                 <div class="col-6 p-0 text-center">
-                                                    <a asp-controller="ServiceCustomers" asp-action="UpdateServiceContract" asp-route-Id="@service.Id" class="btn btn-primary">Update</a>
+                                                    <a asp-controller="ServiceCustomers" asp-action="UpdateServiceContract" asp-route-Id="@Service.Id" class="btn btn-primary">Update</a>
                                                 </div>
                                             </td>
                                             <td width="6%">
                                                 @*<div class="col-6 p-0 text-center">
                                                     <a asp-controller="ServiceCustomers" asp-action="DeleteToDoItem" asp-route-Id="@service.CustomerId" class="btn btn-danger">Delete</a>
-                                                </div>*@
-                                                </td>
-                                        </tr>
-                                    }
-                                }
-
-
-
-
-
+                                                  </div>*@
+                                            </td>
+                                        </tr>   
+                                        
+                                 }   
                         </tbody>
                     </table>
                 </div>
