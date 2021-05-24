@@ -79,7 +79,10 @@ namespace BlueMoonAdmin.Controllers
             {
                 return NotFound();
             }
-            ServiceCustomer obj = _db.ServiceCustomers.Find(id);
+            ServiceViewModel obj = new ServiceViewModel();
+            obj.ServiceCustomer = _db.ServiceCustomers.Find(id);
+            int CustomerID = obj.ServiceCustomer.CustomerId;
+            obj.Notes = _db.Notes.Where(c => c.Category == "Service" & c.CustomerId == CustomerID).ToList();
 
             if (obj == null)
             {

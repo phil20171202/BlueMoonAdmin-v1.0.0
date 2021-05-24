@@ -36,9 +36,9 @@ namespace BlueMoonAdmin.Models
         [Display(Name = "Current Machine")]
         public string CurrentMachine { get; set; }
 
-        [Display(Name = "Machine Notes")]
-        public string MachineNotes { get; set; }
-
+        //[Display(Name = "Machine Notes")]
+        //public string MachineNotes { get; set; }
+       
         [Display(Name = "Active Service")]
         public bool Service { get; set; }
 
