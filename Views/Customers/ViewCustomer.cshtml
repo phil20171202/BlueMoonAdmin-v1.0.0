@@ -503,40 +503,45 @@
                             <table class="table table-bordered" id="dataTableNotes" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th width="15%">Date</th>
-                                        <th width="70%">Notes</th>
-                                        <th width="10%">Action</th>
-                                        <th width="5%">Delete</th>
+                                        <th>Added By</th>
+                                        <th>Date</th>
+                                        <th width="60%">Notes</th>
+                                        <th>Action</th>
+                                      
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     @foreach (var item in Model.Notes)
                                     {
-                                        <tr>
-                                            <td>
-                                                @if (@item.Date != null)
-                                                {
-                                                    <input asp-for="@item.Date" disabled style="border: 0px; background-color:white" />
-                                                }
-                                            </td>
-                                            <td>
-                                                @*javascript to auto resize the box info here- http://www.jacklmoore.com/autosize/*@
+                                    <tr>
+                                        <td>
+                                            <input disabled style="border: 0px; background-color:white" />
+                                           
+                                        </td>
+                                        <td>
+                                            @if (@item.Date != null)
+                                            {
+                                                <input asp-for="@item.Date" disabled style="border: 0px; background-color:white" />
+                                            }
+                                        </td>
+                                        <td>
+                                            @*javascript to auto resize the box info here- http://www.jacklmoore.com/autosize/*@
 
-                                                <textarea rows="2" asp-for="@item.notes" class="form-control" text-wrap="normal" type="text" placeholder="Please add your note here"></textarea>
-                                                <span asp-validation-for="@item.notes" class="text-danger"></span>
-                                            </td>
-                                            <td>
-                                                <div class="w-100 btn-group" role="group">
-                                                    <a asp-controller="Notes" asp-action="ViewNotes" asp-route-Id="@item.Id" class="btn btn-primary mx-1">View</a>
-                                                    @*<a asp-controller="Customers" asp-action="DeleteCustomer" asp-route-Id="@customer.Id" class="btn btn-danger mx-1">Delete</a>*@
-                                                    <a asp-controller="Notes" asp-action="UpdateNotes" asp-route-Id="@item.Id" class="btn btn-danger mx-1">Edit</a>
-                                                </div>
-                                            </td>
-                                            <td><a asp-controller="Notes" asp-action="DeleteNotes" asp-route-Id="@item.Id" class="btn btn-danger mx-1">Delete</a></td>
-                                        </tr>
-                                    }
-                                </tbody>
+                                            <textarea rows="2" asp-for="@item.notes" class="form-control" text-wrap="normal" type="text" placeholder="Please add your note here"></textarea>
+                                            <span asp-validation-for="@item.notes" class="text-danger"></span>
+                                        </td>
+                                        <td>
+                                            <div class="w-100 btn-group" role="group">
+                                                <a asp-controller="Notes" asp-action="ViewNotes" asp-route-Id="@item.Id" class="btn btn-primary mx-1">View</a>
+                                                <a asp-controller="Notes" asp-action="UpdateNotes" asp-route-Id="@item.Id" class="btn btn-green mx-1">Edit</a>
+                                                <a asp-controller="Notes" asp-action="DeleteNotes" asp-route-Id="@item.Id" class="btn btn-danger mx-1">Delete</a>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                        }
+                                    </tbody>
                             </table>
                         </div>
                     </div>

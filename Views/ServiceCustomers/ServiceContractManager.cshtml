@@ -139,7 +139,7 @@
                                 </p>
                             </div>
                             <div class="col-lg-3">
-                                <div class="radial-bar radial-bar-lg radial-bar-danger"  data-label=@Model.Overdue></div>
+                                <div class="radial-bar-5 radial-bar-lg radial-bar-danger"  data-label=@Model.Overdue></div>
                                 <p>
                                     <code>Overdue Services</code>
                                 </p>
@@ -160,10 +160,11 @@
                         <thead>
                             <tr>
                                 @*
-                                <th>ID</th>*@
+        <th>ID</th>*@
                                 <th>Company Name</th>
                                 <th>Contact Name</th>
-                                <th>Telephone Number</th>
+                                @*<th>Telephone Number</th>*@
+                                <th>Last Serviced</th>
                                 <th>Start Date</th>
                                 <th>Renewal Date</th>
                                 <th>Next Service Date</th>
@@ -191,7 +192,13 @@
                                         <tr>
                                             <td>@Model.Customers.CompanyName</td>
                                             <td>@Model.Customers.ContactName</td>
-                                            <td>@Model.Customers.TelephoneNumber</td>                                
+                                            @*<td>@Model.Customers.TelephoneNumber</td>*@
+                                            <td>
+                                                @if (@Service.LastServiceDate != null)
+                                                {
+                                                    <input asp-for="@Service.LastServiceDate" class="form-control" readonly type="date" style="border: 0px; background-color:white" />
+                                                }
+                                            </td>
                                             <td>
                                                 @if(@Service.StartDate != null) 
                                                 {

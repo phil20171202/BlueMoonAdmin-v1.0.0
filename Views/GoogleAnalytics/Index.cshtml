@@ -1,0 +1,152 @@
+﻿
+@{
+    ViewData["Title"] = "Google Analytics";
+}
+
+<script>
+    (function (w, d, s, g, js, fs) {
+        g = w.gapi || (w.gapi = {}); g.analytics = { q: [], ready: function (f) { this.q.push(f); } };
+        js = d.createElement(s); fs = d.getElementsByTagName(s)[0];
+        js.src = 'https://apis.google.com/js/platform.js';
+        fs.parentNode.insertBefore(js, fs); js.onload = function () { g.load('analytics'); };
+    }(window, document, 'script'));
+</script>
+
+<div class="container-fluid">
+    <h1 class="mt-4 pb-2">Google Analytics</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Dashboard</a></li>
+        <li class="breadcrumb-item active">Google Analytics</li>
+    </ol>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-6 pb-4">
+            <div id="embed-api-auth"></div>
+        </div>
+        <div class="col-6 text-right">
+            <a href="javascript:signOut()" class="btn btn-primary">Sign out</a>
+            <script>
+                function onSignIn(googleUser) {
+                    var profile = googleUser.getBasicProfile();
+                    if (profile.getEmail() != "") {
+                        var myKeyVals = { token: googleUser.getAuthResponse().id_token }
+                        $.ajax({
+                            type: "POST",
+                            url: "validate.php",
+                            data: myKeyVals,
+                            dataType: "text",
+                            success: function (data) {
+                                window.location = "page";
+                            }
+                        });
+                    }
+                }
+
+                function signOut() {
+                    var auth2 = gapi.auth2.getAuthInstance();
+                    auth2.signOut().then(function () {
+                    });
+                }
+            </script>
+
+        </div>
+    </div>
+</div>
+<div class="container-fluid col-12">
+    <div class="card mb-4">
+        @*<div class="card-header">
+                        <div class="col-6 pt-2">
+                            <i class="fas fa-signal mr-1"></i> View New Users...
+                        </div>
+                    </div>
+                    <div class="card-body col-12">
+                        <div id="embed-api-revenue"></div>
+                        <div id="chart-container-revenue"></div>
+                        <div id="view-selector-container-revenue"></div>
+                    </div>
+                </div>
+
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <div class="col-6 pt-2">
+                            <i class="fas fa-signal mr-1"></i> View Sessions Analysis...
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="embed-api-sessions"></div>
+                        <div id="chart-container-sessions"></div>
+                        <div id="view-selector-container-sessions"></div>
+                    </div>
+                </div>
+            </div>
+
+                    <div class="container-fluid col-12">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <div class="col-6 pt-2">
+                                    <i class="fas fa-signal mr-1"></i> View Customer and traffic analysis...
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div id="embed-api-campaigns"></div>
+                                <div id="chart-2-container"></div>
+                                <div id="view-selector-2-container"></div>
+                            </div>
+                            <div class="card-body">
+                                <div id="embed-api-campaigns"></div>
+                                <div id="chart-1-container"></div>
+                                <div id="view-selector-1-container"></div>
+                            </div>
+                                </div>*@
+                    <header>
+                        <div id="embed-charts-api"></div>
+                        <div id="view-selector-container"></div>
+                        <div id="view-name"></div>
+                        <div id="active-users-container"></div>
+                    </header>
+                    <div class="Chartjs">
+                        <h3>This Week vs Last Week (by sessions)</h3>
+                        <figure class="Chartjs-figure" id="chart-1-container"></figure>
+                        <ol class="Chartjs-legend" id="legend-1-container"></ol>
+                    </div>
+                    <div class="Chartjs">
+                        <h3>This Year vs Last Year (by users)</h3>
+                        <figure class="Chartjs-figure" id="chart-2-container"></figure>
+                        <ol class="Chartjs-legend" id="legend-2-container"></ol>
+                    </div>
+                    <div class="Chartjs">
+                        <h3>Top Browsers (by pageview)</h3>
+                        <figure class="Chartjs-figure" id="chart-3-container"></figure>
+                        <ol class="Chartjs-legend" id="legend-3-container"></ol>
+                    </div>
+                    <div class="Chartjs">
+                        <h3>Top Countries (by sessions)</h3>
+                        <figure class="Chartjs-figure" id="chart-4-container"></figure>
+                        <ol class="Chartjs-legend" id="legend-4-container"></ol>
+                    </div>
+                </div>
+            </div>
+
+@section Styles{
+    <link rel="stylesheet" src="~/assets/vendor/GoogleAnalytics/dev-tools-embed/src/css/chartjs-visualizations.css" />
+
+}
+
+
+
+@section Scripts{
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+    <script src="~/assets/vendor/GoogleAnalytics/dev-tools-embed/src/javascript/embed-api/components/active-users.js"></script>
+    <script src="~/assets/vendor/GoogleAnalytics/dev-tools-embed/src/javascript/embed-api/components/date-range-selector.js"></script>
+    <script type="module" src="~/assets/vendor/GoogleAnalytics/dev-tools-embed/src/javascript/embed-api/components/view-selector2.js"></script>
+    <script src="~/assets/vendor/GoogleAnalytics/ga-auth-api.js"></script>
+
+    @*   <script src="~/assets/vendor/GoogleAnalytics/ga-campaigns-api.js"></script>
+        <script src="~/assets/vendor/GoogleAnalytics/ga-sessions-api.js"></script>
+        <script src="~/assets/vendor/GoogleAnalytics/ga-revenue-api.js"></script>*@
+
+}
