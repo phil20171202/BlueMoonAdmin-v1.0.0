@@ -506,7 +506,7 @@
                                         <th width="15%">Date</th>
                                         <th width="70%">Notes</th>
                                         <th width="10%">Action</th>
-                                        <th width="5%">Delete</th>
+                                    
                                     </tr>
                                 </thead>
 
@@ -530,7 +530,7 @@
                                                 <div class="w-100 btn-group" role="group">
                                                     <a asp-controller="Notes" asp-action="ViewNotes" asp-route-Id="@item.Id" class="btn btn-primary mx-1">View</a>
                                                     @*<a asp-controller="Customers" asp-action="DeleteCustomer" asp-route-Id="@customer.Id" class="btn btn-danger mx-1">Delete</a>*@
-                                                    <a asp-controller="Notes" asp-action="UpdateNotes" asp-route-Id="@item.Id" class="btn btn-danger mx-1">Edit</a>
+                                                    <a asp-controller="Notes" asp-action="UpdateNotes" asp-route-Id="@item.Id" class="btn btn-green mx-1">Edit</a>
                                                 </div>
                                             </td>
                                             <td><a asp-controller="Notes" asp-action="DeleteNotes" asp-route-Id="@item.Id" class="btn btn-danger mx-1">Delete</a></td>
