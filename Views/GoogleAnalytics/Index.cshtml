@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewData["Title"] = "Google Analytics";
+}
+
+<script>
+    (function (w, d, s, g, js, fs) {
+        g = w.gapi || (w.gapi = {}); g.analytics = { q: [], ready: function (f) { this.q.push(f); } };
+        js = d.createElement(s); fs = d.getElementsByTagName(s)[0];
+        js.src = 'https://apis.google.com/js/platform.js';
+        fs.parentNode.insertBefore(js, fs); js.onload = function () { g.load('analytics'); };
+    }(window, document, 'script'));
+</script>
+
+<div class="container-fluid">
+    <h1 class="mt-4 pb-2">Google Analytics</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Dashboard</a></li>
+        <li class="breadcrumb-item active">Google Analytics</li>
+    </ol>
+</div>
+<div class="container-fluid">
+<div class="row">
+    <div class="col-6 pb-4">
+        <div id="embed-api-auth-container"></div>
+    </div>
+    <div class="col-6 text-right">
+        <a href="javascript:signOut()" class="btn btn-primary">Sign out</a>
+        <script>
+            function onSignIn(googleUser) {
+                var profile = googleUser.getBasicProfile();
+                if (profile.getEmail() != "") {
+                    var myKeyVals = { token: googleUser.getAuthResponse().id_token }
+                    $.ajax({
+                        type: "POST",
+                        url: "validate.php",
+                        data: myKeyVals,
+                        dataType: "text",
+                        success: function (data) {
+                            window.location = "page";
+                        }
+                    });
+                }
+            }
+
+            function signOut() {
+                var auth2 = gapi.auth2.getAuthInstance();
+                auth2.signOut().then(function () {
+                });
+            }
+        </script>
+
+    </div>
+</div>
+    </div>
+
+<div class="container-fluid">
+    <ul class="nav nav-tabs" role="tablist" id="ga-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#customer-contact" data-toggle="tab" id="Views-tab" aria-selected="true">Traffic Analysis</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#customer-address" data-toggle="tab" id="Address-tab" aria-selected="false">Customer Acquisition</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#customer-notes" data-toggle="tab" id="Notes-tab" aria-selected="false">Customer Behaviour</a>
+        </li>
+        @*<li class="nav-item">
+                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>*@
+    </ul>
+</div>
+
+<div class="tab-content">
+    <div id="customer-contact" class="tab-pane fade show active" role="tabpanel" aria-labelledby="Views-tab">
+        <div class="container-fluid col-12">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <div class="col-6 pt-2">
+                        <i class="fas fa-signal mr-1"></i> View Customer and traffic analysis...
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="chart-container"></div>
+                    <div id="view-selector-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="~/assets/vendor/GoogleAnalytics/GoogleAnalytics.js"></script>
+    <script src="~/assets/vendor/GoogleAnalytics/ga-api.js"></script>
+}
