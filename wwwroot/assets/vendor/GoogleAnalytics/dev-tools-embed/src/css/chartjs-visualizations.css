@@ -15,10 +15,10 @@ limitations under the License.
 */
 
 /* Base styles, media queries, variables, etc. */
-@import './base/custom-media';
-@import './base/variables';
+@import '/assets/vendor/GoogleAnalytics/dev-tools-embed/src/css/base/custom-media.css';
+@import '/assets/vendor/GoogleAnalytics/dev-tools-embed/src/css/base/variables.css';
 
 
 /* Components. */
-@import './components/active-users';
-@import './components/chartjs';
+@import '/assets/vendor/GoogleAnalytics/dev-tools-embed/src/css/components/active-users';
+@import '/assets/vendor/GoogleAnalytics/dev-tools-embed/src/css/components/chartjs';
