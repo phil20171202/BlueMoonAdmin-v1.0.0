@@ -3,13 +3,58 @@
     ViewData["Title"] = "BusinessSnapshot";
 }
 
+<script>
+    (function (w, d, s, g, js, fs) {
+        g = w.gapi || (w.gapi = {}); g.analytics = { q: [], ready: function (f) { this.q.push(f); } };
+        js = d.createElement(s); fs = d.getElementsByTagName(s)[0];
+        js.src = 'https://apis.google.com/js/platform.js';
+        fs.parentNode.insertBefore(js, fs); js.onload = function () { g.load('analytics'); };
+    }(window, document, 'script'));
+</script>
+
 <div class="container-fluid">
-    <h1 class="mt-4 pb-2">Business Overview</h1>
+    <h1 class="mt-4 pb-2">Business Overview - Analytics</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Dashboard</a></li>
         <li class="breadcrumb-item active">Google Analytics</li>
     </ol>
 </div>
+
+<div class="container-fluid col-lg-12">
+<div class="row border-bottom mb-3">
+    <div class="col-6 pb-2">
+        <div id="embed-api-auth"></div>
+    </div>
+    <div class="col-6 text-right pb-3">
+        <a href="javascript:signOut()" class="btn btn-primary">Sign out</a>
+        <script>
+            function onSignIn(googleUser) {
+                var profile = googleUser.getBasicProfile();
+                if (profile.getEmail() != "") {
+                    var myKeyVals = { token: googleUser.getAuthResponse().id_token }
+                    $.ajax({
+                        type: "POST",
+                        url: "validate.php",
+                        data: myKeyVals,
+                        dataType: "text",
+                        success: function (data) {
+                            window.location = "page";
+                        }
+                    });
+                }
+            }
+
+            function signOut() {
+                var auth2 = gapi.auth2.getAuthInstance();
+                auth2.signOut().then(function () {
+                });
+            }
+        </script>
+
+    </div>
+</div>
+</div>
+
 <div class="container-fluid">
     <!-- START cards box-->
     <div class="row">
@@ -178,29 +223,34 @@
         </div>
         <!-- END row-->
     </div>
-    
+
 
     @section Styles {
-            <link href="~/assets/vendor/ika.jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" />
+        <link href="~/assets/vendor/ika.jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" />
 
     }
 
     @section Scripts {
 
-            <script src="~/assets/vendor/jquery-sparkline/jquery.sparkline.js"></script>
-            <script src="~/assets/vendor/flot/jquery.flot.js"></script>
-            <script src="~/assets/vendor/jquery.flot.tooltip/js/jquery.flot.tooltip.js"></script>
-            <script src="~/assets/vendor/flot/jquery.flot.resize.js"></script>
-            <script src="~/assets/vendor/flot/jquery.flot.pie.js"></script>
-            <script src="~/assets/vendor/flot/jquery.flot.time.js"></script>
-            <script src="~/assets/vendor/flot/jquery.flot.categories.js"></script>
-            <script src="~/assets/vendor/jquery.flot.spline/jquery.flot.spline.js"></script>
-            <script src="~/assets/vendor/easy-pie-chart/dist/jquery.easypiechart.js"></script>
-            <script src="~/assets/vendor/jquery-slimscroll/jquery.slimscroll.js"></script>
-            <script src="~/assets/vendor/ika.jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-            <script src="~/assets/vendor/ika.jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-            <script src="~/assets/vendor/ika.jvectormap/jquery-jvectormap-us-mill-en.js"></script>
-      
+        <script src="~/assets/vendor/jquery-sparkline/jquery.sparkline.js"></script>
+        <script src="~/assets/vendor/flot/jquery.flot.js"></script>
+        <script src="~/assets/vendor/jquery.flot.tooltip/js/jquery.flot.tooltip.js"></script>
+        <script src="~/assets/vendor/flot/jquery.flot.resize.js"></script>
+        <script src="~/assets/vendor/flot/jquery.flot.pie.js"></script>
+        <script src="~/assets/vendor/flot/jquery.flot.time.js"></script>
+        <script src="~/assets/vendor/flot/jquery.flot.categories.js"></script>
+        <script src="~/assets/vendor/jquery.flot.spline/jquery.flot.spline.js"></script>
+        <script src="~/assets/vendor/easy-pie-chart/dist/jquery.easypiechart.js"></script>
+        <script src="~/assets/vendor/jquery-slimscroll/jquery.slimscroll.js"></script>
+        <script src="~/assets/vendor/ika.jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+        <script src="~/assets/vendor/ika.jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+        <script src="~/assets/vendor/ika.jvectormap/jquery-jvectormap-us-mill-en.js"></script>
+        <script src="https://apis.google.com/js/api.js"></script>
+        <script src="~/assets/vendor/GoogleAnalytics/ga-auth-api.js"></script>
+        <script src="~/assets/vendor/GoogleAnalytics/ga-campaigns-api.js"></script>
+        <script src="~/assets/vendor/GoogleAnalytics/ga-sessions-api.js"></script>
+        <script src="~/assets/vendor/GoogleAnalytics/ga-revenue-api.js"></script>
+
     }
 
 </div>
