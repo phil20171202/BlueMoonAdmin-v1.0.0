@@ -30,7 +30,9 @@ namespace BlueMoonAdmin.Controllers
 
         public IActionResult CustomerDashboard()
         {
-            return View();
+            var CustomerVM = new CustomerViewModel();
+            CustomerVM.CustomerCount = _db.Customers.Count();
+            return View(CustomerVM);
         }
 
         public IActionResult ViewCustomer(int? id)
