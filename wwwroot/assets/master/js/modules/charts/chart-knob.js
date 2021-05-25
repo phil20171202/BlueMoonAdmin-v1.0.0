@@ -45,6 +45,71 @@
         };
         $('#knob-chart4').knob(knobLoaderOptions4);
 
+        // Bluemoon additional charts 
+
+        // completed services
+
+        var knobLoaderOptions1 = {
+            width: '50%', // responsive
+            displayInput: true,
+            fgColor: APP_COLORS['success']
+        };
+        $('#knob-chart-completed').knob(knobLoaderOptions1);
+
+        var knobLoaderOptions1 = {
+            width: '50%', // responsive
+            displayInput: true,
+            fgColor: APP_COLORS['purple'],
+            readOnly: true
+        };
+
+        // single services 
+
+        var knobLoaderOptions1 = {
+            width: '50%', // responsive
+            displayInput: true,
+            fgColor: APP_COLORS['info']
+        };
+        $('#knob-chart-single').knob(knobLoaderOptions1);
+
+        var knobLoaderOptions1 = {
+            width: '50%', // responsive
+            displayInput: true,
+            fgColor: APP_COLORS['purple'],
+            readOnly: true
+        };
+        // services upcoming
+
+        var knobLoaderOptions1 = {
+            width: '50%', // responsive
+            displayInput: true,
+            fgColor: APP_COLORS['yellow']
+        };
+        $('#knob-chart-upcoming').knob(knobLoaderOptions1);
+
+            var knobLoaderOptions1 = {
+            width: '50%', // responsive
+            displayInput: true,
+            fgColor: APP_COLORS['purple'],
+            readOnly: true
+        };
+
+        // services overdue
+
+        var knobLoaderOptions1 = {
+            width: '50%', // responsive
+            displayInput: true,
+            fgColor: APP_COLORS['danger']
+        };
+
+        $('#knob-chart-overdue').knob(knobLoaderOptions1);
+
+        var knobLoaderOptions1 = {
+            width: '50%', // responsive
+            displayInput: true,
+            fgColor: APP_COLORS['red'],
+            readOnly: true
+        };
     }
 
 })();
