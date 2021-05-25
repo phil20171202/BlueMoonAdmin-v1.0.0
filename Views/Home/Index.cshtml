@@ -294,6 +294,8 @@
                 </div>
             </div>
             <!-- END loader widget-->
+
+          
             <!-- START messages and activity-->
             <div class="card card-default">
                 <div class="card-header">
@@ -302,12 +304,13 @@
                 <!-- START list group-->
                 <div class="list-group">
                     <!-- START list group item-->
+                    <!-- ****** Need to fix the fa-stack-2x it's not displaying correctly **** -->
                     <div class="list-group-item">
                         <div class="media">
                             <div class="align-self-start mr-2">
                                 <span class="fa-stack">
-                                    <em class="fa fa-circle fa-stack-2x text-purple"></em>
-                                    <em class="fas fa-cloud-upload-alt fa-stack-1x fa-inverse text-white"></em>
+                                    <i class="fa fa-circle fa-stack-1x text-purple"></i>
+                                    <i class="fas fa-cloud-upload-alt fa-stack-1x fa-inverse text-white"></i>
                                 </span>
                             </div>
                             <div class="media-body text-truncate">
@@ -331,7 +334,7 @@
                         <div class="media">
                             <div class="align-self-start mr-2">
                                 <span class="fa-stack">
-                                    <em class="fa fa-circle fa-stack-2x text-info"></em>
+                                    <em class="fa fa-circle fa-stack-1x text-info"></em>
                                     <em class="far fa-file-alt fa-stack-1x fa-inverse text-white"></em>
                                 </span>
                             </div>
@@ -356,7 +359,7 @@
                         <div class="media">
                             <div class="align-self-start mr-2">
                                 <span class="fa-stack">
-                                    <em class="fa fa-circle fa-stack-2x text-danger"></em>
+                                    <em class="fa fa-circle fa-stack-1x text-danger"></em>
                                     <em class="fa fa-exclamation fa-stack-1x fa-inverse text-white"></em>
                                 </span>
                             </div>
@@ -379,7 +382,7 @@
                         <div class="media">
                             <div class="align-self-start mr-2">
                                 <span class="fa-stack">
-                                    <em class="fa fa-circle fa-stack-2x text-success"></em>
+                                    <em class="fa fa-circle fa-stack-1x text-success"></em>
                                     <em class="far fa-clock fa-stack-1x fa-inverse text-white"></em>
                                 </span>
                             </div>
@@ -405,8 +408,8 @@
                         <div class="media">
                             <div class="align-self-start mr-2">
                                 <span class="fa-stack">
-                                    <em class="fa fa-circle fa-stack-2x text-warning"></em>
-                                    <em class="fa fa-tasks fa-stack-1x fa-inverse text-white"></em>
+                                    <i class="fa fa-circle fa-stack-1x text-warning"></i>
+                                    <i class="fa fa-tasks fa-stack-1x fa-inverse text-white"></i>
                                 </span>
                             </div>
                             <div class="media-body text-truncate">
@@ -533,10 +536,6 @@
 @section Styles {
     <link href="~/assets/vendor/weather-icons/css/weather-icons.css" rel="stylesheet" />
     <link href="~/assets/vendor/weather-icons/css/weather-icons-wind.css" rel="stylesheet" />
-    <link href='~/assets/vendor/@@fortawesome/fontawesome-free/css/brands.css' rel="stylesheet" />
-    <link href='~/assets/vendor/@@fortawesome/fontawesome-free/css/regular.css' rel="stylesheet" />
-    <link href='~/assets/vendor/@@fortawesome/fontawesome-free/css/solid.css' rel="stylesheet" />
-    <link href='~/assets/vendor/@@fortawesome/fontawesome-free/css/fontawesome.css' rel="stylesheet" />
 }
 
 @section Scripts{
