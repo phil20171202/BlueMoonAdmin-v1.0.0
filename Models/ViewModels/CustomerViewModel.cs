@@ -15,5 +15,7 @@ namespace BlueMoonAdmin.Models.ViewModels
         public IEnumerable<Addresses> Addresses { get; set; }
 
         public ServiceCustomer ServiceCustomer { get; set; }
+
+        public int CustomerCount { get; set; }
     }
 }
