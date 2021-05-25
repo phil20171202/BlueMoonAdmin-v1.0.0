@@ -1,0 +1,207 @@
+﻿
+@{
+    ViewData["Title"] = "BusinessSnapshot";
+}
+
+<div class="container-fluid">
+    <h1 class="mt-4 pb-2">Business Overview</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Dashboard</a></li>
+        <li class="breadcrumb-item active">Google Analytics</li>
+    </ol>
+</div>
+<div class="container-fluid">
+    <!-- START cards box-->
+    <div class="row">
+        <div class="col-xl-3 col-md-6">
+            <!-- START card-->
+            <div class="card bg-info-light pt-2 b0">
+                <div class="px-2">
+                    <em class="icon-cloud-upload fa-lg float-right"></em>
+                    <div class="h2 mt-0">1700</div>
+                    <div class="text-uppercase">Uploads</div>
+                </div>
+                <div data-sparkline="" data-type="line" data-width="100%" data-height="75px" data-line-color="#23b7e5" data-chart-range-min="0" data-fill-color="#23b7e5" data-spot-color="#23b7e5" data-min-spot-color="#23b7e5" data-max-spot-color="#23b7e5" data-highlight-spot-color="#23b7e5"
+                     data-highlight-line-color="#23b7e5" data-values="2,5,3,7,4,5" style="margin-bottom: -2px;" data-resize="true"></div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <!-- START card-->
+            <div class="card bg-purple-light pt-2 b0">
+                <div class="px-2">
+                    <em class="icon-globe fa-lg float-right"></em>
+                    <div class="h2 mt-0">
+                        700
+                        <span class="text-sm text-white">GB</span>
+                    </div>
+                    <div class="text-uppercase">Quota</div>
+                </div>
+                <div data-sparkline="" data-type="line" data-width="100%" data-height="75px" data-line-color="#7266ba" data-chart-range-min="0" data-fill-color="#7266ba" data-spot-color="#7266ba" data-min-spot-color="#7266ba" data-max-spot-color="#7266ba" data-highlight-spot-color="#7266ba"
+                     data-highlight-line-color="#7266ba" data-values="1,4,5,4,8,7,10" style="margin-bottom: -2px;" data-resize="true"></div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-12">
+            <!-- START card-->
+            <div class="card bg-info-light pt-2 b0">
+                <div class="px-2">
+                    <em class="icon-bubbles fa-lg float-right"></em>
+                    <div class="h2 mt-0">500</div>
+                    <div class="text-uppercase">Reviews</div>
+                </div>
+                <div data-sparkline="" data-type="line" data-width="100%" data-height="75px" data-line-color="#23b7e5" data-chart-range-min="0" data-fill-color="#23b7e5" data-spot-color="#23b7e5" data-min-spot-color="#23b7e5" data-max-spot-color="#23b7e5" data-highlight-spot-color="#23b7e5"
+                     data-highlight-line-color="#23b7e5" data-values="4,5,3,10,7,15" style="margin-bottom: -2px;" data-resize="true"></div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-12">
+            <!-- START card-->
+            <div class="card bg-purple-light pt-2 b0">
+                <div class="px-2">
+                    <em class="icon-pencil fa-lg float-right"></em>
+                    <div class="h2 mt-0">35</div>
+                    <div class="text-uppercase">Annotations</div>
+                </div>
+                <div data-sparkline="" data-type="line" data-width="100%" data-height="75px" data-line-color="#7266ba" data-chart-range-min="0" data-fill-color="#7266ba" data-spot-color="#7266ba" data-min-spot-color="#7266ba" data-max-spot-color="#7266ba" data-highlight-spot-color="#7266ba"
+                     data-highlight-line-color="#7266ba" data-values="1,3,4,5,7,8" style="margin-bottom: -2px;" data-resize="true"></div>
+            </div>
+        </div>
+    </div>
+    <!-- END cards box-->
+    <!-- START chart-->
+    <div class="row">
+        <div class="col-xl-12">
+            <!-- START card-->
+            <div class="card card-default" id="cardChart9">
+                <div class="card-header">
+                    <div class="card-title">Website Performance</div>
+                </div>
+                <div class="card-wrapper">
+                    <div class="card-body">
+                        <div class="chart-splinev3 flot-chart"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- END card-->
+        </div>
+    </div>
+    <!-- END chart-->
+    <!-- END dashboard sidebar-->
+    <!-- END cards-->
+
+    <div class="container-fluid">
+        <!-- START row-->
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="card card-default" id="cardChart1">
+                    <div class="card-header">
+                        <div class="card-title">Area</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-area flot-chart"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="card card-default" id="cardChart9">
+                    <div class="card-header">
+                        <div class="card-title">Area Spline</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-spline flot-chart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END row-->
+        <!-- START row-->
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="card card-default" id="cardChart2">
+                    <div class="card-header">
+                        <div class="card-title">Bar</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-bar flot-chart"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="card card-default" id="cardChart3">
+                    <div class="card-header">
+                        <div class="card-title">Bar - Stacked</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-bar-stacked flot-chart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END row-->
+        <!-- START row-->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card card-default" id="cardChart4">
+                    <div class="card-header">
+                        <div class="card-title">Line</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-line flot-chart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END row-->
+        <!-- START row-->
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card card-default" id="cardChart5">
+                    <div class="card-header">
+                        <div class="card-title">Pie</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-pie flot-chart"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card card-default" id="cardChart6">
+                    <div class="card-header">
+                        <div class="card-title">
+                            Donut
+                            <small>(loaded from json)</small>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-donut flot-chart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END row-->
+    </div>
+    
+
+    @section Styles {
+            <link href="~/assets/vendor/ika.jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" />
+
+    }
+
+    @section Scripts {
+
+            <script src="~/assets/vendor/jquery-sparkline/jquery.sparkline.js"></script>
+            <script src="~/assets/vendor/flot/jquery.flot.js"></script>
+            <script src="~/assets/vendor/jquery.flot.tooltip/js/jquery.flot.tooltip.js"></script>
+            <script src="~/assets/vendor/flot/jquery.flot.resize.js"></script>
+            <script src="~/assets/vendor/flot/jquery.flot.pie.js"></script>
+            <script src="~/assets/vendor/flot/jquery.flot.time.js"></script>
+            <script src="~/assets/vendor/flot/jquery.flot.categories.js"></script>
+            <script src="~/assets/vendor/jquery.flot.spline/jquery.flot.spline.js"></script>
+            <script src="~/assets/vendor/easy-pie-chart/dist/jquery.easypiechart.js"></script>
+            <script src="~/assets/vendor/jquery-slimscroll/jquery.slimscroll.js"></script>
+            <script src="~/assets/vendor/ika.jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+            <script src="~/assets/vendor/ika.jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+            <script src="~/assets/vendor/ika.jvectormap/jquery-jvectormap-us-mill-en.js"></script>
+      
+    }
+
+</div>
+
