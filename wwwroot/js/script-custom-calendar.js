@@ -10,7 +10,7 @@ $(document).ready(function () {
 
 function InitializeCalendar() {
     try {
-        var calendarEl = document.getElementById('calendar');
+        var calendarEl = document.getElementById('servicing-calendar');
         if (calendarEl != null) {
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',

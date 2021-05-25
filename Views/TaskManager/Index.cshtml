@@ -2,11 +2,6 @@
 @{
     ViewData["Title"] = "Index";
 }
-    <link rel='stylesheet' href='~/assets/vendor/@@fullcalendar/core/main.css'>
-    <link rel='stylesheet' href='~/assets/vendor/@@fullcalendar/daygrid/main.css'>
-    <link rel='stylesheet' href='~/assets/vendor/@@fullcalendar/timegrid/main.css'>
-    <link rel='stylesheet' href='~/assets/vendor/@@fullcalendar/list/main.css'>
-    <link rel='stylesheet' href='~/assets/vendor/@@fullcalendar/bootstrap/main.css'>
 
 <div class="container-fluid">
     <h1 class="mt-4">Task Manager</h1>
@@ -98,10 +93,15 @@
     </div>
 </div>
 
+@section Styles {
+    <link rel='stylesheet' href='~/assets/vendor/@@fullcalendar/core/main.css'>
+    <link rel='stylesheet' href='~/assets/vendor/@@fullcalendar/daygrid/main.css'>
+    <link rel='stylesheet' href='~/assets/vendor/@@fullcalendar/timegrid/main.css'>
+    <link rel='stylesheet' href='~/assets/vendor/@@fullcalendar/list/main.css'>
+    <link rel='stylesheet' href='~/assets/vendor/@@fullcalendar/bootstrap/main.css'>
+}
 
-
-
-@section Scripts {
+@section Scripts {   
     <script src='~/assets/vendor/@@fullcalendar/core/main.js'></script>
     <script src='~/assets/vendor/@@fullcalendar/daygrid/main.js'></script>
     <script src='~/assets/vendor/@@fullcalendar/timegrid/main.js'></script>
