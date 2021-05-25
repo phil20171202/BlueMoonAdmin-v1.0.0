@@ -15,6 +15,8 @@ namespace BlueMoonAdmin.Models
         [Display(Name ="Notes")]
         public string notes { get; set; }
 
+        public string Category { get; set; }
+
         [DataType(DataType.Date)]
         public Nullable<DateTime> Date { get; set; }
 

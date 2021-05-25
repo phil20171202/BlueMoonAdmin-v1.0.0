@@ -188,10 +188,7 @@
                         <tbody>
                             
                                 @foreach (var Service in @Model.ServiceCustomers)
-                                 {
-
-
-                                        
+                                 {                                        
                                         <tr>
                                             <td>@Model.Customers.CompanyName</td>
                                             <td>@Model.Customers.ContactName</td>
@@ -232,8 +229,7 @@
                                                     <a asp-controller="ServiceCustomers" asp-action="DeleteToDoItem" asp-route-Id="@service.CustomerId" class="btn btn-danger">Delete</a>
                                                   </div>*@
                                             </td>
-                                        </tr>   
-                                        
+                                        </tr>                                           
                                  }   
                         </tbody>
                     </table>

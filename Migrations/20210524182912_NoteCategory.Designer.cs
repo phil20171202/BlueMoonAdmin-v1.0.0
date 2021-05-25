@@ -4,14 +4,16 @@ using BlueMoonAdmin.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BlueMoonAdmin.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210524182912_NoteCategory")]
+    partial class NoteCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -238,6 +240,9 @@ namespace BlueMoonAdmin.Migrations
 
                     b.Property<DateTime?>("LastServiceDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("MachineNotes")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("NextServiceDate")
                         .HasColumnType("datetime2");

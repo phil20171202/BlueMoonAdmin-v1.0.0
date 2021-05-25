@@ -16,7 +16,7 @@
                 </div>
                 <div class="form-group">
                     <label for="select customer">Select Customer</label>
-                    <select id="customerServiceId" asp-items="@(new SelectList(ViewBag.CustomerServiceList, "Id", "Name"))" class="form-control"></select>
+                    <select id="customerServiceId" asp-items="@(new SelectList(ViewBag.CustomerServiceList, "Id", "Name"))" class="form-control" ></select>
                 </div>
                 <div class="form-group">
                     <label for="appointmentDate">Select Date &amp; Time</label>

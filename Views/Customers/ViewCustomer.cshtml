@@ -505,9 +505,10 @@
                                     <tr>
                                         <th>Added By</th>
                                         <th>Date</th>
+                                        <th>Category</th>
                                         <th width="60%">Notes</th>
                                         <th>Action</th>
-                                      
+
                                     </tr>
                                 </thead>
 
@@ -516,8 +517,7 @@
                                     {
                                     <tr>
                                         <td>
-                                            <input disabled style="border: 0px; background-color:white" />
-                                           
+                                            <input disabled style="border: 0px; background-color:white" />                                           
                                         </td>
                                         <td>
                                             @if (@item.Date != null)
@@ -525,6 +525,7 @@
                                                 <input asp-for="@item.Date" disabled style="border: 0px; background-color:white" />
                                             }
                                         </td>
+                                        <td>@item.Category</td>
                                         <td>
                                             @*javascript to auto resize the box info here- http://www.jacklmoore.com/autosize/*@
 

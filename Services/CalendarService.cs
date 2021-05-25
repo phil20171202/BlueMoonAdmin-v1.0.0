@@ -67,21 +67,38 @@ namespace BlueMoonAdmin.Services
         }
 
         public List<CustomerServiceViewModel> GetCustomerServiceList()
-        {  // need to change this to ServiceCustomers Table for the calendar to pull in service contract customers
+        {  // ServiceCustomers Table for the calendar to pull in service contract customers
 
-            var customerServices = (from user in _db.Users
-                                    join userRoles in _db.UserRoles on user.Id equals userRoles.UserId
-                                    join roles in _db.Roles.Where(x => x.Name == Helper.CustomerService) on userRoles.RoleId equals roles.Id
+            var customerServices = (from customer in _db.Customers
+                                    join service in _db.ServiceCustomers on customer.Id equals service.CustomerId
+                                    where service.Service
                                     select new CustomerServiceViewModel
                                     {
-                                        Id = user.Id,
-                                        Name = user.FirstName
+                                        Id = service.CustomerId.ToString(),
+                                        Name = service.Customer.CompanyName
                                     }
                             ).ToList();
 
             return customerServices;
 
             throw new NotImplementedException();
+
+
+
+            // User table link
+            //var customerServices = (from user in _db.Users
+            //                        join userRoles in _db.UserRoles on user.Id equals userRoles.UserId
+            //                        join roles in _db.Roles.Where(x => x.Name == Helper.CustomerService) on userRoles.RoleId equals roles.Id
+            //                        select new CustomerServiceViewModel
+            //                        {
+            //                            Id = user.Id,
+            //                            Name = user.FirstName
+            //                        }
+            //                ).ToList();
+
+            //return customerServices;
+
+            //throw new NotImplementedException();
         }
 
     }
