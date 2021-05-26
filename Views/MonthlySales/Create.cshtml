@@ -17,6 +17,9 @@
             <div class="col-lg-12">
                 <div class="form-group row text-center">
                     <div class="col-2">
+                        <label asp-for="Month"></label>
+                    </div>
+                    <div class="col-2">
                         <label asp-for="StartDate"></label>
                     </div>
                     <div class="col-2">
@@ -28,6 +31,15 @@
 
                 </div>
                 <div class="form-group row text-center">
+                    <div class="col-2">
+                        <select asp-for="Month" class="form-control">
+                            <option>-- Select Option --</option>
+                            <option>Customer Demo</option>
+                            <option>Site Visit</option>
+                            <option>Quote</option>
+                            <option>Meeting</option>
+                        </select>
+                    </div>
                     <div class="col-2">
                         <input asp-for="StartDate" class="form-control" type="date" />
                     </div>
