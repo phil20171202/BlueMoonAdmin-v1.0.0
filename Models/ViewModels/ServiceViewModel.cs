@@ -16,6 +16,8 @@ namespace BlueMoonAdmin.Models.ViewModels
         
         public IEnumerable<Notes> Notes { get; set; }
 
+        public IEnumerable<Appointment> appointments { get; set; }
+
 
 
 

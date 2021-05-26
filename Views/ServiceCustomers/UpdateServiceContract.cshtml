@@ -103,42 +103,96 @@
     </div>
 </form>
 
-<div class="col-12 ">
-<div class="card mb-4">
-    <div class="card-header"><i class="fas fa-table mr-1"></i> Service note list</div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Category</th>
-                        <th>Note</th>                        
-                        <th>Edit</th>
-                    </tr>
-                </thead>
-                
-<tbody>
-@foreach (var item in Model.Notes)
-    {
-        <tr>
-            <td>@item.Date</td>
-            <td>@item.Category</td>
-            <td>@item.notes</td>
-           
-        </tr>
-    }
-</tbody>
-                </table>
-            </div>
-        </div>
-    </div>
+
+    <div class="container-fluid">
+        <ul class="nav nav-tabs" role="tablist" id="cust-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#service-note" data-toggle="tab" id="Service-Notes" aria-selected="true">Service Note</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#service-appointments" data-toggle="tab" id="Service-Appointments" aria-selected="false">Service Appointments</a>
+            </li>
+        </ul>
     </div>
 
-@section Scripts{
-    <script src="~/assets/demo/chart-area-demo.js"></script>
-    <script src="~/assets/demo/chart-bar-demo.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-    <script src="~/assets/demo/datatables-demo.js"></script>
-}
+    <div class="tab-content">
+        <!-- #region Notes-->
+        <div id="service-note" class="col-12 tab-pane fade show active container-fluid" role="tabpanel" aria-labelledby="Service-Notes">
+            <div class="card mb-4">
+                <div class="card-header"><i class="fas fa-table mr-1"></i> Service notes</div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Category</th>
+                                    <th>Note</th>
+                                    <th>Edit</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var item in Model.Notes)
+                                {
+                                    <tr>
+                                        <td>@item.Date</td>
+                                        <td>@item.Category</td>
+                                        <td>@item.notes</td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- #endregion-->
+        <!-- #region Appiontments-->
+        <div id="service-appointments" class="col-12 tab-pane fade show  container-fluid" role="tabpanel" aria-labelledby="Service-Appointments">
+            <div class="card mb-4">
+                <div class="card-header"><i class="fas fa-table mr-1"></i> Service appointment list</div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Duration</th>
+                                    <th>Title</th>
+                                    <th>Description (minutes)</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var item in Model.appointments)
+                                {
+
+                                    <tr>
+                                        <td><input asp-for="@item.StartDate" type="datetime-local" readonly style="border: 0px; background-color:white" /></td>
+                                        <td><input asp-for="@item.EndDate" type="datetime-local" readonly style="border: 0px; background-color:white" /></td>
+                                        <td>@item.Duration</td>
+                                        <td>@item.Title</td>
+                                        <td>@item.Description</td>
+
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #endregion-->
+    </div>
+
+    @section Scripts{
+        <script src="~/assets/demo/chart-area-demo.js"></script>
+        <script src="~/assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+        <script src="~/assets/demo/datatables-demo.js"></script>
+    }

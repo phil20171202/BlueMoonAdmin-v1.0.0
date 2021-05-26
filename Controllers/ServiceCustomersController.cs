@@ -76,7 +76,7 @@ namespace BlueMoonAdmin.Controllers
             obj.ServiceCustomer = _db.ServiceCustomers.Find(id);
             int CustomerID = obj.ServiceCustomer.CustomerId;
             obj.Notes = _db.Notes.Where(c => c.Category == "Service" & c.CustomerId == CustomerID).ToList();
-
+            obj.appointments = _db.Appointments.Where(c => c.CustomerServiceId == id).ToList();
             if (obj == null)
             {
                 return NotFound();
