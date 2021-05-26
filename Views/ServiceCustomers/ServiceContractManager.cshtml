@@ -95,9 +95,9 @@
         </div>
         <div class="col-lg-3 col-md-6">
             <div class="card">
-                <div class="card-header">Upcoming Services</div>
-                <div class="card-body text-center">
-                    <input id="knob-chart-upcoming" type="text" value="30"  />
+                <div class="card-header">Upcoming Services Due Within 30 Days</div>
+                <div class="card-body text-center">                    
+                    <input id="knob-chart-upcoming" type="text" value="@Model.Where(c => c.ServiceCustomer.NextServiceDate < DateTime.Now.AddDays(30) & c.ServiceCustomer.NextServiceDate > DateTime.Now).Count()"  />
                 </div>
             </div>
         </div>
