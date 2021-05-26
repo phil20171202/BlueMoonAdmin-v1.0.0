@@ -20,21 +20,14 @@ namespace BlueMoonAdmin.Controllers
         }
         public IActionResult ServiceContractManager()
         {
-           
-            var ServiceVM = new ServiceViewModel();
-            
-            ServiceVM.ServiceCustomers = _db.ServiceCustomers.Where(c => c.Service ).ToList();
-            ServiceVM.Customers = _db.Customers.FirstOrDefault();
-            if (ServiceVM == null)
-            {
-                return NotFound();
-            }
-
-            ServiceVM.Overdue = ServiceVM.ServiceCustomers.Where(c => c.NextServiceDate < DateTime.Now).Count();
-
-
-            return View(ServiceVM);
-
+            List<Customers> customer = new List<Customers>();
+            List<ServiceCustomer> studentAdditionalInfo = new List<ServiceCustomer>();
+            var studentViewModel = from c in _db.Customers
+                                   join sc in _db.ServiceCustomers on c.Id equals sc.CustomerId into sc2
+                                   from sc in sc2.DefaultIfEmpty()
+                                   where sc.Service
+                                   select new ServiceViewModel { customersVm = c, ServiceCustomer = sc };
+            return View(studentViewModel);
         }
 
         //
@@ -83,7 +76,7 @@ namespace BlueMoonAdmin.Controllers
             obj.ServiceCustomer = _db.ServiceCustomers.Find(id);
             int CustomerID = obj.ServiceCustomer.CustomerId;
             obj.Notes = _db.Notes.Where(c => c.Category == "Service" & c.CustomerId == CustomerID).ToList();
-
+            obj.appointments = _db.Appointments.Where(c => c.CustomerServiceId == id).ToList();
             if (obj == null)
             {
                 return NotFound();
@@ -98,10 +91,10 @@ namespace BlueMoonAdmin.Controllers
         {
             if (ModelState.IsValid)
             {
-                int id = obj.ServiceCustomer.CustomerId;
+               // int id = obj.ServiceCustomer.id;
                 _db.ServiceCustomers.Update(obj.ServiceCustomer);
                 _db.SaveChanges();
-                return RedirectToAction("ViewCustomer", "Customers", new { id });
+                return RedirectToAction("ServiceContractManager", "ServiceCustomers");
             }
             return View(obj);
         }

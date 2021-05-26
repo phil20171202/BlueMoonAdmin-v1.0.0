@@ -14,7 +14,7 @@ namespace BlueMoonAdmin.Models
         public DateTime EndDate { get; set; }
         public int Duration { get; set; }
         public string EngineerId { get; set; }
-        public string CustomerServiceId { get; set; }
+        public int CustomerServiceId { get; set; }
         public Boolean IsEngineerApproved { get; set; }
         public string AdminId { get; set; }
 
