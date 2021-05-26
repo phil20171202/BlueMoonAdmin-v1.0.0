@@ -7,17 +7,18 @@ namespace BlueMoonAdmin.Models.ViewModels
 {
     public class ServiceViewModel
     {
-        public Customers Customers { get; set; }
+        public Customers customersVm { get; set; }
 
-        // one to one Customer to service
-        public IEnumerable<ServiceCustomer> ServiceCustomers { get; set; }
+        // Dont think I am using theIeumerable now
+        //public IEnumerable<ServiceCustomer> ServiceCustomers { get; set; }
 
         public ServiceCustomer ServiceCustomer { get; set; }
-        public int Overdue { get; set; }
-
+        
         public IEnumerable<Notes> Notes { get; set; }
 
-        
+
+
+
 
     }
 }

@@ -1,4 +1,4 @@
-﻿@model BlueMoonAdmin.Models.ViewModels.ServiceViewModel
+﻿@model IEnumerable<BlueMoonAdmin.Models.ViewModels.ServiceViewModel>
 
     @{
     ViewData["Title"] = "Service Contract Manager";
@@ -105,7 +105,7 @@
             <div class="card">
                 <div class="card-header">Overdue Services</div>
                 <div class="card-body text-center">
-                    <input id="knob-chart-overdue" type="text" value="20" />
+                    <input id="knob-chart-overdue" type="text" value="@Model.Where(c => c.ServiceCustomer.NextServiceDate < DateTime.Now).Count()" />
                 </div>
             </div>
         </div>
@@ -144,7 +144,7 @@
                     </p>
                 </div>
                 <div class="col-lg-3">
-                    <div class="radial-bar radial-bar-lg radial-bar-danger" data-label=@Model.Overdue></div>
+                    <div class="radial-bar radial-bar-lg radial-bar-danger" data-label=Overdue></div>
                     <p>
                         <code>Overdue Services</code>
                     </p>
@@ -192,41 +192,41 @@
                         </tfoot>
                         <tbody>
                             
-                                @foreach (var Service in @Model.ServiceCustomers)
+                                @foreach (var Service in @Model)
                                  {                                        
                                         <tr>
-                                            <td>@Model.Customers.CompanyName</td>
-                                            <td>@Model.Customers.ContactName</td>
+                                            <td>@Service.customersVm.CompanyName</td>
+                                            <td>@Service.customersVm.ContactName</td>
                                             @*<td>@Model.Customers.TelephoneNumber</td>*@
                                             <td>
-                                                @if (@Service.LastServiceDate != null)
+                                                @if (@Service.ServiceCustomer.LastServiceDate != null)
                                                 {
-                                                    <input asp-for="@Service.LastServiceDate" class="form-control" readonly type="date" style="border: 0px; background-color:white" />
+                                                    <input asp-for="@Service.ServiceCustomer.LastServiceDate" class="form-control" readonly type="date" style="border: 0px; background-color:white" />
                                                 }
                                             </td>
                                             <td>
-                                                @if(@Service.StartDate != null) 
+                                                @if(@Service.ServiceCustomer.StartDate != null) 
                                                 {
-                                                <input asp-for="@Service.StartDate" class="form-control" readonly type="date" style="border: 0px; background-color:white" />
+                                                <input asp-for="@Service.ServiceCustomer.StartDate" class="form-control" readonly type="date" style="border: 0px; background-color:white" />
                                                 }
                                             </td>
                                             <td>
-                                                @if (@Service.RenewalDate != null)
+                                                @if (@Service.ServiceCustomer.RenewalDate != null)
                                                 {
-                                                <input asp-for="@Service.RenewalDate" class="form-control" readonly type="date" style="border: 0px; background-color:white" />
+                                                <input asp-for="@Service.ServiceCustomer.RenewalDate" class="form-control" readonly type="date" style="border: 0px; background-color:white" />
                                                 }
                                             </td>
                                             <td>
-                                                @if (@Service.NextServiceDate != null)
+                                                @if (@Service.ServiceCustomer.NextServiceDate != null)
                                                 {
-                                                <input asp-for="@Service.NextServiceDate" class="form-control" readonly type="date" style="border: 0px; background-color:white" />
+                                                <input asp-for="@Service.ServiceCustomer.NextServiceDate" class="form-control" readonly type="date" style="border: 0px; background-color:white" />
                                                 }
                                             </td>
-                                            <td>@Service.ServiceContract</td>
-                                            <td>@Service.CurrentMachine</td>
+                                            <td>@Service.ServiceCustomer.ServiceContract</td>
+                                            <td>@Service.ServiceCustomer.CurrentMachine</td>
                                             <td width="6%">
                                                 <div class="col-6 p-0 text-center">
-                                                    <a asp-controller="ServiceCustomers" asp-action="UpdateServiceContract" asp-route-Id="@Service.Id" class="btn btn-primary">Update</a>
+                                                    <a asp-controller="ServiceCustomers" asp-action="UpdateServiceContract" asp-route-Id="@Service.ServiceCustomer.Id" class="btn btn-primary">Update</a>
                                                 </div>
                                             </td>
                                             <td width="6%">
