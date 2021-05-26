@@ -4,7 +4,7 @@ $(document).ready(function () {
         value: new Date(),
         dateInput: false
     });
-
+   
     InitializeCalendar();
 });
 
@@ -36,6 +36,7 @@ function InitializeCalendar() {
 
 function onShowModal(obj, isEventDetail) {
     $("#appointmentInput").modal("show")
+    $("#customerServiceId").select2()
 }
 
 function onCloseModal() {
