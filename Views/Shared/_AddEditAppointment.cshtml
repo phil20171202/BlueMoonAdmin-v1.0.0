@@ -1,4 +1,15 @@
-﻿<div class="modal fade" role="dialog" id="appointmentInput" data-backdrop="static" data-keyboard="false">
+﻿
+@{
+    Layout = null;
+}
+
+<script>
+    $(document).ready(function () {
+        $('customerServiceId').select2();
+    });
+</script>
+
+<div class="modal fade" role="dialog" id="appointmentInput" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog">
         <div class="modal-content">
             <form id="appointmentForm" autocomplete="off" novalidate="novalidate"></form>
@@ -15,11 +26,12 @@
                     <textarea type="text" class="form-control" id="description"></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="select customer">Select Customer</label>                   
-                    
-                    Youtube video to create search box using Javascript                 
-       https://www.youtube.com/watch?v=7S6RtlXvjnA
-                    <select id="customerServiceId" asp-items="@(new SelectList(ViewBag.CustomerServiceList, "Id", "Name"))" class="form-control"></select>
+                    <label for="select customer">Select Customer</label>
+                    <div id="selectCustomers">
+                        <select id="customerServiceId" asp-items="@(new SelectList(ViewBag.CustomerServiceList, "Id", "Name"))" class="form-control">
+                            <option selected disabled="disabled">-- Select Customer --</option>
+                        </select>
+                    </div>
 
 
                 </div>
@@ -40,3 +52,16 @@
         </div>
     </div>
 </div>
+
+@section Styles {
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+}
+
+@section Scripts {
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+}
