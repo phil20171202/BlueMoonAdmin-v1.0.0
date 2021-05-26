@@ -13,6 +13,9 @@ namespace BlueMoonAdmin.Models
         [Key]
         public int Id { get; set; }
 
+        [DisplayName("Month")]
+        public string Month { get; set; }
+
         [DisplayName("Start Date")]
         public DateTime StartDate { get; set; }
 
