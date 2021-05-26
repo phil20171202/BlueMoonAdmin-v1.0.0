@@ -3,18 +3,30 @@ Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSyste
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
 // Bar Chart Example
-var ctx = document.getElementById("myBarChart");
+var ctx = document.getElementById("barChartMonthly");
 var myLineChart = new Chart(ctx, {
+
     type: 'bar',
     data: {
-        labels: ["January", "February", "March", "April", "May", "June"],
         datasets: [{
-            label: "Revenue",
+            label: 'Current Year',
             backgroundColor: "rgba(2,117,216,1)",
             borderColor: "rgba(2,117,216,1)",
-            data: [8, 6, 14, 12, 1, 14],
+            data: [82156, 52312, 66251, 77841, 59821, 14984, 0, 0, 0, 0, 0, 0],
+            // this dataset is drawn below
+            order: 2
+        }, {
+            label: 'Previous Year',
+            backgroundColor: "rgba(255,255,255)",
+            borderColor: "rgba(23,186,239)",
+            data: [62156, 42312, 56251, 87841, 49821, 24984, 0, 0, 0, 0, 0, 0],
+            type: 'line',
+            // this dataset is drawn on top
+            order: 1
         }],
+        labels: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     },
+
   options: {
     scales: {
       xAxes: [{
@@ -31,7 +43,7 @@ var myLineChart = new Chart(ctx, {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 40,
+          max: 100000,
           maxTicksLimit: 6
         },
         gridLines: {
@@ -39,8 +51,8 @@ var myLineChart = new Chart(ctx, {
         }
       }],
     },
-      legend: {
-          display: false
+    legend: {
+      display: true
     }
   }
 });
