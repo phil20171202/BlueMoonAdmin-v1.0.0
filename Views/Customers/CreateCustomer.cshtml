@@ -10,196 +10,225 @@
             <li class="breadcrumb-item"><a asp-controller="Customer" asp-action="CustomerDashboard">Customer Dashboard</a></li>
             <li class="breadcrumb-item active">Customer Create</li>
         </ol>
-        <div class="card mb-3">
-            <div class="card-body">
-                <div class="row pt-1">
-                    <div class="col-12 mb-2 text-black">
-                        <p class="text-black">Add new customer data here. Please ensure you enter the following information:</p>
-                        <ol class="text-black">
-                            <li> Company Name</li>
-                            <li> All Contact Details</li>
-                            <li> Service Contract Details i.e when last serviced, machine type etc</li>
-                            <li> After you have created a new customer you can add more contacts, addresses and notes.</li>
-                        </ol>
+    </div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card card-default">
+                <div class="card-body text-center">
+                    <div class="py-4">
+                        <img class="img-fluid rounded-circle img-thumbnail thumb96" src="~/assets/images/user/contact-placeholder.png" alt="Contact" />
+                    </div>
+                    <h3 class="m-0 text-bold">Add new customer details</h3>
+                    <div class="text-center">
+                        <div class="my-3">
+                            <h4 class="btn btn-secondary"><i class="fas fa-phone mr-2"></i> </h4>
+                            <h4 class="btn btn-secondary"><i class="fas fa-envelope-open-text mr-2"></i></h4>
+                            <h4 class="btn btn-secondary"><i class="fas fa-globe mr-2"></i>  www.website.com</h4>
+                        </div>
+                        <div class="dropdown-divider"></div>
+                    </div>
+                    <div class="row p-4">
+                        <p class="text-black">Please ensure you enter the following information:</p>
+                        <p><i class="fas fa-user mr-2"></i>  Company Name including main address - you can create more later</p>
+                        <p><i class="fas fa-phone mr-2"></i>  All Contact Details including any mobile and email addresses</p>
+                        <p> <i class="fas fa-cogs mr-2"></i> Service Contract Details i.e when last serviced, machine type etc</p>
+                        <p><i class="fas fa-check mr-2"></i>  Once created you can add more contacts, addresses and notes.</p>
                     </div>
                 </div>
             </div>
+
         </div>
-        <!-- #region Form -->
-        <div class="container col-12 border-bottom">
-            <div class="row">
-                <div class="col-12">
-                    <div class="form-group row">
-                        <div class="col-3">
-                            <label asp-for="CompanyName"></label>
-                        </div>
-                        <div class="col-3">
-                            <label asp-for="ContactName"></label>
-                        </div>
-                        <div class="col-3">
-                            <label asp-for="EmailAddress"></label>
-                        </div>
-                        <div class="col-3">
-                            <label asp-for="TelephoneNumber"></label>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-3">
-                            <input asp-for="CompanyName" class="form-control" />
-                        </div>
-                        <div class="col-3">
-                            <input asp-for="ContactName" class="form-control" />
-                        </div>
-                        <div class="col-3">
-                            <input asp-for="EmailAddress" class="form-control">
-                        </div>
-                        <div class="col-3">
-                            <input asp-for="TelephoneNumber" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-3">
-                            <label asp-for="OfficeAddress"></label>
-                        </div>
-                        <div class="col-3">
-                            <label asp-for="AddressLine"></label>
-                        </div>
-                        <div class="col-3">
-                            <label asp-for="CityRegion"></label>
-                        </div>
-                        <div class="col-3">
-                            <label asp-for="PostCode"></label>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-3">
-                            <input asp-for="OfficeAddress" class="form-control" />
-                        </div>
-                        <div class="col-3">
-                            <input asp-for="AddressLine" class="form-control" />
-                        </div>
-                        <div class="col-3">
-                            <input asp-for="CityRegion" class="form-control">
-                        </div>
-                        <div class="col-3">
-                            <input asp-for="PostCode" class="form-control">
-                        </div>
-                    </div>
 
-                    @*<div class="form-group row">
-                        <div class="col-3">
-                            <label asp-for="ServiceContract"></label>
-                        </div>
-                        <div class="col-3">
-                            <label asp-for="LastServiceDate"></label>
-                        </div>
-                        <div class="col-3">
-                            <label asp-for="CurrentMachine"></label>
-                        </div>
-                        <div class="col-3">
-                            <label asp-for="CustomerSince"></label>
-                        </div>
+        <div class="col-lg-8">
+            <div class="card card-default">
+                <div class="card-header d-flex align-items-center">
+                    <div class="d-flex justify-content-center col">
+                        <div class="h4 m-0 text-center">Add New Customer Information</div>
                     </div>
-                    <div class="form-group row">
-                        <div class="col-3">
-                            <select asp-for="ServiceContract" class="form-control">
-                                <option>-- Select Option --</option>
-                                <option>Bronze</option>
-                                <option>Silver</option>
-                                <option>Gold</option>
-                                <option>No Contract</option>
-                            </select>
-                        </div>
-                        <div class="col-3">
-                            <input asp-for="LastServiceDate" class="form-control" type="date"/>
-                        </div>
-                        <div class="col-3">
-                            <input asp-for="CurrentMachine" class="form-control">
-                        </div>
-                        <div class="col-3">
-                            <input asp-for="CustomerSince" class="form-control" type="date">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-2">
-                            <label asp-for="Service"></label>
-                        </div>
-                        <div class="col-1">
-                            <input asp-for="Service" class="form-control"  />
-                        </div>
-                    </div>*@
+                </div>
 
 
-                    <div class="form-group row pt-4 mb-4">
-                        <div class="col-8 offset-2 row">
-                            <div class="col">
-                                <input type="submit" class="btn btn-info w-75" value="Create Customer" />
+                <!-- #region Form -->
+                <div class="card-body">
+                    <div class="row py-4 justify-content-center">
+                        <div class="col-12 col-sm-10">
+                            <input asp-for="Id" hidden />
+                            <div class="form-group row">
+                                <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="CompanyName">Company Name:</label>
+                                <div class="col-xl-10 col-md-9 col-8">
+                                    <input class="form-control" type="text" asp-for="CompanyName" />
+                                </div>
                             </div>
-                            <div class="col">
-                                <a asp-action="Index" class="btn btn-secondary w-75">Go Back</a>
+                            <div class="form-group row">
+                                <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="EmailAddress">Email:</label>
+                                <div class="col-xl-10 col-md-9 col-8">
+                                    <input class="form-control" asp-for="EmailAddress" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="TelephoneNumber">Phone:</label>
+                                <div class="col-xl-10 col-md-9 col-8">
+                                    <input class="form-control" asp-for="TelephoneNumber" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" for="inputContact4">Mobile:</label>
+                                <div class="col-xl-10 col-md-9 col-8">
+                                    <input class="form-control" id="inputContact4" type="text" value="(44) 123 987 465" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" for="inputContact5">Website:</label>
+                                <div class="col-xl-10 col-md-9 col-8">
+                                    <input class="form-control" id="inputContact5" type="text" value="http://some.wesbite.com" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="OfficeAddress">Office Address:</label>
+                                <div class="col-xl-10 col-md-9 col-8">
+                                    <input class="form-control" asp-for="OfficeAddress" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="AddressLine">Address Line 2:</label>
+                                <div class="col-xl-10 col-md-9 col-8">
+                                    <input class="form-control" asp-for="AddressLine" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="CityRegion">City / Region:</label>
+                                <div class="col-xl-10 col-md-9 col-8">
+                                    <input class="form-control" asp-for="CityRegion" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="PostCode">PostCode:</label>
+                                <div class="col-xl-10 col-md-9 col-8">
+                                    <input class="form-control" asp-for="PostCode" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right">Vat Reg:</label>
+                                <div class="col-xl-10 col-md-9 col-8">
+                                    <input class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="CustomerSince">Customer Since:</label>
+                                <div class="col-xl-10 col-md-9 col-8">
+                                    <input class="form-control" type="text" asp-for="CustomerSince" />
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-xl-2 col-md-3 col-4"></div>
+                                <div class="col-xl-10 col-md-9 col-8">
+                                    <div class="custom-control custom-checkbox">
+                                        <input class="custom-control-input" id="customCheck1" type="checkbox" />
+                                        <label class="custom-control-label" for="customCheck1">Primary contact?</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row mt-6">
+                                <div class="col-4 offset-2">
+                                    <input type="submit" class="btn btn-info w-75" value="Create Customer" />
+                                </div>
+                                <div class="col-4 offset-2">
+                                    <a asp-controller="Customers" asp-action="Index" class="btn btn-outline-dark w-75">Go Back</a>
+                                </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
-
-            <!-- #endregion -->
         </div>
     </div>
+</div>
+
 </form>
 
-<!--<div class="col-12 ">-->
-    @*<div class="card mb-4">
-        <div class="card-body">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>.</div>
-    </div>*@
-    <!--<div class="card mb-4">
-        <div class="card-header"><i class="fas fa-table mr-1"></i> Current Customer List</div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>Company Name</th>
-                            <th>Contact Name</th>
-                            <th>Office Address</th>
-                            <th>Telephone Number</th>
-                            <th>Service Contract</th>
-                            <th>Last Service Date</th>
-                            <th>Current Machine</th>
-                            <th>Customer Since</th>
-                            <th>Edit</th>
-                        </tr>
-                    </thead>
-                    <tfoot>
-                        <tr>-->
-                            @*<th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>*@
-                        <!--</tr>
-                    </tfoot>
-                    <tbody>-->
-                        @*@foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>@item.Name</td>
-                                    <td>@item.Position</td>
-                                    <td>@item.Office</td>
-                                    <td>@item.Age</td>
-                                    <td>@item.StartDate</td>
-                                    <td>@item.Salary</td>
-                                </tr>
-                            }*@
-                    <!--</tbody>
-                </table>
+<!-- #region Form -->
+<!--<div class="container col-12 border-bottom">
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="CompanyName"></label>
+                </div>
+                <div class="col-3">
+                    <label asp-for="ContactName"></label>
+                </div>
+                <div class="col-3">
+                    <label asp-for="EmailAddress"></label>
+                </div>
+                <div class="col-3">
+                    <label asp-for="TelephoneNumber"></label>
+                </div>
             </div>
-        </div>
-    </div>
-    </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <input asp-for="CompanyName" class="form-control" />
+                </div>
+                <div class="col-3">
+                    <input asp-for="ContactName" class="form-control" />
+                </div>
+                <div class="col-3">
+                    <input asp-for="EmailAddress" class="form-control">
+                </div>
+                <div class="col-3">
+                    <input asp-for="TelephoneNumber" class="form-control">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="OfficeAddress"></label>
+                </div>
+                <div class="col-3">
+                    <label asp-for="AddressLine"></label>
+                </div>
+                <div class="col-3">
+                    <label asp-for="CityRegion"></label>
+                </div>
+                <div class="col-3">
+                    <label asp-for="PostCode"></label>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <input asp-for="OfficeAddress" class="form-control" />
+                </div>
+                <div class="col-3">
+                    <input asp-for="AddressLine" class="form-control" />
+                </div>
+                <div class="col-3">
+                    <input asp-for="CityRegion" class="form-control">
+                </div>
+                <div class="col-3">
+                    <input asp-for="PostCode" class="form-control">
+                </div>
+            </div>
 
+            <div class="form-group row pt-4 mb-4">
+                <div class="col-8 offset-2 row">
+                    <div class="col">
+                        <input type="submit" class="btn btn-info w-75" value="Create Customer" />
+                    </div>
+                    <div class="col">
+                        <a asp-action="Index" class="btn btn-secondary w-75">Go Back</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>-->
+<!-- #endregion -->
+
+
+
+<!--
 @section Scripts{
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
