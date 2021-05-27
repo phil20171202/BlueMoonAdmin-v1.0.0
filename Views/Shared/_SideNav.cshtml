@@ -22,9 +22,9 @@
             </a>
             <div class="collapse" id="collapseReports" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
-                    <a class="nav-link" asp-controller="MonthlySales" asp-action="MonthlySales">@SharedLocalizer.GetLocalizedHtmlString("Sales Dashboard")</a>
-                    <a class="nav-link" asp-controller="BusinessReports" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("Business Reports")</a>
-                    <a class="nav-link" asp-controller="BusinessReports" asp-action="BusinessSnapshot">@SharedLocalizer.GetLocalizedHtmlString("Business Analytics")</a>
+                    <a class="nav-link" asp-controller="MonthlySales" asp-action="MonthlySales"><i class="fas fa-angle-double-right mr-1 text-muted"></i>@SharedLocalizer.GetLocalizedHtmlString(" Sales Dashboard")</a>
+                    <a class="nav-link" asp-controller="BusinessReports" asp-action="Index"><i class="fas fa-angle-double-right mr-1 text-muted"></i>@SharedLocalizer.GetLocalizedHtmlString(" Business Reports")</a>
+                    <a class="nav-link" asp-controller="BusinessReports" asp-action="BusinessSnapshot"><i class="fas fa-angle-double-right mr-1 text-muted"></i>@SharedLocalizer.GetLocalizedHtmlString(" Business Analytics")</a>
                 </nav>
             </div>
 
@@ -37,11 +37,11 @@
             </a>
             <div class="collapse" id="collapseTasks" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
-                    <a class="nav-link" asp-controller="Calendar" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("Calendar")</a>
-                    <a class="nav-link" asp-controller="ToDoList" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("To Do List")</a>
-                    <a class="nav-link" asp-controller="TaskManager" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("Job Scheduling")</a>
-                    <a class="nav-link" asp-controller="GoogleMaps" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("Google Maps")</a>
-                    <a class="nav-link" asp-controller="FileManager" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("File Manager")</a>
+                    <a class="nav-link" asp-controller="Calendar" asp-action="Index"><i class="fas fa-angle-double-right mr-1 text-muted"></i>@SharedLocalizer.GetLocalizedHtmlString(" Calendar")</a>
+                    <a class="nav-link" asp-controller="ToDoList" asp-action="Index"><i class="fas fa-angle-double-right mr-1 text-muted"></i>@SharedLocalizer.GetLocalizedHtmlString(" To Do List")</a>
+                    <a class="nav-link" asp-controller="TaskManager" asp-action="Index"><i class="fas fa-angle-double-right mr-1 text-muted"></i>@SharedLocalizer.GetLocalizedHtmlString(" Job Scheduling")</a>
+                    <a class="nav-link" asp-controller="GoogleMaps" asp-action="Index"><i class="fas fa-angle-double-right mr-1 text-muted"></i>@SharedLocalizer.GetLocalizedHtmlString(" Google Maps")</a>
+                    <a class="nav-link" asp-controller="FileManager" asp-action="Index"><i class="fas fa-angle-double-right mr-1 text-muted"></i>@SharedLocalizer.GetLocalizedHtmlString(" File Manager")</a>
                 </nav>
             </div>
             <!-- Leads Manager -->
@@ -54,9 +54,9 @@
             </a>
             <div class="collapse" id="collapseLeads" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
-                    <a class="nav-link" asp-controller="Customers" asp-action="CustomerDashboard">@SharedLocalizer.GetLocalizedHtmlString("Leads Dashboard")</a>
-                    <a class="nav-link" asp-controller="Customers" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("View Leads")</a>
-                    <a class="nav-link" asp-controller="Customers" asp-action="CreateCustomer">@SharedLocalizer.GetLocalizedHtmlString("Add New Lead")</a>
+                    <a class="nav-link" asp-controller="Customers" asp-action="CustomerDashboard"><i class="fas fa-angle-double-right mr-1 text-muted"></i>@SharedLocalizer.GetLocalizedHtmlString(" Leads Dashboard")</a>
+                    <a class="nav-link" asp-controller="Customers" asp-action="Index"><i class="fas fa-angle-double-right mr-1 text-muted"></i>@SharedLocalizer.GetLocalizedHtmlString(" View Leads")</a>
+                    <a class="nav-link" asp-controller="Customers" asp-action="CreateCustomer"><i class="fas fa-angle-double-right mr-1 text-muted"></i>@SharedLocalizer.GetLocalizedHtmlString(" Add New Lead")</a>
                 </nav>
             </div>
 
@@ -70,9 +70,9 @@
             </a>
             <div class="collapse" id="collapseCustomers" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
-                    <a class="nav-link" asp-controller="Customers" asp-action="CustomerDashboard">@SharedLocalizer.GetLocalizedHtmlString("Customer Dashboard")</a>
-                    <a class="nav-link" asp-controller="Customers" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("View Customers")</a>
-                    <a class="nav-link" asp-controller="Customers" asp-action="CreateCustomer">@SharedLocalizer.GetLocalizedHtmlString("Add New Customer")</a>
+                    <a class="nav-link" asp-controller="Customers" asp-action="CustomerDashboard"><i class="fas fa-angle-double-right mr-1 text-muted"></i>@SharedLocalizer.GetLocalizedHtmlString(" Customer Dashboard")</a>
+                    <a class="nav-link" asp-controller="Customers" asp-action="Index"><i class="fas fa-angle-double-right mr-1 text-muted"></i>@SharedLocalizer.GetLocalizedHtmlString(" View Customers")</a>
+                    <a class="nav-link" asp-controller="Customers" asp-action="CreateCustomer"><i class="fas fa-angle-double-right mr-1 text-muted"></i>@SharedLocalizer.GetLocalizedHtmlString(" Add New Customer")</a>
                 </nav>
             </div>
 
@@ -86,8 +86,8 @@
             <div class="collapse" id="collapseContracts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
 
-                    <a class="nav-link" asp-controller="ServiceCustomers" asp-action="ServiceContractManager">@SharedLocalizer.GetLocalizedHtmlString("Contract Dashboard")</a>
-                    <a class="nav-link" asp-controller="Pricing" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("View Pricing")</a>
+                    <a class="nav-link" asp-controller="ServiceCustomers" asp-action="ServiceContractManager"><i class="fas fa-angle-double-right mr-1 text-muted"></i>@SharedLocalizer.GetLocalizedHtmlString(" Contract Dashboard")</a>
+                    <a class="nav-link" asp-controller="Pricing" asp-action="Index"><i class="fas fa-angle-double-right mr-1 text-muted"></i>@SharedLocalizer.GetLocalizedHtmlString(" View Pricing")</a>
                 </nav>
             </div>
 
@@ -118,9 +118,9 @@
                     </a>
                     <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" asp-controller="Account" asp-action="Login">@SharedLocalizer.GetLocalizedHtmlString("Login")</a>
-                            <a class="nav-link" asp-controller="Account" asp-action="Register">@SharedLocalizer.GetLocalizedHtmlString("Register")</a>
-                            <a class="nav-link" asp-controller="Account" asp-action="ForgotPassword">@SharedLocalizer.GetLocalizedHtmlString("Forgot Password")</a>
+                            <a class="nav-link" asp-controller="Account" asp-action="Login"><i class="fas fa-angle-double-right mr-1 text-muted"></i>@SharedLocalizer.GetLocalizedHtmlString(" Login")</a>
+                            <a class="nav-link" asp-controller="Account" asp-action="Register"><i class="fas fa-angle-double-right mr-1 text-muted"></i>@SharedLocalizer.GetLocalizedHtmlString(" Register")</a>
+                            <a class="nav-link" asp-controller="Account" asp-action="ForgotPassword"><i class="fas fa-angle-double-right mr-1 text-muted"></i>@SharedLocalizer.GetLocalizedHtmlString(" Forgot Password")</a>
                         </nav>
                     </div>
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
@@ -129,9 +129,9 @@
                     </a>
                     <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" asp-controller="home" asp-action="_401">@SharedLocalizer.GetLocalizedHtmlString("401 Page")</a>
-                            <a class="nav-link" asp-controller="home" asp-action="_404">@SharedLocalizer.GetLocalizedHtmlString("404 Page")</a>
-                            <a class="nav-link" asp-controller="home" asp-action="_500">@SharedLocalizer.GetLocalizedHtmlString("500 Page")</a>
+                            <a class="nav-link" asp-controller="home" asp-action="_401"><i class="fas fa-angle-double-right mr-1 text-muted"></i>@SharedLocalizer.GetLocalizedHtmlString(" 401 Page")</a>
+                            <a class="nav-link" asp-controller="home" asp-action="_404"><i class="fas fa-angle-double-right mr-1 text-muted"></i>@SharedLocalizer.GetLocalizedHtmlString(" 404 Page")</a>
+                            <a class="nav-link" asp-controller="home" asp-action="_500"><i class="fas fa-angle-double-right mr-1 text-muted"></i>@SharedLocalizer.GetLocalizedHtmlString(" 500 Page")</a>
                         </nav>
                     </div>
                 </nav>
