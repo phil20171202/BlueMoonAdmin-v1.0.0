@@ -1,9 +1,9 @@
 
-<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+<nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
     <div class="sb-sidenav-menu overflow-hidden">
         <div class="nav overflow-hidden">
             <!-- Main Dashboard -->
-            <div class="sb-sidenav-menu-heading">@SharedLocalizer.GetLocalizedHtmlString("Overview")</div>
+            <div class="sb-sidenav-menu-heading text-alpha-inverse">@SharedLocalizer.GetLocalizedHtmlString("Overview")</div>
             <a class="nav-link" asp-controller="Home" asp-action="Index">
                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                 @SharedLocalizer.GetLocalizedHtmlString("Dashboard")
@@ -14,7 +14,7 @@
             </a>
 
             <!-- Dashboards and reporting -->
-            <div class="sb-sidenav-menu-heading">@SharedLocalizer.GetLocalizedHtmlString("Business Information")</div>
+            <div class="sb-sidenav-menu-heading text-alpha-inverse">@SharedLocalizer.GetLocalizedHtmlString("Business Information")</div>
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReports" aria-expanded="false" aria-controls="collapseTasks">
                 <div class="sb-nav-link-icon"><i class="fas fa-signal"></i></div>
                 @SharedLocalizer.GetLocalizedHtmlString("Reports Dashboards")
@@ -29,7 +29,7 @@
             </div>
 
             <!-- Task Manager -->
-            <div class="sb-sidenav-menu-heading">@SharedLocalizer.GetLocalizedHtmlString("Task Management")</div>
+            <div class="sb-sidenav-menu-heading text-alpha-inverse">@SharedLocalizer.GetLocalizedHtmlString("Task Management")</div>
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTasks" aria-expanded="false" aria-controls="collapseTasks">
                 <div class="sb-nav-link-icon"><i class="fas fa-lightbulb"></i></div>
                 @SharedLocalizer.GetLocalizedHtmlString("Manage My Day")
@@ -45,7 +45,7 @@
                 </nav>
             </div>
             <!-- Leads Manager -->
-            <div class="sb-sidenav-menu-heading">@SharedLocalizer.GetLocalizedHtmlString("Leads Management")</div>
+            <div class="sb-sidenav-menu-heading text-alpha-inverse">@SharedLocalizer.GetLocalizedHtmlString("Leads Management")</div>
 
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLeads" aria-expanded="false" aria-controls="collapseCustomers">
                 <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
@@ -61,7 +61,7 @@
             </div>
 
             <!-- Customer Manager -->
-            <div class="sb-sidenav-menu-heading">@SharedLocalizer.GetLocalizedHtmlString("Customer Management")</div>
+            <div class="sb-sidenav-menu-heading text-alpha-inverse">@SharedLocalizer.GetLocalizedHtmlString("Customer Management")</div>
 
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCustomers" aria-expanded="false" aria-controls="collapseCustomers">
                 <div class="sb-nav-link-icon"><i class="fas fa-address-book"></i></div>
@@ -87,7 +87,6 @@
                 <nav class="sb-sidenav-menu-nested nav">
 
                     <a class="nav-link" asp-controller="ServiceCustomers" asp-action="ServiceContractManager">@SharedLocalizer.GetLocalizedHtmlString("Contract Dashboard")</a>
-                    <a class="nav-link" asp-controller="ServiceCustomers" asp-action="CreateServiceContract">@SharedLocalizer.GetLocalizedHtmlString("Add New Contract")</a>
                     <a class="nav-link" asp-controller="Pricing" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("View Pricing")</a>
                 </nav>
             </div>
