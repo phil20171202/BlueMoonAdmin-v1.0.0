@@ -11,3 +11,9 @@ $(document).ready(function () {
 $(document).ready(function () {
     $('#dataTableNotes').DataTable();
 });
+$(document).ready(function () {
+    $('#dataTableServiceNotes').DataTable();
+});
+$(document).ready(function () {
+    $('#dataTableServiceHistory').DataTable();
+});

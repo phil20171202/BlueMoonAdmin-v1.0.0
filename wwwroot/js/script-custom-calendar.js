@@ -37,6 +37,7 @@ function InitializeCalendar() {
 function onShowModal(obj, isEventDetail) {
     $("#appointmentInput").modal("show")
     $("#customerServiceId").select2()
+
 }
 
 function onCloseModal() {
