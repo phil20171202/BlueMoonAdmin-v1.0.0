@@ -38,9 +38,6 @@ namespace BlueMoonAdmin.Models
 
         [Display(Name = "Customer Since")]
         [DataType(DataType.Date)]
-        public Nullable<DateTime> CustomerSince { get; set; }
-
-        
-
-}
+        public Nullable<DateTime> CustomerSince { get; set; } 
+    }
 }
