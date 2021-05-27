@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BlueMoonAdmin.Models.ViewModels.ServiceViewModel>
+﻿@model BlueMoonAdmin.Models.ViewModels.ServiceViewModel
 
     @{
     ViewData["Title"] = "Service Contract Manager";
@@ -81,7 +81,7 @@
             <div class="card">
                 <div class="card-header">Services Completed</div>
                 <div class="card-body text-center">
-                    <input id="knob-chart-completed" type="text" value="80" />
+                    <input id="knob-chart-completed" type="text" value="@Model.serviced" />
                 </div>
             </div>
         </div>
@@ -97,7 +97,7 @@
             <div class="card">
                 <div class="card-header">Upcoming Services Due Within 30 Days</div>
                 <div class="card-body text-center">                    
-                    <input id="knob-chart-upcoming" type="text" value="@Model.Where(c => c.ServiceCustomer.NextServiceDate < DateTime.Now.AddDays(30) & c.ServiceCustomer.NextServiceDate > DateTime.Now).Count()"  />
+                    <input id="knob-chart-upcoming" type="text" value="@Model.Upcoming"  />
                 </div>
             </div>
         </div>
@@ -105,7 +105,7 @@
             <div class="card">
                 <div class="card-header">Overdue Services</div>
                 <div class="card-body text-center">
-                    <input id="knob-chart-overdue" type="text" value="@Model.Where(c => c.ServiceCustomer.NextServiceDate < DateTime.Now).Count()" />
+                    <input id="knob-chart-overdue" type="text" value="@Model.OverDue" />
                 </div>
             </div>
         </div>
@@ -192,7 +192,7 @@
                         </tfoot>
                         <tbody>
                             
-                                @foreach (var Service in @Model)
+                                @foreach (var Service in @Model.CustomerCombineService)
                                  {                                        
                                         <tr>
                                             <td>@Service.customersVm.CompanyName</td>
