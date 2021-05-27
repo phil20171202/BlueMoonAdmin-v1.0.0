@@ -23,17 +23,17 @@
             <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-user fa-fw"></i>
             </a>
-            <div class="dropdown-menu dropdown-menu-right p-4" aria-labelledby="userDropdown">
+            <div class="dropdown-menu dropdown-menu-right p-lg-4" aria-labelledby="userDropdown">
                 @await Html.PartialAsync("_LoginPartial")
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" asp-controller="ProfileManager" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("My Profile")</a>
-                <a class="dropdown-item" href="#">@SharedLocalizer.GetLocalizedHtmlString("Activity Log")</a>
+                <a class="dropdown-item" asp-controller="ProfileManager" asp-action="Index"><i class="fas fa-user mr-2"></i>@SharedLocalizer.GetLocalizedHtmlString(" My Profile")</a>
+                <a class="dropdown-item" href="#"><i class="fas fa-user-cog mr-2"></i>@SharedLocalizer.GetLocalizedHtmlString(" Activity Log")</a>
                 @if (SignInManager.IsSignedIn(User))
                 {
                     <div class="dropdown-divider"></div>
                     <div class="dropdown-item">
                         <form method="post" id="logoutForm" asp-action="Logout" asp-controller="Account">
-                            <button type="submit" class="btn-danger">@SharedLocalizer.GetLocalizedHtmlString("Logout")</button>
+                            <button type="submit" class="btn-danger"><i class="fas fa-sign-out-alt"></i>@SharedLocalizer.GetLocalizedHtmlString(" Logout")</button>
                         </form>
                     </div>
                 }
