@@ -18,7 +18,7 @@ namespace BlueMoonAdmin.Models.ViewModels
 
         public IEnumerable<Appointment> appointments { get; set; }
 
-
+        public ServiceHistory serviceHistory { get; set; }
 
 
 

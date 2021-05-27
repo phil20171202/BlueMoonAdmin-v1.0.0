@@ -21,13 +21,13 @@ namespace BlueMoonAdmin.Controllers
         public IActionResult ServiceContractManager()
         {
             List<Customers> customer = new List<Customers>();
-            List<ServiceCustomer> studentAdditionalInfo = new List<ServiceCustomer>();
-            var studentViewModel = from c in _db.Customers
+            List<ServiceCustomer> serviceCustomers = new List<ServiceCustomer>();
+            var ServiceVm = from c in _db.Customers
                                    join sc in _db.ServiceCustomers on c.Id equals sc.CustomerId into sc2
                                    from sc in sc2.DefaultIfEmpty()
                                    where sc.Service
                                    select new ServiceViewModel { customersVm = c, ServiceCustomer = sc };
-            return View(studentViewModel);
+            return View(ServiceVm);
         }
 
         //
@@ -100,7 +100,47 @@ namespace BlueMoonAdmin.Controllers
         }
         #endregion
 
-      
+
+        public IActionResult AddService(int id)
+        {
+            var ServiceVM = new ServiceHistory();
+            if (id == 0)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ServiceVM.ServiceId = id;
+
+            }
+            if (ServiceVM == null)
+            {
+                return NotFound();
+            }
+            return View(ServiceVM);
+        }
+
+        // POST-Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddService(ServiceHistory obj)
+        {
+            int id = obj.ServiceId;
+            
+            var ServiceCust = new ServiceCustomer();
+            ServiceCust = _db.ServiceCustomers.Find(id);
+            if(obj.ServiceDate == DateTime.MinValue)
+            {
+                obj.ServiceDate = DateTime.Now;
+            }
+            ServiceCust.LastServiceDate = obj.ServiceDate;
+            ServiceCust.NextServiceDate = obj.ServiceDate.AddMonths(6);
+            _db.ServiceCustomers.Update(ServiceCust);
+            _db.ServiceHistory.Add(obj);
+            _db.SaveChanges();
+            return RedirectToAction("UpdateServiceContract", "ServiceCustomers", new { id });
+        }
+
 
 
     }
