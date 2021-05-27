@@ -40,6 +40,5 @@ namespace BlueMoonAdmin.Controllers
             _db.SaveChanges();
             return RedirectToAction("MonthlySales");
         }
-
     }
 }
