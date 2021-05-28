@@ -20,7 +20,12 @@ namespace BlueMoonAdmin.Models.ViewModels
 
         public ServiceHistory serviceHistory { get; set; }
 
+        public int serviced { get; set; }
 
+        public int Upcoming { get; set; }
+        public int OverDue { get; set; }
+
+        public IQueryable<ServiceViewModel> CustomerCombineService { get; set; }
 
     }
 }

@@ -20,14 +20,18 @@ namespace BlueMoonAdmin.Controllers
         }
         public IActionResult ServiceContractManager()
         {
-            List<Customers> customer = new List<Customers>();
-            List<ServiceCustomer> serviceCustomers = new List<ServiceCustomer>();
-            var ServiceVm = from c in _db.Customers
+            ServiceViewModel ServiceManagement = new ServiceViewModel();
+            ServiceManagement.CustomerCombineService = from c in _db.Customers
                                    join sc in _db.ServiceCustomers on c.Id equals sc.CustomerId into sc2
                                    from sc in sc2.DefaultIfEmpty()
                                    where sc.Service
                                    select new ServiceViewModel { customersVm = c, ServiceCustomer = sc };
-            return View(ServiceVm);
+
+            ServiceManagement.serviced = _db.ServiceHistory.Where(c=> c.Id >0).Count();
+            ServiceManagement.OverDue = ServiceManagement.CustomerCombineService.Where(c => c.ServiceCustomer.NextServiceDate < DateTime.Now).Count();
+            ServiceManagement.Upcoming = ServiceManagement.CustomerCombineService.Where(c => c.ServiceCustomer.NextServiceDate < DateTime.Now.AddDays(30)).Count() - ServiceManagement.OverDue  ;
+            
+             return View(ServiceManagement);
         }
 
         //
