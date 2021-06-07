@@ -12,6 +12,9 @@ namespace BlueMoonAdmin.Controllers
 {
     public class ServiceCustomersController : Controller
     {
+        //number of days to be clasified as upcoming services
+        public int days = 30;
+
         private readonly ApplicationDbContext _db;
 
         public ServiceCustomersController(ApplicationDbContext db)
@@ -20,6 +23,9 @@ namespace BlueMoonAdmin.Controllers
         }
         public IActionResult ServiceContractManager()
         {
+            
+            
+
             ServiceViewModel ServiceManagement = new ServiceViewModel();
             ServiceManagement.CustomerCombineService = from c in _db.Customers
                                    join sc in _db.ServiceCustomers on c.Id equals sc.CustomerId into sc2
@@ -29,7 +35,7 @@ namespace BlueMoonAdmin.Controllers
 
             ServiceManagement.serviced = _db.ServiceHistory.Where(c=> c.Id >0).Count();
             ServiceManagement.OverDue = ServiceManagement.CustomerCombineService.Where(c => c.ServiceCustomer.NextServiceDate < DateTime.Now).Count();
-            ServiceManagement.Upcoming = ServiceManagement.CustomerCombineService.Where(c => c.ServiceCustomer.NextServiceDate < DateTime.Now.AddDays(30)).Count() - ServiceManagement.OverDue  ;
+            ServiceManagement.Upcoming = ServiceManagement.CustomerCombineService.Where(c => c.ServiceCustomer.NextServiceDate < DateTime.Now.AddDays(days)).Count() - ServiceManagement.OverDue  ;
             
              return View(ServiceManagement);
         }
