@@ -17,3 +17,6 @@ $(document).ready(function () {
 $(document).ready(function () {
     $('#dataTableServiceHistory').DataTable();
 });
+$(document).ready(function () {
+    $('#dataTableCustomerFiles').DataTable();
+});
