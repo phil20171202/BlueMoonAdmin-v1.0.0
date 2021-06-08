@@ -85,15 +85,14 @@
 
             <div class="collapse" id="collapseContracts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                 <nav class="sb-sidenav-menu-nested nav">
-
                     <a class="nav-link" asp-controller="ServiceCustomers" asp-action="ServiceContractManager"><i class="fas fa-angle-double-right mr-1 text-muted"></i>@SharedLocalizer.GetLocalizedHtmlString(" Contract Dashboard")</a>
                     <a class="nav-link" asp-controller="Pricing" asp-action="Index"><i class="fas fa-angle-double-right mr-1 text-muted"></i>@SharedLocalizer.GetLocalizedHtmlString(" View Pricing")</a>
                 </nav>
             </div>
 
-            <div class="sb-sidenav-menu-heading">@SharedLocalizer.GetLocalizedHtmlString("User Management")</div>
+            @*<div class="sb-sidenav-menu-heading">@SharedLocalizer.GetLocalizedHtmlString("User Management")</div>
 
-            @*<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
             @SharedLocalizer.GetLocalizedHtmlString("Layouts")
             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -103,7 +102,7 @@
                 <a class="nav-link" asp-controller="home" asp-action="LayoutStatic">@SharedLocalizer.GetLocalizedHtmlString("Static Navigation")</a>
                 <a class="nav-link" asp-controller="home" asp-action="SidenavLight">@SharedLocalizer.GetLocalizedHtmlString("Light Sidenav")</a>
             </nav>
-        </div>*@
+        </div>
 
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
@@ -135,7 +134,7 @@
                         </nav>
                     </div>
                 </nav>
-            </div>
+            </div>*@
         </div>
         </div>
     @await Html.PartialAsync("_LoginPartial")
