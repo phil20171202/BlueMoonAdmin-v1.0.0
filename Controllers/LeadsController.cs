@@ -12,17 +12,22 @@ namespace BlueMoonAdmin.Controllers
 {
     public class LeadsController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext _db;
 
-        public LeadsController(ApplicationDbContext context)
+        public LeadsController(ApplicationDbContext db)
         {
-            _context = context;
+            _db = db;
         }
 
         // GET: Leads
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Leads.ToListAsync());
+            return View(await _db.Leads.ToListAsync());
+        }
+
+        public IActionResult LeadsDashboard()
+        {
+            return View();
         }
 
         // GET: Leads/Details/5
@@ -33,7 +38,7 @@ namespace BlueMoonAdmin.Controllers
                 return NotFound();
             }
 
-            var leads = await _context.Leads
+            var leads = await _db.Leads
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (leads == null)
             {
@@ -54,15 +59,21 @@ namespace BlueMoonAdmin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,CompanyName,ContactName,EmailAddress,OfficeAddress,AddressLine,CityRegion,PostCode,TelephoneNumber,MobileNumber,WebAddress,LeadSince")] Leads leads)
+        //public async Task<IActionResult> Create(Leads leads)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _db.Add(leads);
+        //        await _db.SaveChangesAsync();
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    return View(leads);
+        //}
+        public IActionResult Create(Leads obj)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(leads);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(leads);
+            _db.Leads.Add(obj);
+            _db.SaveChanges();
+            return RedirectToAction("index");
         }
 
         // GET: Leads/Edit/5
@@ -73,7 +84,7 @@ namespace BlueMoonAdmin.Controllers
                 return NotFound();
             }
 
-            var leads = await _context.Leads.FindAsync(id);
+            var leads = await _db.Leads.FindAsync(id);
             if (leads == null)
             {
                 return NotFound();
@@ -97,8 +108,8 @@ namespace BlueMoonAdmin.Controllers
             {
                 try
                 {
-                    _context.Update(leads);
-                    await _context.SaveChangesAsync();
+                    _db.Update(leads);
+                    await _db.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -124,7 +135,7 @@ namespace BlueMoonAdmin.Controllers
                 return NotFound();
             }
 
-            var leads = await _context.Leads
+            var leads = await _db.Leads
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (leads == null)
             {
@@ -139,15 +150,15 @@ namespace BlueMoonAdmin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var leads = await _context.Leads.FindAsync(id);
-            _context.Leads.Remove(leads);
-            await _context.SaveChangesAsync();
+            var leads = await _db.Leads.FindAsync(id);
+            _db.Leads.Remove(leads);
+            await _db.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool LeadsExists(int id)
         {
-            return _context.Leads.Any(e => e.Id == id);
+            return _db.Leads.Any(e => e.Id == id);
         }
     }
 }

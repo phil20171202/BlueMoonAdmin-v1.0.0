@@ -4,92 +4,119 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="container-fluid">
+    <h1 class="mt-4">Search &amp; Manage Leads</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a asp-controller="Leads" asp-action="LeadsDashboard">Leads Dashboard</a></li>
+        <li class="breadcrumb-item active">Customers</li>
+    </ol>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CompanyName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ContactName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EmailAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OfficeAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AddressLine)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CityRegion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PostCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TelephoneNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MobileNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.WebAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LeadSince)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CompanyName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ContactName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmailAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OfficeAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AddressLine)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CityRegion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PostCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TelephoneNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MobileNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.WebAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LeadSince)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+    <div class="card mb-4">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-6 pt-2">
+                    <i class="fas fa-table mr-1"></i> To Search for a customer start typing in the search, the table will auto-filter as you type
+                </div>
+                <div class="col-6 text-right">
+                    <a asp-controller="Leads" asp-action="Create" class="btn btn-primary">Create New Lead</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTableLeads" width="100%" cellspacing="0">
+
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CompanyName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ContactName)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.EmailAddress)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.OfficeAddress)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.AddressLine)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.CityRegion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.PostCode)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.TelephoneNumber)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.MobileNumber)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.WebAddress)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.LeadSince)
+                            </th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CompanyName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ContactName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EmailAddress)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.OfficeAddress)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AddressLine)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CityRegion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.PostCode)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TelephoneNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MobileNumber)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.WebAddress)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LeadSince)
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+    <script src="~/assets/demo/datatables-demo.js"></script>
 }
-    </tbody>
-</table>
