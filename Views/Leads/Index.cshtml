@@ -28,39 +28,17 @@
 
                     <thead>
                         <tr>
-                            <th>
-                                @Html.DisplayNameFor(model => model.CompanyName)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.ContactName)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.EmailAddress)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.OfficeAddress)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.AddressLine)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.CityRegion)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.PostCode)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.TelephoneNumber)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.MobileNumber)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.WebAddress)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.LeadSince)
-                            </th>
+                            <th>@Html.DisplayNameFor(model => model.CompanyName)</th>
+                            <th>@Html.DisplayNameFor(model => model.ContactName)</th>
+                            <th>@Html.DisplayNameFor(model => model.EmailAddress)</th>
+                            @*<th>@Html.DisplayNameFor(model => model.OfficeAddress)</th>*@
+                            @*<th>@Html.DisplayNameFor(model => model.AddressLine)</th>*@
+                            <th>@Html.DisplayNameFor(model => model.CityRegion)</th>
+                            <th>@Html.DisplayNameFor(model => model.PostCode)</th>
+                            <th>@Html.DisplayNameFor(model => model.TelephoneNumber)</th>
+                            <th>@Html.DisplayNameFor(model => model.MobileNumber)</th>
+                            @*<th>@Html.DisplayNameFor(model => model.WebAddress)</th>*@
+                            <th>@Html.DisplayNameFor(model => model.LeadSince)</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -68,43 +46,21 @@
                         @foreach (var item in Model)
                         {
                             <tr>
+                                <td width="20%">@Html.DisplayFor(modelItem => item.CompanyName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.ContactName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.EmailAddress)</td>
+                                @*<td>@Html.DisplayFor(modelItem => item.OfficeAddress)</td>*@
+                                @*<td>@Html.DisplayFor(modelItem => item.AddressLine)<td>*@
+                                <td>@Html.DisplayFor(modelItem => item.CityRegion)</td>
+                                <td>@Html.DisplayFor(modelItem => item.PostCode)</td>
+                                <td>@Html.DisplayFor(modelItem => item.TelephoneNumber)</td>
+                                <td>@Html.DisplayFor(modelItem => item.MobileNumber)</td>
+                                @*<td>@Html.DisplayFor(modelItem => item.WebAddress)</td>*@
+                                <td>@Html.DisplayFor(modelItem => item.LeadSince)</td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.CompanyName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.ContactName)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.EmailAddress)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.OfficeAddress)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.AddressLine)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.CityRegion)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.PostCode)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TelephoneNumber)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.MobileNumber)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.WebAddress)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.LeadSince)
-                                </td>
-                                <td>
-                                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary mx-1">Edit</a>
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info mx-1">Details</a>
+                                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger mx-1">Delete</a>
                                 </td>
                             </tr>
                         }
