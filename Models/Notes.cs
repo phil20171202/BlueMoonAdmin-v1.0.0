@@ -15,10 +15,16 @@ namespace BlueMoonAdmin.Models
         [Display(Name ="Notes")]
         public string notes { get; set; }
 
+        [Display(Name = "Engineer name")]
+        public string EngineerName { get; set; }
+
+        [Display(Name = "Service Type")]
+        public string ServiceType { get; set; }
+
         public string Category { get; set; }
 
         [DataType(DataType.Date)]
-        public Nullable<DateTime> Date { get; set; }
+        public DateTime Date { get; set; }
 
         public int CustomerId { get; set; }
         [ForeignKey("CustomerId")]

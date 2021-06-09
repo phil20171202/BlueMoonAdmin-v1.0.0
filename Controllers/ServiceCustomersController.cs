@@ -85,8 +85,8 @@ namespace BlueMoonAdmin.Controllers
             ServiceViewModel obj = new ServiceViewModel();
             obj.ServiceCustomer = _db.ServiceCustomers.Find(id);
             int CustomerID = obj.ServiceCustomer.CustomerId;
-            obj.Notes = _db.Notes.Where(c => c.Category == "Service" & c.CustomerId == CustomerID).ToList();
-            obj.appointments = _db.Appointments.Where(c => c.CustomerServiceId == id).ToList();
+            obj.Notes = _db.Notes.Where(c => c.CustomerId == CustomerID).ToList();
+            
             if (obj == null)
             {
                 return NotFound();
@@ -113,14 +113,14 @@ namespace BlueMoonAdmin.Controllers
 
         public IActionResult AddService(int id)
         {
-            var ServiceVM = new ServiceHistory();
+            var ServiceVM = new Notes();
             if (id == 0)
             {
                 return NotFound();
             }
             else
             {
-                ServiceVM.ServiceId = id;
+                ServiceVM.CustomerId = id;
 
             }
             if (ServiceVM == null)
@@ -133,25 +133,68 @@ namespace BlueMoonAdmin.Controllers
         // POST-Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AddService(ServiceHistory obj)
+        public IActionResult AddService(Notes obj)
         {
-            int id = obj.ServiceId;
-            
+            obj.Category = "Service Notes";
+            int customerID = obj.CustomerId;
+            var record = _db.ServiceCustomers.FirstOrDefault(c=> c.CustomerId == customerID);
+            int ServiceID = record.Id;
+
+
             var ServiceCust = new ServiceCustomer();
-            ServiceCust = _db.ServiceCustomers.Find(id);
-            if(obj.ServiceDate == DateTime.MinValue)
+            ServiceCust = _db.ServiceCustomers.Find(ServiceID);
+
+            if(obj.Date == DateTime.MinValue)
             {
-                obj.ServiceDate = DateTime.Now;
+                obj.Date = DateTime.Now;
             }
-            ServiceCust.LastServiceDate = obj.ServiceDate;
-            ServiceCust.NextServiceDate = obj.ServiceDate.AddMonths(6);
+            ServiceCust.LastServiceDate = obj.Date;
+            ServiceCust.NextServiceDate = obj.Date.AddMonths(6);
             _db.ServiceCustomers.Update(ServiceCust);
-            _db.ServiceHistory.Add(obj);
+            _db.Notes.Add(obj);
             _db.SaveChanges();
-            return RedirectToAction("UpdateServiceContract", "ServiceCustomers", new { id });
+
+            return RedirectToAction("UpdateServiceContract", new { ServiceCust.Id });
+        }
+
+        #region Create Note
+
+        public IActionResult CreateServiceNotes(int id)
+        {
+            var ServiceVM = new ServiceViewModel();
+            ServiceVM.Note = new Notes();
+            if (id == 0)
+            {
+                return NotFound();
+            }
+            else
+            {
+                ServiceVM.Note.CustomerId = id;
+            }
+            if (ServiceVM == null)
+            {
+                return NotFound();
+            }
+            return View(ServiceVM);
+        }
+
+        // Saves new note into the database
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreateServiceNotes(ServiceViewModel obj)
+        {
+            var ServiceCust = new ServiceCustomer();
+            ServiceCust = _db.ServiceCustomers.Find(obj.Note.CustomerId);
+
+
+            obj.Note.Category = "Contract Notes";
+            _db.Notes.Add(obj.Note);
+            _db.SaveChanges();
+            return RedirectToAction("UpdateServiceContract", new { ServiceCust.Id  });
         }
 
 
+        #endregion
 
     }
 }
