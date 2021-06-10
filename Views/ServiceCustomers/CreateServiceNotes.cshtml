@@ -1,0 +1,68 @@
+﻿@model BlueMoonAdmin.Models.ViewModels.ServiceViewModel
+
+@{
+    ViewData["Title"] = "Service Notes";
+}
+<form method="post" asp-action="CreateServiceNotes" >
+    <input asp-for="Note.CustomerId" hidden />
+    <input asp-for="Note.Id" class="form-control" value="" hidden />
+    
+    <div class="container-fluid">
+        <h1 class="mt-4">Create New Note</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a asp-controller="Customer" asp-action="Index">Dashboard</a></li>
+            <li class="breadcrumb-item active">Add Note</li>
+        </ol>
+        <!-- #region Form -->
+        <div class="container col-12 border-bottom">
+            <div class="row">
+                <div class="col-12">
+                    <div class="form-group row">
+                        <div class="col-2">
+                            <label asp-for="Note.Date"></label>
+                        </div>
+                        <div class="col-8">
+                            <label asp-for="Note.notes"></label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-2">
+                            <input asp-for="Note.Date" class="form-control" />
+                        </div>
+                   
+
+                        <div class="col-8">
+                            <textarea rows="10" asp-for="Note.notes" class="form-control" text-wrap:normal" type="text" placeholder="Please add your note here"></textarea>
+                            <span asp-validation-for="Note.notes" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row" >
+                        <div class="col-8 offset-2 row " >
+                            <div class="col">
+                                <input type="submit" class="btn btn-info w-75" value="Create"  />
+                            </div>
+                            @*<div class="col">
+                                <a asp-controller="ServiceCustomers" asp-action="UpdateServiceContract" asp-route-Id="@Model.ServiceCustomer.CustomerId" class="btn btn-danger w-75">Back</a>
+                            </div>*@
+                            
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- #endregion -->
+        </div>
+    </div>
+</form>
+
+
+
+@section Scripts{
+    <script src="~/assets/demo/chart-area-demo.js"></script>
+    <script src="~/assets/demo/chart-bar-demo.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+    <script src="~/assets/demo/datatables-demo.js"></script>
+}
+

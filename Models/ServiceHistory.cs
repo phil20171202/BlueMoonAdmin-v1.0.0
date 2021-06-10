@@ -23,6 +23,9 @@ namespace BlueMoonAdmin.Models
 
         public int ServiceId { get; set; }
 
+        [Display(Name = "Service Type")]
+        public string ServiceType { get; set; }
+
         [ForeignKey("ServiceId")]
         public virtual ServiceCustomer ServiceCustomer { get; set; }
 
