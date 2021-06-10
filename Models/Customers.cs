@@ -15,6 +15,7 @@ namespace BlueMoonAdmin.Models
         public string ContactName { get; set; }
 
         [Display(Name = "Email Address")]
+        [DataType(DataType.EmailAddress)]
         public string EmailAddress { get; set; }
 
         [Display(Name = "Office Address")]
@@ -29,15 +30,21 @@ namespace BlueMoonAdmin.Models
         [Display(Name = "Post Code")]
         public string PostCode { get; set; }
 
-        [Phone]
+        [DataType(DataType.PhoneNumber)]
         [Display(Name = "Telephone Number")]
         public string TelephoneNumber { get; set; }
 
-        [Display(Name = "Customer Notes")]
-        public string CustomerNotes { get; set; }
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name = "Mobile Number")]
+        public string MobileNumber { get; set; }
+
+        public string Website { get; set; }
 
         [Display(Name = "Customer Since")]
         [DataType(DataType.Date)]
-        public Nullable<DateTime> CustomerSince { get; set; } 
+        public Nullable<DateTime> CustomerSince { get; set; }
+
+        [Display(Name = "Vat Reg")]
+        public string Vat { get; set; }
     }
 }

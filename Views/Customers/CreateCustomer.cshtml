@@ -25,7 +25,7 @@
                         <div class="my-3">
                             <h4 class="btn btn-secondary"><i class="fas fa-phone mr-2"></i> </h4>
                             <h4 class="btn btn-secondary"><i class="fas fa-envelope-open-text mr-2"></i></h4>
-                            <h4 class="btn btn-secondary"><i class="fas fa-globe mr-2"></i>  www.website.com</h4>
+                            <h4 class="btn btn-secondary"><i class="fas fa-globe mr-2"></i> </h4>
                         </div>
                         <div class="dropdown-divider"></div>
                     </div>
@@ -33,14 +33,12 @@
                         <p class="text-black">Please ensure you enter the following information:</p>
                         <p><i class="fas fa-user mr-2"></i>  Company Name including main address - you can create more later</p>
                         <p><i class="fas fa-phone mr-2"></i>  All Contact Details including any mobile and email addresses</p>
-                        <p> <i class="fas fa-cogs mr-2"></i> Service Contract Details i.e when last serviced, machine type etc</p>
+                        @*<p> <i class="fas fa-cogs mr-2"></i> Service Contract Details i.e when last serviced, machine type etc</p>*@
                         <p><i class="fas fa-check mr-2"></i>  Once created you can add more contacts, addresses and notes.</p>
                     </div>
                 </div>
             </div>
-
         </div>
-
         <div class="col-lg-8">
             <div class="card card-default">
                 <div class="card-header d-flex align-items-center">
@@ -48,27 +46,31 @@
                         <div class="h4 m-0 text-center">Add New Customer Information</div>
                     </div>
                 </div>
-
-
                 <!-- #region Form -->
                 <div class="card-body">
                     <div class="row py-4 justify-content-center">
                         <div class="col-12 col-sm-10">
                             <input asp-for="Id" hidden />
                             <div class="form-group row">
-                                <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="CompanyName">Company Name:</label>
+                                <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right">Company Name:</label>
                                 <div class="col-xl-10 col-md-9 col-8">
                                     <input class="form-control" type="text" asp-for="CompanyName" />
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="EmailAddress">Email:</label>
+                                <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right">Contact Name:</label>
+                                <div class="col-xl-10 col-md-9 col-8">
+                                    <input class="form-control" type="text" asp-for="ContactName" />
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right">Email:</label>
                                 <div class="col-xl-10 col-md-9 col-8">
                                     <input class="form-control" asp-for="EmailAddress" />
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="TelephoneNumber">Phone:</label>
+                                <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right">Phone:</label>
                                 <div class="col-xl-10 col-md-9 col-8">
                                     <input class="form-control" asp-for="TelephoneNumber" />
                                 </div>
@@ -76,13 +78,13 @@
                             <div class="form-group row">
                                 <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" for="inputContact4">Mobile:</label>
                                 <div class="col-xl-10 col-md-9 col-8">
-                                    <input class="form-control" id="inputContact4" type="text" value="(44) 123 987 465" />
+                                    <input class="form-control" asp-for="MobileNumber" id="inputContact4" type="text"  />
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" for="inputContact5">Website:</label>
                                 <div class="col-xl-10 col-md-9 col-8">
-                                    <input class="form-control" id="inputContact5" type="text" value="http://some.wesbite.com" />
+                                    <input class="form-control" id="inputContact5" type="text" placeholder="http://some.website.com" asp-for="Website" />
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -112,29 +114,21 @@
                             <div class="form-group row">
                                 <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right">Vat Reg:</label>
                                 <div class="col-xl-10 col-md-9 col-8">
-                                    <input class="form-control" />
+                                    <input class="form-control" type="text" asp-for="Vat" />
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="CustomerSince">Customer Since:</label>
                                 <div class="col-xl-10 col-md-9 col-8">
-                                    <input class="form-control" type="text" asp-for="CustomerSince" />
+                                    <input class="form-control" type="date" asp-for="CustomerSince" />
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <div class="col-xl-2 col-md-3 col-4"></div>
-                                <div class="col-xl-10 col-md-9 col-8">
-                                    <div class="custom-control custom-checkbox">
-                                        <input class="custom-control-input" id="customCheck1" type="checkbox" />
-                                        <label class="custom-control-label" for="customCheck1">Primary contact?</label>
-                                    </div>
-                                </div>
-                            </div>
+                        
                             <div class="form-group row mt-6">
                                 <div class="col-4 offset-2">
-                                    <input type="submit" class="btn btn-info w-75" value="Create Customer" />
+                                    <input type="submit" class="btn btn-outline-primary w-75" value="Create Customer" />
                                 </div>
                                 <div class="col-4 offset-2">
                                     <a asp-controller="Customers" asp-action="Index" class="btn btn-outline-dark w-75">Go Back</a>
