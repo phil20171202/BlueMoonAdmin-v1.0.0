@@ -21,9 +21,9 @@
                     <h3 class="m-0 text-bold">@Model.Customers.CompanyName</h3>
                     <div class="text-center">
                         <div class="my-3">
-                            <h4 class="btn btn-secondary"><i class="fas fa-phone mr-2"></i>  @Model.Customers.TelephoneNumber</h4>
-                            <h4 class="btn btn-secondary"><i class="fas fa-envelope-open-text mr-2"></i>  @Model.Customers.EmailAddress</h4>
-                            <h4 class="btn btn-secondary"><i class="fas fa-globe mr-2"></i>  www.website.com</h4>
+                            <a href=@("tel:"+Model.Customers.TelephoneNumber)><h4 class="btn btn-secondary"><i class="fas fa-phone mr-2"></i>@Model.Customers.TelephoneNumber</h4></a>
+                            <a href=@("mailto:"+Model.Customers.EmailAddress)><h4 class="btn btn-secondary"><i class="fas fa-envelope-open-text mr-2"></i>@Model.Customers.EmailAddress</h4></a>
+                            <a href=@Model.Customers.Website target="_blank"> <h4 class="btn btn-secondary"> <i class="fas fa-globe mr-2"></i>@Model.Customers.Website</h4></a>
                         </div>
                         <div class="my-3 mb-4">
                             <a asp-controller="Contacts" asp-action="CreateContact" asp-route-Id="@Model.Customers.Id" class="btn btn-outline-info">
@@ -150,13 +150,13 @@
                                 <div class="form-group row">
                                     <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" for="inputContact4">Mobile:</label>
                                     <div class="col-xl-10 col-md-9 col-8">
-                                        <input class="form-control" id="inputContact4" type="text" value="(44) 123 987 465" readonly />
+                                        <input class="form-control" id="inputContact4" type="text" asp-for="Customers.MobileNumber" readonly />
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" for="inputContact5">Website:</label>
                                     <div class="col-xl-10 col-md-9 col-8">
-                                        <input class="form-control" id="inputContact5" type="text" value="http://some.wesbite.com" readonly />
+                                        <input class="form-control" id="inputContact5" type="text" asp-for="Customers.Website" readonly />
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -186,25 +186,14 @@
                                 <div class="form-group row">
                                     <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right">Vat Reg:</label>
                                     <div class="col-xl-10 col-md-9 col-8">
-                                        <input class="form-control" readonly />
+                                        <input class="form-control" asp-for="Customers.Vat" readonly />
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
                                     <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Customers.CustomerSince">Customer Since:</label>
                                     <div class="col-xl-10 col-md-9 col-8">
-                                         <input class="form-control" type="text" asp-for="Customers.CustomerSince" readonly />                                       
-                                    </div>
-                                </div>
-
-
-                                <div class="form-group row">
-                                    <div class="col-xl-2 col-md-3 col-4"></div>
-                                    <div class="col-xl-10 col-md-9 col-8">
-                                        <div class="custom-control custom-checkbox">
-                                            <input class="custom-control-input" id="customCheck1" type="checkbox" />
-                                            <label class="custom-control-label" for="customCheck1">Primary contact?</label>
-                                        </div>
+                                         <input class="form-control" type="date" asp-for="Customers.CustomerSince" readonly />                                       
                                     </div>
                                 </div>
                                 <div class="form-group row mt-6">

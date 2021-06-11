@@ -3,31 +3,174 @@
 @{
     ViewData["Title"] = "Customers";
 }
-<form method="post" asp-action="UpdateCustomer">
-    <input asp-for="Id" hidden />
-    <div class="container-fluid">
-        <h1 class="mt-4 pb-2">Editing @Model.CompanyName</h1>
-        <ol class="breadcrumb mb-4">
-            <li class="breadcrumb-item"><a asp-controller="Customer" asp-action="CustomerDashboard">Customer Dashboard</a></li>
-            <li class="breadcrumb-item active">Edit Customer</li>
-        </ol>
-        <div class="card mb-3">
-            <div class="card-body">
-                <div class="row pt-1">
-                    <div class="col-12 mb-2 text-black">
-                        <p class="text-black">Edit customer data here. Please ensure you enter the correct information:</p>
-                        <ol class="text-black">
-                            <li> Full Company Name &amp; Address</li>
-                            <li> Primary Contact Details - email, telephone etc.</li>
-                            <li> Service Contract Details i.e when last serviced, machine type etc</li>
-                            <li> After you have edited the customer you can add more contacts, addresses and notes.</li>
-                        </ol>
+<div class="container-fluid">
+    <h1 class="mt-4 pb-2">Editing @Model.CompanyName</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a asp-controller="Customer" asp-action="CustomerDashboard">Customer Dashboard</a></li>
+        <li class="breadcrumb-item active">Edit Customer</li>
+    </ol>
+</div>
+
+    <form method="post" asp-action="UpdateCustomer">
+        <input asp-for="Id" hidden />
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card card-default">
+                        <div class="card-body text-center">
+                            <div class="py-4">
+                                <img class="img-fluid rounded-circle img-thumbnail thumb96" src="~/assets/images/user/contact-placeholder.png" alt="Contact" />
+                            </div>
+                            <h3 class="m-0 text-bold">@Model.CompanyName</h3>
+                            <div class="text-center">
+                                <div class="my-3">
+                                    <a href=@("tel:"+Model.TelephoneNumber)><h4 class="btn btn-secondary"><i class="fas fa-phone mr-2"></i>@Model.TelephoneNumber</h4></a>
+                                    <a href=@("mailto:"+Model.EmailAddress)><h4 class="btn btn-secondary"><i class="fas fa-envelope-open-text mr-2"></i>@Model.EmailAddress</h4></a>
+                                    <a href=@Model.Website target="_blank"> <h4 class="btn btn-secondary"> <i class="fas fa-globe mr-2"></i>@Model.Website</h4></a>
+                                </div>
+                                <div class="dropdown-divider"></div>
+                            </div>
+                            <div class="row p-4">
+                                <p class="text-black">Dave to add notes here :-) </p>
+                                @*<p class="text-black">Please ensure you enter the following information:</p>
+                                    <p><i class="fas fa-user mr-2"></i>  Company Name including main address - you can create more later</p>
+                                    <p><i class="fas fa-phone mr-2"></i>  All Contact Details including any mobile and email addresses</p>
+
+                                    <p><i class="fas fa-check mr-2"></i>  Once created you can add more contacts, addresses and notes.</p>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="card card-default">
+                        <div class="card-header d-flex align-items-center">
+                            <div class="d-flex justify-content-center col">
+                                <div class="h4 m-0 text-center">Edit Customer Information</div>
+                            </div>
+                        </div>
+                        <!-- #region Form -->
+                        <div class="card-body">
+                            <div class="row py-4 justify-content-center">
+                                <div class="col-12 col-sm-10">
+                                    <input asp-for="Id" hidden />
+                                    <div class="form-group row">
+                                        <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right">Company Name:</label>
+                                        <div class="col-xl-10 col-md-9 col-8">
+                                            <input class="form-control" type="text" asp-for="CompanyName" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right">Contact Name:</label>
+                                        <div class="col-xl-10 col-md-9 col-8">
+                                            <input class="form-control" type="text" asp-for="ContactName" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right">Email:</label>
+                                        <div class="col-xl-10 col-md-9 col-8">
+                                            <input class="form-control" asp-for="EmailAddress" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right">Phone:</label>
+                                        <div class="col-xl-10 col-md-9 col-8">
+                                            <input class="form-control" asp-for="TelephoneNumber" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" for="inputContact4">Mobile:</label>
+                                        <div class="col-xl-10 col-md-9 col-8">
+                                            <input class="form-control" asp-for="MobileNumber" id="inputContact4" type="text" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" for="inputContact5">Website:</label>
+                                        <div class="col-xl-10 col-md-9 col-8">
+                                            <input class="form-control" id="inputContact5" type="text" placeholder="http://some.website.com" asp-for="Website" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="OfficeAddress">Office Address:</label>
+                                        <div class="col-xl-10 col-md-9 col-8">
+                                            <input class="form-control" asp-for="OfficeAddress" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="AddressLine">Address Line 2:</label>
+                                        <div class="col-xl-10 col-md-9 col-8">
+                                            <input class="form-control" asp-for="AddressLine" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="CityRegion">City / Region:</label>
+                                        <div class="col-xl-10 col-md-9 col-8">
+                                            <input class="form-control" asp-for="CityRegion" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="PostCode">PostCode:</label>
+                                        <div class="col-xl-10 col-md-9 col-8">
+                                            <input class="form-control" asp-for="PostCode" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right">Vat Reg:</label>
+                                        <div class="col-xl-10 col-md-9 col-8">
+                                            <input class="form-control" type="text" asp-for="Vat" />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="CustomerSince">Customer Since:</label>
+                                        <div class="col-xl-10 col-md-9 col-8">
+                                            <input class="form-control" type="date" asp-for="CustomerSince" />
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group row mt-6">
+                                        <div class="col-4 offset-2">
+                                            <input type="submit" class="btn btn-outline-primary w-75" value="Save Changes" />
+                                        </div>
+                                        <div class="col-4 offset-2">
+                                            <a asp-controller="Customers" asp-action="ViewCustomer" asp-route-Id=@Model.Id class="btn btn-outline-dark w-75">Go Back</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
+
+
+        <!--/// commented to try new layout
+        <div class="container-fluid">
+            <h1 class="mt-4 pb-2">Editing @Model.CompanyName</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item"><a asp-controller="Customer" asp-action="CustomerDashboard">Customer Dashboard</a></li>
+                <li class="breadcrumb-item active">Edit Customer</li>
+            </ol>
+            <div class="card mb-3">
+                <div class="card-body">
+                    <div class="row pt-1">
+                        <div class="col-12 mb-2 text-black">
+                            <p class="text-black">Edit customer data here. Please ensure you enter the correct information:</p>
+                            <ol class="text-black">
+                                <li> Full Company Name &amp; Address</li>
+                                <li> Primary Contact Details - email, telephone etc.</li>
+                                <li> Service Contract Details i.e when last serviced, machine type etc</li>
+                                <li> After you have edited the customer you can add more contacts, addresses and notes.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>-->
         <!-- #region Form -->
-        <div class="container col-12 border-bottom">
+        <!--<div class="container col-12 border-bottom">
             <div class="row">
                 <div class="col-12">
                     <div class="form-group row">
@@ -87,7 +230,7 @@
                         </div>
                     </div>
 
-                    
+
 
                     <div class="form-group row pt-4 mb-4">
                         <div class="col-8 offset-2 row">
@@ -101,68 +244,67 @@
                     </div>
 
                 </div>
+            </div>-->
+        <!-- #endregion -->
+        <!--</div>
+        </div>-->
+    </form>
+
+    <!--<div class="col-12 ">-->
+    @*<div class="card mb-4">
+            <div class="card-body">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>.</div>
+        </div>*@
+    <!--<div class="card mb-4">
+        <div class="card-header"><i class="fas fa-table mr-1"></i> Current Customer List</div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Company Name</th>
+                            <th>Contact Name</th>
+                            <th>Office Address</th>
+                            <th>Telephone Number</th>
+                            <th>Service Contract</th>
+                            <th>Last Service Date</th>
+                            <th>Current Machine</th>
+                            <th>Customer Since</th>
+                            <th>Edit</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>-->
+    @*<th>Name</th>
+        <th>Position</th>
+        <th>Office</th>
+        <th>Age</th>
+        <th>Start date</th>
+        <th>Salary</th>*@
+    <!--</tr>
+    </tfoot>
+    <tbody>-->
+    @*@foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Position</td>
+                <td>@item.Office</td>
+                <td>@item.Age</td>
+                <td>@item.StartDate</td>
+                <td>@item.Salary</td>
+            </tr>
+        }*@
+    <!--</tbody>
+                    </table>
+                </div>
             </div>
-
-            <!-- #endregion -->
         </div>
-    </div>
-</form>
-
-<!--<div class="col-12 ">-->
-@*<div class="card mb-4">
-        <div class="card-body">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>.</div>
-    </div>*@
-<!--<div class="card mb-4">
-    <div class="card-header"><i class="fas fa-table mr-1"></i> Current Customer List</div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>Company Name</th>
-                        <th>Contact Name</th>
-                        <th>Office Address</th>
-                        <th>Telephone Number</th>
-                        <th>Service Contract</th>
-                        <th>Last Service Date</th>
-                        <th>Current Machine</th>
-                        <th>Customer Since</th>
-                        <th>Edit</th>
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>-->
-@*<th>Name</th>
-    <th>Position</th>
-    <th>Office</th>
-    <th>Age</th>
-    <th>Start date</th>
-    <th>Salary</th>*@
-<!--</tr>
-</tfoot>
-<tbody>-->
-@*@foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.Name</td>
-            <td>@item.Position</td>
-            <td>@item.Office</td>
-            <td>@item.Age</td>
-            <td>@item.StartDate</td>
-            <td>@item.Salary</td>
-        </tr>
-    }*@
-<!--</tbody>
-                </table>
-            </div>
         </div>
-    </div>
-    </div>
 
-@section Scripts{
-    <script src="~/assets/demo/chart-area-demo.js"></script>
-    <script src="~/assets/demo/chart-bar-demo.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-    <script src="~/assets/demo/datatables-demo.js"></script>
-}-->
+    @section Scripts{
+        <script src="~/assets/demo/chart-area-demo.js"></script>
+        <script src="~/assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+        <script src="~/assets/demo/datatables-demo.js"></script>
+    }-->
