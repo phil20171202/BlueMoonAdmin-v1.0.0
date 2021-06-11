@@ -15,7 +15,7 @@ namespace BlueMoonAdmin.Models
 
         [DisplayName("Date")]
         public DateTime ToDoDate { get; set; }
-       [DisplayName("Due Date")]
+        [DisplayName("Due Date")]
         public DateTime ToDoDueDate { get; set; }
         [DisplayName("My Task")]
         public string ToDoTask { get; set; }
