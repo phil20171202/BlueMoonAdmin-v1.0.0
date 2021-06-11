@@ -20,7 +20,7 @@
                 </div>
                 <div class="col-8 py-3 bg-primary rounded-right">
                     <div class="h3 mt-0">Service Contract</div>
-                    <a class="text-white" asp-controller="ServiceCustomers" asp-action="CreateServiceContract">@SharedLocalizer.GetLocalizedHtmlString("Add New Service Contract ")</a>
+                    <a class="text-white" asp-controller="Customers" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("Add New Service Contract ")</a>
                     <i class="fas fa-angle-right ml-2"></i>
                 </div>
             </div>
@@ -72,30 +72,30 @@
                 <i class="fas fa-signal mr-1"></i>@SharedLocalizer.GetLocalizedHtmlString("Service Level Tracker")
             </div>
             <div class="col-6 text-right">
-                <a class="text-right btn btn-outline-primary" asp-controller="ServiceCustomers" asp-action="CreateServiceContract">Add New Service Contract</a>
+                <a class="text-right btn btn-outline-primary" asp-controller="Customers" asp-action="Index">Add New Service Contract</a>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-3 col-md-6">
             <div class="card">
-                <div class="card-header">Second Services Completed</div>
+                <div class="card-header">Live Service Contracts</div>
                 <div class="card-body text-center">
-                    <input id="knob-chart-completed" readonly="readonly" type="text" value="@Model.serviced" />
+                    <input id="knob-chart-completed" readonly="readonly" type="text" value="0" />
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
             <div class="card">
-                <div class="card-header">Single Services Completed</div>
+                <div class="card-header">Services Completed</div>
                 <div class="card-body text-center">
-                    <input id="knob-chart-single" readonly="readonly" type="text" value="45" />
+                    <input id="knob-chart-single" readonly="readonly" type="text" value="@Model.serviced" />
                 </div>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
             <div class="card">
-                <div class="card-header">Upcoming Services Due Within 30 Days</div>
+                <div class="card-header">Services Due Within 30 Days</div>
                 <div class="card-body text-center">                    
                     <input id="knob-chart-upcoming" readonly="readonly" type="text" value="@Model.Upcoming"  />
                 </div>
