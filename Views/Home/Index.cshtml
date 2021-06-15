@@ -155,7 +155,7 @@
                                <span class="btn-label">
                                    <i class="fas fa-bell-slash"></i>
                                </span>
-                               (@Model.toDoListCount)
+                               (@Model.ToDoListCount)
                            </div>
 
                        <div class="card-title"><i class="fas fa-table mr-1"></i>Task Manager - Latest Tasks</div>
@@ -163,7 +163,7 @@
                        <div class="card mb-4">
                            <div class="list-group p-3" data-height="230" data-scrollable="">
                                <div class="table-responsive">
-                                   @if (Model.toDoList.Count() > 0)
+                                   @if (Model.ToDoList.Count() > 0)
                                    {
                                        <table class="table table-bordered" id="dataTableToDoDashboard" width="100%" cellspacing="0">
                                            <thead>
@@ -179,7 +179,7 @@
                                                </tr>
                                            </thead>
                                            <tbody>
-                                               @foreach (var item in Model.toDoList)
+                                               @foreach (var item in Model.ToDoList)
                                                {
                                                    <tr>
                                                        <td width="10%">@item.ToDoDate.ToShortDateString().ToString()</td>
@@ -236,20 +236,20 @@
                             </a>
                             <div class="text-info">View Service Reports</div>
                             <div class="text-center py-4">
-                                <div class="easypie-chart easypie-chart-lg" data-easypiechart="data-easypiechart" data-percent="20"
+                                <div class="easypie-chart easypie-chart-lg" data-easypiechart="data-easypiechart" data-percent=@Model.ServicePercentage
                                      data-animate="{&quot;duration&quot;: &quot;800&quot;, &quot;enabled&quot;: &quot;true&quot;}"
                                      data-bar-color="#23b7e5" data-track-Color="rgba(200,200,200,0.4)"
                                      data-scale-Color="false" data-line-width="10" data-line-cap="round" data-size="145">
-                                    <span>15%</span>
+                                    <span>@Model.ServicePercentage%</span>
                                 </div>
                             </div>
-                            <div class="text-center" data-sparkline="" data-bar-color="#23b7e5" data-height="30" data-bar-width="5" data-bar-spacing="2" data-values="5,4,8,7,8,5,4,6,5,5,9,4,6,3,4,7,5,4,7"></div>
+                            @*<div class="text-center" data-sparkline="" data-bar-color="#23b7e5" data-height="30" data-bar-width="5" data-bar-spacing="2" data-values="5,4,8,7,8,5,4,6,5,5,9,4"></div>*@
                         </div>
                         <div class="card-footer">
                             <p class="text-muted">
                                 <em class="fa fa-cogs fa-fw"></em>
                                 <span>This Month</span>
-                                <span class="text-dark">25 Services Were Due</span>
+                                <span class="text-dark">@Model.MonthlyServiceCount Services Were Due</span>
                             </p>
                         </div>
                     </div>
