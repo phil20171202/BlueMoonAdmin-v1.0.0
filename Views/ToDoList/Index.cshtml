@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BlueMoonAdmin.Models.ToDoListItem>
+﻿@model BlueMoonAdmin.Models.ViewModels.ToDoViewModel
 @{
     ViewData["Title"] = "Index";
 }
@@ -32,7 +32,7 @@
                     <em class="icon-target fa-3x"></em>
                 </div>
                 <div class="col-8 py-3 bg-green rounded-right">
-                    <div class="h3 mt-0">Completed Tasks (18)</div>
+                    <div class="h3 mt-0">Completed Tasks (@Model.TaskCompletedCount)</div>
                     <a class="text-white" asp-controller="ToDoList" asp-action="Create">@SharedLocalizer.GetLocalizedHtmlString("View Complete tasks ")</a>
                     <i class="fas fa-angle-right ml-2"></i>
                 </div>
@@ -45,7 +45,7 @@
                     <em class="icon-pin fa-3x"></em>
                 </div>
                 <div class="col-8 py-3 bg-purple rounded-right">
-                    <div class="h3 mt-0">Pending Tasks (12)</div>
+                    <div class="h3 mt-0">Pending Tasks (@Model.TaskPendingCount)</div>
                     <a class="text-white" asp-controller="ToDoList" asp-action="Create">@SharedLocalizer.GetLocalizedHtmlString("View pending tasks ")</a>
                     <i class="fas fa-angle-right ml-2"></i>
                 </div>
@@ -58,7 +58,7 @@
                     <em class="icon-clock fa-3x"></em>
                 </div>
                 <div class="col-8 py-3 bg-danger rounded-right">
-                    <div class="h3 mt-0">Overdue Tasks (12)</div>
+                    <div class="h3 mt-0">Overdue Tasks (@Model.TaskOverdueCount)</div>
                     <a class="text-white" asp-controller="ToDoList" asp-action="Create">@SharedLocalizer.GetLocalizedHtmlString("View Overdue tasks ")</a>
                     <i class="fas fa-angle-right ml-2"></i>
                 </div>
@@ -181,7 +181,7 @@
         <div class="card-header"><i class="fas fa-table mr-1"></i> To Search for a task start typing in the search box, the table will auto-search as you type</div>
         <div class="card-body">
             <div class="table-responsive">
-                @if (Model.Count() > 0)
+                @if (Model.Tasks.Count() > 0)
                 {
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
@@ -207,7 +207,7 @@
                             </tr>
                         </tfoot>
                         <tbody>
-                            @foreach (var item in Model)
+                            @foreach (var item in Model.Tasks)
                             {
                                 <tr>
                                     <td width="10%">@item.ToDoDate.ToShortDateString().ToString()</td>
