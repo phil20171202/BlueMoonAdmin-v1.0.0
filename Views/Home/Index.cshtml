@@ -133,27 +133,27 @@
             </span>Success
         </button>*@
 
-                           <div class="px-2 float-right badge badge-danger mb-2 ml-2" title="Number of overdue Tasks">
+                           <div class="px-2 float-right badge badge-danger mb-1 ml-2" title="Number of overdue Tasks">
                                <span class="btn-label">
                                    <i class="fas fa-exclamation-triangle"></i>
                                </span>
                                (@Model.TaskOverdueCount)
                            </div>
-                           <div class="px-2 float-right badge badge-warning mb-2 ml-2" title="Number of tasks completed in last 12 months">
+                           <div class="px-2 float-right badge badge-warning mb-1 ml-2" title="Number of tasks completed in last 12 months">
                                <span class="btn-label">
                                    <i class="fas fa-check"></i>
                                </span>
                                (@Model.TaskCompletedCount)
                            </div>
-                           <div class="px-2 float-right badge badge-success mb-2 ml-1" title="Number of tasks completed in last 30 days">
+                           <div class="px-2 float-right badge badge-success mb-1 ml-1" title="Number of tasks completed in last 30 days">
                                <span class="btn-label">
                                    <i class="fas fa-check"></i>
                                </span>
                                (@Model.TaskCompleteCount)
                            </div>
-                           <div class="px-2 float-right badge badge-inverse mb-2 ml-2" title="Number of all tasks regardless of status and due date">
+                           <div class="px-2 float-right badge badge-info mb-1 ml-2" title="Number of all tasks regardless of status and due date">
                                <span class="btn-label">
-                                   <i class="fas fa-exclamation"></i>
+                                   <i class="fas fa-bell-slash"></i>
                                </span>
                                (@Model.toDoListCount)
                            </div>
