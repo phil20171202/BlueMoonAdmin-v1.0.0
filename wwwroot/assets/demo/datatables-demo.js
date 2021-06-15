@@ -23,3 +23,6 @@ $(document).ready(function () {
 $(document).ready(function () {
     $('#dataTableLeads').DataTable();
 });
+$(document).ready(function () {
+    $('#dataTableToDoDashboard').DataTable();
+});
