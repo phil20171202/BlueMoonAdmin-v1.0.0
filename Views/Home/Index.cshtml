@@ -126,22 +126,43 @@
                <div class="col-xl-12">
                     <div class="card card-default">
                         <div class="card-header">
-                            
-                            <div class="px-2 float-right badge badge-danger" title="Number of overdue Tasks">@Model.TaskOverdueCount</div>
-                            
-                            <div class="px-2 mr-2 float-right badge badge-info" title="Number of tasks completed in last 30 days">@Model.TaskCompleteCount</div>
-                            
+
+                            @*<button class="btn btn-labeled btn-success mb-2" type="button">
+            <span class="btn-label">
+                <i class="fa fa-check"></i>
+            </span>Success
+        </button>*@
+
+                            <div class="px-2 float-right badge badge-danger mb-2 ml-2" title="Number of overdue Tasks">
+                                <span class="btn-label">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </span>
+                                (@Model.TaskOverdueCount)
+                            </div>
+                            <div class="px-2 float-right badge badge-warning mb-2 ml-2" title="Number of tasks completed in last 30 days">
+                                <span class="btn-label">
+                                    <i class="fas fa-check"></i>
+                                </span>
+                                (@Model.TaskCompleteCount)
+                            </div>
+                            <div class="px-2 float-right badge badge-success mb-2 ml-1" title="Number of all tasks regardless of status and due date">
+                                <span class="btn-label">
+                                    <i class="fas fa-check"></i>
+                                </span>
+                                (@Model.toDoListCount)
+                            </div>
+
+                            @*<div class="px-2 mr-2 float-right badge badge-success" title="Number of tasks completed in last 30 days"><i class="fas fa-check"></i> (@Model.TaskCompleteCount)</div>
+
                             <div class="px-2 mr-2 float-right badge badge-success" title="Number of tasks completed in last 12 months">@Model.TaskCompletedCount</div>
 
-                          
-                            <div class="px-2 mr-2 float-right badge badge-success" title="Number of all tasks regardless of status and due date" >@Model.toDoListCount</div>
+                            <div class="px-2 mr-2 float-right badge badge-info" title="Number of all tasks regardless of status and due date"><i class="fas fa-exclamation"></i> (@Model.toDoListCount)</div>*@
 
 
                             <div class="card-title"><i class="fas fa-table mr-1"></i>Task Manager - Latest Tasks</div>
                         </div>
                         <div class="card mb-4">                            
-                            <div class="list-group p-3" data-height="230" data-scrollable="">
-                                @*<div class="card-title">Search for a task by typing in the search box</div>*@
+                            <div class="list-group p-3" data-height="230" data-scrollable="">                                
                                 <div class="table-responsive">
                                     @if (Model.toDoList.Count() > 0)
                                     {
