@@ -37,6 +37,7 @@ namespace BlueMoonAdmin.Controllers
             DashboardViewModel DBView = new DashboardViewModel();
             
             DBView.toDoList = _db.ToDoListItems;
+            DBView.toDoListCount = _db.ToDoListItems.Count();
             DBView.CustomerCount = _db.Customers.Count();
 
             return View(DBView);

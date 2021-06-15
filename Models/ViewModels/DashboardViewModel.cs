@@ -10,6 +10,8 @@ namespace BlueMoonAdmin.Models.ViewModels
     {
         public IEnumerable<ToDoListItem> toDoList { get; set; }
 
+        public int toDoListCount { get; set; }
+
         public int CustomerCount { get; set; }
 
         public int ServiceCount { get; set; }
