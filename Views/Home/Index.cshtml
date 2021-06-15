@@ -124,97 +124,104 @@
             </div>
             <div class="row">
                <div class="col-xl-12">
-                    <div class="card card-default">
-                        <div class="card-header">
+                   <div class="card card-default">
+                       <div class="card-header">
 
-                            @*<button class="btn btn-labeled btn-success mb-2" type="button">
-            <span class="btn-label">
-                <i class="fa fa-check"></i>
-            </span>Success
-        </button>*@
+                           @*<button class="btn btn-labeled btn-success mb-2" type="button">
+                <span class="btn-label">
+                    <i class="fa fa-check"></i>
+                </span>Success
+            </button>*@
 
-                            <div class="px-2 float-right badge badge-danger mb-2 ml-2" title="Number of overdue Tasks">
-                                <span class="btn-label">
-                                    <i class="fas fa-exclamation-triangle"></i>
-                                </span>
-                                (@Model.TaskOverdueCount)
-                            </div>
-                            <div class="px-2 float-right badge badge-warning mb-2 ml-2" title="Number of tasks completed in last 30 days">
-                                <span class="btn-label">
-                                    <i class="fas fa-check"></i>
-                                </span>
-                                (@Model.TaskCompleteCount)
-                            </div>
-                            <div class="px-2 float-right badge badge-success mb-2 ml-1" title="Number of all tasks regardless of status and due date">
-                                <span class="btn-label">
-                                    <i class="fas fa-check"></i>
-                                </span>
-                                (@Model.toDoListCount)
-                            </div>
+                           <div class="px-2 float-right badge badge-danger mb-2 ml-2" title="Number of overdue Tasks">
+                               <span class="btn-label">
+                                   <i class="fas fa-exclamation-triangle"></i>
+                               </span>
+                               (@Model.TaskOverdueCount)
+                           </div>
+                           <div class="px-2 float-right badge badge-warning mb-2 ml-2" title="Number of tasks completed in last 30 days">
+                               <span class="btn-label">
+                                   <i class="fas fa-check"></i>
+                               </span>
+                               (@Model.TaskCompleteCount)
+                           </div>
+                           <div class="px-2 float-right badge badge-success mb-2 ml-1" title="Number of all tasks regardless of status and due date">
+                               <span class="btn-label">
+                                   <i class="fas fa-check"></i>
+                               </span>
+                               (@Model.toDoListCount)
+                           </div>
 
-                            @*<div class="px-2 mr-2 float-right badge badge-success" title="Number of tasks completed in last 30 days"><i class="fas fa-check"></i> (@Model.TaskCompleteCount)</div>
+                           @*<div class="px-2 mr-2 float-right badge badge-success" title="Number of tasks completed in last 30 days"><i class="fas fa-check"></i> (@Model.TaskCompleteCount)</div>
 
-                            <div class="px-2 mr-2 float-right badge badge-success" title="Number of tasks completed in last 12 months">@Model.TaskCompletedCount</div>
+            <div class="px-2 mr-2 float-right badge badge-success" title="Number of tasks completed in last 12 months">@Model.TaskCompletedCount</div>
 
-                            <div class="px-2 mr-2 float-right badge badge-info" title="Number of all tasks regardless of status and due date"><i class="fas fa-exclamation"></i> (@Model.toDoListCount)</div>*@
+            <div class="px-2 mr-2 float-right badge badge-info" title="Number of all tasks regardless of status and due date"><i class="fas fa-exclamation"></i> (@Model.toDoListCount)</div>*@
 
 
-                            <div class="card-title"><i class="fas fa-table mr-1"></i>Task Manager - Latest Tasks</div>
-                        </div>
-                        <div class="card mb-4">                            
-                            <div class="list-group p-3" data-height="230" data-scrollable="">                                
-                                <div class="table-responsive">
-                                    @if (Model.toDoList.Count() > 0)
-                                    {
-                                        <table class="table table-bordered" id="dataTableToDoDashboard" width="100%" cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>Date:</th>
-                                                    <th>Due Date:</th>
-                                                    <th>Task Details:</th>
-                                                    <th>Category:</th>
-                                                    <th>Importance:</th>
-                                                    <th>Completed:</th>
-                                                    <th>Update:</th>
-                                                    <th>Delete:</th>
-                                                </tr>
-                                            </thead>                                           
-                                            <tbody>
-                                                @foreach (var item in Model.toDoList)
-                                                {
-                                                    <tr>
-                                                        <td width="10%">@item.ToDoDate.ToShortDateString().ToString()</td>
-                                                        <td width="10%">@item.ToDoDueDate.ToShortDateString().ToString()</td>
-                                                        <td width="20%">@item.ToDoTask</td>
-                                                        <td width="10%">@item.ToDoCategory</td>
-                                                        <td width="10%">@item.ToDoImportance</td>
-                                                        <!-- need to format this field to Yes or No instead of True/False -->
-                                                        <td width="10%">@item.Completed</td>
+                           <div class="card-title"><i class="fas fa-table mr-1"></i>Task Manager - Latest Tasks</div>
+                       </div>
+                       <div class="card mb-4">
+                           <div class="list-group p-3" data-height="230" data-scrollable="">
+                               <div class="table-responsive">
+                                   @if (Model.toDoList.Count() > 0)
+                                   {
+                                       <table class="table table-bordered" id="dataTableToDoDashboard" width="100%" cellspacing="0">
+                                           <thead>
+                                               <tr>
+                                                   <th>Date:</th>
+                                                   <th>Due Date:</th>
+                                                   <th>Task Details:</th>
+                                                   <th>Category:</th>
+                                                   <th>Importance:</th>
+                                                   <th>Completed:</th>
+                                                   <th>Update:</th>
+                                                   <th>Delete:</th>
+                                               </tr>
+                                           </thead>
+                                           <tbody>
+                                               @foreach (var item in Model.toDoList)
+                                               {
+                                                   <tr>
+                                                       <td width="10%">@item.ToDoDate.ToShortDateString().ToString()</td>
+                                                       <td width="10%">@item.ToDoDueDate.ToShortDateString().ToString()</td>
+                                                       <td width="20%">@item.ToDoTask</td>
+                                                       <td width="10%">@item.ToDoCategory</td>
+                                                       <td width="10%">@item.ToDoImportance</td>
+                                                       <!-- need to format this field to Yes or No instead of True/False -->
+                                                       <td width="10%">@item.Completed</td>
 
-                                                        <td width="6%">
-                                                            <div class="col-6 p-0 text-center">
-                                                                <a asp-controller="ToDoList" asp-action="UpdateToDoList" asp-route-Id="@item.Id" class="btn btn-primary btn-sm">Update</a>
-                                                            </div>
-                                                        </td>
-                                                        <td width="6%">
-                                                            <div class="col-6 p-0 text-center">
-                                                                <a asp-controller="ToDoList" asp-action="DeleteToDoItem" asp-route-Id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                }
-                                            </tbody>
-                                        </table>
-                                    }
-                                    else
-                                    {
-                                        <p>No items have been created yet</p>
-                                    }
+                                                       <td width="6%">
+                                                           <div class="col-6 p-0 text-center">
+                                                               <a asp-controller="ToDoList" asp-action="UpdateToDoList" asp-route-Id="@item.Id" class="btn btn-primary btn-sm">Update</a>
+                                                           </div>
+                                                       </td>
+                                                       <td width="6%">
+                                                           <div class="col-6 p-0 text-center">
+                                                               <a asp-controller="ToDoList" asp-action="DeleteToDoItem" asp-route-Id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                                                           </div>
+                                                       </td>
+                                                   </tr>
+                                               }
+                                           </tbody>
+                                       </table>
+                                   }
+                                   else
+                                   {
+                                       <p>No items have been created yet</p>
+                                   }
 
-                                </div>
-                            </div>
-                        </div>
-                        </div>
+                               </div>
+                           </div>
+                       </div>
+                       <!-- START card footer-->
+                       <div class="card-footer">
+                           <p class="text-muted">                                                             
+                               <span class="text-dark"><a asp-controller="ToDoList" asp-action="Index" class="btn btn-green"><em class="fa fa-inverse fa-cogs fa-fw mr-2"></em> Task Manager Dashboard</a></span>
+                           </p>
+                       </div>
+                       <!-- END card-footer-->
+                   </div>
                     </div>
                  </div>
                 </div>
