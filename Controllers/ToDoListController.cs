@@ -21,7 +21,15 @@ namespace BlueMoonAdmin.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<ToDoListItem> objList = _db.ToDoListItems;
+            ToDoViewModel objList = new ToDoViewModel();
+            objList.Tasks = _db.ToDoListItems;         
+            objList.TaskOverdueCount = _db.ToDoListItems.Where(c => c.ToDoDueDate > DateTime.Now && c.Completed == false).Count();
+            objList.TaskCompleteCount = _db.ToDoListItems.Where(c => c.ToDoDueDate > DateTime.Now.AddDays(-30) && c.Completed == true).Count();
+
+            // completed is currenlty unused
+            objList.TaskCompletedCount = _db.ToDoListItems.Where(c => c.ToDoDueDate > DateTime.Now.AddMonths(-12) && c.Completed == true).Count();
+
+            objList.TaskPendingCount = _db.ToDoListItems.Where(c => c.ToDoDueDate > DateTime.Now && c.ToDoDueDate > DateTime.Now.AddDays(30) && c.Completed == false).Count();
             return View(objList);
         }
         public IActionResult Create()

@@ -5,6 +5,7 @@ using BlueMoonAdmin.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Diagnostics;
 using System.Linq;
 
@@ -38,7 +39,9 @@ namespace BlueMoonAdmin.Controllers
             
             DBView.toDoList = _db.ToDoListItems;
             DBView.toDoListCount = _db.ToDoListItems.Count();
-            DBView.CustomerCount = _db.Customers.Count();
+            DBView.TaskOverdueCount = _db.ToDoListItems.Where(c => c.ToDoDueDate > DateTime.Now && c.Completed == false ).Count();
+            DBView.TaskCompleteCount = _db.ToDoListItems.Where(c => c.ToDoDueDate > DateTime.Now.AddDays(-30) && c.Completed == true).Count();
+            DBView.TaskCompletedCount = _db.ToDoListItems.Where(c => c.ToDoDueDate > DateTime.Now.AddMonths(-12) && c.Completed == true).Count();
 
             return View(DBView);
         }

@@ -126,9 +126,17 @@
                <div class="col-xl-12">
                     <div class="card card-default">
                         <div class="card-header">
-                            <div class="px-2 float-right badge badge-danger">{o/d}</div>
-                            <div class="px-2 mr-2 float-right badge badge-info">{comp}</div>
-                            <div class="px-2 mr-2 float-right badge badge-success">@Model.toDoListCount</div>
+                            
+                            <div class="px-2 float-right badge badge-danger" title="Number of overdue Tasks">@Model.TaskOverdueCount</div>
+                            
+                            <div class="px-2 mr-2 float-right badge badge-info" title="Number of tasks completed in last 30 days">@Model.TaskCompleteCount</div>
+                            
+                            <div class="px-2 mr-2 float-right badge badge-success" title="Number of tasks completed in last 12 months">@Model.TaskCompletedCount</div>
+
+                          
+                            <div class="px-2 mr-2 float-right badge badge-success" title="Number of all tasks regardless of status and due date" >@Model.toDoListCount</div>
+
+
                             <div class="card-title"><i class="fas fa-table mr-1"></i>Task Manager - Latest Tasks</div>
                         </div>
                         <div class="card mb-4">                            

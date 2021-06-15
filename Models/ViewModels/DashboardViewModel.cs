@@ -12,9 +12,16 @@ namespace BlueMoonAdmin.Models.ViewModels
 
         public int toDoListCount { get; set; }
 
-        public int CustomerCount { get; set; }
+        
 
         public int ServiceCount { get; set; }
+
+        public int TaskCompletedCount { get; set; }
+
+        public int TaskCompleteCount { get; set; }
+        public int TaskOverdueCount { get; set; }
+
+
 
         public Customers Customers { get; set; }
 
