@@ -8,68 +8,101 @@
     <h1 class="mt-4 pb-2">Bulk Upload</h1>
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a asp-controller="Customers" asp-action="CustomerDashboard"> Customer Dashboard</a></li>
-        <li class="breadcrumb-item active">Upload customers</li>
+        <li class="breadcrumb-item active">Upload Customers</li>
     </ol>
 </div>
 <div class="container-fluid">
-    <form method="post" asp-action="Customer" enctype="multipart/form-data">
-         <input type="file" name="postedFile" />
-        <input type="submit" value="Load into table" asp-page-handler="ReadFile" />
-
-    </form>
+    <div class="card-header border-bottom">
+        <div class="row">
+            <div class="col-6 pt-2">
+                <i class="fas fa-file mr-1"></i>@SharedLocalizer.GetLocalizedHtmlString(" Use the upload feature to insert your customer records")
+            </div>
+            <div class="col-6 text-right">
+                <a class="text-right btn btn-outline-dark" asp-controller="Customers" asp-action="Index">Back to customer manager</a>
+            </div>
+        </div>
+    </div>
 </div>
-@if (Model != null)
-{
-    <form method="post" asp-action="UpdateCustomer">
-        <table cellpadding="0" cellspacing="0" border="1" name="testtable">
-            <thead>
-                <tr>
-                    <th>Company Name</th>
-                    <th>Contact Name</th>
-                    <th>Office Address</th>
-                    <th>Telephone Number</th>
-                    <th>Website</th>
-                    <th>Customer Since</th>
-                    <th>Address Line 1</th>
-                    <th>City / Region</th>
-                    <th>Email Address</th>
-                    <th>Post Code</th>
-                    <th>Mobile Number</th>
-                    <th>VAT</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (int i = 0; i < Model.CustomersList.Count; i++)
-                {
+<div class="container-fluid">
+    <div class="mt-4">
+        <div class="card card-default">
+            <div class="card-body text-center">
+                <div class="py-4">
+                    <img class="img-fluid rounded-lg img-thumbnail thumb96 fa fa-upload" alt="Contact" />
+                </div>
+                <h3 class="m-4 text-bold">Upload customers data into the main customers table</h3>
+               
+                <div class="text-center">
+                    <div class="my-3">
+                        <div class="container-fluid p-3">
+                            <form method="post" asp-action="Customer" enctype="multipart/form-data">
+                                <input type="file" name="postedFile" />
+                                <input type="submit" class="btn btn-outline-success" value="Load into table" asp-page-handler="ReadFile" />
+
+                            </form>
+                        </div>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                </div>
+                <div class="row p-4">
+                    <p class="text-danger"><i class="fas fa-exclamation-triangle mr-2"></i> Please ensure header names on the file remain the same otherwise the upload will fail:</p>
+                </div>
+            </div>
+        </div>       
+    </div>
+    </div>
+    @if (Model != null)
+    {
+        <form method="post" asp-action="UpdateCustomer">
+            <table cellpadding="0" cellspacing="0" border="1" name="testtable">
+                <thead>
                     <tr>
-                        <td>
-                            <input class="form-control" asp-for=@Model.CustomersList[i].CompanyName />
-                        </td>
-                        <td><input class="form-control" asp-for=@Model.CustomersList[i].ContactName required /></td>
-                        <td><input class="form-control" asp-for=@Model.CustomersList[i].OfficeAddress /></td>
-                        <td><input class="form-control" asp-for=@Model.CustomersList[i].TelephoneNumber type="tel" /></td>
-                        <td><input class="form-control" asp-for=@Model.CustomersList[i].Website type="url" title="Remember to include http:// or https://" /></td>
-                        <td>
-                            @if (Model.CustomersList[i].CustomerSince.Value != DateTime.MinValue)
-                            {
-                                <input class="form-control" asp-for=@Model.CustomersList[i].CustomerSince title="Dates ust be in YYYY-MM-DD to import" type="date" />
-                            }
-                            else
-                            {
-                                <input class="form-control" asp-for=@Model.CustomersList[i].CustomerSince title="Dates ust be in YYYY-MM-DD to import" type="date" value="0" />
-                            }
-                        </td>
-                        <td><input class="form-control" asp-for=@Model.CustomersList[i].AddressLine /></td>
-                        <td><input class="form-control" asp-for=@Model.CustomersList[i].CityRegion /></td>
-                        <td><input class="form-control" asp-for=@Model.CustomersList[i].EmailAddress type="email" /></td>
-                        <td><input class="form-control" asp-for=@Model.CustomersList[i].PostCode /></td>
-                        <td><input class="form-control" asp-for=@Model.CustomersList[i].MobileNumber type="tel" /></td>
-                        <td><input class="form-control" asp-for=@Model.CustomersList[i].Vat /></td>
+                        <th>Company Name</th>
+                        <th>Contact Name</th>
+                        <th>Office Address</th>
+                        <th>Telephone Number</th>
+                        <th>Website</th>
+                        <th>Customer Since</th>
+                        <th>Address Line 1</th>
+                        <th>City / Region</th>
+                        <th>Email Address</th>
+                        <th>Post Code</th>
+                        <th>Mobile Number</th>
+                        <th>VAT</th>
                     </tr>
-                }
-            </tbody>
-        </table>
-        <input type="submit" value="Validate and upload" asp />
-    </form>
-}
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.CustomersList.Count; i++)
+                    {
+                        <tr>
+                            <td>
+                                <input class="form-control" asp-for=@Model.CustomersList[i].CompanyName />
+                            </td>
+                            <td><input class="form-control" asp-for=@Model.CustomersList[i].ContactName required /></td>
+                            <td><input class="form-control" asp-for=@Model.CustomersList[i].OfficeAddress /></td>
+                            <td><input class="form-control" asp-for=@Model.CustomersList[i].TelephoneNumber type="tel" /></td>
+                            <td><input class="form-control" asp-for=@Model.CustomersList[i].Website type="url" title="Remember to include http:// or https://" /></td>
+                            <td>
+                                @if (Model.CustomersList[i].CustomerSince.Value != DateTime.MinValue)
+                                {
+                                    <input class="form-control" asp-for=@Model.CustomersList[i].CustomerSince title="Dates ust be in YYYY-MM-DD to import" type="date" />
+                                }
+                                else
+                                {
+                                    <input class="form-control" asp-for=@Model.CustomersList[i].CustomerSince title="Dates ust be in YYYY-MM-DD to import" type="date" value="0" />
+                                }
+                            </td>
+                            <td><input class="form-control" asp-for=@Model.CustomersList[i].AddressLine /></td>
+                            <td><input class="form-control" asp-for=@Model.CustomersList[i].CityRegion /></td>
+                            <td><input class="form-control" asp-for=@Model.CustomersList[i].EmailAddress type="email" /></td>
+                            <td><input class="form-control" asp-for=@Model.CustomersList[i].PostCode /></td>
+                            <td><input class="form-control" asp-for=@Model.CustomersList[i].MobileNumber type="tel" /></td>
+                            <td><input class="form-control" asp-for=@Model.CustomersList[i].Vat /></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <input type="submit" value="Validate and upload" asp />
+        </form>
+    }
 
