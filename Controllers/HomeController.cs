@@ -1,15 +1,25 @@
+using BlueMoonAdmin.Data;
 using BlueMoonAdmin.Models;
+using BlueMoonAdmin.Models.ViewModels;
 using BlueMoonAdmin.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using System.Linq;
 
 namespace BlueMoonAdmin.Controllers
 {
 
     public class HomeController : Controller
     {
+        private readonly ApplicationDbContext _db;
+
+        public HomeController(ApplicationDbContext db)
+        {
+            _db = db;
+        }
+
         //private readonly ILogger<HomeController> _logger;
         //private readonly IEmployyeService employyeService;
 
@@ -22,7 +32,14 @@ namespace BlueMoonAdmin.Controllers
         public IActionResult Index()
         {
             //var empleados = employyeService.GetAll();
-            return View();
+            //return View();
+
+            DashboardViewModel DBView = new DashboardViewModel();
+            
+            DBView.toDoList = _db.ToDoListItems;
+            DBView.CustomerCount = _db.Customers.Count();
+
+            return View(DBView);
         }
 
         public IActionResult Privacy()
