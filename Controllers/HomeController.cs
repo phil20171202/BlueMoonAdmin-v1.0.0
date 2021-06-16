@@ -32,18 +32,49 @@ namespace BlueMoonAdmin.Controllers
 
         public IActionResult Index()
         {
-            //var empleados = employyeService.GetAll();
-            //return View();
-
-            DashboardViewModel DBView = new DashboardViewModel();
+            // current date
+            DateTime dt = DateTime.Now;
+            // use current date and find 1 date of this month and next
+            DateTime firstDayCurrentMonth = dt.AddDays(-dt.Day + 1);
+            DateTime firstDayNextMonth = firstDayCurrentMonth.AddMonths(1);
+            // any service due before the end of the month, this includes any overdue from last month
+            decimal ServiceDue = _db.ServiceCustomers.Where(c => c.NextServiceDate < firstDayNextMonth).Count(); 
             
-            DBView.toDoList = _db.ToDoListItems;
-            DBView.toDoListCount = _db.ToDoListItems.Count();
+            DashboardViewModel DBView = new();   
+            // used for to-do table at bottom
+            DBView.ToDoList = _db.ToDoListItems;
+            // used to counters top left of to-do table
+            DBView.ToDoListCount = _db.ToDoListItems.Count();
             DBView.TaskOverdueCount = _db.ToDoListItems.Where(c => c.ToDoDueDate > DateTime.Now && c.Completed == false ).Count();
             DBView.TaskCompleteCount = _db.ToDoListItems.Where(c => c.ToDoDueDate > DateTime.Now.AddDays(-30) && c.Completed == true).Count();
             DBView.TaskCompletedCount = _db.ToDoListItems.Where(c => c.ToDoDueDate > DateTime.Now.AddMonths(-12) && c.Completed == true).Count();
 
+            // ServiceType has a dropdown with options Complete, Partial and Break Fix.  For service, I did not want to pick up break fix figures.
+            DBView.ServicesCompleted = _db.Notes.Where(c => c.Category == "Service Notes" && c.ServiceType != "Break Fix").Count();
+            // Calendar month figurres
+            DBView.MonthlyServiceCount = ServiceDue + DBView.ServicesCompleted;
+            if (DBView.ServicesCompleted <= 0 && ServiceDue <= 0)
+            {
+                DBView.ServicePercentage = 100;
+            }
+            else
+            {
+                if (DBView.ServicesCompleted == 0 && ServiceDue > 0)
+                {
+                    DBView.ServicePercentage = 0;
+                }
+                else
+                {
+                    decimal Percentage = ServiceDue / DBView.MonthlyServiceCount *100;
+                    // rounding figure to avoid decimal places in percentage screen.
+                    DBView.ServicePercentage = Math.Round(Percentage, MidpointRounding.AwayFromZero);
+                }
+            }
+            
+            
             return View(DBView);
+
+
         }
 
         public IActionResult Privacy()

@@ -8,11 +8,15 @@ namespace BlueMoonAdmin.Models.ViewModels
 {
     public class DashboardViewModel
     {
-        public IEnumerable<ToDoListItem> toDoList { get; set; }
+        public IEnumerable<ToDoListItem> ToDoList { get; set; }
 
-        public int toDoListCount { get; set; }
+        public int ToDoListCount { get; set; }
         
-        public int ServiceCount { get; set; }
+        public decimal MonthlyServiceCount { get; set; }
+
+        public decimal ServicesCompleted { get; set; }
+
+        public decimal ServicePercentage { get; set; }
 
         public int TaskCompletedCount { get; set; }
 

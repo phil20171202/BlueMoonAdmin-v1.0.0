@@ -81,7 +81,7 @@
             <div class="card">
                 <div class="card-header">Live Service Contracts</div>
                 <div class="card-body text-center">
-                    <input id="knob-chart-completed" readonly="readonly" type="text" value="0" />
+                    <input id="knob-chart-completed" readonly="readonly" type="text" value="@Model.LiveService" />
                 </div>
             </div>
         </div>
@@ -89,7 +89,7 @@
             <div class="card">
                 <div class="card-header">Services Completed</div>
                 <div class="card-body text-center">
-                    <input id="knob-chart-single" readonly="readonly" type="text" value="@Model.serviced" />
+                    <input id="knob-chart-single" readonly="readonly" type="text" value="@Model.Serviced" />
                 </div>
             </div>
         </div>
@@ -195,8 +195,8 @@
                                 @foreach (var Service in @Model.CustomerCombineService)
                                  {                                        
                                         <tr>
-                                            <td>@Service.customersVm.CompanyName</td>
-                                            <td>@Service.customersVm.ContactName</td>
+                                            <td>@Service.CustomersVm.CompanyName</td>
+                                            <td>@Service.CustomersVm.ContactName</td>
                                             @*<td>@Model.Customers.TelephoneNumber</td>*@
                                             <td>
                                                 @if (@Service.ServiceCustomer.LastServiceDate != null)

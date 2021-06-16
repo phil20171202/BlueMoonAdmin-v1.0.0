@@ -31,9 +31,10 @@ namespace BlueMoonAdmin.Controllers
                                    join sc in _db.ServiceCustomers on c.Id equals sc.CustomerId into sc2
                                    from sc in sc2.DefaultIfEmpty()
                                    where sc.Service
-                                   select new ServiceViewModel { customersVm = c, ServiceCustomer = sc };
-
-            ServiceManagement.serviced = _db.ServiceHistory.Where(c=> c.Id >0).Count();
+                                   select new ServiceViewModel { CustomersVm = c, ServiceCustomer = sc };
+            // count any service that is not Break Fix
+            ServiceManagement.Serviced = _db.Notes.Where(c=> c.Id >0 && c.Category != "Break Fix").Count();
+            ServiceManagement.LiveService = _db.ServiceCustomers.Where(c => c.Service).Count();
             ServiceManagement.OverDue = ServiceManagement.CustomerCombineService.Where(c => c.ServiceCustomer.NextServiceDate < DateTime.Now).Count();
             ServiceManagement.Upcoming = ServiceManagement.CustomerCombineService.Where(c => c.ServiceCustomer.NextServiceDate < DateTime.Now.AddDays(days)).Count() - ServiceManagement.OverDue  ;
             
@@ -120,7 +121,8 @@ namespace BlueMoonAdmin.Controllers
             }
             else
             {
-                ServiceVM.CustomerId = id;
+                int customerID = _db.ServiceCustomers.FirstOrDefault(c => c.Id == id).CustomerId;
+                ServiceVM.CustomerId = customerID;
 
             }
             if (ServiceVM == null)
@@ -137,9 +139,13 @@ namespace BlueMoonAdmin.Controllers
         {
             obj.Category = "Service Notes";
             int customerID = obj.CustomerId;
-            var record = _db.ServiceCustomers.FirstOrDefault(c=> c.CustomerId == customerID);
-            int ServiceID = record.Id;
+            _db.Notes.Add(obj);
+            _db.SaveChanges();
 
+
+          //  int customerID = obj.CustomerId;
+            var record = _db.ServiceCustomers.FirstOrDefault(c => c.CustomerId == customerID);
+            int ServiceID = record.Id;
 
             var ServiceCust = new ServiceCustomer();
             ServiceCust = _db.ServiceCustomers.Find(ServiceID);
@@ -151,7 +157,7 @@ namespace BlueMoonAdmin.Controllers
             ServiceCust.LastServiceDate = obj.Date;
             ServiceCust.NextServiceDate = obj.Date.AddMonths(6);
             _db.ServiceCustomers.Update(ServiceCust);
-            _db.Notes.Add(obj);
+           // _db.Notes.Add(obj);
             _db.SaveChanges();
 
             return RedirectToAction("UpdateServiceContract", new { ServiceCust.Id });
