@@ -37,13 +37,13 @@
                         </div>
                     </div>
                     <div class="form-group row" >
-                        <div class="col-8 offset-2 row " >
-                            <div class="col">
+                        <div class="col-6 offset-2 row">
+                            <div class="col"><!-- Bug - note is saved to DB but errors on re-direct -->
                                 <input type="submit" class="btn btn-info w-75" value="Create"  />
                             </div>
-                            @*<div class="col">
-                                <a asp-controller="ServiceCustomers" asp-action="UpdateServiceContract" asp-route-Id="@Model.ServiceCustomer.CustomerId" class="btn btn-danger w-75">Back</a>
-                            </div>*@
+                            <div class="col-6"> <!-- Bug null reference exception when button is not commented out-->
+                                <a asp-controller="ServiceCustomers" asp-action="UpdateServiceContract" asp-route-Id="@Model.ServiceCustomer.CustomerId" class="btn btn-danger w-75">Go Back</a>
+                            </div>
                             
                         </div>
                     </div>
