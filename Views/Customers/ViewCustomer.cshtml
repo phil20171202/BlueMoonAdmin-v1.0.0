@@ -493,11 +493,11 @@
                             <table class="table table-bordered" id="dataTableNotes" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th width="20%">Added By</th>
-                                        <th width="20%">Date</th>
+                                        <th width="5%">Added By</th>
+                                        <th width="5%">Date</th>
                                         <th width="20%">Category</th>
-                                        <th width="60%">Notes</th>
-                                        <th>Action</th>
+                                        <th width="70%">Notes</th>
+                                        <th width="20%">Action</th>
 
                                     </tr>
                                 </thead>
@@ -506,22 +506,18 @@
                                     @foreach (var item in Model.Notes)
                                     {
                                         <tr>
-                                            <td>
-                                                <input disabled style="border: 0px; background-color:white" />
+                                            <td width="10%">
+                                                <input disabled style="border: 0px; background-color:white" placeholder="{USER_ID}" />
                                             </td>
-                                            <td>
-                                              
-                                                    <input asp-for="@item.Date" disabled style="border: 0px; background-color:white" />
-                                                
+                                            <td width="10%">                                              
+                                                <input asp-for="@item.Date" disabled style="border: 0px; background-color:white" />                                                
                                             </td>
-                                            <td>@item.Category</td>
-                                            <td>
-                                                @*javascript to auto resize the box info here- http://www.jacklmoore.com/autosize/*@
-
+                                            <td width="10%">@item.Category</td>
+                                            <td width="50%">
                                                 <textarea rows="2" asp-for="@item.notes" class="form-control" text-wrap="normal" type="text" placeholder="Please add your note here"></textarea>
                                                 <span asp-validation-for="@item.notes" class="text-danger"></span>
                                             </td>
-                                            <td>
+                                            <td width="60%">
                                                 <div class="w-100 btn-group" role="group">
                                                     <a asp-controller="Notes" asp-action="ViewNotes" asp-route-Id="@item.Id" class="btn btn-primary mx-1">View</a>
                                                     <a asp-controller="Notes" asp-action="UpdateNotes" asp-route-Id="@item.Id" class="btn btn-green mx-1">Edit</a>
