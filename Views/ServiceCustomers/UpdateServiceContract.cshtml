@@ -150,15 +150,15 @@
                                                         {
 
                                                     <tr>
-                                                        <td>@item.Date</td>
+                                                        <td width="10%">@item.Date.ToShortDateString().ToString()</td>
                                                         @*<td>@item.Category</td>*@
-                                                        <td>@item.notes</td>                                                        
-                                                        <td width="6%">
+                                                        <td width="40%">@item.notes</td>                                                        
+                                                        <td width="2%">
                                                             <div class="col-6 p-0 text-center">
                                                                 <a asp-controller="" asp-action="" asp-route-Id="@item.Id" class="btn btn-primary">Update</a>
                                                             </div>
                                                         </td>
-                                                        <td width="6%">
+                                                        <td width="2%">
                                                             <div class="col-6 p-0 text-center">
                                                                 <a asp-controller="" asp-action="" asp-route-Id="@item.Id" class="btn btn-danger">Delete</a>
                                                             </div>
