@@ -105,122 +105,111 @@
     <div class="container-fluid">
         <ul class="nav nav-tabs" role="tablist" id="cust-tabs">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#service-note" data-toggle="tab" id="Service-Notes" aria-selected="true">Service Contract Notes</a>
+                <a class="nav-link" href="#service-history" data-toggle="tab" id="Service-History" aria-selected="true">Servicing History</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#service-history" data-toggle="tab" id="Service-History" aria-selected="false">Servicing History</a>
+                <a class="nav-link active" aria-current="page" href="#service-note" data-toggle="tab" id="Service-Notes" aria-selected="false">Service Contract Notes</a>
             </li>
         </ul>
     </div>
 
     <div class="tab-content">
-        <!-- #region Notes-->
-       
-        
-                            <div id="service-note" class="col-12 tab-pane fade show active container-fluid" role="tabpanel" aria-labelledby="Service-Notes">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <div class="row">
-                                            <div class="col-6 pt-2">
-                                                <i class="fas fa-table mr-1"></i> Service Contract Notes
-                                            </div>
-                                            <div class="col-6 text-right">
-                                                <a asp-controller="ServiceCustomers" asp-action="CreateServiceNotes" asp-route-Id="@Model.ServiceCustomer.CustomerId" class="btn btn-primary">New Contract Note</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered" id="dataTableServiceNotes" width="100%" cellspacing="0">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Date</th>
-                                                        @*<th>Category</th>*@
-                                                        <th>Note</th>
-                                                        <th>Update:</th>
-                                                        <th>Delete:</th>
-                                                    </tr>
-                                                </thead>
 
-
-                                                <tbody>
-                                                    @foreach (var item in Model.Notes)
-                                                    {
-                                                        if (item.Category == "Contract Notes")
-                                                        {
-
-                                                    <tr>
-                                                        <td width="10%">@item.Date.ToShortDateString().ToString()</td>
-                                                        @*<td>@item.Category</td>*@
-                                                        <td width="40%">@item.notes</td>                                                        
-                                                        <td width="2%">
-                                                            <div class="col-6 p-0 text-center">
-                                                                <a asp-controller="" asp-action="" asp-route-Id="@item.Id" class="btn btn-primary">Update</a>
-                                                            </div>
-                                                        </td>
-                                                        <td width="2%">
-                                                            <div class="col-6 p-0 text-center">
-                                                                <a asp-controller="" asp-action="" asp-route-Id="@item.Id" class="btn btn-danger">Delete</a>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                        }
-                                                    }
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- #endregion-->
-                            <!-- #region History-->
-                            <div id="service-history" class="col-12 tab-pane fade show  container-fluid" role="tabpanel" aria-labelledby="Service-History">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <div class="row">
-                                            <div class="col-6 pt-2">
-                                                <i class="fas fa-table mr-1"></i> Customers Service History 
-                                            </div>
-                                            <div class="col-6 text-right">
-                                                <a asp-action="AddService" asp-route-Id="@Model.ServiceCustomer.Id" class="btn btn-primary">Create New Service</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered" id="dataTableServiceHistory" width="100%" cellspacing="0">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Service Date</th>
-                                                        <th>Engineer Name</th>
-                                                        <th>Service Comments</th>
-                                                        <th>Service Type</th>
-                                                    </tr>
-                                                </thead>
-
-                                                <tbody>
-                                                    @foreach (var item in Model.Notes)
-                                                    {
-                                                        if (item.Category == "Service Notes")
-                                                        {
-                                                            <tr>
-                                                                <td width="10%"><input asp-for="@item.Date" type="datetime-local" readonly style="border: 0px; background-color:white" /></td>
-                                                                <td>@item.EngineerName</td>
-                                                                <td>@item.notes</td>
-                                                                <td>@item.ServiceType</td>
-                                                            </tr>
-                                                        }
-                                                    }
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- #endregion-->
+        <!-- #region History-->
+        <div id="service-history" class="col-12 tab-pane fade show  container-fluid" role="tabpanel" aria-labelledby="Service-History">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-6 pt-2">
+                            <i class="fas fa-table mr-1"></i> Customers Service History
+                        </div>
+                        <div class="col-6 text-right">
+                            <a asp-action="AddService" asp-route-Id="@Model.ServiceCustomer.Id" class="btn btn-primary">Create New Service</a>
+                        </div>
                     </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTableServiceHistory" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Service Date</th>
+                                    <th>Engineer Name</th>
+                                    <th>Service Comments</th>
+                                    <th>Service Type</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var item in Model.Notes)
+                                {
+                                    if (item.Category == "Service Notes")
+                                    {
+                                        <tr>
+                                            <td width="10%"><input asp-for="@item.Date" type="datetime-local" readonly style="border: 0px; background-color:white" /></td>
+                                            <td>@item.EngineerName</td>
+                                            <td>@item.notes</td>
+                                            <td>@item.ServiceType</td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #endregion-->
+        <!-- #region Notes-->
+
+        <div id="service-note" class="col-12 tab-pane fade show active container-fluid" role="tabpanel" aria-labelledby="Service-Notes">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-6 pt-2">
+                            <i class="fas fa-table mr-1"></i> Service Contract Notes
+                        </div>
+                        <div class="col-6 text-right">
+                            <a asp-controller="ServiceCustomers" asp-action="CreateServiceNotes" asp-route-Id="@Model.ServiceCustomer.CustomerId" class="btn btn-primary">New Contract Note</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTableServiceNotes" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    @*<th>Category</th>*@
+                                    <th>Notes - <span class="text-muted">Add any relevant information regarding the servicing</span></th>
+
+                                </tr>
+                            </thead>
+
+
+                            <tbody>
+                                @foreach (var item in Model.Notes)
+                                {
+                                    if (item.Category == "Contract Notes")
+                                    {
+
+                                        <tr>
+                                            <td width="10%">@item.Date.ToShortDateString().ToString()</td>
+                                            @*<td>@item.Category</td>*@
+                                            <td width="40%">@item.notes</td>
+                                        </tr>
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- #endregion-->
+    </div>
 
 
                     @section Scripts{
