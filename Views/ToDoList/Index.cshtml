@@ -210,8 +210,8 @@
                             @foreach (var item in Model.Tasks)
                             {
                                 <tr>
-                                    <td width="10%">@item.ToDoDate.ToShortDateString().ToString()</td>
-                                    <td width="10%">@item.ToDoDueDate.ToShortDateString().ToString()</td>
+                                    <td width="10%"><input type="date" readonly style="border: 0px; background-color:white" asp-for="@item.ToDoDate"/></td>
+                                    <td width="10%"><input type="date" readonly style="border: 0px; background-color:white" asp-for="@item.ToDoDueDate" /></td>
                                     <td width="40%">@item.ToDoTask</td>
                                     <td width="10%">@item.ToDoCategory</td>
                                     <td width="10%">@item.ToDoImportance</td>
