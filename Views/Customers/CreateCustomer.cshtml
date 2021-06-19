@@ -3,6 +3,12 @@
 @{
     ViewData["Title"] = "Customers";
 }
+<style>
+    .required:after {
+        content: " *";
+        color: red;
+    }
+</style>
 <form method="post" asp-action="CreateCustomer">
     <div class="container-fluid">
         <h1 class="mt-4">Create New Customer</h1>
@@ -52,7 +58,7 @@
                         <div class="col-12 col-sm-10">
                             <input asp-for="Id" hidden />
                             <div class="form-group row">
-                                <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" >Company Name:</label>
+                                <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right required" >Company Name:</label>
                                 <div class="col-xl-10 col-md-9 col-8">
                                     <input class="form-control" type="text" asp-for="CompanyName" required />
                                 </div>
