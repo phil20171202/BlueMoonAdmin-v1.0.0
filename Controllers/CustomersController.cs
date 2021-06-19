@@ -12,30 +12,28 @@ namespace BlueMoonAdmin.Controllers
 {
     public class CustomersController : Controller
     {
+        #region Database Connection
         private readonly ApplicationDbContext _db;
-
         public CustomersController(ApplicationDbContext db)
         {
             _db = db;
         }
-        #region Customer
-
+        #endregion
+        #region Views
+        // Load customer list into a table
         public async Task<IActionResult> Index()
         {
-
             IEnumerable<Customers> objList = await _db.Customers.ToListAsync();
-            
-
             return View(objList);
         }
-
+        // Load dashboard and display customer count
         public async Task<IActionResult> CustomerDashboard()
         {
             var CustomerVM = new CustomerViewModel();
             CustomerVM.CustomerCount = await _db.Customers.CountAsync();
             return View(CustomerVM);
         }
-
+        //View selected customer details
         public async Task<IActionResult> ViewCustomer(int? id)
         {
             if (id == null || id == 0)
@@ -54,20 +52,10 @@ namespace BlueMoonAdmin.Controllers
             }
             return View(CustomerVM);          
         }
-
+        //Display create customer page
         public IActionResult CreateCustomer()
         {
             return View();
-        }
-
-        // Saves new customer to database
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateCustomer(Customers obj)
-        {           
-            _db.Customers.Add(obj);
-            await _db.SaveChangesAsync();
-            return RedirectToAction("index");
         }
         // Loads selected customer details into update customer view
         public async Task<IActionResult> UpdateCustomer(int? id)
@@ -83,21 +71,7 @@ namespace BlueMoonAdmin.Controllers
             }
             return View(obj);
         }
-        // Saves new customer to database
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> UpdateCustomer(Customers obj)
-        {
-            if (ModelState.IsValid)
-            {
-                _db.Customers.Update(obj);
-                await _db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
-            return View(obj);
-        }
-        
-        //View customer you are about to delete
+        //View the customer you are about to delete
         public async Task<IActionResult> DeleteCustomer(int? id)
         {
             if (id == null || id == 0)
@@ -108,6 +82,30 @@ namespace BlueMoonAdmin.Controllers
             if (obj == null)
             {
                 return NotFound();
+            }
+            return View(obj);
+        }
+        #endregion
+        #region HTTP Posts
+        // Saves new customer to database
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateCustomer(Customers obj)
+        {           
+            _db.Customers.Add(obj);
+            await _db.SaveChangesAsync();
+            return RedirectToAction("index");
+        }
+        // Saves changes to customer to database
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdateCustomer(Customers obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Customers.Update(obj);
+                await _db.SaveChangesAsync();
+                return RedirectToAction("Index");
             }
             return View(obj);
         }
@@ -124,9 +122,7 @@ namespace BlueMoonAdmin.Controllers
             }
             return View(obj);
         }
-
         #endregion
-
     }
 
 }
