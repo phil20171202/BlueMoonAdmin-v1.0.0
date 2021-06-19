@@ -52,9 +52,9 @@
                         <div class="col-12 col-sm-10">
                             <input asp-for="Id" hidden />
                             <div class="form-group row">
-                                <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right">Company Name:</label>
+                                <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" >Company Name:</label>
                                 <div class="col-xl-10 col-md-9 col-8">
-                                    <input class="form-control" type="text" asp-for="CompanyName" />
+                                    <input class="form-control" type="text" asp-for="CompanyName" required />
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -84,7 +84,7 @@
                             <div class="form-group row">
                                 <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" for="inputContact5">Website:</label>
                                 <div class="col-xl-10 col-md-9 col-8">
-                                    <input class="form-control" id="inputContact5" type="url" asp-for="Website" />
+                                    <input class="form-control" id="inputContact5" type="url" asp-for="Website" oninvalid="this.setCustomValidity('The Website must contain Http')" oninput="this.setCustomValidity('')" />
                                 </div>
                             </div>
                             <div class="form-group row">
