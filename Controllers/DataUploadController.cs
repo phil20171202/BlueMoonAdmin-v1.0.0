@@ -32,7 +32,7 @@ namespace BlueMoonAdmin.Controllers
             return View();
         }
         
-        List<Customers> myList = new List<Customers>();
+      //  List<Customers> myList = new List<Customers>();
 
         [HttpPost]
 
@@ -44,7 +44,7 @@ namespace BlueMoonAdmin.Controllers
                 {
                     UploadViewModel uploadCust = new UploadViewModel();
                     
-                    using (var sreader = new StreamReader(postedFile.OpenReadStream()))
+                   using (StreamReader sreader = new(postedFile.OpenReadStream()))
                     {
                         string[] headers = sreader.ReadLine().Split(',');     //Title
                          uploadCust.CustomersList = new List<Customers>();
@@ -72,8 +72,8 @@ namespace BlueMoonAdmin.Controllers
                             string[] rows = sreader.ReadLine().Split(',');
                             DateTime dateTime;
                             DateTime.TryParse(rows[sinceInt], out dateTime);
-                            uploadCust.CustomersList.Add  (
-                                        new Customers() 
+                            uploadCust.CustomersList.Add ( 
+                                        new  Customers() 
                                             {   
                                                 CompanyName = rows[companyNameInt],
                                                 ContactName = rows[contactInt], 
@@ -110,7 +110,7 @@ namespace BlueMoonAdmin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult UpdateCustomer(UploadViewModel listofcustomers)
+        public async Task<IActionResult> UpdateCustomer(UploadViewModel listofcustomers)
         {
             int? CustomerUploaded = listofcustomers.CustomersList.ToList().Count();
             foreach (var customer in listofcustomers.CustomersList)
@@ -118,7 +118,7 @@ namespace BlueMoonAdmin.Controllers
                 _db.Customers.Add(customer);
             }
             string message;
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
             if(CustomerUploaded == null)
             {
                 return View("Nothing");
@@ -144,8 +144,7 @@ namespace BlueMoonAdmin.Controllers
         }
         public IActionResult SampleFile()
         {
- 
-    return View();
+             return View();
         }
     }
     }

@@ -2,6 +2,7 @@
 using BlueMoonAdmin.Models;
 using BlueMoonAdmin.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,23 +20,23 @@ namespace BlueMoonAdmin.Controllers
         }
         #region Customer
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
 
-            IEnumerable<Customers> objList = _db.Customers;
+            IEnumerable<Customers> objList = await _db.Customers.ToListAsync();
             
 
             return View(objList);
         }
 
-        public IActionResult CustomerDashboard()
+        public async Task<IActionResult> CustomerDashboard()
         {
             var CustomerVM = new CustomerViewModel();
-            CustomerVM.CustomerCount = _db.Customers.Count();
+            CustomerVM.CustomerCount = await _db.Customers.CountAsync();
             return View(CustomerVM);
         }
 
-        public IActionResult ViewCustomer(int? id)
+        public async Task<IActionResult> ViewCustomer(int? id)
         {
             if (id == null || id == 0)
             {
@@ -43,11 +44,10 @@ namespace BlueMoonAdmin.Controllers
             }
             var CustomerVM = new CustomerViewModel();
             CustomerVM.Customers = _db.Customers.SingleOrDefault(c => c.Id == id);
-            CustomerVM.Contacts = _db.Contacts.Where(c => c.CustomerId == id).ToList();
-            
-            CustomerVM.Addresses = _db.Addresses.Where(c => c.CustomerId == id).ToList();
-            CustomerVM.ServiceCustomer = _db.ServiceCustomers.FirstOrDefault(c => c.CustomerId == id);
-            CustomerVM.Notes = _db.Notes.Where(c => c.CustomerId == id).ToList();
+            CustomerVM.ServiceCustomer = _db.ServiceCustomers.SingleOrDefault(c => c.CustomerId == id);
+            CustomerVM.Contacts = await _db.Contacts.Where(c => c.CustomerId == id).ToListAsync();            
+            CustomerVM.Addresses = await _db.Addresses.Where(c => c.CustomerId == id).ToListAsync();
+            CustomerVM.Notes = await _db.Notes.Where(c => c.CustomerId == id).ToListAsync();
             if (CustomerVM == null)
             {
                 return NotFound();
@@ -63,20 +63,20 @@ namespace BlueMoonAdmin.Controllers
         // Saves new customer to database
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult CreateCustomer(Customers obj)
+        public async Task<IActionResult> CreateCustomer(Customers obj)
         {           
             _db.Customers.Add(obj);
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
             return RedirectToAction("index");
         }
         // Loads selected customer details into update customer view
-        public IActionResult UpdateCustomer(int? id)
+        public async Task<IActionResult> UpdateCustomer(int? id)
         {
             if (id == null || id == 0)
             {
                 return NotFound();
             }
-            var obj = _db.Customers.Find(id);
+            var obj = await _db.Customers.FindAsync(id);
             if (obj == null)
             {
                 return NotFound();
@@ -86,25 +86,25 @@ namespace BlueMoonAdmin.Controllers
         // Saves new customer to database
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult UpdateCustomer(Customers obj)
+        public async Task<IActionResult> UpdateCustomer(Customers obj)
         {
             if (ModelState.IsValid)
             {
                 _db.Customers.Update(obj);
-                _db.SaveChanges();
+                await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(obj);
         }
         
         //View customer you are about to delete
-        public IActionResult DeleteCustomer(int? id)
+        public async Task<IActionResult> DeleteCustomer(int? id)
         {
             if (id == null || id == 0)
             {
                 return NotFound();
             }
-            var obj = _db.Customers.Find(id);
+            var obj = await _db.Customers.FindAsync(id);
             if (obj == null)
             {
                 return NotFound();
@@ -114,12 +114,12 @@ namespace BlueMoonAdmin.Controllers
         // Delete customer from database, this is now actioned from DeleteConfirmation screen.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteCustomer(Customers obj)
+        public async Task<IActionResult> DeleteCustomer(Customers obj)
         {
             if (ModelState.IsValid)
             {
                 _db.Customers.Remove(obj);
-                _db.SaveChanges();
+                await _db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(obj);
@@ -127,110 +127,6 @@ namespace BlueMoonAdmin.Controllers
 
         #endregion
 
-        #region Contact
-        // Passes the customer id into the form so the contact is linked to the customer.
-        //public IActionResult CreateContact(int id)
-        //{
-        //    var ContactVM = new Contacts();
-        //    if (id == 0)
-        //    {
-        //        return NotFound();
-        //    }
-        //    else
-        //    {
-        //        ContactVM.CustomerId = id;
-        //    }
-        //    if (ContactVM == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return View(ContactVM);
-        //}
-
-        //// Saves new contact into the database
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult CreateContact(Contacts obj)
-        //{
-        //    _db.Contacts.Add(obj);
-        //    _db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
-
-        //View contact
-        //public IActionResult ViewContact(int? id)
-        //{
-        //    if (id == null || id == 0)
-        //    {
-        //        return NotFound();
-        //    }
-        //    Contacts Contacts = _db.Contacts.SingleOrDefault(c => c.Id == id);
-        //    if (Contacts == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return View(Contacts);
-        //}
-        // Loads selected contact details into update customer view
-       // public IActionResult UpdateContact(int? id)
-       // {
-
-       //     if (id == null || id == 0)
-       //     {
-       //         return NotFound();
-       //     }
-       //     Contacts obj = _db.Contacts.Find(id);
-
-       //     if (obj == null)
-       //     {
-       //         return NotFound();
-       //     }
-       //     return View(obj);
-       // }
-
-       // Saves new contact to database
-       //[HttpPost]
-       //[ValidateAntiForgeryToken]
-       // public IActionResult UpdateContact(Contacts obj)
-       // {
-       //     if (ModelState.IsValid)
-       //     {
-       //         int id = obj.CustomerId;
-       //         _db.Contacts.Update(obj);
-       //         _db.SaveChanges();
-       //         return RedirectToAction("ViewCustomer", new { id });
-       //     }
-       //     return View(obj);
-       // }
-
-        //View contact you are about to delete
-        //public IActionResult DeleteContact(int? id)
-        //{
-        //    if (id == null || id == 0)
-        //    {
-        //        return NotFound();
-        //    }
-        //    var obj = _db.Contacts.Find(id);
-        //    if (obj == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return View(obj);
-        //}
-        //// Delete contact from database, this is now actioned from DeleteConfirmation screen.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult DeleteContact(Contacts obj)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _db.Contacts.Remove(obj);
-        //        _db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(obj);
-        //}
-        #endregion
     }
 
 }
