@@ -3,6 +3,12 @@
 @{
     ViewData["Title"] = "Customers";
 }
+<style>
+    .required:after {
+        content: " *";
+        color: red;
+    }
+</style>
 <form method="post" asp-action="CreateCustomer">
     <div class="container-fluid">
         <h1 class="mt-4">Create New Customer</h1>
@@ -52,9 +58,9 @@
                         <div class="col-12 col-sm-10">
                             <input asp-for="Id" hidden />
                             <div class="form-group row">
-                                <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right">Company Name:</label>
+                                <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right required" >Company Name:</label>
                                 <div class="col-xl-10 col-md-9 col-8">
-                                    <input class="form-control" type="text" asp-for="CompanyName" />
+                                    <input class="form-control" type="text" asp-for="CompanyName" required />
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -66,25 +72,25 @@
                             <div class="form-group row">
                                 <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right">Email:</label>
                                 <div class="col-xl-10 col-md-9 col-8">
-                                    <input class="form-control" asp-for="EmailAddress" />
+                                    <input class="form-control" asp-for="EmailAddress" type="email"/>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right">Phone:</label>
                                 <div class="col-xl-10 col-md-9 col-8">
-                                    <input class="form-control" asp-for="TelephoneNumber" />
+                                    <input class="form-control" asp-for="TelephoneNumber" type="tel"/>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" for="inputContact4">Mobile:</label>
                                 <div class="col-xl-10 col-md-9 col-8">
-                                    <input class="form-control" asp-for="MobileNumber" id="inputContact4" type="text"  />
+                                    <input class="form-control" asp-for="MobileNumber" id="inputContact4" type="tel"  />
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" for="inputContact5">Website:</label>
                                 <div class="col-xl-10 col-md-9 col-8">
-                                    <input class="form-control" id="inputContact5" type="text" asp-for="Website" />
+                                    <input class="form-control" id="inputContact5" type="url" asp-for="Website" oninvalid="this.setCustomValidity('The Website must contain Http')" oninput="this.setCustomValidity('')" />
                                 </div>
                             </div>
                             <div class="form-group row">

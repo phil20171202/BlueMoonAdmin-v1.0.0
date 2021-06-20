@@ -105,7 +105,9 @@ namespace BlueMoonAdmin.Controllers
                // int id = obj.ServiceCustomer.id;
                 _db.ServiceCustomers.Update(obj.ServiceCustomer);
                 _db.SaveChanges();
-                return RedirectToAction("ServiceContractManager", "ServiceCustomers");
+                int id = obj.ServiceCustomer.CustomerId;
+                // After changes are submited to will navigate to the custoemr view for the service customer.
+                return RedirectToAction("ViewCustomer", "Customers",new { id } );
             }
             return View(obj);
         }

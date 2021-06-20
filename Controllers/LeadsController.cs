@@ -160,5 +160,29 @@ namespace BlueMoonAdmin.Controllers
         {
             return _db.Leads.Any(e => e.Id == id);
         }
+
+
+        public async Task<IActionResult> Convert(int id)
+        {               
+            // Copies lead details and create custoemr, settign custoemr since as today
+            // Currently there the lead is not being deleted. 
+            // Question: Keep lead in table and add convert to customer Bool and converted date in lead table?
+            Leads CurrentLead = await _db.Leads.FirstAsync(c => c.Id == id);
+            Customers NewCust = new Customers();
+            NewCust.CompanyName = CurrentLead.CompanyName;
+            NewCust.ContactName = CurrentLead.ContactName;
+            NewCust.AddressLine = CurrentLead.AddressLine;
+            NewCust.CityRegion = CurrentLead.CityRegion;
+            NewCust.CustomerSince = DateTime.Now;
+            NewCust.EmailAddress = CurrentLead.EmailAddress;
+            NewCust.MobileNumber = CurrentLead.MobileNumber;
+            NewCust.OfficeAddress = CurrentLead.OfficeAddress;
+            NewCust.PostCode = CurrentLead.PostCode;
+            NewCust.TelephoneNumber = CurrentLead.TelephoneNumber;
+            NewCust.Website = CurrentLead.WebAddress;
+            _db.Customers.Add(NewCust);
+            await _db.SaveChangesAsync();
+            return RedirectToAction("CustomerDashboard", "Customers");
+        }
     }
 }

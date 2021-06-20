@@ -17,25 +17,35 @@ namespace BlueMoonAdmin.Controllers
 {
     public class DataUploadController : Controller
     {
+        #region Database Connection
         private readonly ApplicationDbContext _db;
 
         public DataUploadController(ApplicationDbContext db)
         {
             _db = db;
         }
+        #endregion
+        #region Views
         public IActionResult Index()
         {
             return View();
         }
+        
         public IActionResult Customer()
         {
             return View();
         }
-        
-        List<Customers> myList = new List<Customers>();
-
+        public IActionResult UploadSuccess()
+        {
+            return View();
+        }
+        public IActionResult Nothing()
+        {
+            return View();
+        }
+        #endregion
+        #region Open & Read CSV File 
         [HttpPost]
-
         public IActionResult Customer(IFormFile postedFile)
         {
             if (postedFile != null)
@@ -44,13 +54,13 @@ namespace BlueMoonAdmin.Controllers
                 {
                     UploadViewModel uploadCust = new UploadViewModel();
                     
-                    using (var sreader = new StreamReader(postedFile.OpenReadStream()))
+                   using (StreamReader sreader = new(postedFile.OpenReadStream()))
                     {
                         string[] headers = sreader.ReadLine().Split(',');     //Title
                          uploadCust.CustomersList = new List<Customers>();
                         // providing the column names remain the same, this will account for the column order changing
                         // searches for the column name and returns the column index (location)
-                        #region col int based on name
+                        #region Get the column index (int) based on name
                         int companyNameInt = Array.FindIndex(headers, x => x.Equals("CompanyName"));
                         int contactInt = Array.FindIndex(headers, x => x.Equals("ContactName"));                        
                         int officeInt = Array.FindIndex(headers, x => x.Equals("OfficeAddress"));
@@ -64,23 +74,20 @@ namespace BlueMoonAdmin.Controllers
                         int mobileInt = Array.FindIndex(headers, x => x.Equals("MobileNumber"));
                         int VatInt = Array.FindIndex(headers, x => x.Equals("Vat"));
                         #endregion
-
-                        while (!sreader.EndOfStream)                          //get all the content in rows 
-                        {
-
-                           
+                        //Gets the contact of every row
+                        while (!sreader.EndOfStream)                          
+                        {                           
                             string[] rows = sreader.ReadLine().Split(',');
                             DateTime dateTime;
                             DateTime.TryParse(rows[sinceInt], out dateTime);
-                            uploadCust.CustomersList.Add  (
-                                        new Customers() 
+                            uploadCust.CustomersList.Add ( 
+                                        new  Customers() 
                                             {   
                                                 CompanyName = rows[companyNameInt],
                                                 ContactName = rows[contactInt], 
                                                 OfficeAddress = rows[officeInt],
                                                 TelephoneNumber = rows[telInt],
-                                                Website = rows[webInt],                                              
-                           
+                                                Website = rows[webInt],                                       
                                                 CustomerSince = dateTime,
                                                 AddressLine = rows[addLineInt],
                                                 CityRegion = rows[regionInt],                                             
@@ -89,28 +96,21 @@ namespace BlueMoonAdmin.Controllers
                                                 MobileNumber = rows[mobileInt],
                                                 Vat = rows[VatInt]
                                             }
-                                        );
-                           
-
-
-                         
-
+                                        );           
                         }
-
-                    }
-                    
+                    }                    
                     return View(uploadCust);
                 }
-
-
+                // Need to display a message saying CSV has not been seected
+                return View("Customer");
             }
             return View("Customer");
-
         }
-
+        #endregion
+        #region HTTP Post
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult UpdateCustomer(UploadViewModel listofcustomers)
+        public async Task<IActionResult> UpdateCustomer(UploadViewModel listofcustomers)
         {
             int? CustomerUploaded = listofcustomers.CustomersList.ToList().Count();
             foreach (var customer in listofcustomers.CustomersList)
@@ -118,9 +118,10 @@ namespace BlueMoonAdmin.Controllers
                 _db.Customers.Add(customer);
             }
             string message;
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
             if(CustomerUploaded == null)
             {
+                // Loads page "Nothing" in data folder.
                 return View("Nothing");
             }
             if (CustomerUploaded == 1)
@@ -130,23 +131,11 @@ namespace BlueMoonAdmin.Controllers
             else 
             {
                  message = CustomerUploaded.ToString() + " customers uploaded";
-            }            
+            }      
+            // Displays page saving it has been successful and reporting how many customers have been uploaded
             return View("UploadSuccess", message);
         }
-
-        public IActionResult UploadSuccess()
-        {
-            return View();
-        }
-        public IActionResult Nothing()
-        {
-            return View();
-        }
-        public IActionResult SampleFile()
-        {
- 
-    return View();
-        }
+        #endregion
     }
     }
 
