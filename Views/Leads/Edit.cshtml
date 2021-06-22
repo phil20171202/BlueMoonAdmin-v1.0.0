@@ -73,28 +73,28 @@
                                 <div class="form-group row">
                                     <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Leads.EmailAddress">Email:</label>
                                     <div class="col-xl-10 col-md-9 col-8">
-                                        <input class="form-control" asp-for="Leads.EmailAddress" />
+                                        <input class="form-control" asp-for="Leads.EmailAddress" type="email"/>
 
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Leads.TelephoneNumber">Phone:</label>
                                     <div class="col-xl-10 col-md-9 col-8">
-                                        <input class="form-control" asp-for="Leads.TelephoneNumber" />
+                                        <input class="form-control" asp-for="Leads.TelephoneNumber" type="tel" />
                                         <span asp-validation-for="Leads.TelephoneNumber" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Leads.MobileNumber">Mobile:</label>
                                     <div class="col-xl-10 col-md-9 col-8">
-                                        <input class="form-control" asp-for="Leads.MobileNumber" />
+                                        <input class="form-control" asp-for="Leads.MobileNumber" type="tel" />
 
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Leads.WebAddress">Website:</label>
                                     <div class="col-xl-10 col-md-9 col-8">
-                                        <input class="form-control" asp-for="Leads.WebAddress" />
+                                        <input class="form-control" asp-for="Leads.WebAddress" type="url" />
 
                                     </div>
                                 </div>
@@ -128,7 +128,7 @@
                                 <div class="form-group row">
                                     <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Leads.LeadSince">Lead Since:</label>
                                     <div class="col-xl-10 col-md-9 col-8">
-                                        <input class="form-control" type="text" asp-for="Leads.LeadSince" />
+                                        <input class="form-control" type="date" asp-for="Leads.LeadSince" />
                                     </div>
                                 </div>
                                 <div class="form-group row mt-6 col-12">
