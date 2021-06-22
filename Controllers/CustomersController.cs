@@ -23,6 +23,8 @@ namespace BlueMoonAdmin.Controllers
         // Load customer list into a table
         public async Task<IActionResult> Index()
         {
+            // reads message sent from previous page
+            ViewBag.Message = TempData["Message"];        
             IEnumerable<Customers> objList = await _db.Customers.ToListAsync();
             return View(objList);
         }
@@ -91,10 +93,17 @@ namespace BlueMoonAdmin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateCustomer(Customers obj)
-        {           
-            _db.Customers.Add(obj);
-            await _db.SaveChangesAsync();
-            return RedirectToAction("index");
+        {
+            ModelState.Remove("Id");
+            if (ModelState.IsValid)
+            {
+                _db.Customers.Add(obj);
+                await _db.SaveChangesAsync();
+                TempData["Message"] = obj.CompanyName + " has been created successfully!";
+                ViewBag.SuccessMessage = obj.CompanyName + " has been created successfully!";
+                return RedirectToAction("index");
+            }
+            return View();
         }
         // Saves changes to customer to database
         [HttpPost]
