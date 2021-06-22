@@ -1,86 +1,157 @@
-﻿@model BlueMoonAdmin.Models.Leads
+﻿@model BlueMoonAdmin.Models.ViewModels.LeadsViewModel
 
 @{
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
-
-<h4>Leads</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="CompanyName" class="control-label"></label>
-                <input asp-for="CompanyName" class="form-control" />
-                <span asp-validation-for="CompanyName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ContactName" class="control-label"></label>
-                <input asp-for="ContactName" class="form-control" />
-                <span asp-validation-for="ContactName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EmailAddress" class="control-label"></label>
-                <input asp-for="EmailAddress" class="form-control" />
-                <span asp-validation-for="EmailAddress" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="OfficeAddress" class="control-label"></label>
-                <input asp-for="OfficeAddress" class="form-control" />
-                <span asp-validation-for="OfficeAddress" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AddressLine" class="control-label"></label>
-                <input asp-for="AddressLine" class="form-control" />
-                <span asp-validation-for="AddressLine" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CityRegion" class="control-label"></label>
-                <input asp-for="CityRegion" class="form-control" />
-                <span asp-validation-for="CityRegion" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PostCode" class="control-label"></label>
-                <input asp-for="PostCode" class="form-control" />
-                <span asp-validation-for="PostCode" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TelephoneNumber" class="control-label"></label>
-                <input asp-for="TelephoneNumber" class="form-control" />
-                <span asp-validation-for="TelephoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MobileNumber" class="control-label"></label>
-                <input asp-for="MobileNumber" class="form-control" />
-                <span asp-validation-for="MobileNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="WebAddress" class="control-label"></label>
-                <input asp-for="WebAddress" class="form-control" />
-                <span asp-validation-for="WebAddress" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LeadSince" class="control-label"></label>
-                <input asp-for="LeadSince" class="form-control" />
-                <span asp-validation-for="LeadSince" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <a asp-action="Convert" class="btn btn-outline-dark w-75" asp-route-Id=@Model.Id>Convert to customer</a>
-            </div>
-
-
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+<form method="post" asp-action="Edit">
+    <input asp-for="Leads.Id" hidden />
+    <div class="container-fluid">
+        <h1 class="mt-4">Edit Lead</h1>
+        <ol class="breadcrumb mb-4">
+            <li class="breadcrumb-item"><a asp-controller="Leads" asp-action="Leads">Leads Dashboard</a></li>
+            <li class="breadcrumb-item active">Edit Lead</li>
+        </ol>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card card-default">
+                    <div class="card-body text-center">
+                        <div class="py-4">
+                            <img class="img-fluid rounded-circle img-thumbnail thumb96" src="~/assets/images/user/contact-placeholder.png" alt="Contact" />
+                        </div>
+                        <h3 class="m-0 text-bold">Edit @Model.Leads.CompanyName</h3>
+                        <div class="text-center">
+                            <div class="my-3">
+                                <a href=@("tel:"+Model.Leads.TelephoneNumber)><h4 class="btn btn-secondary"><i class="fas fa-phone mr-2"></i>@Model.Leads.TelephoneNumber</h4></a>
+                                <a href=@("mailto:"+Model.Leads.EmailAddress)><h4 class="btn btn-secondary"><i class="fas fa-envelope-open-text mr-2"></i>@Model.Leads.EmailAddress</h4></a>
+                                <a href=@Model.Leads.WebAddress target="_blank"> <h4 class="btn btn-secondary"> <i class="fas fa-globe mr-2"></i>@Model.Leads.WebAddress</h4></a>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                        </div>
+                        <div class="row p-4">
+                            <p>Dave to add notes</p>
+                            @*<p class="text-black">Please ensure you enter the following information:</p>
+                            <p><i class="fas fa-user mr-2"></i>  Company Name including main address - you can create more later</p>
+                            <p><i class="fas fa-phone mr-2"></i>  All Contact Details including any mobile and email addresses</p>
+                            <p><i class="fas fa-check mr-2"></i>  Once created you can add more contacts, addresses and notes.</p>*@
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-lg-8">
+                <div class="card card-default">
+                    <div class="card-header d-flex align-items-center">
+                        <div class="d-flex justify-content-center col">
+                            <div class="h4 m-0 text-center">Edit Lead Information</div>
+                        </div>
+                    </div>
+                    <!-- #region Form -->
+
+                    <div class="card-body">
+                        <div class="row py-4 justify-content-center">
+                            <div class="col-12 col-sm-10">
+                                <input asp-for="Leads.Id" hidden />
+                                <div class="form-group row">
+                                    <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Leads.CompanyName">Company Name:</label>
+                                    <div class="col-xl-10 col-md-9 col-8">
+                                        <input class="form-control" type="text" asp-for="Leads.CompanyName" />
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Leads.ContactName">Contact Name:</label>
+                                    <div class="col-xl-10 col-md-9 col-8">
+                                        <input class="form-control" type="text" asp-for="Leads.ContactName" />
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Leads.EmailAddress">Email:</label>
+                                    <div class="col-xl-10 col-md-9 col-8">
+                                        <input class="form-control" asp-for="Leads.EmailAddress" />
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Leads.TelephoneNumber">Phone:</label>
+                                    <div class="col-xl-10 col-md-9 col-8">
+                                        <input class="form-control" asp-for="Leads.TelephoneNumber" />
+                                        <span asp-validation-for="Leads.TelephoneNumber" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Leads.MobileNumber">Mobile:</label>
+                                    <div class="col-xl-10 col-md-9 col-8">
+                                        <input class="form-control" asp-for="Leads.MobileNumber" />
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Leads.WebAddress">Website:</label>
+                                    <div class="col-xl-10 col-md-9 col-8">
+                                        <input class="form-control" asp-for="Leads.WebAddress" />
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Leads.OfficeAddress">Office Address:</label>
+                                    <div class="col-xl-10 col-md-9 col-8">
+                                        <input class="form-control" asp-for="Leads.OfficeAddress" />
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Leads.AddressLine">Address Line 2:</label>
+                                    <div class="col-xl-10 col-md-9 col-8">
+                                        <input class="form-control" asp-for="Leads.AddressLine" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Leads.CityRegion">City / Region:</label>
+                                    <div class="col-xl-10 col-md-9 col-8">
+                                        <input class="form-control" asp-for="Leads.CityRegion" />
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Leads.PostCode">PostCode:</label>
+                                    <div class="col-xl-10 col-md-9 col-8">
+                                        <input class="form-control" asp-for="Leads.PostCode" />
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Leads.LeadSince">Lead Since:</label>
+                                    <div class="col-xl-10 col-md-9 col-8">
+                                        <input class="form-control" type="text" asp-for="Leads.LeadSince" />
+                                    </div>
+                                </div>
+                                <div class="form-group row mt-6 col-12">
+                                    <div class="col-4 ">
+                                        <input type="submit" class="btn btn-info w-75" value="Save" />
+                                    </div>
+                                    <div class="col-4 ">
+                                        <a asp-controller="Leads" asp-action="Index" class="btn btn-outline-dark w-75">Go Back</a>
+                                    </div>
+                                    <div class="col-4 ">
+                                        <a asp-action="Convert" class="btn btn-outline-dark w-75" asp-route-Id=@Model.Leads.Id>Convert to customer</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
 
