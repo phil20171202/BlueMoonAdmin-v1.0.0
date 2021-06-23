@@ -180,8 +180,9 @@ namespace BlueMoonAdmin.Controllers
             NewCust.OfficeAddress = CurrentLead.OfficeAddress;
             NewCust.PostCode = CurrentLead.PostCode;
             NewCust.TelephoneNumber = CurrentLead.TelephoneNumber;
-            // You might wait to adjust the lead table. Customers = Website, Leads = WebAddress
-            NewCust.Website = CurrentLead.WebAddress;
+            NewCust.Website = CurrentLead.Website;
+            NewCust.WasLead = true;
+            NewCust.Vat = CurrentLead.Vat;
             _db.Customers.Add(NewCust);
             await _db.SaveChangesAsync();
             return RedirectToAction("CustomerDashboard", "Customers");

@@ -27,7 +27,7 @@
                             <div class="my-3">
                                 <a href=@("tel:"+Model.Leads.TelephoneNumber)><h4 class="btn btn-secondary"><i class="fas fa-phone mr-2"></i>@Model.Leads.TelephoneNumber</h4></a>
                                 <a href=@("mailto:"+Model.Leads.EmailAddress)><h4 class="btn btn-secondary"><i class="fas fa-envelope-open-text mr-2"></i>@Model.Leads.EmailAddress</h4></a>
-                                <a href=@Model.Leads.WebAddress target="_blank"> <h4 class="btn btn-secondary"> <i class="fas fa-globe mr-2"></i>@Model.Leads.WebAddress</h4></a>
+                                <a href=@Model.Leads.Website target="_blank"> <h4 class="btn btn-secondary"> <i class="fas fa-globe mr-2"></i>@Model.Leads.Website</h4></a>
                             </div>
                             <div class="dropdown-divider"></div>
                         </div>
@@ -92,9 +92,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Leads.WebAddress">Website:</label>
+                                    <label class="text-bold col-xl-2 col-md-3 col-4 col-form-label text-right" asp-for="Leads.Website">Website:</label>
                                     <div class="col-xl-10 col-md-9 col-8">
-                                        <input class="form-control" asp-for="Leads.WebAddress" type="url" />
+                                        <input class="form-control" asp-for="Leads.Website" type="url" />
 
                                     </div>
                                 </div>
