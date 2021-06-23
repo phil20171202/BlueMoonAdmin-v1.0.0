@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BlueMoonAdmin.Data;
 using BlueMoonAdmin.Models;
+using BlueMoonAdmin.Models.ViewModels;
 
 namespace BlueMoonAdmin.Controllers
 {
@@ -83,13 +84,13 @@ namespace BlueMoonAdmin.Controllers
             {
                 return NotFound();
             }
-
-            var leads = await _db.Leads.FindAsync(id);
-            if (leads == null)
+            LeadsViewModel LeadsVM = new LeadsViewModel();
+            LeadsVM.Leads = await _db.Leads.FindAsync(id);
+            if (LeadsVM.Leads == null)
             {
                 return NotFound();
             }
-            return View(leads);
+            return View(LeadsVM);
         }
 
         // POST: Leads/Edit/5
@@ -179,6 +180,7 @@ namespace BlueMoonAdmin.Controllers
             NewCust.OfficeAddress = CurrentLead.OfficeAddress;
             NewCust.PostCode = CurrentLead.PostCode;
             NewCust.TelephoneNumber = CurrentLead.TelephoneNumber;
+            // You might wait to adjust the lead table. Customers = Website, Leads = WebAddress
             NewCust.Website = CurrentLead.WebAddress;
             _db.Customers.Add(NewCust);
             await _db.SaveChangesAsync();
