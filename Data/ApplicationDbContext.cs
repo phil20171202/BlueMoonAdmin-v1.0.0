@@ -29,7 +29,7 @@ namespace BlueMoonAdmin.Data
 
         public DbSet<ServiceHistory> ServiceHistory { get; set; }
 
-        public DbSet<Leads> Lead { get; set; }
+       // public DbSet<Leads> Lead { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

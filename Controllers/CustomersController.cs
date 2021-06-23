@@ -100,7 +100,7 @@ namespace BlueMoonAdmin.Controllers
                 _db.Customers.Add(obj);
                 await _db.SaveChangesAsync();
                 TempData["Message"] = obj.CompanyName + " has been created successfully!";
-                ViewBag.SuccessMessage = obj.CompanyName + " has been created successfully!";
+               
                 return RedirectToAction("index");
             }
             return View();
