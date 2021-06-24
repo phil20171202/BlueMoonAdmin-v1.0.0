@@ -41,7 +41,10 @@ namespace BlueMoonAdmin.Models
         public string MobileNumber { get; set; }
 
         [Display(Name = "Web Address")]
-        public string WebAddress { get; set; }
+        public string Website { get; set; }
+
+        [Display(Name = "Vat Reg")]
+        public string Vat { get; set; }
 
         [Display(Name = "Lead Since")]
         [DataType(DataType.Date)]

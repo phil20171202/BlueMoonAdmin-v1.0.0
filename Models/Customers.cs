@@ -46,5 +46,7 @@ namespace BlueMoonAdmin.Models
 
         [Display(Name = "Vat Reg")]
         public string Vat { get; set; }
+
+        public bool WasLead { get; set; }
     }
 }

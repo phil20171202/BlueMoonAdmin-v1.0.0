@@ -32,21 +32,22 @@ namespace BlueMoonAdmin.Controllers
         }
 
         // GET: Leads/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> View(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var leads = await _db.Leads
+            LeadsViewModel LeadsVM = new LeadsViewModel();
+             LeadsVM.Leads = await _db.Leads
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (leads == null)
+            if (LeadsVM.Leads == null)
             {
                 return NotFound();
             }
 
-            return View(leads);
+            return View(LeadsVM);
         }
 
         // GET: Leads/Create
@@ -135,15 +136,16 @@ namespace BlueMoonAdmin.Controllers
             {
                 return NotFound();
             }
-
-            var leads = await _db.Leads
+            LeadsViewModel LeadsVM = new LeadsViewModel();
+            LeadsVM.Leads = await _db.Leads
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (leads == null)
+
+            if (LeadsVM.Leads == null)
             {
                 return NotFound();
             }
 
-            return View(leads);
+            return View(LeadsVM);
         }
 
         // POST: Leads/Delete/5
@@ -164,27 +166,32 @@ namespace BlueMoonAdmin.Controllers
 
 
         public async Task<IActionResult> Convert(int id)
-        {               
-            // Copies lead details and create custoemr, settign custoemr since as today
-            // Currently there the lead is not being deleted. 
-            // Question: Keep lead in table and add convert to customer Bool and converted date in lead table?
-            Leads CurrentLead = await _db.Leads.FirstAsync(c => c.Id == id);
-            Customers NewCust = new Customers();
-            NewCust.CompanyName = CurrentLead.CompanyName;
-            NewCust.ContactName = CurrentLead.ContactName;
-            NewCust.AddressLine = CurrentLead.AddressLine;
-            NewCust.CityRegion = CurrentLead.CityRegion;
-            NewCust.CustomerSince = DateTime.Now;
-            NewCust.EmailAddress = CurrentLead.EmailAddress;
-            NewCust.MobileNumber = CurrentLead.MobileNumber;
-            NewCust.OfficeAddress = CurrentLead.OfficeAddress;
-            NewCust.PostCode = CurrentLead.PostCode;
-            NewCust.TelephoneNumber = CurrentLead.TelephoneNumber;
-            // You might wait to adjust the lead table. Customers = Website, Leads = WebAddress
-            NewCust.Website = CurrentLead.WebAddress;
-            _db.Customers.Add(NewCust);
-            await _db.SaveChangesAsync();
-            return RedirectToAction("CustomerDashboard", "Customers");
+        {
+            // Currently there the lead is not being deleted.
+            if (ModelState.IsValid)
+            {
+                Leads CurrentLead = await _db.Leads.FirstAsync(c => c.Id == id);
+                Customers NewCust = new Customers();
+                NewCust.CompanyName = CurrentLead.CompanyName;
+                NewCust.ContactName = CurrentLead.ContactName;
+                NewCust.AddressLine = CurrentLead.AddressLine;
+                NewCust.CityRegion = CurrentLead.CityRegion;
+                NewCust.CustomerSince = DateTime.Now;
+                NewCust.EmailAddress = CurrentLead.EmailAddress;
+                NewCust.MobileNumber = CurrentLead.MobileNumber;
+                NewCust.OfficeAddress = CurrentLead.OfficeAddress;
+                NewCust.PostCode = CurrentLead.PostCode;
+                NewCust.TelephoneNumber = CurrentLead.TelephoneNumber;
+                NewCust.Website = CurrentLead.Website;
+                NewCust.WasLead = true;
+                NewCust.Vat = CurrentLead.Vat;
+                _db.Customers.Add(NewCust);
+                TempData["Message"] = CurrentLead.CompanyName + " has been converted successfully!";
+                _db.Leads.Remove(CurrentLead);
+                await _db.SaveChangesAsync();
+                return RedirectToAction("Index", "Customers");
+            }
+            return View();
         }
     }
 }
