@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BlueMoonAdmin.Models
 {
@@ -48,5 +49,7 @@ namespace BlueMoonAdmin.Models
         public string Vat { get; set; }
 
         public bool WasLead { get; set; }
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal Amount { get; set; }
     }
 }

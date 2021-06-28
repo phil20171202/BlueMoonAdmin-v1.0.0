@@ -26,12 +26,16 @@ namespace BlueMoonAdmin.Controllers
         }
         #endregion
         #region Views
-        public IActionResult Index()
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
+        
+        public IActionResult Customer()
         {
             return View();
         }
-        
-        public IActionResult Customer()
+        public IActionResult Sales()
         {
             return View();
         }
@@ -50,6 +54,7 @@ namespace BlueMoonAdmin.Controllers
         {
             if (postedFile != null)
             {
+                // Need to check if its customer data being uploaded.  Maybe by checking for a certain column name
                 if (postedFile.FileName.EndsWith(".csv"))
                 {
                     UploadViewModel uploadCust = new UploadViewModel();
@@ -106,6 +111,68 @@ namespace BlueMoonAdmin.Controllers
             }
             return View("Customer");
         }
+
+
+        [HttpPost]
+        public IActionResult Sales(IFormFile postedFile)
+        {
+            if (postedFile != null)
+            {
+                // Need to check if its sales data being uploaded.  Maybe by checking for a certain column name
+                if (postedFile.FileName.EndsWith(".csv"))
+                {
+                    UploadViewModel uploadCust = new UploadViewModel();
+
+                    using (StreamReader sreader = new(postedFile.OpenReadStream()))
+                    {
+                        string[] headers = sreader.ReadLine().Split(',');     //Title
+                        uploadCust.CustomersList = new List<Customers>();
+                        uploadCust.SalesList = new List<MonthlySales>();
+                        // providing the column names remain the same, this will account for the column order changing
+                        // searches for the column name and returns the column index (location)
+                        #region Get the column index (int) based on name
+                        int contactInt = Array.FindIndex(headers, x => x.Equals("Contact"));
+                        int dateInt = Array.FindIndex(headers, x => x.Equals("Date"));
+                        int amountInt = Array.FindIndex(headers, x => x.Equals("Amount"));
+                        #endregion
+                        //Gets the contact of every row
+                        while (!sreader.EndOfStream)
+                        {
+                            string[] rows = sreader.ReadLine().Split(',');
+                            DateTime dateTime;
+                            DateTime.TryParse(rows[dateInt], out dateTime);
+                            // sets all dates to the first of the month
+                            DateTime.TryParse(dateTime.Year + "-" + dateTime.Month + "-01", out dateTime);
+                            decimal Amount;
+                            decimal.TryParse(rows[amountInt], out Amount);
+
+                            uploadCust.SalesList.Add(
+                                        new MonthlySales()
+                                        {
+                                            Date = dateTime,
+                                            Amount = Amount,
+                                        }
+                                        );
+                            uploadCust.CustomersList.Add(
+                                new Customers()
+                                {
+                                    CompanyName = rows[contactInt],
+                                    Amount = Amount,                                    
+                                });
+                            //Groups month and total 
+                           uploadCust.SalesList = uploadCust.SalesList.GroupBy(c => c.Date).Select(a => new MonthlySales { Date = a.Key, Amount = a.Sum(q => q.Amount) }).ToList();
+                            // Groups company name and total
+                            uploadCust.CustomersList = uploadCust.CustomersList.GroupBy(c => c.CompanyName).Select(a => new Customers { CompanyName = a.Key, Amount = a.Sum(q => q.Amount) }).ToList();
+                        }
+                    }          
+                    return View(uploadCust);
+                }
+                // Need to display a message saying CSV has not been seected
+                return View("Customer");
+            }
+            return View("Customer");
+        }
+
         #endregion
         #region HTTP Post
         [HttpPost]
@@ -132,6 +199,25 @@ namespace BlueMoonAdmin.Controllers
             {
                  message = CustomerUploaded.ToString() + " customers uploaded";
             }      
+            // Displays page saving it has been successful and reporting how many customers have been uploaded
+            return View("UploadSuccess", message);
+        }
+
+
+
+        public async Task<IActionResult> UpdateSales(UploadViewModel SalesData)
+        {
+            //  int? CustomerUploaded = listofcustomers.CustomersList.ToList().Count();
+            foreach (var month in SalesData.SalesList)
+            {
+                if(_db.MonthlySalesFigure.Where(c => c.Date == month.Date).Count() == 0)
+                {
+                    _db.MonthlySalesFigure.Add(month);
+                }                
+            }
+            string message;
+            await _db.SaveChangesAsync();
+            message = "OK";
             // Displays page saving it has been successful and reporting how many customers have been uploaded
             return View("UploadSuccess", message);
         }

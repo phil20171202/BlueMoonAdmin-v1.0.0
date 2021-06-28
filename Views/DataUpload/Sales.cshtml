@@ -1,0 +1,98 @@
+﻿
+@model BlueMoonAdmin.Models.ViewModels.UploadViewModel
+
+@{
+    ViewData["Title"] = "Sales";
+}
+<div class="container-fluid">
+    <h1 class="mt-4 pb-2">Bulk Upload</h1>
+    <ol class="breadcrumb mb-4">
+        @*<li class="breadcrumb-item"><a asp-controller="Customers" asp-action="CustomerDashboard"> Customer Dashboard</a></li>*@
+        <li class="breadcrumb-item active">Upload sales figures</li>
+    </ol>
+</div>
+<div class="container-fluid">
+    <div class="card-header border-bottom">
+        <div class="row">
+            <div class="col-6 pt-2">
+                <i class="fas fa-file mr-1"></i>@SharedLocalizer.GetLocalizedHtmlString(" Use the upload feature to insert your sales records")
+            </div>
+            @*<div class="col-6 text-right">
+                <a class="text-right btn btn-outline-info" asp-controller="Customers" asp-action="Index">Back to customer manager</a>
+            </div>*@
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="mt-4">
+        <div class="card card-default">
+            <div class="card-body text-center">
+                <div class="py-4">
+                    // guess this needs changing
+                    <img class="img-fluid rounded-lg img-thumbnail thumb96 fa fa-upload" alt="Contact" />
+                </div>
+                <h3 class="m-4 text-bold">Upload sales data</h3>
+               
+                <div class="text-center">
+                    <div class="my-3">
+                        <div class="container-fluid p-3">
+                            <form method="post" asp-action="Sales" enctype="multipart/form-data">
+                                <input type="file" name="postedFile" />
+                                <input type="submit" class="btn btn-outline-success" value="Load into table" asp-page-handler="ReadFile" />
+
+                            </form>
+                        </div>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                </div>
+                <div class="row p-4">
+                    <p class="text-danger"><i class="fas fa-exclamation-triangle mr-2"></i> Please ensure header names on the file remain the same otherwise the upload will fail:</p>
+                </div>
+            </div>
+        </div>       
+    </div>
+    </div>
+    @if (Model != null)
+    {
+<form method="post" asp-action="UpdateSales">
+    <h1>Monthly Sales</h1>
+    <table cellpadding="0" cellspacing="0" border="1" name="MonthlySalesTable">
+        <thead>
+            <tr>
+
+                <th>Date</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.SalesList.Count; i++)
+            {
+                <tr>
+                    <td><input class="form-control" asp-for=@Model.SalesList[i].Date /></td>
+                    <td><input class="form-control" asp-for=@Model.SalesList[i].Amount  /></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <h1>Monthly Customer Sales</h1>
+    <table cellpadding="0" cellspacing="0" border="1" name="CustomerSalesTable">
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.CustomersList.Count; i++)
+            {
+                <tr>
+                    <td><input class="form-control" asp-for=@Model.CustomersList[i].CompanyName /></td>
+                    <td><input class="form-control" asp-for=@Model.CustomersList[i].Amount /></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <input type="submit" value="Validate and upload" asp />
+</form>
+    }
+
