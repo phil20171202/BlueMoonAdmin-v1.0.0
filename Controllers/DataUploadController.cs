@@ -12,6 +12,7 @@ using System.Data.OleDb;
 using BlueMoonAdmin.Models.ViewModels;
 using System.Collections;
 using BlueMoonAdmin.Data;
+using System.Globalization;
 
 namespace BlueMoonAdmin.Controllers
 {
@@ -207,17 +208,46 @@ namespace BlueMoonAdmin.Controllers
 
         public async Task<IActionResult> UpdateSales(UploadViewModel SalesData)
         {
+            string message = null;
             //  int? CustomerUploaded = listofcustomers.CustomersList.ToList().Count();
             foreach (var month in SalesData.SalesList)
             {
                 if(_db.MonthlySalesFigure.Where(c => c.Date == month.Date).Count() == 0)
                 {
                     _db.MonthlySalesFigure.Add(month);
-                }                
+                    var tempDate = month.Date.Month + "/" + month.Date.Year;
+                    if (message == null)
+                    {
+                        message = string.Format("Sales data for {0} has been uploaded", tempDate);
+                    }
+                    else
+                    {
+
+                        message = message += string.Format(Environment.NewLine + "Sales data for {0} has been uploaded", tempDate);
+                    }
+
+                }
+                else
+                {
+                    var tempDate = month.Date.Month + "/" + month.Date.Year;
+                    if (message == null)
+                    {
+                        message = string.Format("Sales data for {0} has already been uploaded", tempDate);
+                    }
+                    else
+                    {                      
+
+                        message = message += string.Format(Environment.NewLine + "Sales data for {0} has already been uploaded", tempDate);
+                    }
+                }
             }
-            string message;
+            
             await _db.SaveChangesAsync();
-            message = "OK";
+           if(message == null)
+            {
+                message = "OK";
+            }
+           
             // Displays page saving it has been successful and reporting how many customers have been uploaded
             return View("UploadSuccess", message);
         }
