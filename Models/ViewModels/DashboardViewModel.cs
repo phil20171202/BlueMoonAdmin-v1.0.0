@@ -25,5 +25,12 @@ namespace BlueMoonAdmin.Models.ViewModels
 
         public Customers Customers { get; set; }
 
+        public decimal YearToDate { get; set; }
+
+        public decimal LastMonth { get; set; }
+        public IEnumerable<MonthlySales> MonthlySales { get; set; }
+
+        public String ChartSales { get; set; }
+
     }
 }
