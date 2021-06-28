@@ -134,23 +134,34 @@ namespace BlueMoonAdmin.Controllers
                         #region Get the column index (int) based on name
                         int contactInt = Array.FindIndex(headers, x => x.Equals("Contact"));
                         int dateInt = Array.FindIndex(headers, x => x.Equals("Date"));
+
+                        int dueInt = Array.FindIndex(headers, x => x.Equals("Due Date"));
+                            
                         int amountInt = Array.FindIndex(headers, x => x.Equals("Amount"));
                         #endregion
                         //Gets the contact of every row
                         while (!sreader.EndOfStream)
                         {
                             string[] rows = sreader.ReadLine().Split(',');
-                            DateTime dateTime;
-                            DateTime.TryParse(rows[dateInt], out dateTime);
-                            // sets all dates to the first of the month
-                            DateTime.TryParse(dateTime.Year + "-" + dateTime.Month + "-01", out dateTime);
                             decimal Amount;
                             decimal.TryParse(rows[amountInt], out Amount);
-
+                            DateTime date;
+                            // Check if date is in UK format
+                            if (DateTime.TryParseExact(rows[dateInt],"dd/MM/yyyy", CultureInfo.InvariantCulture,DateTimeStyles.None,out date))
+                                {
+                                // convert date to standard DateTime
+                                date = DateTime.ParseExact(rows[dateInt], "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                                 }
+                            else
+                                {
+                                // accepts YYYY-MM-DD format
+                                DateTime.TryParse(rows[dateInt], out date);
+                                }
+                            date = date.AddDays(-date.Day+1);
                             uploadCust.SalesList.Add(
                                         new MonthlySales()
                                         {
-                                            Date = dateTime,
+                                            Date = date,
                                             Amount = Amount,
                                         }
                                         );
