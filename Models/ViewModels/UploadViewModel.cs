@@ -9,5 +9,8 @@ namespace BlueMoonAdmin.Models.ViewModels
     public class UploadViewModel
     {
         public List<Customers> CustomersList { get; set; }
+
+        public List<MonthlySales> SalesList { get; set; }
+
     }
 }

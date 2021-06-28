@@ -11,19 +11,13 @@ namespace BlueMoonAdmin.Models
     public class MonthlySales
     {
         [Key]
-        public int Id { get; set; }
+        public int Id { get; set; }      
 
-        [DisplayName("Month")]
-        public string Month { get; set; }
+        public DateTime Date { get; set; }
 
-        [DisplayName("Start Date")]
-        public DateTime StartDate { get; set; }
-
-        [DisplayName("End Date")]
-        public DateTime EndDate { get; set; }
-
+        [Column(TypeName = "decimal(18,2)")]
         [DisplayName("Amount")]
-        public int Amount { get; set; }
+        public decimal Amount { get; set; }
     }
 
 }
