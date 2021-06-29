@@ -21,9 +21,8 @@ namespace BlueMoonAdmin.Controllers
         }
          public IActionResult MonthlySales()
         {
-            // commented out as not used yet and was returning a view error
+            
             IEnumerable<MonthlySales> objList = _db.MonthlySalesFigure;
-
             MonthlySalesViewModel DBView = new();
             DBView.MonthlySales = _db.MonthlySalesFigure.Where(s => s.Date.Year == DateTime.Now.Year).ToList();
             DBView.YearToDate = DBView.MonthlySales.Sum(c => c.Amount);
