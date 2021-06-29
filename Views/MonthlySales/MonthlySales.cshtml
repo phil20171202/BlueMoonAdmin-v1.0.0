@@ -1,4 +1,5 @@
-﻿
+﻿@model BlueMoonAdmin.Models.MonthlySales
+@inject BlueMoonAdmin.Resources.LocService SharedLocalizer
 @{
     ViewData["Title"] = "MonthlySales";
 }
@@ -33,7 +34,8 @@
                     <em class="fa fa-pound-sign fa-3x"></em>
                 </div>
                 <div class="col-8 py-3 bg-purple rounded-right">
-                    <div class="h3 mt-0">&pound;152,780</div>
+                    <div class="h3 mt-0">&pound;</div>
+
                     <em>@SharedLocalizer.GetLocalizedHtmlString("Sales Last Month ")</em>
                     @*<i class="fas fa-angle-right ml-2"></i>*@
                 </div>
@@ -80,7 +82,8 @@
                 <div class="card-header">
                     <i class="fas fa-chart-area mr-1"></i>@SharedLocalizer.GetLocalizedHtmlString("Monthly Sales YTD: {Current year}")
                 </div>
-                <div class="card-body"><canvas id="barChartMonthly" width="100" height="30" ></canvas></div>
+                <div class="card-body"><canvas id="barChartMonthly" width="100" height="30"></canvas></div>
+                <p>
             </div>
         </div>
     </div>

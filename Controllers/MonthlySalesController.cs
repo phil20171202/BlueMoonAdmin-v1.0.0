@@ -21,8 +21,9 @@ namespace BlueMoonAdmin.Controllers
         }
          public IActionResult MonthlySales()
         {
-            IEnumerable<MonthlySales> objList = _db.MonthlySalesFigure;
-            return View(objList);
+            // commented out as not used yet and was returning a view error
+            //IEnumerable<MonthlySales> objList = _db.MonthlySalesFigure;
+            return View();
         }
 
         public IActionResult Create()

@@ -18,6 +18,7 @@ namespace BlueMoonAdmin.Models
         [Column(TypeName = "decimal(18,2)")]
         [DisplayName("Amount")]
         public decimal Amount { get; set; }
+        
     }
 
 }

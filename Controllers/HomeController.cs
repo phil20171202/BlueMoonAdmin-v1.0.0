@@ -59,7 +59,7 @@ namespace BlueMoonAdmin.Controllers
             DBView.ChartSales = DBView.ChartSales.Remove(DBView.ChartSales.Length-1);
             // ServiceType has a dropdown with options Complete, Partial and Break Fix.  For service, I did not want to pick up break fix figures.
             DBView.ServicesCompleted = _db.Notes.Where(c => c.Category == "Service Notes" && c.ServiceType != "Break Fix").Count();
-            // Calendar month figurres
+            // Calendar month figures
             DBView.MonthlyServiceCount = ServiceDue + DBView.ServicesCompleted;
             if (DBView.ServicesCompleted <= 0 && ServiceDue <= 0)
             {
