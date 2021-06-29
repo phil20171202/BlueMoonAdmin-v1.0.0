@@ -21,7 +21,7 @@ namespace BlueMoonAdmin.Controllers
         }
          public IActionResult MonthlySales()
         {
-            
+
             IEnumerable<MonthlySales> objList = _db.MonthlySalesFigure;
 
             MonthlySalesViewModel DBView = new();
