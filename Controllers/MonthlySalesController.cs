@@ -22,8 +22,19 @@ namespace BlueMoonAdmin.Controllers
          public IActionResult MonthlySales()
         {
             // commented out as not used yet and was returning a view error
-            //IEnumerable<MonthlySales> objList = _db.MonthlySalesFigure;
-            return View();
+            IEnumerable<MonthlySales> objList = _db.MonthlySalesFigure;
+
+            MonthlySalesViewModel DBView = new();
+            DBView.MonthlySales = _db.MonthlySalesFigure.Where(s => s.Date.Year == DateTime.Now.Year).ToList();
+            DBView.YearToDate = DBView.MonthlySales.Sum(c => c.Amount);
+            DBView.LastMonth = DBView.MonthlySales.FirstOrDefault(c => c.Date.Month == DateTime.Now.AddMonths(-1).Month).Amount;
+            // Generating the string to populate the year to date sales chart
+            foreach (var item in DBView.MonthlySales)
+            {
+                DBView.ChartSales += item.Amount.ToString() + ",";
+            }
+
+            return View(DBView);
         }
 
         public IActionResult Create()

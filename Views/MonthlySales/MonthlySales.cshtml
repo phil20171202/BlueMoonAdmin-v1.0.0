@@ -1,4 +1,4 @@
-﻿@model BlueMoonAdmin.Models.MonthlySales
+﻿@model BlueMoonAdmin.Models.ViewModels.MonthlySalesViewModel
 @inject BlueMoonAdmin.Resources.LocService SharedLocalizer
 @{
     ViewData["Title"] = "MonthlySales";
@@ -34,9 +34,9 @@
                     <em class="fa fa-pound-sign fa-3x"></em>
                 </div>
                 <div class="col-8 py-3 bg-purple rounded-right">
-                    <div class="h3 mt-0">&pound;</div>
+                    <div class="h3 mt-0">&pound;@Model.LastMonth.ToString("#,##0")</div>
 
-                    <em>@SharedLocalizer.GetLocalizedHtmlString("Sales Last Month ")</em>
+                    <em>@SharedLocalizer.GetLocalizedHtmlString("Sales Last Month")</em>
                     @*<i class="fas fa-angle-right ml-2"></i>*@
                 </div>
             </div>

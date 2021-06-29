@@ -30,7 +30,7 @@ namespace BlueMoonAdmin.Models.ViewModels
         public decimal LastMonth { get; set; }
         public IEnumerable<MonthlySales> MonthlySales { get; set; }
 
-        public String ChartSales { get; set; }
+        public string ChartSales { get; set; }
 
     }
 }

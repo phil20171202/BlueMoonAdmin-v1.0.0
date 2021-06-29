@@ -38,9 +38,9 @@ namespace BlueMoonAdmin.Controllers
             DateTime firstDayCurrentMonth = dt.AddDays(-dt.Day + 1);
             DateTime firstDayNextMonth = firstDayCurrentMonth.AddMonths(1);
             // any service due before the end of the month, this includes any overdue from last month
-            decimal ServiceDue = _db.ServiceCustomers.Where(c => c.NextServiceDate < firstDayNextMonth).Count(); 
-            
-            DashboardViewModel DBView = new();   
+            decimal ServiceDue = _db.ServiceCustomers.Where(c => c.NextServiceDate < firstDayNextMonth).Count();
+
+            DashboardViewModel DBView = new();
             // used for to-do table at bottom
             DBView.ToDoList = _db.ToDoListItems;
             // used to counters top left of to-do table
