@@ -245,7 +245,7 @@
                     </div>
                     <div class="py-4" data-sparkline="" data-type="line" data-height="80" data-width="100%" data-line-width="2" 
                          data-line-color="#7266ba" data-spot-color="#888" data-min-spot-color="#7266ba" data-max-spot-color="#7266ba" data-fill-color=""
-                         data-highlight-line-color="#fff" data-spot-radius="3" data-values=@Model.ChartSales data-resize="true"></div>
+                         data-highlight-line-color="#fff" data-spot-radius="3" data-values=@Model.ChartSales.ToString("#,##0") data-resize="true"></div>
                     <p>
                         <small class="text-muted">Sales YTD {&pound;@Model.YearToDate.ToString("#,##0")}</small>
                     </p>
