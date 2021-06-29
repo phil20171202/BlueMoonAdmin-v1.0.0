@@ -11,7 +11,7 @@ namespace BlueMoonAdmin.Models.ViewModels
         public decimal YearToDate { get; set; }
 
         public decimal LastMonth { get; set; }
-       
+
         public string ChartSales { get; set; }
     }
 }
