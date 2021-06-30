@@ -27,6 +27,8 @@ namespace BlueMoonAdmin.Data
         public DbSet<ToDoListItem> ToDoListItems { get; set; }
         public DbSet<CategoryType> CategoryTypes { get; set; }
 
+        public DbSet<ServiceHistory> ServiceHistory { get; set; }
+
        // public DbSet<Leads> Lead { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
