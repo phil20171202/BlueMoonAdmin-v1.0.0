@@ -1,4 +1,4 @@
-﻿@model BlueMoonAdmin.Models.ViewModels.CustomerViewModel
+﻿@model BlueMoonAdmin.Models.ViewModels.LeadsViewModel
 @{
     ViewData["Title"] = "CustomerDashboard";
 }
@@ -30,7 +30,7 @@
                     <em class="icon-people fa-3x"></em>
                 </div>
                 <div class="col-8 py-3 bg-success rounded-right">
-                    <div class="h3 mt-0">Total Leads (120)</div>
+                    <div class="h3 mt-0">Total Leads (@Model.LeadsCount)</div>
                     <a class="text-white" asp-controller="Leads" asp-action="Index">@SharedLocalizer.GetLocalizedHtmlString("View all Leads ")</a>
                     <i class="fas fa-angle-right ml-2"></i>
                 </div>

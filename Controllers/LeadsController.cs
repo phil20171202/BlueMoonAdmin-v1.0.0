@@ -26,9 +26,11 @@ namespace BlueMoonAdmin.Controllers
             return View(await _db.Leads.ToListAsync());
         }
 
-        public IActionResult LeadsDashboard()
+        public async Task<IActionResult> LeadsDashboard()
         {
-            return View();
+            LeadsViewModel Leads = new LeadsViewModel();
+            Leads.LeadsCount = await _db.Leads.CountAsync();
+            return View(Leads);
         }
 
         // GET: Leads/Details/5
