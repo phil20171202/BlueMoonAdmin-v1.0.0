@@ -7,11 +7,11 @@ namespace BlueMoonAdmin.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "Month",
-                table: "MonthlySalesFigure",
-                type: "nvarchar(max)",
-                nullable: true);
+            //migrationBuilder.AddColumn<string>(
+            //    name: "Month",
+            //    table: "MonthlySalesFigure",
+            //    type: "nvarchar(max)",
+            //    nullable: true);
 
             migrationBuilder.CreateTable(
                 name: "ServiceHistory",
