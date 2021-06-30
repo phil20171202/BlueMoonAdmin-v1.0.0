@@ -9,5 +9,9 @@ namespace BlueMoonAdmin.Models.ViewModels
     {
         public Leads Leads { get; set; }
         public IEnumerable<Notes> Notes { get; set; }
+
+        public IEnumerable<Leads> LeadsList { get; set; }
+
+        public int LeadsCount { get; set; }
     }
 }

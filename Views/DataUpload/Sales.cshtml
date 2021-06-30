@@ -18,8 +18,8 @@
                 <i class="fas fa-file mr-1"></i>@SharedLocalizer.GetLocalizedHtmlString(" Use the upload feature to insert your sales records")
             </div>
             @*<div class="col-6 text-right">
-                <a class="text-right btn btn-outline-info" asp-controller="Customers" asp-action="Index">Back to customer manager</a>
-            </div>*@
+                    <a class="text-right btn btn-outline-info" asp-controller="Customers" asp-action="Index">Back to customer manager</a>
+                </div>*@
         </div>
     </div>
 </div>
@@ -32,7 +32,7 @@
                     <img class="img-fluid rounded-lg img-thumbnail thumb96 fa fa-upload" alt="Contact" />
                 </div>
                 <h3 class="m-4 text-bold">Upload sales data</h3>
-               
+
                 <div class="text-center">
                     <div class="my-3">
                         <div class="container-fluid p-3">
@@ -49,50 +49,62 @@
                     <p class="text-danger"><i class="fas fa-exclamation-triangle mr-2"></i> Please ensure header names on the file remain the same otherwise the upload will fail:</p>
                 </div>
             </div>
-        </div>       
+        </div>
     </div>
-    </div>
-    @if (Model != null)
+</div>
+@if (Model != null)
+{
+    @if (Model.Feedback != null)
     {
-<form method="post" asp-action="UpdateSales">
-    <h1>Monthly Sales</h1>
-    <table cellpadding="0" cellspacing="0" border="1" name="MonthlySalesTable">
-        <thead>
-            <tr>
-
-                <th>Date</th>
-                <th>Amount</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (int i = 0; i < Model.SalesList.Count; i++)
-            {
-                <tr>
-                    <td><input class="form-control" asp-for=@Model.SalesList[i].Date /></td>
-                    <td><input class="form-control" asp-for=@Model.SalesList[i].Amount  /></td>
-                </tr>
-            }
-        </tbody>
-    </table>
-    <h1>Monthly Customer Sales</h1>
-    <table cellpadding="0" cellspacing="0" border="1" name="CustomerSalesTable">
-        <thead>
-            <tr>
-                <th>Customer</th>
-                <th>Amount</th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (int i = 0; i < Model.CustomersList.Count; i++)
-            {
-                <tr>
-                    <td><input class="form-control" asp-for=@Model.CustomersList[i].CompanyName /></td>
-                    <td><input class="form-control" asp-for=@Model.CustomersList[i].Amount /></td>
-                </tr>
-            }
-        </tbody>
-    </table>
-    <input type="submit" value="Validate and upload" asp />
-</form>
+        <div id="FeedbackID" class="col-4 offset-8 d-flex bg-warning text-right">
+            <h6 class="mt-2"><em class="icon-check fa-1x mt-1 ml-2"></em> @Model.Feedback </h6>
+        </div>
     }
+    else
+    {
+        @Html.Hidden("FeedbackID")
+
+
+        <form method="post" asp-action="UpdateSales">
+            <h1>Monthly Sales</h1>
+            <table cellpadding="0" cellspacing="0" border="1" name="MonthlySalesTable">
+                <thead>
+                    <tr>
+
+                        <th>Date</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.SalesList.Count; i++)
+                    {
+                        <tr>
+                            <td><input class="form-control" asp-for=@Model.SalesList[i].Date /></td>
+                            <td><input class="form-control" asp-for=@Model.SalesList[i].Amount /></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <h1>Monthly Customer Sales</h1>
+            <table cellpadding="0" cellspacing="0" border="1" name="CustomerSalesTable">
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.CustomersList.Count; i++)
+                    {
+                        <tr>
+                            <td><input class="form-control" asp-for=@Model.CustomersList[i].CompanyName /></td>
+                            <td><input class="form-control" asp-for=@Model.CustomersList[i].Amount /></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <input type="submit" value="Validate and upload" asp />
+        </form>
+    }
+}
 
