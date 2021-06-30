@@ -12,5 +12,6 @@ namespace BlueMoonAdmin.Models.ViewModels
 
         public List<MonthlySales> SalesList { get; set; }
 
+        public string Feedback { get; set; }
     }
 }

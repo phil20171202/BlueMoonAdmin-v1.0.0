@@ -60,52 +60,74 @@ namespace BlueMoonAdmin.Controllers
                 {
                     UploadViewModel uploadCust = new UploadViewModel();
                     
+                    
                    using (StreamReader sreader = new(postedFile.OpenReadStream()))
                     {
                         string[] headers = sreader.ReadLine().Split(',');     //Title
-                         uploadCust.CustomersList = new List<Customers>();
-                        // providing the column names remain the same, this will account for the column order changing
-                        // searches for the column name and returns the column index (location)
-                        #region Get the column index (int) based on name
-                        int companyNameInt = Array.FindIndex(headers, x => x.Equals("CompanyName"));
-                        int contactInt = Array.FindIndex(headers, x => x.Equals("ContactName"));                        
-                        int officeInt = Array.FindIndex(headers, x => x.Equals("OfficeAddress"));
-                        int telInt = Array.FindIndex(headers, x => x.Equals("TelephoneNumber"));
-                        int webInt = Array.FindIndex(headers, x => x.Equals("Website"));
-                        int sinceInt = Array.FindIndex(headers, x => x.Equals("CustomerSince"));
-                        int addLineInt = Array.FindIndex(headers, x => x.Equals("AddressLine"));
-                        int regionInt = Array.FindIndex(headers, x => x.Equals("CityRegion"));
-                        int emailInt = Array.FindIndex(headers, x => x.Equals("EmailAddress"));
-                        int postcodeInt = Array.FindIndex(headers, x => x.Equals("PostCode"));
-                        int mobileInt = Array.FindIndex(headers, x => x.Equals("MobileNumber"));
-                        int VatInt = Array.FindIndex(headers, x => x.Equals("Vat"));
-                        #endregion
-                        //Gets the contact of every row
-                        while (!sreader.EndOfStream)                          
-                        {                           
-                            string[] rows = sreader.ReadLine().Split(',');
-                            DateTime dateTime;
-                            DateTime.TryParse(rows[sinceInt], out dateTime);
-                            uploadCust.CustomersList.Add ( 
-                                        new  Customers() 
-                                            {   
+                        if (headers.Contains("CompanyName"))
+                        {
+                            uploadCust.CustomersList = new List<Customers>();
+                            // providing the column names remain the same, this will account for the column order changing
+                            // searches for the column name and returns the column index (location)
+                            #region Get the column index (int) based on name
+                            int companyNameInt = Array.FindIndex(headers, x => x.Equals("CompanyName"));
+                            int contactInt = Array.FindIndex(headers, x => x.Equals("ContactName"));
+                            int officeInt = Array.FindIndex(headers, x => x.Equals("OfficeAddress"));
+                            int telInt = Array.FindIndex(headers, x => x.Equals("TelephoneNumber"));
+                            int webInt = Array.FindIndex(headers, x => x.Equals("Website"));
+                            int sinceInt = Array.FindIndex(headers, x => x.Equals("CustomerSince"));
+                            int addLineInt = Array.FindIndex(headers, x => x.Equals("AddressLine"));
+                            int regionInt = Array.FindIndex(headers, x => x.Equals("CityRegion"));
+                            int emailInt = Array.FindIndex(headers, x => x.Equals("EmailAddress"));
+                            int postcodeInt = Array.FindIndex(headers, x => x.Equals("PostCode"));
+                            int mobileInt = Array.FindIndex(headers, x => x.Equals("MobileNumber"));
+                            int VatInt = Array.FindIndex(headers, x => x.Equals("Vat"));
+                            #endregion
+                            //Gets the contact of every row
+                            while (!sreader.EndOfStream)
+                            {
+                                string[] rows = sreader.ReadLine().Split(',');
+                                DateTime date;
+
+                                // Check if date is in UK format
+                                if (DateTime.TryParseExact(rows[sinceInt], "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out date))
+                                {
+                                    // convert date to standard DateTime
+                                    date = DateTime.ParseExact(rows[sinceInt], "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                                }
+                                else
+                                {
+                                    // accepts YYYY-MM-DD format
+                                    DateTime.TryParse(rows[sinceInt], out date);
+                                }
+                                uploadCust.CustomersList.Add(
+                                            new Customers()
+                                            {
                                                 CompanyName = rows[companyNameInt],
-                                                ContactName = rows[contactInt], 
+                                                ContactName = rows[contactInt],
                                                 OfficeAddress = rows[officeInt],
                                                 TelephoneNumber = rows[telInt],
-                                                Website = rows[webInt],                                       
-                                                CustomerSince = dateTime,
+                                                Website = rows[webInt],
+                                                CustomerSince = date,
                                                 AddressLine = rows[addLineInt],
-                                                CityRegion = rows[regionInt],                                             
+                                                CityRegion = rows[regionInt],
                                                 EmailAddress = rows[emailInt],
                                                 PostCode = rows[postcodeInt],
                                                 MobileNumber = rows[mobileInt],
                                                 Vat = rows[VatInt]
                                             }
-                                        );           
+                                            );
+                            }
+                            
                         }
-                    }                    
-                    return View(uploadCust);
+                        else
+                        {
+                            // Do something if file does not contain CompanyName
+                            uploadCust.Feedback = "Does not contact CompanyName header.";
+                        }
+                        return View(uploadCust);
+                    }
+                    
                 }
                 // Need to display a message saying CSV has not been seected
                 return View("Customer");
@@ -127,7 +149,9 @@ namespace BlueMoonAdmin.Controllers
                     using (StreamReader sreader = new(postedFile.OpenReadStream()))
                     {
                         string[] headers = sreader.ReadLine().Split(',');     //Title
-                        uploadCust.CustomersList = new List<Customers>();
+                        if (headers.Contains("Amount"))
+                        {
+                            uploadCust.CustomersList = new List<Customers>();
                         uploadCust.SalesList = new List<MonthlySales>();
                         // providing the column names remain the same, this will account for the column order changing
                         // searches for the column name and returns the column index (location)
@@ -176,8 +200,15 @@ namespace BlueMoonAdmin.Controllers
                             // Groups company name and total
                             uploadCust.CustomersList = uploadCust.CustomersList.GroupBy(c => c.CompanyName).Select(a => new Customers { CompanyName = a.Key, Amount = a.Sum(q => q.Amount) }).ToList();
                         }
+                        }
+                        else
+                        {
+                            // Do something if file does not contain CompanyName
+                            uploadCust.Feedback = "Does not contact Amount header.";
+                        }
+                        return View(uploadCust);
                     }          
-                    return View(uploadCust);
+                  
                 }
                 // Need to display a message saying CSV has not been seected
                 return View("Customer");
