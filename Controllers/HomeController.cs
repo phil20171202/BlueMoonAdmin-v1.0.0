@@ -49,14 +49,28 @@ namespace BlueMoonAdmin.Controllers
             DBView.TaskCompleteCount = _db.ToDoListItems.Where(c => c.ToDoDueDate > DateTime.Now.AddDays(-30) && c.Completed == true).Count();
             DBView.TaskCompletedCount = _db.ToDoListItems.Where(c => c.ToDoDueDate > DateTime.Now.AddMonths(-12) && c.Completed == true).Count();
             DBView.MonthlySales = _db.MonthlySalesFigure.Where(s => s.Date.Year == DateTime.Now.Year).ToList();
+            DBView.LastYear = _db.MonthlySalesFigure.Where(c=> c.Date.Year == DateTime.Now.AddYears(-1).Year).Sum(c => c.Amount);
             DBView.YearToDate = DBView.MonthlySales.Sum(c => c.Amount);
-            DBView.LastMonth = DBView.MonthlySales.FirstOrDefault(c => c.Date.Month == DateTime.Now.AddMonths(-1).Month).Amount;
+
+            if (DBView.MonthlySales.FirstOrDefault(c => c.Date.Month == DateTime.Now.AddMonths(-1).Month) != null)
+            {
+                DBView.LastMonth = DBView.MonthlySales.FirstOrDefault(c => c.Date.Month == DateTime.Now.AddMonths(-1).Month).Amount;
+            }
+            else
+            {
+                DBView.LastMonth = 0;
+            }
+
             // Generating the string to populate the year to date sales chart
+            
             foreach (var item in DBView.MonthlySales)
             {
                 DBView.ChartSales += item.Amount.ToString() + ",";
             }
-            DBView.ChartSales = DBView.ChartSales.Remove(DBView.ChartSales.Length-1);
+            if (DBView.ChartSales != null)
+            {
+                DBView.ChartSales = DBView.ChartSales.Remove(DBView.ChartSales.Length - 1);
+            }
             // ServiceType has a dropdown with options Complete, Partial and Break Fix.  For service, I did not want to pick up break fix figures.
             DBView.ServicesCompleted = _db.Notes.Where(c => c.Category == "Service Notes" && c.ServiceType != "Break Fix").Count();
             // Calendar month figures
