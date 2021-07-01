@@ -12,7 +12,7 @@ namespace BlueMoonAdmin.Models.ViewModels
 
         public decimal LastMonth { get; set; }
 
-        public string[] CurrectYear { get; set; }
+        public string[] CurrentYear { get; set; }
         public string[] LastYear { get; set; }
     }
 }
