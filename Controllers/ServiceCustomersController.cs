@@ -30,7 +30,7 @@ namespace BlueMoonAdmin.Controllers
             ServiceManagement.CustomerCombineService = from c in _db.Customers
                                    join sc in _db.ServiceCustomers on c.Id equals sc.CustomerId into sc2
                                    from sc in sc2.DefaultIfEmpty()
-                                   where sc.Service
+                                                       where sc.Service
                                    select new ServiceViewModel { CustomersVm = c, ServiceCustomer = sc };
             // count any service that is not Break Fix
             ServiceManagement.Serviced = _db.Notes.Where(c=> c.Id >0 && c.Category != "Break Fix").Count();

@@ -67,7 +67,7 @@ namespace BlueMoonAdmin.Controllers
             {
                sales[item.Date.Month-1] += item.Amount.ToString();
             }
-            DBView.ChartSales = string.Join(",", sales);          
+            DBView.ChartSales = string.Join(",", sales);
             // ServiceType has a dropdown with options Complete, Partial and Break Fix.  For service, I did not want to pick up break fix figures.
             DBView.ServicesCompleted = _db.Notes.Where(c => c.Category == "Service Notes" && c.ServiceType != "Break Fix").Count();
             // Calendar month figures
