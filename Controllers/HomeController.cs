@@ -62,15 +62,12 @@ namespace BlueMoonAdmin.Controllers
             }
 
             // Generating the string to populate the year to date sales chart
-            
+            var sales = new string[12];
             foreach (var item in DBView.MonthlySales)
             {
-                DBView.ChartSales += item.Amount.ToString() + ",";
+               sales[item.Date.Month-1] += item.Amount.ToString();
             }
-            if (DBView.ChartSales != null)
-            {
-                DBView.ChartSales = DBView.ChartSales.Remove(DBView.ChartSales.Length - 1);
-            }
+            DBView.ChartSales = string.Join(",", sales);          
             // ServiceType has a dropdown with options Complete, Partial and Break Fix.  For service, I did not want to pick up break fix figures.
             DBView.ServicesCompleted = _db.Notes.Where(c => c.Category == "Service Notes" && c.ServiceType != "Break Fix").Count();
             // Calendar month figures
