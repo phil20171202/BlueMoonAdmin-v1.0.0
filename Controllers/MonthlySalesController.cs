@@ -38,17 +38,17 @@ namespace BlueMoonAdmin.Controllers
                 DBView.LastMonth = 0;
             }
             // Generating the string to populate the year to date sales chart
-            DBView.CurrectYear = new string[12];
+            DBView.CurrentYear = new string[12];
             DBView.LastYear = new string[12];
             foreach (var item in DBView.MonthlySales.Where(c=> c.Date.Year == CurrentYear))
             {               
-                DBView.CurrectYear[item.Date.Month - 1] = item.Amount.ToString();
+                DBView.CurrentYear[item.Date.Month - 1] = item.Amount.ToString();
             }
             foreach (var item in DBView.MonthlySales.Where(c => c.Date.Year == LastYear))
             {
                 DBView.LastYear[item.Date.Month - 1] = item.Amount.ToString();
             }
-            ViewBag.Current = string.Join(",", DBView.CurrectYear);
+            ViewBag.Current = string.Join(",", DBView.CurrentYear);
             ViewBag.LastYear = string.Join(",", DBView.LastYear);
             return View(DBView);
         }
