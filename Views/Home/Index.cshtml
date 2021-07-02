@@ -5,10 +5,10 @@
 }
 
 <div class="container-fluid">
-    <h1 class="mt-4">@SharedLocalizer.GetLocalizedHtmlString("Dashboard")</h1>
-    <ol class="breadcrumb mb-4">
+    <h3 class="mt-4">@SharedLocalizer.GetLocalizedHtmlString("Dashboard")</h3>
+    @*<ol class="breadcrumb mb-4">
         <li class="breadcrumb-item active">@SharedLocalizer.GetLocalizedHtmlString("Quick Access")</li>
-    </ol>
+    </ol>*@
     <!-- START cards box-->
     <div class="row">
         <div class="col-xl-3 col-md-6">
@@ -83,131 +83,132 @@
             </div>
         </div> <!-- END date widget-->
     </div>
-
+   
     <div class="row">
         <!-- START dashboard main content-->
-        <div class="col-xl-9">
-            <!-- START chart-->
-            <div class="row">
-                <div class="col-xl-12">
-                    <!-- START card-->
-                    <div class="card card-default card-demo" id="cardChart9">
-                        <div class="card-header">
-                            <a class="float-right" href="#" data-tool="card-refresh" data-toggle="tooltip" title="Refresh card">
-                                <em class="fas fa-sync"></em>
-                            </a>
-                            <a class="float-right" href="#" data-tool="card-collapse" data-toggle="tooltip" title="Collapse card">
-                                <em class="fa fa-minus"></em>
-                            </a>
-                            <div class="card-title">Daily Site Visitors</div>
-                        </div>
-                        <div class="card-wrapper">
-                            <div class="card-body">
-                                <div class="chart-spline flot-chart"></div>
+        
+            @*<div class="col-9">
+              
+            </div>*@
+       
+            <div class="col-xl-9">
+                <div class="card border">
+                    <a class="weatherwidget-io" href="https://forecast7.com/en/53d48n2d24/manchester/" data-label_1="MANCHESTER" data-label_2="WEATHER" data-theme="pure">MANCHESTER WEATHER</a>
+                    <script>
+                        !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
+                    </script>
+
+                </div>
+                <!-- START chart-->
+                <div class="row">
+                    <div class="col-xl-12">
+                        <!-- START card-->
+                        <div class="card card-default card-demo" id="cardChart9">
+                            <div class="card-header">
+                                <a class="float-right" href="#" data-tool="card-refresh" data-toggle="tooltip" title="Refresh card">
+                                    <em class="fas fa-sync"></em>
+                                </a>
+                                <a class="float-right" href="#" data-tool="card-collapse" data-toggle="tooltip" title="Collapse card">
+                                    <em class="fa fa-minus"></em>
+                                </a>
+                                <div class="card-title">Daily Site Visitors</div>
+                            </div>
+                            <div class="card-wrapper">
+                                <div class="card-body">
+                                    <div class="chart-spline flot-chart"></div>
+                                </div>
                             </div>
                         </div>
+                        <!-- END card-->
                     </div>
-                    <!-- END card-->
+                </div>
+                <!-- END chart-->
+
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="card card-default">
+                            <div class="card-header">
+                                <div class="px-3 float-right badge badge-danger mb-1 ml-2" title="Number of overdue Tasks">
+                                    <span class="btn-label">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </span>
+                                    (@Model.TaskOverdueCount)
+                                </div>
+                                <div class="px-3 float-right badge badge-success mb-1 ml-1" title="Number of tasks completed in last 30 days">
+                                    <span class="btn-label">
+                                        <i class="fas fa-check"></i>
+                                    </span>
+                                    (@Model.TaskCompleteCount)
+                                </div>
+                                <div class="card-title"><i class="fas fa-table mr-1"></i>Task Manager - Latest Tasks</div>
+                            </div>
+                            <div class="card mb-4">
+                                <div class="list-group p-3" data-height="230" data-scrollable="">
+                                    <div class="table-responsive">
+                                        @if (Model.ToDoList.Count() > 0)
+                                        {
+                                            <table class="table table-bordered" id="dataTableToDoDashboard" width="100%" cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Date:</th>
+                                                        <th>Due Date:</th>
+                                                        <th>Task Details:</th>
+                                                        <th>Category:</th>
+                                                        <th>Importance:</th>
+                                                        <th>Completed:</th>
+                                                        <th>Update:</th>
+                                                        <th>Delete:</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var item in Model.ToDoList)
+                                                    {
+                                                        <tr>
+                                                            @*Dates put in input fields for formating*@
+                                                            <td width="10%"><input type="date" readonly style="border: 0px; background-color:white" asp-for="@item.ToDoDate" /></td>
+                                                            <td width="10%"><input type="date" readonly style="border: 0px; background-color:white" asp-for="@item.ToDoDueDate" /></td>
+                                                            <td width="20%">@item.ToDoTask</td>
+                                                            <td width="10%">@item.ToDoCategory</td>
+                                                            <td width="10%">@item.ToDoImportance</td>
+                                                            <!-- need to format this field to Yes or No instead of True/False -->
+                                                            <td width="10%">@item.Completed</td>
+
+                                                            <td width="6%">
+                                                                <div class="col-6 p-0 text-center">
+                                                                    <a asp-controller="ToDoList" asp-action="UpdateToDoList" asp-route-Id="@item.Id" class="btn btn-primary">Update</a>
+                                                                </div>
+                                                            </td>
+                                                            <td width="6%">
+                                                                <div class="col-6 p-0 text-center">
+                                                                    <a asp-controller="ToDoList" asp-action="DeleteToDoItem" asp-route-Id="@item.Id" class="btn btn-danger">Delete</a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        }
+                                        else
+                                        {
+                                            <p>No items have been created yet</p>
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- START card footer-->
+                            <div class="card-footer">
+                                <p class="text-muted">
+                                    <span class="text-dark"><a asp-controller="ToDoList" asp-action="Index" class="btn btn-green"><em class="fa fa-inverse fa-cogs fa-fw mr-2"></em> Task Manager Dashboard</a></span>
+                                </p>
+                            </div>
+                            <!-- END card-footer-->
+                        </div>
+                    </div>
                 </div>
             </div>
-            <!-- END chart-->
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="card border">
-                        <a class="weatherwidget-io" href="https://forecast7.com/en/53d48n2d24/manchester/" data-label_1="MANCHESTER" data-label_2="WEATHER" data-theme="pure">MANCHESTER WEATHER</a>
-                        <script>
-                            !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = 'https://weatherwidget.io/js/widget.min.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'weatherwidget-io-js');
-                        </script>
-
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-               <div class="col-xl-12">
-                   <div class="card card-default">
-                       <div class="card-header">
-                          <div class="px-3 float-right badge badge-danger mb-1 ml-2" title="Number of overdue Tasks">
-                               <span class="btn-label">
-                                   <i class="fas fa-exclamation-triangle"></i>
-                               </span>
-                               (@Model.TaskOverdueCount)
-                           </div>
-                         <div class="px-3 float-right badge badge-success mb-1 ml-1" title="Number of tasks completed in last 30 days">
-                               <span class="btn-label">
-                                   <i class="fas fa-check"></i>
-                               </span>
-                               (@Model.TaskCompleteCount)
-                           </div>                      
-                       <div class="card-title"><i class="fas fa-table mr-1"></i>Task Manager - Latest Tasks</div>
-                       </div>
-                       <div class="card mb-4">
-                           <div class="list-group p-3" data-height="230" data-scrollable="">
-                               <div class="table-responsive">
-                                   @if (Model.ToDoList.Count() > 0)
-                                   {
-                                       <table class="table table-bordered" id="dataTableToDoDashboard" width="100%" cellspacing="0">
-                                           <thead>
-                                               <tr>
-                                                   <th>Date:</th>
-                                                   <th>Due Date:</th>
-                                                   <th>Task Details:</th>
-                                                   <th>Category:</th>
-                                                   <th>Importance:</th>
-                                                   <th>Completed:</th>
-                                                   <th>Update:</th>
-                                                   <th>Delete:</th>
-                                               </tr>
-                                           </thead>
-                                           <tbody>
-                                               @foreach (var item in Model.ToDoList)
-                                               {
-                                                   <tr>
-                                                       @*Dates put in input fields for formating*@ 
-                                                       <td width="10%"><input type="date" readonly style="border: 0px; background-color:white" asp-for="@item.ToDoDate" /></td>
-                                                       <td width="10%"><input type="date" readonly style="border: 0px; background-color:white" asp-for="@item.ToDoDueDate" /></td>
-                                                       <td width="20%">@item.ToDoTask</td>
-                                                       <td width="10%">@item.ToDoCategory</td>
-                                                       <td width="10%">@item.ToDoImportance</td>
-                                                       <!-- need to format this field to Yes or No instead of True/False -->
-                                                       <td width="10%">@item.Completed</td>
-
-                                                       <td width="6%">
-                                                           <div class="col-6 p-0 text-center">
-                                                               <a asp-controller="ToDoList" asp-action="UpdateToDoList" asp-route-Id="@item.Id" class="btn btn-primary">Update</a>
-                                                           </div>
-                                                       </td>
-                                                       <td width="6%">
-                                                           <div class="col-6 p-0 text-center">
-                                                               <a asp-controller="ToDoList" asp-action="DeleteToDoItem" asp-route-Id="@item.Id" class="btn btn-danger">Delete</a>
-                                                           </div>
-                                                       </td>
-                                                   </tr>
-                                               }
-                                           </tbody>
-                                       </table>
-                                   }
-                                   else
-                                   {
-                                       <p>No items have been created yet</p>
-                                   }
-
-                               </div>
-                           </div>
-                       </div>
-                       <!-- START card footer-->
-                       <div class="card-footer">
-                           <p class="text-muted">                                                             
-                               <span class="text-dark"><a asp-controller="ToDoList" asp-action="Index" class="btn btn-green"><em class="fa fa-inverse fa-cogs fa-fw mr-2"></em> Task Manager Dashboard</a></span>
-                           </p>
-                       </div>
-                       <!-- END card-footer-->
-                   </div>
-                    </div>
-                 </div>
-                </div>
-                <!-- END dashboard main content-->
-
-                <!-- START dashboard sidebar-->
+        <!-- END dashboard main content-->
+        <!-- START dashboard sidebar-->
         <aside class="col-xl-3">
             <!-- START Sales Data Card -->
             <div class="card card-default">
@@ -223,7 +224,7 @@
                         <h3 class="text-muted mt-0">Last Month &pound;@Model.LastMonth.ToString("#,##0")</h3>
                         <em class="ml-auto text-muted fa fa-pound-sign fa-2x"></em>
                     </div>
-                    <div class="py-4" data-sparkline="" data-type="line" data-height="80" data-width="100%" data-line-width="2" 
+                    <div class="py-4" data-sparkline="" data-type="line" data-height="80" data-width="100%" data-line-width="2"
                          data-line-color="#7266ba" data-spot-color="#888" data-min-spot-color="#7266ba" data-max-spot-color="#7266ba" data-fill-color=""
                          data-highlight-line-color="#fff" data-spot-radius="3" data-values=@Model.ChartSales data-resize="true"></div>
                     <p>
@@ -284,8 +285,8 @@
             </div>
             <!-- END Service widget-->
         </aside>
-                <!-- END dashboard sidebar-->
-            </div>
+        <!-- END dashboard sidebar-->
+    </div>
 
 
     @*<div class="row">
