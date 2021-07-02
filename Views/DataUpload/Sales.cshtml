@@ -17,9 +17,9 @@
             <div class="col-6 pt-2">
                 <i class="fas fa-file mr-1"></i>@SharedLocalizer.GetLocalizedHtmlString(" Use the upload feature to insert your sales records")
             </div>
-            @*<div class="col-6 text-right">
-                    <a class="text-right btn btn-outline-info" asp-controller="Customers" asp-action="Index">Back to customer manager</a>
-                </div>*@
+           <div class="col-6 text-right">
+                    <a class="text-right btn btn-outline-info" asp-controller="MonthlySales" asp-action="MonthlySales">Back to sales dashboard</a>
+                </div>
         </div>
     </div>
 </div>
@@ -28,8 +28,7 @@
         <div class="card card-default">
             <div class="card-body text-center">
                 <div class="py-4">
-                    // guess this needs changing
-                    <img class="img-fluid rounded-lg img-thumbnail thumb96 fa fa-upload" alt="Contact" />
+                    <img class="img-fluid rounded-lg img-thumbnail thumb96 fa fa-upload" alt="Sales Data Upload" />
                 </div>
                 <h3 class="m-4 text-bold">Upload sales data</h3>
 
