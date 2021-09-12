@@ -4,6 +4,10 @@ var routeURL = location.protocol + "//" + location.host;
 Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
+// new code (Phil)
+
+
+
 // Bar Chart Example
 var ctx = document.getElementById("barChartMonthly");
 var myLineChart = new Chart(ctx, {
@@ -14,7 +18,8 @@ var myLineChart = new Chart(ctx, {
             label: 'Current Year',
             backgroundColor: "rgba(2,117,216, 0.7)",
             borderColor: "rgba(2,117,216,1)",           
-            data: [82156, 52312, 66251, 77841, 59821, 14984, 0, 0, 0, 0, 0, 0],
+             data: [82156, 52312, 66251, 77841, 59821, 14984, 0, 0, 0, 0, 0, 0],
+            
             // this dataset is drawn below
             opacity: 80,
             order: 2
@@ -23,6 +28,7 @@ var myLineChart = new Chart(ctx, {
             backgroundColor: "rgba(255,255,255, 0.1)",
             borderColor: "rgba(23,186,239)",
             data: [62156, 42312, 56251, 87841, 49821, 24984, 0, 0, 0, 0, 0, 0],
+                
             type: 'line',
             // this dataset is drawn on top
             order: 1

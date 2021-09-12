@@ -83,20 +83,36 @@
                     <i class="fas fa-chart-area mr-1"></i>@SharedLocalizer.GetLocalizedHtmlString("Monthly Sales YTD: ") @DateTime.Now.Year
                 </div>
                 <div class="card-body">
-                    <canvas id="barChartMonthly" width="100" height="30" data=""></canvas>
+                    <canvas id="barChartMonthly" width="100" height="30" >
+
+
+                    </canvas>
                 </div>
             </div>
         </div>
     </div>
-
+    <input type="button" value="Load figures" onclick="adddata()" />
 </div>
 
 @section Scripts{
-    @*<script src="~/assets/demo/chart-bar-monthly.js"></script>*@
+    <script src="~/assets/demo/chart-bar-monthly.js">
+        
+    </script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
     <script src="~/assets/demo/datatables-demo.js"></script>
     <script>
+        function adddata() {          
+        myLineChart.data.datasets[0].data = [@ViewBag.Current];
+        myLineChart.data.datasets[1].data = [@ViewBag.LastYear];
+        myLineChart.update();           
+    }
+
+    </script> 
+
+
+
+@*<script>
         var ctx = document.getElementById("barChartMonthly");
         var myLineChart = new Chart(ctx, {
 
@@ -151,5 +167,5 @@
                 }
             }
         });
-    </script>
+    </script>*@
 }
